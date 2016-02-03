@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MovieRecommender</string>
+    <string name="app_name">BuzzMovieSelector</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

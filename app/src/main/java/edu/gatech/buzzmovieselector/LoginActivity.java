@@ -1,4 +1,4 @@
-package CS2340.movierecommender;
+package edu.gatech.buzzmovieselector;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

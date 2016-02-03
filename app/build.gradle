@@ -2,10 +2,10 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "19.1.0"
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "CS2340.movierecommender"
+        applicationId "edu.gatech.buzzmovieselector"
         minSdkVersion 23
         targetSdkVersion 23
         versionCode 1
