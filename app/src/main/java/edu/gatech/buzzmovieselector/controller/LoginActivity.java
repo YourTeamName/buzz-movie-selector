@@ -1,4 +1,4 @@
-package edu.gatech.buzzmovieselector;
+package edu.gatech.buzzmovieselector.controller;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -31,6 +31,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import edu.gatech.buzzmovieselector.R;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
