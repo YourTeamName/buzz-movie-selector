@@ -1,0 +1,8 @@
+package edu.gatech.cs2340.basicandroidapp.model;
+
+/**
+ * Created by robertwaters on 2/1/16.
+ */
+public interface AuthenticationFacade {
+    boolean handleLoginRequest(String name, String password);
+}
