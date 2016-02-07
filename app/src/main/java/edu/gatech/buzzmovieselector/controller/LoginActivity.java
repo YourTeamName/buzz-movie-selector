@@ -2,6 +2,7 @@ package edu.gatech.buzzmovieselector.controller;
 
 import android.app.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -61,13 +62,20 @@ public class LoginActivity extends Activity {
                     "login attempt", Toast.LENGTH_SHORT).show();
         AuthenticationFacade af = new UserManager();
         if (af.handleLoginRequest(mUsernameView.getText().toString(),
-                    mPasswordView.getText().toString()) == true) {
+                    mPasswordView.getText().toString())) {
             Toast.makeText(getApplicationContext(),
                         "login success", Toast.LENGTH_SHORT).show();
+            startBMS();
         } else {
             Toast.makeText(getApplicationContext(),
                     "login failure", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void startBMS() {
+        Toast.makeText(getApplicationContext(), "start BMS activity", Toast.LENGTH_SHORT).show();
+        Intent mainActivity = new Intent(this, BMSActivity.class);
+        startActivity(mainActivity);
     }
 
 }

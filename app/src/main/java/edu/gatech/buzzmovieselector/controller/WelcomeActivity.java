@@ -16,14 +16,14 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        UserManagementFacade um = new UserManager();
+        um.addUser("test", "pass");
+        um.addUser("sally", "sally");
         if (checkLogin()) {
             Toast.makeText(getApplicationContext(), "check login is true", Toast.LENGTH_SHORT).show();
             Intent mainActivity = new Intent(this, BMSActivity.class);
             startActivity(mainActivity);
         }
-        UserManagementFacade um = new UserManager();
-        um.addUser("test", "pass");
-        um.addUser("sally", "sally");
     }
 
     private void allowAccess() {
