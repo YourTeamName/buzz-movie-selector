@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.basicandroidapp.model;
+package edu.gatech.buzzmovieselector.model;
 
 /**
  * Created by robertwaters on 1/26/16.
