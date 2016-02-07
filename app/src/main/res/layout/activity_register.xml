@@ -17,4 +17,52 @@
         android:id="@+id/registerText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Username"
+        android:layout_below="@+id/registerText"
+        android:layout_alignStart="@+id/registerText"
+        android:layout_marginTop="41dp"
+        android:layout_alignEnd="@+id/registerText"
+        android:hint="Username" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText2"
+        android:layout_below="@+id/Username"
+        android:layout_alignStart="@+id/Username"
+        android:layout_marginTop="41dp"
+        android:layout_alignEnd="@+id/Username"
+        android:hint="Password" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText3"
+        android:layout_centerVertical="true"
+        android:layout_alignEnd="@+id/editText2"
+        android:layout_alignStart="@+id/editText2"
+        android:hint="Confirm Password" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_below="@+id/Username"
+        android:layout_alignStart="@+id/Username"
+        android:layout_alignEnd="@+id/editText2"
+        android:hint="Email Address" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:id="@+id/button"
+        android:layout_below="@+id/editText3"
+        android:layout_alignStart="@+id/editText3"
+        android:layout_alignEnd="@+id/editText3" />
+
 </RelativeLayout>
