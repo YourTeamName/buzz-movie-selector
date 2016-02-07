@@ -13,4 +13,8 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="prompt_username">Username</string>
+    <string name="action_login">Login</string>
+    <string name="prompt_password_required">Password</string>
+    <string name="action_cancel">Cancel</string>
 </resources>
