@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import edu.gatech.buzzmovieselector.R;
+import edu.gatech.buzzmovieselector.model.UserManagementFacade;
+import edu.gatech.buzzmovieselector.model.UserManager;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -19,6 +21,9 @@ public class WelcomeActivity extends AppCompatActivity {
             Intent mainActivity = new Intent(this, BMSActivity.class);
             startActivity(mainActivity);
         }
+        UserManagementFacade um = new UserManager();
+        um.addUser("test", "pass");
+        um.addUser("sally", "sally");
     }
 
     private void allowAccess() {

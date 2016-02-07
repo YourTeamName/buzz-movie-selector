@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import edu.gatech.buzzmovieselector.R;
+import edu.gatech.buzzmovieselector.model.AuthenticationFacade;
+import edu.gatech.buzzmovieselector.model.UserManager;
 
 public class LoginActivity extends Activity {
 
@@ -55,9 +57,17 @@ public class LoginActivity extends Activity {
     }
 
     private void attemptLogin() {
-
-        Toast.makeText(getApplicationContext(), "login attempt", Toast.LENGTH_SHORT).show();
-        // TODO: Backend work goes on here
+        Toast.makeText(getApplicationContext(),
+                    "login attempt", Toast.LENGTH_SHORT).show();
+        AuthenticationFacade af = new UserManager();
+        if (af.handleLoginRequest(mUsernameView.getText().toString(),
+                    mPasswordView.getText().toString()) == true) {
+            Toast.makeText(getApplicationContext(),
+                        "login success", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(),
+                    "login failure", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }
