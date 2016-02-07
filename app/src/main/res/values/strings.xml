@@ -17,4 +17,7 @@
     <string name="action_login">Login</string>
     <string name="prompt_password_required">Password</string>
     <string name="action_cancel">Cancel</string>
+    <string name="title_welcome">Welcome to Buzz Movie Selector</string>
+    <string name="link_login">Login</string>
+    <string name="link_register">Register</string>
 </resources>
