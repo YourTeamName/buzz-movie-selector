@@ -31,21 +31,23 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText2"
+        android:id="@+id/passwordText"
         android:layout_below="@+id/Username"
         android:layout_alignStart="@+id/Username"
         android:layout_marginTop="41dp"
         android:layout_alignEnd="@+id/Username"
-        android:hint="Password" />
+        android:hint="Password"
+        android:password="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText3"
+        android:id="@+id/passwordConfirmText"
         android:layout_centerVertical="true"
-        android:layout_alignEnd="@+id/editText2"
-        android:layout_alignStart="@+id/editText2"
-        android:hint="Confirm Password" />
+        android:layout_alignEnd="@+id/passwordText"
+        android:layout_alignStart="@+id/passwordText"
+        android:hint="Confirm Password"
+        android:password="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -53,7 +55,7 @@
         android:id="@+id/editText"
         android:layout_below="@+id/Username"
         android:layout_alignStart="@+id/Username"
-        android:layout_alignEnd="@+id/editText2"
+        android:layout_alignEnd="@+id/passwordText"
         android:hint="Email Address" />
 
     <Button
@@ -61,8 +63,8 @@
         android:layout_height="wrap_content"
         android:text="Register"
         android:id="@+id/button"
-        android:layout_below="@+id/editText3"
-        android:layout_alignStart="@+id/editText3"
-        android:layout_alignEnd="@+id/editText3" />
+        android:layout_below="@+id/passwordConfirmText"
+        android:layout_alignStart="@+id/passwordConfirmText"
+        android:layout_alignEnd="@+id/passwordConfirmText" />
 
 </RelativeLayout>
