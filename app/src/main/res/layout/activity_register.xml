@@ -17,4 +17,54 @@
         android:id="@+id/registerText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Username"
+        android:layout_below="@+id/registerText"
+        android:layout_alignStart="@+id/registerText"
+        android:layout_marginTop="41dp"
+        android:layout_alignEnd="@+id/registerText"
+        android:hint="Username" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/passwordText"
+        android:layout_below="@+id/Username"
+        android:layout_alignStart="@+id/Username"
+        android:layout_marginTop="41dp"
+        android:layout_alignEnd="@+id/Username"
+        android:hint="Password"
+        android:password="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/passwordConfirmText"
+        android:layout_centerVertical="true"
+        android:layout_alignEnd="@+id/passwordText"
+        android:layout_alignStart="@+id/passwordText"
+        android:hint="Confirm Password"
+        android:password="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_below="@+id/Username"
+        android:layout_alignStart="@+id/Username"
+        android:layout_alignEnd="@+id/passwordText"
+        android:hint="Email Address" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:id="@+id/button"
+        android:layout_below="@+id/passwordConfirmText"
+        android:layout_alignStart="@+id/passwordConfirmText"
+        android:layout_alignEnd="@+id/passwordConfirmText" />
+
 </RelativeLayout>
