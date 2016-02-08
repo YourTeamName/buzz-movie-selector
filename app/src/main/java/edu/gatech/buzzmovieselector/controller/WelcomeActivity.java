@@ -17,7 +17,7 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         UserManagementFacade um = new UserManager();
-        um.addUser("test", "pass");
+        um.addUser("user", "pass");
         um.addUser("sally", "sally");
         if (checkLogin()) {
             Toast.makeText(getApplicationContext(), "check login is true", Toast.LENGTH_SHORT).show();
