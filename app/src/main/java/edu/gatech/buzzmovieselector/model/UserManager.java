@@ -13,7 +13,6 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
 
     public void addUser(User user) {
         users.put(user.getUsername(), user);
-
     }
 
     public boolean handleLoginRequest(String name, String pass) {

@@ -18,9 +18,7 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public void setPassword(String password) { this.password = password; }
 
     public boolean isAdmin() { return admin; }
 
@@ -32,14 +30,14 @@ public class User {
         this.banned = banned;
     }
 
-    public User(String n, String p, boolean a) {
-        this.username = n;
-        this.password = p;
-        this.admin = a;
+    public User(String username, String password, boolean admin) {
+        this.username = username;
+        this.password = password;
+        this.admin = admin;
     }
 
-    public User(String n, String p) {
-        this(n, p, false);
+    public User(String username, String password) {
+        this(username, password, false);
     }
 
     public boolean checkPassword(String pass) {
