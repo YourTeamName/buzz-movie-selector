@@ -29,8 +29,6 @@ public class LoginActivity extends Activity {
     // UI references.
     private AutoCompleteTextView mUsernameView;
     private EditText mPasswordView;
-    private View mProgressView;
-    private View mLoginFormView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +46,6 @@ public class LoginActivity extends Activity {
                 return false;
             }
         });
-
-        Button loginButton = (Button) findViewById(R.id.login_button);
-
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
     }
 
     /**
@@ -88,13 +81,12 @@ public class LoginActivity extends Activity {
      */
     private void attemptLogin() {
         UserManager um = new UserManager();
-        AuthenticationFacade af = (AuthenticationFacade) um;
-        UserManagementFacade uf = (UserManagementFacade) um;
+        AuthenticationFacade af = um;
+        UserManagementFacade uf = um;
         String userName = mUsernameView.getText().toString();
         String userPass = mPasswordView.getText().toString();
         if (af.handleLoginRequest(userName,
                 userPass)) {
-            // TODO: make a matchUser function so we don't have to import User
             User sessionUser = new User(userName, userPass, "USER");
             SessionState.login(sessionUser, getApplicationContext());
             resetFields();
