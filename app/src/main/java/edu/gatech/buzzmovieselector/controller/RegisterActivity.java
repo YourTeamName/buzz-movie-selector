@@ -63,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
      */
     private boolean verifyRegister() {
         String userName = userField.getText().toString();
-        if (userName == null || userName.equals("")) {
+        if (userName.equals("")) {
             userField.setError("You must enter a username");
             return false;
         }
@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
             return false;
         }
         String email = emailField.getText().toString();
-        if (email == null || email.equals("")) {
+        if (email.equals("")) {
             emailField.setError("You must enter an email");
             return false;
         }
@@ -82,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
         String pass1 = passwordField.getText().toString();
         String pass2 = passwordConfirmField.getText().toString();
-        if (pass1 == null || pass1.equals("")) {
+        if (pass1.equals("")) {
             passwordField.setError("You must enter a password");
             return false;
         }

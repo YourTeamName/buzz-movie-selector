@@ -48,7 +48,7 @@ public class BMSActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        if (SessionState.isLoggedIn()) {
+        if (SessionState.getInstance().isLoggedIn()) {
             Log.v("BMS", "we are logged in");
         } else {
             Log.v("BMS", "we are not logged in");
@@ -108,7 +108,7 @@ public class BMSActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         } else if (id == R.id.nav_logout) {
-            SessionState.logout(getApplicationContext());
+            SessionState.getInstance().logout(getApplicationContext());
             finish();
         }
 

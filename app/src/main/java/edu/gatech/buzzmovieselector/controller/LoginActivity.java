@@ -73,11 +73,11 @@ public class LoginActivity extends Activity {
     public boolean validateLogin() {
         String userName = mUsernameView.getText().toString();
         String userPass = mPasswordView.getText().toString();
-        if (userName == null || userName.equals("")) {
+        if (userName.equals("")) {
             mUsernameView.setError("You must enter a username");
             return false;
         }
-        if (userPass == null || userPass.equals("")) {
+        if (userPass.equals("")) {
             mPasswordView.setError("You must enter a password");
             return false;
         }
@@ -107,7 +107,7 @@ public class LoginActivity extends Activity {
         if (af.handleLoginRequest(userName,
                 userPass)) {
             User sessionUser = new User(userName, userPass, "USER");
-            SessionState.login(sessionUser, getApplicationContext());
+            SessionState.getInstance().login(sessionUser, getApplicationContext());
             resetFields();
             startBMS();
         } else {

@@ -33,7 +33,8 @@ public class User {
     }
 
     public User(String username, String password, String userLevel) {
-        this(username, password, (userLevel.equalsIgnoreCase("admin") ? UserLevel.ADMIN : UserLevel.USER));
+        // TODO: make this more elegant
+        this(username, password, userLevel.equals("ADMIN") ? UserLevel.ADMIN : (userLevel.equals("BANNED") ? UserLevel.BANNED : UserLevel.USER));
     }
 
     @Override
@@ -45,7 +46,7 @@ public class User {
             return false;
         }
         final User u = (User) o;
-        if (!name.equals(u.name)) {
+        if (!username.equals(u.username)) {
             return false;
         }
         if (!password.equals(u.password)) {

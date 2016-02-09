@@ -27,7 +27,7 @@ public class WelcomeActivity extends AppCompatActivity {
             startActivity(mainActivity);
         } else {
             // if not logged in or invalid session state, clear everything
-            SessionState.logout(getApplicationContext());
+            SessionState.getInstance().logout(getApplicationContext());
         }
     }
 
@@ -35,13 +35,14 @@ public class WelcomeActivity extends AppCompatActivity {
      * Checks to see if there is a stored state and restores it
      */
     private void restoreState() {
-        SessionState.restoreState(getApplicationContext());
+        SessionState.getInstance().restoreState(getApplicationContext());
     }
 
     /**
      * Method for initializing hard coded values and restoring app state
      */
     private void initApp() {
+        // TODO: load user data from persistent storage so that register works
         UserManagementFacade um = new UserManager();
         um.addUser(new User("user", "pass"));
         restoreState();
@@ -74,6 +75,6 @@ public class WelcomeActivity extends AppCompatActivity {
      * session and user data is still valid
      */
     private boolean verifyLogin() {
-        return SessionState.isLoggedIn() && SessionState.verifySession();
+        return SessionState.getInstance().isLoggedIn() && SessionState.getInstance().verifySession();
     }
 }
