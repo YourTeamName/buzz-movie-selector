@@ -1,9 +1,11 @@
 package edu.gatech.buzzmovieselector.controller;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.model.UserManagementFacade;
@@ -27,8 +29,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void attemptRegister(View v) {
         if (!verifyRegister()) {
-            // notify the user than the register was unsuccessful
-            // cancel registration
+            Toast.makeText(getApplicationContext(),
+                        "Registration unsuccessful", Toast.LENGTH_SHORT).show();
             return;
         }
         registerUser();
@@ -41,19 +43,28 @@ public class RegisterActivity extends AppCompatActivity {
 
     private boolean verifyRegister() {
         if (usernameExists(userField.getText().toString())) {
-            // notify the user that the username already exists
+            Toast.makeText(getApplicationContext(), "User exists", Toast.LENGTH_SHORT).show();
             return false;
         }
         String pass1 = passwordField.getText().toString();
         String pass2 = passwordConfirmField.getText().toString();
         if (!pass1.equals(pass2)) {
-            // notify the user that the passwords are mismatched
+            Toast.makeText(getApplicationContext(),
+                        "Passwords don't match", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
     }
 
-    private void registerUser(){
+    private void registerUser() {
         UserManagementFacade um = new UserManager();
+        um.addUser(userField.getText().toString(), passwordField.getText().toString());
+        startLogin();
+    }
+
+    public void startLogin() {
+        Toast.makeText(getApplicationContext(), "start login activity", Toast.LENGTH_SHORT).show();
+        Intent loginActivity = new Intent(this, LoginActivity.class);
+        startActivity(loginActivity);
     }
 }
