@@ -13,4 +13,18 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="prompt_username">Username</string>
+    <string name="action_login">Login</string>
+    <string name="prompt_password_required">Password</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="title_welcome">Welcome to Buzz Movie Selector</string>
+    <string name="link_login">Login</string>
+    <string name="link_register">Register</string>
+    <string name="title_activity_bms">BMSActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_register">Register an Account</string>
 </resources>
