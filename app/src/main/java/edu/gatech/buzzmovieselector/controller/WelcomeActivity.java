@@ -34,6 +34,7 @@ public class WelcomeActivity extends AppCompatActivity {
      */
     private void restoreState() {
         SessionState.restoreState(getApplicationContext());
+        // TODO: also check if the user has been banned since last time app was closed
         if (SessionState.isLoggedIn()) {
             Log.v("BMS", "already logged in, restoring");
             startBMS();
