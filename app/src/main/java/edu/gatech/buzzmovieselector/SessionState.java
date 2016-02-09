@@ -82,7 +82,7 @@ public class SessionState {
             editor.putString(USER_PREFIX +  "level", sessionUser.getUserLevel().toString());
         }
         editor.clear();
-        editor.commit();
+        editor.apply();
     }
 
     /**
@@ -93,7 +93,7 @@ public class SessionState {
         SharedPreferences saveSession = context.getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = saveSession.edit();
         editor.clear();
-        editor.commit();
+        editor.apply();
     }
 
     public static void login(User user, Context context) {
