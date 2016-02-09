@@ -3,10 +3,12 @@ package edu.gatech.buzzmovieselector.controller;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import edu.gatech.buzzmovieselector.R;
+import edu.gatech.buzzmovieselector.SessionState;
 import edu.gatech.buzzmovieselector.model.UserManagementFacade;
 import edu.gatech.buzzmovieselector.model.UserManager;
 
@@ -20,13 +22,41 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        UserManagementFacade um = new UserManager();
-        um.addUser("user", "pass");
-        um.addUser("sally", "sally");
+        initApp();
         if (checkLogin()) {
             Intent mainActivity = new Intent(this, BMSActivity.class);
             startActivity(mainActivity);
         }
+    }
+
+    /**
+     * Checks to see if there is a stored state and restores it
+     */
+    private void restoreState() {
+        SessionState.restoreState(getApplicationContext());
+        if (SessionState.isLoggedIn()) {
+            Log.v("BMS", "already logged in, restoring");
+            startBMS();
+        }
+    }
+
+    /**
+     * Method for initializing hard coded values and restoring app state
+     */
+    private void initApp() {
+        UserManagementFacade um = new UserManager();
+        um.addUser("user", "pass");
+        um.addUser("sally", "sally");
+        restoreState();
+    }
+
+    // TODO: get rid of this replication
+    /**
+     * Creates Intent for the BMSActivity and launches it
+     */
+    private void startBMS() {
+        Intent mainActivity = new Intent(this, BMSActivity.class);
+        startActivity(mainActivity);
     }
 
     /**
