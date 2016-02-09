@@ -4,6 +4,7 @@ public class User {
     private String username;
     private String password;
     private boolean admin;
+    private boolean banned;
 
     public String getUsername() {
         return username;
@@ -21,13 +22,7 @@ public class User {
         this.password = password;
     }
 
-    public boolean isAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
-    }
+    public boolean isAdmin() { return admin; }
 
     public boolean isBanned() {
         return banned;
@@ -37,11 +32,14 @@ public class User {
         this.banned = banned;
     }
 
-    private boolean banned;
-
-    public User(String n, String p) {
+    public User(String n, String p, boolean a) {
         this.username = n;
         this.password = p;
+        this.admin = a;
+    }
+
+    public User(String n, String p) {
+        this(n, p, false);
     }
 
     public boolean checkPassword(String pass) {
