@@ -1,8 +1,5 @@
 package edu.gatech.buzzmovieselector.model;
 
-/**
- * Created by robertwaters on 1/26/16.
- */
 public class User {
 
     public enum UserLevel {
