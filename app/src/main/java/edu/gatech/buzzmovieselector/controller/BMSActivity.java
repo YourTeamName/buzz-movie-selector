@@ -53,6 +53,8 @@ public class BMSActivity extends AppCompatActivity
             Log.v("BMS", "we are logged in");
         } else {
             Log.v("BMS", "we are not logged in");
+            // we should not be here unless we are logged in
+            finish();
         }
     }
 
