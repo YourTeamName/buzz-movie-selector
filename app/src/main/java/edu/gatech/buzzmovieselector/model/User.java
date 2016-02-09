@@ -7,13 +7,15 @@ public class User {
 
     public enum UserLevel {
         USER,
-        ADMIN;
+        ADMIN,
+        BANNED;
 
         @Override
         public String toString() {
             switch (this) {
                 case USER: return "USER";
                 case ADMIN: return "ADMIN";
+                case BANNED: return "BANNED";
                 default: throw new IllegalArgumentException();
             }
         }
