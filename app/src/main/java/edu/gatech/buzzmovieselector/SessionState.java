@@ -14,8 +14,8 @@ public class SessionState {
     private static SessionState ourInstance = new SessionState();
     private static User sessionUser = null;
 
-    public static final String SESSION_PREFS = "BMS_SESSION_PREFS";
-    public static final String USER_PREFIX = "sessionUser_";
+    private static final String SESSION_PREFS = "BMS_SESSION_PREFS";
+    private static final String USER_PREFIX = "sessionUser_";
 
     /**
      * Global Session State for the application
