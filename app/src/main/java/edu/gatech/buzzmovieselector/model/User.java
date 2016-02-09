@@ -39,6 +39,27 @@ public class User {
         this(n, p, (l.equalsIgnoreCase("admin") ? UserLevel.ADMIN : UserLevel.USER));
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
+        if (!User.class.isAssignableFrom(o.getClass())) {
+            return false;
+        }
+        final User u = (User) o;
+        if (!name.equals(u.name)) {
+            return false;
+        }
+        if (!password.equals(u.password)) {
+            return false;
+        }
+        if (!userLevel.equals(u.userLevel)) {
+            return false;
+        }
+        return true;
+    }
+
     /**
      * Gives the username of the user
      * @return username of the User object

@@ -3,9 +3,7 @@ package edu.gatech.buzzmovieselector.controller;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.SessionState;
@@ -23,9 +21,12 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         initApp();
-        if (checkLogin()) {
+        if (verifyLogin()) {
             Intent mainActivity = new Intent(this, BMSActivity.class);
             startActivity(mainActivity);
+        } else {
+            // if not logged in or invalid session state, clear everything
+            SessionState.logout(getApplicationContext());
         }
     }
 
@@ -34,11 +35,6 @@ public class WelcomeActivity extends AppCompatActivity {
      */
     private void restoreState() {
         SessionState.restoreState(getApplicationContext());
-        // TODO: also check if the user has been banned since last time app was closed
-        if (SessionState.isLoggedIn()) {
-            Log.v("BMS", "already logged in, restoring");
-            startBMS();
-        }
     }
 
     /**
@@ -49,15 +45,6 @@ public class WelcomeActivity extends AppCompatActivity {
         um.addUser("user", "pass");
         um.addUser("sally", "sally");
         restoreState();
-    }
-
-    // TODO: get rid of this replication
-    /**
-     * Creates Intent for the BMSActivity and launches it
-     */
-    private void startBMS() {
-        Intent mainActivity = new Intent(this, BMSActivity.class);
-        startActivity(mainActivity);
     }
 
     /**
@@ -81,11 +68,12 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     /**
-     * Checks if the user is already logged in
-     * @return whether the user has already been validated in a previous
+     * Checks if the user is already logged in and validates previously stored
      * session
+     * @return whether the user has already been validated in a previous
+     * session and user data is still valid
      */
-    private boolean checkLogin() {
-        return false;
+    private boolean verifyLogin() {
+        return SessionState.isLoggedIn() && SessionState.verifySession();
     }
 }
