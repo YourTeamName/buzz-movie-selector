@@ -18,6 +18,7 @@ public class SessionState {
     private static User sessionUser = null;
 
     public static final String SESSION_PREFS = "BMS_SESSION_PREFS";
+    public static final String USER_PREFIX = "sessionUser_";
 
     /**
      * Global Session State for the application
@@ -58,10 +59,9 @@ public class SessionState {
      */
     public static boolean restoreState(Context context) {
         SharedPreferences saveSession = context.getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
-        String prefix = "sessionUser_";
-        String userName = saveSession.getString(prefix + "name", null);
-        String userPass = saveSession.getString(prefix + "password", null);
-        String userLevel = saveSession.getString(prefix + "level", null);
+        String userName = saveSession.getString(USER_PREFIX +  "name", null);
+        String userPass = saveSession.getString(USER_PREFIX +  "password", null);
+        String userLevel = saveSession.getString(USER_PREFIX +  "level", null);
         if (userName == null || userPass == null || userLevel == null) {
             return false;
         }
@@ -77,10 +77,9 @@ public class SessionState {
         SharedPreferences saveSession = context.getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = saveSession.edit();
         if (sessionUser != null) {
-            String prefix = "sessionUser_";
-            editor.putString(prefix + "name", sessionUser.getName());
-            editor.putString(prefix + "password", sessionUser.getPassword());
-            editor.putString(prefix + "level", sessionUser.getUserLevel().toString());
+            editor.putString(USER_PREFIX +  "name", sessionUser.getName());
+            editor.putString(USER_PREFIX +  "password", sessionUser.getPassword());
+            editor.putString(USER_PREFIX +  "level", sessionUser.getUserLevel().toString());
         }
         editor.clear();
         editor.commit();
