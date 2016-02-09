@@ -63,7 +63,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void startLogin() {
-        Toast.makeText(getApplicationContext(), "start login activity", Toast.LENGTH_SHORT).show();
         Intent loginActivity = new Intent(this, LoginActivity.class);
         startActivity(loginActivity);
     }
