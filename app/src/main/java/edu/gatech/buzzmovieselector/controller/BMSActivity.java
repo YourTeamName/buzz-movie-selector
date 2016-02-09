@@ -15,6 +15,10 @@ import android.view.MenuItem;
 
 import edu.gatech.buzzmovieselector.R;
 
+/**
+ * BMSActivity is the main screen for the app. It is only displayed to users
+ * that are logged in.
+ */
 public class BMSActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
