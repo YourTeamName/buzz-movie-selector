@@ -25,6 +25,10 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
         return u != null && u.checkPassword(pass);
     }
 
+    public boolean userExists(String username) {
+        return users.containsKey(username);
+    }
+
     public UserManager() {
 
     }
