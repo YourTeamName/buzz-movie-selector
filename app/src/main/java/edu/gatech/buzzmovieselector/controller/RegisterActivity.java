@@ -16,6 +16,7 @@ import edu.gatech.buzzmovieselector.model.UserManager;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText userField;
+    private EditText emailField;
     private EditText passwordField;
     private EditText passwordConfirmField;
 
@@ -25,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         // consider changing the userField id
         userField = (EditText) findViewById(R.id.Username);
+        emailField = (EditText) findViewById(R.id.emailText);
         passwordField = (EditText) findViewById(R.id.passwordText);
         passwordConfirmField = (EditText) findViewById(R.id.passwordConfirmText);
     }
@@ -61,12 +63,29 @@ public class RegisterActivity extends AppCompatActivity {
      */
     private boolean verifyRegister() {
         String userName = userField.getText().toString();
+        if (userName == null || userName.equals("")) {
+            userField.setError("You must enter a username");
+            return false;
+        }
         if (usernameExists(userName)) {
             userField.setError("Username is already registered");
             return false;
         }
+        String email = emailField.getText().toString();
+        if (email == null || email.equals("")) {
+            emailField.setError("You must enter an email");
+            return false;
+        }
+        if (!email.contains("@")) {
+            emailField.setError("You must enter a valid email");
+            return false;
+        }
         String pass1 = passwordField.getText().toString();
         String pass2 = passwordConfirmField.getText().toString();
+        if (pass1 == null || pass1.equals("")) {
+            passwordField.setError("You must enter a password");
+            return false;
+        }
         if (!pass1.equals(pass2)) {
             passwordConfirmField.setError("Passwords do not match");
             return false;

@@ -54,7 +54,9 @@ public class LoginActivity extends Activity {
      * @param v Reference to widget firing event
      */
     public void login(View v) {
-        attemptLogin();
+        if (validateLogin()) {
+            attemptLogin();
+        }
     }
 
     /**
@@ -63,6 +65,24 @@ public class LoginActivity extends Activity {
      */
     public void cancel(View v) {
         finish();
+    }
+
+    /**
+     * Validates the login form
+     * @return the login form is valid
+     */
+    public boolean validateLogin() {
+        String userName = mUsernameView.getText().toString();
+        String userPass = mPasswordView.getText().toString();
+        if (userName == null || userName.equals("")) {
+            mUsernameView.setError("You must enter a username");
+            return false;
+        }
+        if (userPass == null || userPass.equals("")) {
+            mPasswordView.setError("You must enter a password");
+            return false;
+        }
+        return true;
     }
 
     /**
