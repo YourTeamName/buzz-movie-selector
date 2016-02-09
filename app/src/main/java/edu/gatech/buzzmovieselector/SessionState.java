@@ -5,9 +5,6 @@ import android.content.SharedPreferences;
 
 import edu.gatech.buzzmovieselector.model.User;
 
-/**
- * Created by jwpilly on 2/9/16.
- */
 public class SessionState {
 
     // Eagerly instantiated Singleton

@@ -3,9 +3,6 @@ package edu.gatech.buzzmovieselector.model;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by robertwaters on 1/26/16.
- */
 public class UserManager implements AuthenticationFacade, UserManagementFacade {
     private static Map<String, User> users = new HashMap<>();
 
