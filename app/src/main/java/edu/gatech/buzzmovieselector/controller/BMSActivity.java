@@ -1,6 +1,7 @@
 package edu.gatech.buzzmovieselector.controller;
 
 import android.os.Bundle;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -94,6 +95,9 @@ public class BMSActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
+        } else if (id == R.id.nav_logout) {
+            Intent WelcomeActivity = new Intent(this, WelcomeActivity.class);
+            startActivity(WelcomeActivity);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
