@@ -1,45 +1,69 @@
 package edu.gatech.buzzmovieselector.model;
 
 public class User {
+
+    public enum UserLevel {
+        USER,
+        ADMIN,
+        BANNED;
+
+        @Override
+        public String toString() {
+            switch (this) {
+                case USER: return "USER";
+                case ADMIN: return "ADMIN";
+                case BANNED: return "BANNED";
+                default: throw new IllegalArgumentException();
+            }
+        }
+    }
+
     private String username;
     private String password;
-    private boolean admin;
-    private boolean banned;
+    private UserLevel userLevel;
 
+    public User(String username, String password, UserLevel userLevel) {
+        this.username = username;
+        this.password = password;
+        this.userLevel = userLevel;
+    }
+
+    public User(String username, String password) {
+        this(username, password, UserLevel.USER);
+    }
+
+    public User(String username, String password, String userLevel) {
+        this(username, password, (userLevel.equalsIgnoreCase("admin") ? UserLevel.ADMIN : UserLevel.USER));
+    }
+
+    /**
+     * Gives the username of the user
+     * @return username of the User object
+     */
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
+    /**
+     * Gives the stored user password
+     * @return Stored password of the user
+     */
     public String getPassword() {
         return password;
     }
-
-    public void setPassword(String password) { this.password = password; }
-
-    public boolean isAdmin() { return admin; }
-
-    public boolean isBanned() {
-        return banned;
+    /**
+     * Gives the access level of the user
+     * @return Stored UserLevel value of the user
+     */
+    public UserLevel getUserLevel() {
+        return userLevel;
     }
 
-    public void setBanned(boolean banned) {
-        this.banned = banned;
-    }
-
-    public User(String username, String password, boolean admin) {
-        this.username = username;
-        this.password = password;
-        this.admin = admin;
-    }
-
-    public User(String username, String password) {
-        this(username, password, false);
-    }
-
+    /**
+     * Checks to see if pass matches the stored user password
+     * @param pass Given password to validate
+     * @return pass equals the stored password
+     */
     public boolean checkPassword(String pass) {
         return password.equals(pass);
     }

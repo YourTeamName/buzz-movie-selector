@@ -12,6 +12,10 @@ import edu.gatech.buzzmovieselector.model.User;
 import edu.gatech.buzzmovieselector.model.UserManagementFacade;
 import edu.gatech.buzzmovieselector.model.UserManager;
 
+/**
+ * RegisterActivity contains the form for registering a new user
+ * Handles registration, contains fields for username, email, and password
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText userField;
@@ -30,6 +34,12 @@ public class RegisterActivity extends AppCompatActivity {
         um = new UserManager();
     }
 
+    /**
+     * attemptRegister is called when the Register button is clicked
+     * checks whether the registration form is valid and attempts to register
+     * a new user
+     * @param v Reference to widget firing event
+     */
     public void attemptRegister(View v) {
         if (!verifyRegister()) {
             Toast.makeText(getApplicationContext(), "Registration unsuccessful", Toast.LENGTH_SHORT).show();
@@ -45,8 +55,8 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     /**
-     *
-     * @return true if the registration information the user input is valid
+     * Checks to see whether the data entered in the registration form is valid
+     * @return the data entered in the registration form is valid
      */
     private boolean verifyRegister() {
         if (um.findUserById(userField.getText().toString()) != null) {

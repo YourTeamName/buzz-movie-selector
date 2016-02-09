@@ -14,11 +14,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import edu.gatech.buzzmovieselector.R;
+import edu.gatech.buzzmovieselector.SessionState;
 import edu.gatech.buzzmovieselector.model.AuthenticationFacade;
+import edu.gatech.buzzmovieselector.model.User;
 import edu.gatech.buzzmovieselector.model.UserManager;
 
+/**
+ * LoginActivity is the controller for the login screen.
+ * Handles login, contains a login form and a cancel button
+ */
 public class LoginActivity extends Activity {
-
 
     // UI references.
     private AutoCompleteTextView mUsernameView;
@@ -49,29 +54,61 @@ public class LoginActivity extends Activity {
         mProgressView = findViewById(R.id.login_progress);
     }
 
+    /**
+     * login is called by clicking the Login button, attempts to login using
+     * entered credentials
+     * @param v Reference to widget firing event
+     */
     public void login(View v) {
         attemptLogin();
     }
 
+    /**
+     * cancel is called by clicking the Cancel button, closes LoginActivity
+     * @param v Reference to widget firing event
+     */
     public void cancel(View v) {
         finish();
     }
 
+    /**
+     * Clears the user entered values in the username and password fields
+     */
+    private void resetFields() {
+        mUsernameView.setText("");
+        mPasswordView.setText("");
+        mUsernameView.clearFocus();
+        mPasswordView.clearFocus();
+    }
+
+    /**
+     * Retrieves user-entered data in fields and validates them, if successful,
+     * starts BMSActivity
+     */
     private void attemptLogin() {
         AuthenticationFacade af = new UserManager();
-        if (af.handleLoginRequest(mUsernameView.getText().toString(),
-                    mPasswordView.getText().toString())) {
-            Toast.makeText(getApplicationContext(),
-                        "login success", Toast.LENGTH_SHORT).show();
+        String userName = mUsernameView.getText().toString();
+        String userPass = mPasswordView.getText().toString();
+        if (af.handleLoginRequest(userName,
+                userPass)) {
+            // TODO: make a matchUser function so we don't have to import User
+            User sessionUser = new User(userName, userPass, "USER");
+            SessionState.login(sessionUser, getApplicationContext());
+            resetFields();
             startBMS();
         } else {
-            Toast.makeText(getApplicationContext(),
-                    "login failure", Toast.LENGTH_SHORT).show();
+            if (!af.userExists(userName)) {
+                mUsernameView.setError("Invalid Username");
+            } else {
+                mPasswordView.setError("Invalid Password");
+            }
         }
     }
 
-    public void startBMS() {
-        Toast.makeText(getApplicationContext(), "start BMS activity", Toast.LENGTH_SHORT).show();
+    /**
+     * Creates Intent for the BMSActivity and launches it
+     */
+    private void startBMS() {
         Intent mainActivity = new Intent(this, BMSActivity.class);
         startActivity(mainActivity);
     }

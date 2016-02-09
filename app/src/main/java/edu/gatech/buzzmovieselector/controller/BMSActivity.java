@@ -1,8 +1,10 @@
 package edu.gatech.buzzmovieselector.controller;
 
 import android.os.Bundle;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,9 +14,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import edu.gatech.buzzmovieselector.R;
+import edu.gatech.buzzmovieselector.SessionState;
 
+/**
+ * BMSActivity is the main screen for the app. It is only displayed to users
+ * that are logged in.
+ */
 public class BMSActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -42,6 +50,13 @@ public class BMSActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        if (SessionState.isLoggedIn()) {
+            Log.v("BMS", "we are logged in");
+        } else {
+            Log.v("BMS", "we are not logged in");
+            // we should not be here unless we are logged in
+            finish();
+        }
     }
 
     @Override
@@ -94,6 +109,9 @@ public class BMSActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
+        } else if (id == R.id.nav_logout) {
+            SessionState.logout(getApplicationContext());
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
