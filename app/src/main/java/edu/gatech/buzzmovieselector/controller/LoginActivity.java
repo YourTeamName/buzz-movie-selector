@@ -72,6 +72,16 @@ public class LoginActivity extends Activity {
     }
 
     /**
+     * Clears the user entered values in the username and password fields
+     */
+    private void resetFields() {
+        mUsernameView.setText("");
+        mPasswordView.setText("");
+        mUsernameView.clearFocus();
+        mPasswordView.clearFocus();
+    }
+
+    /**
      * Retrieves user-entered data in fields and validates them, if successful,
      * starts BMSActivity
      */
@@ -81,15 +91,17 @@ public class LoginActivity extends Activity {
         String userPass = mPasswordView.getText().toString();
         if (af.handleLoginRequest(userName,
                 userPass)) {
-            Toast.makeText(getApplicationContext(),
-                        "login success", Toast.LENGTH_SHORT).show();
             // TODO: make a matchUser function so we don't have to import User
             User sessionUser = new User(userName, userPass, "USER");
             SessionState.login(sessionUser, getApplicationContext());
+            resetFields();
             startBMS();
         } else {
-            Toast.makeText(getApplicationContext(),
-                    "login failure", Toast.LENGTH_SHORT).show();
+            if (!af.userExists(userName)) {
+                mUsernameView.setError("Invalid Username");
+            } else {
+                mPasswordView.setError("Invalid Password");
+            }
         }
     }
 
