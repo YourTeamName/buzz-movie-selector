@@ -51,7 +51,8 @@ public class RegisterActivity extends AppCompatActivity {
      * @return username is already taken
      */
     private boolean usernameExists(String username) {
-        return false;
+        UserManagementFacade uf = new UserManager();
+        return uf.userExists(username);
     }
 
     /**
@@ -59,14 +60,15 @@ public class RegisterActivity extends AppCompatActivity {
      * @return the data entered in the registration form is valid
      */
     private boolean verifyRegister() {
-        if (usernameExists(userField.getText().toString())) {
-            // notify the user that the username already exists
+        String userName = userField.getText().toString();
+        if (usernameExists(userName)) {
+            userField.setError("Username is already registered");
             return false;
         }
         String pass1 = passwordField.getText().toString();
         String pass2 = passwordConfirmField.getText().toString();
         if (!pass1.equals(pass2)) {
-            // notify the user that the passwords are mismatched
+            passwordConfirmField.setError("Passwords do not match");
             return false;
         }
         return true;

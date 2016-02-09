@@ -17,6 +17,7 @@ import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.SessionState;
 import edu.gatech.buzzmovieselector.model.AuthenticationFacade;
 import edu.gatech.buzzmovieselector.model.User;
+import edu.gatech.buzzmovieselector.model.UserManagementFacade;
 import edu.gatech.buzzmovieselector.model.UserManager;
 
 /**
@@ -86,7 +87,9 @@ public class LoginActivity extends Activity {
      * starts BMSActivity
      */
     private void attemptLogin() {
-        AuthenticationFacade af = new UserManager();
+        UserManager um = new UserManager();
+        AuthenticationFacade af = (AuthenticationFacade) um;
+        UserManagementFacade uf = (UserManagementFacade) um;
         String userName = mUsernameView.getText().toString();
         String userPass = mPasswordView.getText().toString();
         if (af.handleLoginRequest(userName,
@@ -97,7 +100,7 @@ public class LoginActivity extends Activity {
             resetFields();
             startBMS();
         } else {
-            if (!af.userExists(userName)) {
+            if (!uf.userExists(userName)) {
                 mUsernameView.setError("Invalid Username");
             } else {
                 mPasswordView.setError("Invalid Password");
