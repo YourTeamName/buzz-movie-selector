@@ -8,9 +8,6 @@ import edu.gatech.buzzmovieselector.model.User;
 import edu.gatech.buzzmovieselector.model.UserManagementFacade;
 import edu.gatech.buzzmovieselector.model.UserManager;
 
-/**
- * Created by jwpilly on 2/9/16.
- */
 public class SessionState {
 
     // Eagerly instantiated Singleton
@@ -59,7 +56,7 @@ public class SessionState {
      */
     public static boolean restoreState(Context context) {
         SharedPreferences saveSession = context.getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
-        String userName = saveSession.getString(USER_PREFIX +  "name", null);
+        String userName = saveSession.getString(USER_PREFIX +  "username", null);
         String userPass = saveSession.getString(USER_PREFIX +  "password", null);
         String userLevel = saveSession.getString(USER_PREFIX +  "level", null);
         if (userName == null || userPass == null || userLevel == null) {
@@ -77,7 +74,7 @@ public class SessionState {
         SharedPreferences saveSession = context.getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = saveSession.edit();
         if (sessionUser != null) {
-            editor.putString(USER_PREFIX +  "name", sessionUser.getName());
+            editor.putString(USER_PREFIX +  "username", sessionUser.getUsername());
             editor.putString(USER_PREFIX +  "password", sessionUser.getPassword());
             editor.putString(USER_PREFIX +  "level", sessionUser.getUserLevel().toString());
         }
@@ -112,7 +109,7 @@ public class SessionState {
 
     public static boolean verifySession() {
         UserManagementFacade uf = new UserManager();
-        String userName = sessionUser.getName();
+        String userName = sessionUser.getUsername();
         if (userName == null || !uf.userExists(userName)) {
             return false;
         }

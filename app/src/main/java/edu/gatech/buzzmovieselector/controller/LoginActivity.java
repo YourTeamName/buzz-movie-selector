@@ -11,7 +11,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.SessionState;

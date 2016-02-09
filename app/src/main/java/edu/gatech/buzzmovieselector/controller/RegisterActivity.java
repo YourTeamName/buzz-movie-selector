@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import edu.gatech.buzzmovieselector.R;
+import edu.gatech.buzzmovieselector.model.User;
 import edu.gatech.buzzmovieselector.model.UserManagementFacade;
 import edu.gatech.buzzmovieselector.model.UserManager;
 
@@ -39,14 +40,13 @@ public class RegisterActivity extends AppCompatActivity {
      */
     public void attemptRegister(View v) {
         if (!verifyRegister()) {
-            // notify the user than the register was unsuccessful
-            // cancel registration
             return;
         }
-        registerUser();
-        // notify the user that register was successful
+        User newUser = new User(userField.getText().toString(), passwordField.getText().toString());
+        UserManagementFacade um = new UserManager();
+        um.addUser(newUser);
+        finish();
     }
-
     /**
      * Checks to see if username has already been registered
      * @param username Username to check
@@ -93,10 +93,4 @@ public class RegisterActivity extends AppCompatActivity {
         return true;
     }
 
-    /**
-     * Retrieves the text from the entered fields and adds it as a new user
-     */
-    private void registerUser(){
-        UserManagementFacade um = new UserManager();
-    }
 }
