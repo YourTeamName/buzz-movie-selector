@@ -58,7 +58,6 @@ public class SessionState {
      */
     public static boolean restoreState(Context context) {
         SharedPreferences saveSession = context.getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
-        // TODO: write a loading function for User class
         String prefix = "sessionUser_";
         String userName = saveSession.getString(prefix + "name", null);
         String userPass = saveSession.getString(prefix + "password", null);
@@ -77,7 +76,6 @@ public class SessionState {
     public static void saveState(Context context) {
         SharedPreferences saveSession = context.getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = saveSession.edit();
-        // TODO: write a pickling function for User class
         if (sessionUser != null) {
             String prefix = "sessionUser_";
             editor.putString(prefix + "name", sessionUser.getName());
