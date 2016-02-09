@@ -31,13 +31,11 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     public void startLogin(View v) {
-        Toast.makeText(getApplicationContext(), "start login activity", Toast.LENGTH_SHORT).show();
         Intent loginActivity = new Intent(this, LoginActivity.class);
         startActivity(loginActivity);
     }
 
     public void startRegister(View v) {
-        Toast.makeText(getApplicationContext(), "start register activity", Toast.LENGTH_SHORT).show();
         Intent registerActivity = new Intent(this, RegisterActivity.class);
         startActivity(registerActivity);
     }

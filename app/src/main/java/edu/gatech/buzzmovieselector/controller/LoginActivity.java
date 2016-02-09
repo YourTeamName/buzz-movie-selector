@@ -58,8 +58,6 @@ public class LoginActivity extends Activity {
     }
 
     private void attemptLogin() {
-        Toast.makeText(getApplicationContext(),
-                    "login attempt", Toast.LENGTH_SHORT).show();
         AuthenticationFacade af = new UserManager();
         if (af.handleLoginRequest(mUsernameView.getText().toString(),
                     mPasswordView.getText().toString())) {
