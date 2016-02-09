@@ -10,6 +10,10 @@ import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.model.UserManagementFacade;
 import edu.gatech.buzzmovieselector.model.UserManager;
 
+/**
+ * WelcomeActivity is the controller for the welcome screen
+ * Initially loaded activity
+ */
 public class WelcomeActivity extends AppCompatActivity {
 
     @Override
@@ -20,28 +24,36 @@ public class WelcomeActivity extends AppCompatActivity {
         um.addUser("user", "pass");
         um.addUser("sally", "sally");
         if (checkLogin()) {
-            Toast.makeText(getApplicationContext(), "check login is true", Toast.LENGTH_SHORT).show();
             Intent mainActivity = new Intent(this, BMSActivity.class);
             startActivity(mainActivity);
         }
     }
 
-    private void allowAccess() {
-        // user is already logged in, so redirect to real menu
-    }
-
+    /**
+     * startLogin is called when the Login button is clicked
+     * Creates an intent for LoginActivity and launches it
+     * @param v Reference to widget firing event
+     */
     public void startLogin(View v) {
-        Toast.makeText(getApplicationContext(), "start login activity", Toast.LENGTH_SHORT).show();
         Intent loginActivity = new Intent(this, LoginActivity.class);
         startActivity(loginActivity);
     }
 
+    /**
+     * startRegister is called when the Register button is clicked
+     * Creates an intent for RegisterActivity and launches it
+     * @param v Reference to widget firing event
+     */
     public void startRegister(View v) {
-        Toast.makeText(getApplicationContext(), "start register activity", Toast.LENGTH_SHORT).show();
         Intent registerActivity = new Intent(this, RegisterActivity.class);
         startActivity(registerActivity);
     }
 
+    /**
+     * Checks if the user is already logged in
+     * @return whether the user has already been validated in a previous
+     * session
+     */
     private boolean checkLogin() {
         return false;
     }

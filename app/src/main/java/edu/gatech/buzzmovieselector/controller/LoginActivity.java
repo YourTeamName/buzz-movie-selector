@@ -17,8 +17,11 @@ import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.model.AuthenticationFacade;
 import edu.gatech.buzzmovieselector.model.UserManager;
 
+/**
+ * LoginActivity is the controller for the login screen.
+ * Handles login, contains a login form and a cancel button
+ */
 public class LoginActivity extends Activity {
-
 
     // UI references.
     private AutoCompleteTextView mUsernameView;
@@ -49,17 +52,28 @@ public class LoginActivity extends Activity {
         mProgressView = findViewById(R.id.login_progress);
     }
 
+    /**
+     * login is called by clicking the Login button, attempts to login using
+     * entered credentials
+     * @param v Reference to widget firing event
+     */
     public void login(View v) {
         attemptLogin();
     }
 
+    /**
+     * cancel is called by clicking the Cancel button, closes LoginActivity
+     * @param v Reference to widget firing event
+     */
     public void cancel(View v) {
         finish();
     }
 
+    /**
+     * Retrieves user-entered data in fields and validates them, if successful,
+     * starts BMSActivity
+     */
     private void attemptLogin() {
-        Toast.makeText(getApplicationContext(),
-                    "login attempt", Toast.LENGTH_SHORT).show();
         AuthenticationFacade af = new UserManager();
         if (af.handleLoginRequest(mUsernameView.getText().toString(),
                     mPasswordView.getText().toString())) {
@@ -72,8 +86,10 @@ public class LoginActivity extends Activity {
         }
     }
 
-    public void startBMS() {
-        Toast.makeText(getApplicationContext(), "start BMS activity", Toast.LENGTH_SHORT).show();
+    /**
+     * Creates Intent for the BMSActivity and launches it
+     */
+    private void startBMS() {
         Intent mainActivity = new Intent(this, BMSActivity.class);
         startActivity(mainActivity);
     }
