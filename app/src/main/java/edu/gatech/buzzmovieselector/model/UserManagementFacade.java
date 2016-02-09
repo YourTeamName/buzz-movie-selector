@@ -1,6 +1,6 @@
 package edu.gatech.buzzmovieselector.model;
 
 public interface UserManagementFacade {
-    void addUser(String name, String pass);
+    void addUser(User user);
     User findUserById(String id);
 }

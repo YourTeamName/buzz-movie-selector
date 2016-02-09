@@ -18,30 +18,30 @@ public class User {
         }
     }
 
-    private String name;
+    private String username;
     private String password;
     private UserLevel userLevel;
 
-    public User(String n, String p, UserLevel l) {
-        name = n;
-        password = p;
-        userLevel = l;
+    public User(String username, String password, UserLevel userLevel) {
+        this.username = username;
+        this.password = password;
+        this.userLevel = userLevel;
     }
 
-    public User(String n, String p) {
-        this(n, p, UserLevel.USER);
+    public User(String username, String password) {
+        this(username, password, UserLevel.USER);
     }
 
-    public User(String n, String p, String l) {
-        this(n, p, (l.equalsIgnoreCase("admin") ? UserLevel.ADMIN : UserLevel.USER));
+    public User(String username, String password, String userLevel) {
+        this(username, password, (userLevel.equalsIgnoreCase("admin") ? UserLevel.ADMIN : UserLevel.USER));
     }
 
     /**
      * Gives the username of the user
      * @return username of the User object
      */
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
     /**

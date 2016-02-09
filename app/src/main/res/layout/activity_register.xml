@@ -65,6 +65,7 @@
         android:id="@+id/button"
         android:layout_below="@+id/passwordConfirmText"
         android:layout_alignStart="@+id/passwordConfirmText"
-        android:layout_alignEnd="@+id/passwordConfirmText" />
+        android:layout_alignEnd="@+id/passwordConfirmText"
+        android:onClick="attemptRegister" />
 
 </RelativeLayout>

@@ -54,7 +54,7 @@ public class SessionState {
         SharedPreferences saveSession = context.getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
         // TODO: write a loading function for User class
         String prefix = "sessionUser_";
-        String userName = saveSession.getString(prefix + "name", null);
+        String userName = saveSession.getString(prefix + "username", null);
         String userPass = saveSession.getString(prefix + "password", null);
         String userLevel = saveSession.getString(prefix + "level", null);
         if (userName == null || userPass == null || userLevel == null) {
@@ -74,7 +74,7 @@ public class SessionState {
         // TODO: write a pickling function for User class
         if (sessionUser != null) {
             String prefix = "sessionUser_";
-            editor.putString(prefix + "name", sessionUser.getName());
+            editor.putString(prefix + "username", sessionUser.getUsername());
             editor.putString(prefix + "password", sessionUser.getPassword());
             editor.putString(prefix + "level", sessionUser.getUserLevel().toString());
         }

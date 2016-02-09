@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 
 import edu.gatech.buzzmovieselector.R;
+import edu.gatech.buzzmovieselector.model.User;
 import edu.gatech.buzzmovieselector.SessionState;
 import edu.gatech.buzzmovieselector.model.UserManagementFacade;
 import edu.gatech.buzzmovieselector.model.UserManager;
@@ -45,8 +46,7 @@ public class WelcomeActivity extends AppCompatActivity {
      */
     private void initApp() {
         UserManagementFacade um = new UserManager();
-        um.addUser("user", "pass");
-        um.addUser("sally", "sally");
+        um.addUser(new User("user", "pass"));
         restoreState();
     }
 
