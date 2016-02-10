@@ -27,7 +27,7 @@ public class WelcomeActivity extends AppCompatActivity {
             startActivity(mainActivity);
         } else {
             // if not logged in or invalid session state, clear everything
-            SessionState.getInstance().logout(getApplicationContext());
+            SessionState.getInstance().endSession(getApplicationContext());
         }
     }
 

@@ -8,7 +8,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -20,8 +19,8 @@ import edu.gatech.buzzmovieselector.model.UserManagementFacade;
 import edu.gatech.buzzmovieselector.model.UserManager;
 
 /**
- * LoginActivity is the controller for the login screen.
- * Handles login, contains a login form and a cancel button
+ * LoginActivity is the controller for the startSession screen.
+ * Handles startSession, contains a startSession form and a cancel button
  */
 public class LoginActivity extends Activity {
 
@@ -67,8 +66,8 @@ public class LoginActivity extends Activity {
     }
 
     /**
-     * Validates the login form
-     * @return the login form is valid
+     * Validates the startSession form
+     * @return the startSession form is valid
      */
     public boolean validateLogin() {
         String userName = mUsernameView.getText().toString();
@@ -107,7 +106,7 @@ public class LoginActivity extends Activity {
         if (af.handleLoginRequest(userName,
                 userPass)) {
             User sessionUser = new User(userName, userPass, "USER");
-            SessionState.getInstance().login(sessionUser, getApplicationContext());
+            SessionState.getInstance().startSession(sessionUser, getApplicationContext());
             resetFields();
             startBMS();
         } else {
