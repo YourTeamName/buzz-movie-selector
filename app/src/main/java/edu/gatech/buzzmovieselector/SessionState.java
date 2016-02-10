@@ -93,16 +93,21 @@ public class SessionState {
         editor.apply();
     }
 
-    public static void login(User user, Context context) {
+    /**
+     * Creates a session for the user
+     * @param user User to create session for
+     * @param context Application context
+     */
+    public static void startSession(User user, Context context) {
         sessionUser = user;
         saveState(context);
     }
 
     /**
-     * Logs the user out of current Session state and clears existing save state
-     * @param context Context of shared preferences
+     * Ends the current user session
+     * @param context Application context
      */
-    public static void logout(Context context) {
+    public static void endSession(Context context) {
         sessionUser = null;
         clearSaveState(context);
     }

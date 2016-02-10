@@ -108,7 +108,7 @@ public class BMSActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         } else if (id == R.id.nav_logout) {
-            SessionState.getInstance().logout(getApplicationContext());
+            SessionState.getInstance().endSession(getApplicationContext());
             finish();
         }
 

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">BuzzMovieSelector</string>
 
-    <!-- Strings related to login -->
+    <!-- Strings related to startSession -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>
