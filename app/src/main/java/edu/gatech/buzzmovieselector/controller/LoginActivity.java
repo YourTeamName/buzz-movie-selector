@@ -16,6 +16,7 @@ import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.SessionState;
 import edu.gatech.buzzmovieselector.model.AuthenticationFacade;
 import edu.gatech.buzzmovieselector.model.User;
+import edu.gatech.buzzmovieselector.model.UserManagementFacade;
 import edu.gatech.buzzmovieselector.model.UserManager;
 
 /**
@@ -27,8 +28,6 @@ public class LoginActivity extends Activity {
     // UI references.
     private AutoCompleteTextView mUsernameView;
     private EditText mPasswordView;
-    private View mProgressView;
-    private View mLoginFormView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +45,6 @@ public class LoginActivity extends Activity {
                 return false;
             }
         });
-
-        Button loginButton = (Button) findViewById(R.id.login_button);
-
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
     }
 
     /**
@@ -59,7 +53,9 @@ public class LoginActivity extends Activity {
      * @param v Reference to widget firing event
      */
     public void login(View v) {
-        attemptLogin();
+        if (validateLogin()) {
+            attemptLogin();
+        }
     }
 
     /**
@@ -68,6 +64,24 @@ public class LoginActivity extends Activity {
      */
     public void cancel(View v) {
         finish();
+    }
+
+    /**
+     * Validates the login form
+     * @return the login form is valid
+     */
+    public boolean validateLogin() {
+        String userName = mUsernameView.getText().toString();
+        String userPass = mPasswordView.getText().toString();
+        if (userName.equals("")) {
+            mUsernameView.setError("You must enter a username");
+            return false;
+        }
+        if (userPass.equals("")) {
+            mPasswordView.setError("You must enter a password");
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -85,18 +99,19 @@ public class LoginActivity extends Activity {
      * starts BMSActivity
      */
     private void attemptLogin() {
-        AuthenticationFacade af = new UserManager();
+        UserManager um = new UserManager();
+        AuthenticationFacade af = um;
+        UserManagementFacade uf = um;
         String userName = mUsernameView.getText().toString();
         String userPass = mPasswordView.getText().toString();
         if (af.handleLoginRequest(userName,
                 userPass)) {
-            // TODO: make a matchUser function so we don't have to import User
             User sessionUser = new User(userName, userPass, "USER");
-            SessionState.login(sessionUser, getApplicationContext());
+            SessionState.getInstance().login(sessionUser, getApplicationContext());
             resetFields();
             startBMS();
         } else {
-            if (!af.userExists(userName)) {
+            if (!uf.userExists(userName)) {
                 mUsernameView.setError("Invalid Username");
             } else {
                 mPasswordView.setError("Invalid Password");

@@ -2,8 +2,11 @@ package edu.gatech.buzzmovieselector;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import edu.gatech.buzzmovieselector.model.User;
+import edu.gatech.buzzmovieselector.model.UserManagementFacade;
+import edu.gatech.buzzmovieselector.model.UserManager;
 
 public class SessionState {
 
@@ -11,11 +14,12 @@ public class SessionState {
     private static SessionState ourInstance = new SessionState();
     private static User sessionUser = null;
 
-    public static final String SESSION_PREFS = "BMS_SESSION_PREFS";
+    private static final String SESSION_PREFS = "BMS_SESSION_PREFS";
+    private static final String USER_PREFIX = "sessionUser_";
 
     /**
      * Global Session State for the application
-     * @return instance of global SessionState Singelton
+     * @return instance of global SessionState Singleton
      */
     public static SessionState getInstance() {
         return ourInstance;
@@ -52,11 +56,9 @@ public class SessionState {
      */
     public static boolean restoreState(Context context) {
         SharedPreferences saveSession = context.getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
-        // TODO: write a loading function for User class
-        String prefix = "sessionUser_";
-        String userName = saveSession.getString(prefix + "username", null);
-        String userPass = saveSession.getString(prefix + "password", null);
-        String userLevel = saveSession.getString(prefix + "level", null);
+        String userName = saveSession.getString(USER_PREFIX +  "username", null);
+        String userPass = saveSession.getString(USER_PREFIX +  "password", null);
+        String userLevel = saveSession.getString(USER_PREFIX +  "level", null);
         if (userName == null || userPass == null || userLevel == null) {
             return false;
         }
@@ -71,15 +73,13 @@ public class SessionState {
     public static void saveState(Context context) {
         SharedPreferences saveSession = context.getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = saveSession.edit();
-        // TODO: write a pickling function for User class
         if (sessionUser != null) {
-            String prefix = "sessionUser_";
-            editor.putString(prefix + "username", sessionUser.getUsername());
-            editor.putString(prefix + "password", sessionUser.getPassword());
-            editor.putString(prefix + "level", sessionUser.getUserLevel().toString());
+            editor.putString(USER_PREFIX +  "username", sessionUser.getUsername());
+            editor.putString(USER_PREFIX +  "password", sessionUser.getPassword());
+            editor.putString(USER_PREFIX +  "level", sessionUser.getUserLevel().toString());
         }
         editor.clear();
-        editor.commit();
+        editor.apply();
     }
 
     /**
@@ -90,7 +90,7 @@ public class SessionState {
         SharedPreferences saveSession = context.getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = saveSession.edit();
         editor.clear();
-        editor.commit();
+        editor.apply();
     }
 
     public static void login(User user, Context context) {
@@ -100,12 +100,23 @@ public class SessionState {
 
     /**
      * Logs the user out of current Session state and clears existing save state
-     * @param context
+     * @param context Context of shared preferences
      */
     public static void logout(Context context) {
         sessionUser = null;
         clearSaveState(context);
     }
+
+    public static boolean verifySession() {
+        UserManagementFacade uf = new UserManager();
+        String userName = sessionUser.getUsername();
+        if (userName == null || !uf.userExists(userName)) {
+            return false;
+        }
+        User realUser = uf.findUserById(userName);
+        return realUser.equals(sessionUser);
+    }
+
     /**
      * private constructor for Singleton design pattern
      */
