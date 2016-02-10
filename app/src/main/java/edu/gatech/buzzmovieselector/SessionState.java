@@ -29,7 +29,7 @@ public class SessionState {
      * Sets a user to be currently logged into the session
      * @param u sets the sessionUser variable of the SessionState
      */
-    public static void setSessionUser(User u) {
+    public void setSessionUser(User u) {
         sessionUser = u;
     }
 
@@ -37,7 +37,7 @@ public class SessionState {
      * User currently logged into the session
      * @return stored sessionUser variable
      */
-    public static User getSessionUser() {
+    public User getSessionUser() {
         return sessionUser;
     }
 
@@ -45,7 +45,7 @@ public class SessionState {
      * Checks to see if a session user has been set
      * @return the session user is not equal to null
      */
-    public static boolean isLoggedIn() {
+    public boolean isLoggedIn() {
         return sessionUser != null;
     }
 
@@ -54,7 +54,7 @@ public class SessionState {
      * @param context Context of shared preferences
      * @return a saved state exists
      */
-    public static boolean restoreState(Context context) {
+    public boolean restoreState(Context context) {
         SharedPreferences saveSession = context.getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
         String userName = saveSession.getString(USER_PREFIX +  "username", null);
         String userPass = saveSession.getString(USER_PREFIX +  "password", null);
@@ -70,7 +70,7 @@ public class SessionState {
      * Saves the current session state into shared preferences
      * @param context Context of shared preferences
      */
-    public static void saveState(Context context) {
+    public void saveState(Context context) {
         SharedPreferences saveSession = context.getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = saveSession.edit();
         if (sessionUser != null) {
@@ -86,7 +86,7 @@ public class SessionState {
      * Clears the stored session state in shared preferences
      * @param context Context of shared preferences
      */
-    public static void clearSaveState(Context context) {
+    public void clearSaveState(Context context) {
         SharedPreferences saveSession = context.getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = saveSession.edit();
         editor.clear();
@@ -98,7 +98,7 @@ public class SessionState {
      * @param user User to create session for
      * @param context Application context
      */
-    public static void startSession(User user, Context context) {
+    public void startSession(User user, Context context) {
         sessionUser = user;
         saveState(context);
     }
@@ -107,12 +107,12 @@ public class SessionState {
      * Ends the current user session
      * @param context Application context
      */
-    public static void endSession(Context context) {
+    public void endSession(Context context) {
         sessionUser = null;
         clearSaveState(context);
     }
 
-    public static boolean verifySession() {
+    public boolean verifySession() {
         UserManagementFacade uf = new UserManager();
         String userName = sessionUser.getUsername();
         if (userName == null || !uf.userExists(userName)) {
