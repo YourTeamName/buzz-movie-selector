@@ -19,7 +19,7 @@ public class SessionState {
 
     /**
      * Global Session State for the application
-     * @return instance of global SessionState Singelton
+     * @return instance of global SessionState Singleton
      */
     public static SessionState getInstance() {
         return ourInstance;
