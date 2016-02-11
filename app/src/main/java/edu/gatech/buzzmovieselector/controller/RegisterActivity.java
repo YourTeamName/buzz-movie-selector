@@ -25,8 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        // consider changing the userField id
-        userField = (EditText) findViewById(R.id.Username);
+        userField = (EditText) findViewById(R.id.userText);
         emailField = (EditText) findViewById(R.id.emailText);
         passwordField = (EditText) findViewById(R.id.passwordText);
         passwordConfirmField = (EditText) findViewById(R.id.passwordConfirmText);

@@ -25,16 +25,16 @@ import edu.gatech.buzzmovieselector.model.UserManager;
 public class LoginActivity extends Activity {
 
     // UI references.
-    private AutoCompleteTextView mUsernameView;
-    private EditText mPasswordView;
+    private AutoCompleteTextView userText;
+    private EditText passwordText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        mUsernameView = (AutoCompleteTextView) findViewById(R.id.username);
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        userText = (AutoCompleteTextView) findViewById(R.id.username);
+        passwordText = (EditText) findViewById(R.id.password);
+        passwordText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
@@ -70,14 +70,14 @@ public class LoginActivity extends Activity {
      * @return the startSession form is valid
      */
     public boolean validateLogin() {
-        String userName = mUsernameView.getText().toString();
-        String userPass = mPasswordView.getText().toString();
+        String userName = userText.getText().toString();
+        String userPass = passwordText.getText().toString();
         if (userName.equals("")) {
-            mUsernameView.setError("You must enter a username");
+            userText.setError("You must enter a username");
             return false;
         }
         if (userPass.equals("")) {
-            mPasswordView.setError("You must enter a password");
+            passwordText.setError("You must enter a password");
             return false;
         }
         return true;
@@ -87,10 +87,10 @@ public class LoginActivity extends Activity {
      * Clears the user entered values in the username and password fields
      */
     private void resetFields() {
-        mUsernameView.setText("");
-        mPasswordView.setText("");
-        mUsernameView.clearFocus();
-        mPasswordView.clearFocus();
+        userText.setText("");
+        passwordText.setText("");
+        userText.clearFocus();
+        passwordText.clearFocus();
     }
 
     /**
@@ -101,8 +101,8 @@ public class LoginActivity extends Activity {
         UserManager um = new UserManager();
         AuthenticationFacade af = um;
         UserManagementFacade uf = um;
-        String userName = mUsernameView.getText().toString();
-        String userPass = mPasswordView.getText().toString();
+        String userName = userText.getText().toString();
+        String userPass = passwordText.getText().toString();
         if (af.handleLoginRequest(userName,
                 userPass)) {
             User sessionUser = new User(userName, userPass, "USER");
@@ -111,9 +111,9 @@ public class LoginActivity extends Activity {
             startBMS();
         } else {
             if (!uf.userExists(userName)) {
-                mUsernameView.setError("Invalid Username");
+                userText.setError("Invalid Username");
             } else {
-                mPasswordView.setError("Invalid Password");
+                passwordText.setError("Invalid Password");
             }
         }
     }

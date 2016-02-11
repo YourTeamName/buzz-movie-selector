@@ -13,7 +13,7 @@ public class User {
                 case USER: return "USER";
                 case ADMIN: return "ADMIN";
                 case BANNED: return "BANNED";
-                default: throw new IllegalArgumentException();
+                default: throw new IllegalArgumentException("Invalid UserLevel enum value");
             }
         }
     }
@@ -33,8 +33,19 @@ public class User {
     }
 
     public User(String username, String password, String userLevel) {
-        // TODO: make this more elegant
-        this(username, password, userLevel.equals("ADMIN") ? UserLevel.ADMIN : (userLevel.equals("BANNED") ? UserLevel.BANNED : UserLevel.USER));
+        this.username = username;
+        this.password = password;
+        UserLevel ul;
+        if (userLevel.equalsIgnoreCase("admin")) {
+            ul = UserLevel.ADMIN;
+        } else if (userLevel.equalsIgnoreCase("user")) {
+            ul = UserLevel.USER;
+        } else if (userLevel.equalsIgnoreCase("banned")) {
+            ul = UserLevel.BANNED;
+        } else {
+            throw new IllegalArgumentException("String cannot be converted to UserLevel");
+        }
+        this.userLevel = ul;
     }
 
     @Override
@@ -48,14 +59,13 @@ public class User {
         final User u = (User) o;
         if (!username.equals(u.username)) {
             return false;
-        }
-        if (!password.equals(u.password)) {
+        } else if (!password.equals(u.password)) {
             return false;
-        }
-        if (!userLevel.equals(u.userLevel)) {
+        } else if (!userLevel.equals(u.userLevel)) {
             return false;
+        } else {
+            return true;
         }
-        return true;
     }
 
     /**
