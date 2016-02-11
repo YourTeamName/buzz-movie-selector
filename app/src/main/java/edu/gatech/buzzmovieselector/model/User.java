@@ -13,7 +13,7 @@ public class User {
                 case USER: return "USER";
                 case ADMIN: return "ADMIN";
                 case BANNED: return "BANNED";
-                default: throw new IllegalArgumentException();
+                default: throw new IllegalArgumentException("Invalid UserLevel enum value");
             }
         }
     }
@@ -35,7 +35,7 @@ public class User {
     public User(String username, String password, String userLevel) {
         this.username = username;
         this.password = password;
-        UserLevel ul = null;
+        UserLevel ul;
         if (userLevel.equalsIgnoreCase("admin")) {
             ul = UserLevel.ADMIN;
         } else if (userLevel.equalsIgnoreCase("user")) {
