@@ -21,7 +21,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Username"
+        android:id="@+id/userText"
         android:layout_below="@+id/registerText"
         android:layout_alignStart="@+id/registerText"
         android:layout_marginTop="41dp"
@@ -32,10 +32,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/passwordText"
-        android:layout_below="@+id/Username"
-        android:layout_alignStart="@+id/Username"
+        android:layout_below="@+id/userText"
+        android:layout_alignStart="@+id/userText"
         android:layout_marginTop="41dp"
-        android:layout_alignEnd="@+id/Username"
+        android:layout_alignEnd="@+id/userText"
         android:hint="Password"
         android:password="true" />
 
@@ -53,8 +53,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/emailText"
-        android:layout_below="@+id/Username"
-        android:layout_alignStart="@+id/Username"
+        android:layout_below="@+id/userText"
+        android:layout_alignStart="@+id/userText"
         android:layout_alignEnd="@+id/passwordText"
         android:hint="Email Address" />
 
