@@ -22,7 +22,7 @@
             android:name=".controller.BMSActivity"
             android:label="@string/title_activity_bms"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".controller.RegisterActivity"></activity>
+        <activity android:name=".controller.RegisterActivity" />
     </application>
 
 </manifest>
