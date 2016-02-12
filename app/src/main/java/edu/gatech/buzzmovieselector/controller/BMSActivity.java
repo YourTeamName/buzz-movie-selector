@@ -97,8 +97,6 @@ public class BMSActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
@@ -106,6 +104,8 @@ public class BMSActivity extends AppCompatActivity
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
+
+        } else if (id == R.id.nav_profile) {
 
         } else if (id == R.id.nav_logout) {
             SessionState.getInstance().endSession(getApplicationContext());
