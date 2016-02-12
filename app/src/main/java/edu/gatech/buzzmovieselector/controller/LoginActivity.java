@@ -123,6 +123,7 @@ public class LoginActivity extends Activity {
      */
     private void startBMS() {
         Intent mainActivity = new Intent(this, BMSActivity.class);
+        finish();
         startActivity(mainActivity);
     }
 
