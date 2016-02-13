@@ -1,5 +1,6 @@
 package edu.gatech.buzzmovieselector.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -104,7 +105,11 @@ public class BMSActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         } else if (id == R.id.nav_profile) {
-
+            Log.v("BMS", "View ProfileActivity");
+            Intent profileIntent = new Intent(this, ProfileActivity.class);
+            String profileUser = SessionState.getInstance().getSessionUser().getUsername();
+            profileIntent.putExtra(ProfileActivity.PROFILE_USER_KEY, profileUser);
+            startActivity(profileIntent);
         } else if (id == R.id.nav_logout) {
             SessionState.getInstance().endSession(getApplicationContext());
             finish();

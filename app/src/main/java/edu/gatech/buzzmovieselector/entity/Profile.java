@@ -1,7 +1,7 @@
 package edu.gatech.buzzmovieselector.entity;
 
 /**
- * Profile that holds information about a user
+ * ProfileActivity that holds information about a user
  */
 public class Profile {
 
@@ -93,6 +93,13 @@ public class Profile {
     private String lastName;
     private UserDegree major;
     private String email;
+
+    public Profile() {
+        firstName = "";
+        lastName = "";
+        major = UserDegree.COMPUTER_SCIENCE;
+        email = "";
+    }
 
     public String getFirstName() {
         return firstName;
