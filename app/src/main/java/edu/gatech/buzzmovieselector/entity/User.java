@@ -1,4 +1,4 @@
-package edu.gatech.buzzmovieselector.model;
+package edu.gatech.buzzmovieselector.entity;
 
 public class User {
 
@@ -21,6 +21,13 @@ public class User {
     private String username;
     private String password;
     private UserLevel userLevel;
+
+    /**
+     * Default contructor
+     */
+    public User() {
+
+    }
 
     public User(String username, String password, UserLevel userLevel) {
         this.username = username;

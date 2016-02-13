@@ -1,12 +1,11 @@
-package edu.gatech.buzzmovieselector;
+package edu.gatech.buzzmovieselector.service;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
-import edu.gatech.buzzmovieselector.model.User;
-import edu.gatech.buzzmovieselector.model.UserManagementFacade;
-import edu.gatech.buzzmovieselector.model.UserManager;
+import edu.gatech.buzzmovieselector.entity.User;
+import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
+import edu.gatech.buzzmovieselector.biz.impl.UserManager;
 
 public class SessionState {
 

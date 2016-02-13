@@ -6,9 +6,9 @@ import android.view.View;
 import android.widget.EditText;
 
 import edu.gatech.buzzmovieselector.R;
-import edu.gatech.buzzmovieselector.model.User;
-import edu.gatech.buzzmovieselector.model.UserManagementFacade;
-import edu.gatech.buzzmovieselector.model.UserManager;
+import edu.gatech.buzzmovieselector.entity.User;
+import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
+import edu.gatech.buzzmovieselector.biz.impl.UserManager;
 
 /**
  * RegisterActivity contains the form for registering a new user
