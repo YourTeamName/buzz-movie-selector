@@ -1,7 +1,14 @@
 package edu.gatech.buzzmovieselector.entity;
 
+/**
+ * Represents a User.
+ * Includes username, password, and access level
+ */
 public class User {
 
+    /**
+     * enum containing possible UserLevel values
+     */
     public enum UserLevel {
         USER,
         ADMIN,
