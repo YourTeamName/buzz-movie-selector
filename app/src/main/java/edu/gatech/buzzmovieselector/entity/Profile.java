@@ -65,7 +65,7 @@ public class Profile {
                 case MECHANICAL_E: return "Mechanical Engineering";
                 case NUCLEAR_E: return "Nuclear Engineering";
                 case BUSINESS_ADMIN: return "Business Administration";
-                case APPL_LANG_INTERCULTURAL: return "APPL Language and Intercultural Studies";
+                case APPL_LANG_INTERCULTURAL: return "Applied Language and Intercultural Studies";
                 case ECONOMICS: return "Economics";
                 case ECONOMICS_INTER_AFF: return "Economics and International Affairs";
                 case GLOBAL_ECONOMICS_MODERN_LANG: return "Global Economics and Modern Languages";
@@ -74,8 +74,8 @@ public class Profile {
                 case INTER_AFF_MODERN_LANG: return "International Affairs and Modern Languages";
                 case LIT_MEDIA_COMM: return "Literature, Media, and Communication";
                 case PUBLIC_POLICY: return "Public Policy";
-                case APPL_MATH: return "APPL Mathematics";
-                case APPL_PHYSICS: return "APPL Physics";
+                case APPL_MATH: return "Applied Mathematics";
+                case APPL_PHYSICS: return "Applied Physics";
                 case BIOCHEMISTRY: return "Biochemistry";
                 case BIOLOGY: return "Biology";
                 case CHEMISTRY: return "Chemistry";
