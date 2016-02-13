@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".controller.ProfileActivity">
+    tools:context=".controller.ProfileActivity"
+    android:id="@+id/profileLayout">
 
     <TextView
         android:layout_width="wrap_content"
@@ -62,24 +63,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/lastNameText"
         android:layout_alignBottom="@+id/lastNameLabel"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/firstNameText"
-        android:layout_alignBottom="@+id/firstNameLabel"
-        android:layout_alignParentEnd="true"
-        android:enabled="false"
-        android:editable="false" />
+        android:layout_alignStart="@+id/firstNameText" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/degreeSpinner"
-        android:layout_above="@+id/emailLabel"
-        android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/userNameText" />
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/lastNameText" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -88,8 +79,7 @@
         android:ems="10"
         android:id="@+id/emailText"
         android:layout_alignBottom="@+id/emailLabel"
-        android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/degreeSpinner" />
+        android:layout_alignParentEnd="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -107,4 +97,11 @@
         android:id="@+id/saveButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/firstNameText"
+        android:layout_alignBottom="@+id/firstNameLabel"
+        android:layout_toEndOf="@+id/firstNameLabel" />
 </RelativeLayout>
