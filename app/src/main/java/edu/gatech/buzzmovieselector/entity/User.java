@@ -21,6 +21,39 @@ public class User {
     private String username;
     private String password;
     private UserLevel userLevel;
+    private Profile profile;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public UserLevel getUserLevel() {
+        return userLevel;
+    }
+
+    public void setUserLevel(UserLevel userLevel) {
+        this.userLevel = userLevel;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
 
     /**
      * Default contructor
@@ -73,29 +106,6 @@ public class User {
         } else {
             return true;
         }
-    }
-
-    /**
-     * Gives the username of the user
-     * @return username of the User object
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * Gives the stored user password
-     * @return Stored password of the user
-     */
-    public String getPassword() {
-        return password;
-    }
-    /**
-     * Gives the access level of the user
-     * @return Stored UserLevel value of the user
-     */
-    public UserLevel getUserLevel() {
-        return userLevel;
     }
 
     /**
