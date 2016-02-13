@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import edu.gatech.buzzmovieselector.R;
-import edu.gatech.buzzmovieselector.model.User;
-import edu.gatech.buzzmovieselector.SessionState;
-import edu.gatech.buzzmovieselector.model.UserManagementFacade;
-import edu.gatech.buzzmovieselector.model.UserManager;
+import edu.gatech.buzzmovieselector.entity.User;
+import edu.gatech.buzzmovieselector.service.SessionState;
+import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
+import edu.gatech.buzzmovieselector.biz.impl.UserManager;
 
 /**
  * WelcomeActivity is the controller for the welcome screen

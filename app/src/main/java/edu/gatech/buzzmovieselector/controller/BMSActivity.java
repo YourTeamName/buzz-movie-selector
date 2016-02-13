@@ -15,7 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import edu.gatech.buzzmovieselector.R;
-import edu.gatech.buzzmovieselector.SessionState;
+import edu.gatech.buzzmovieselector.service.SessionState;
 
 /**
  * BMSActivity is the main screen for the app. It is only displayed to users

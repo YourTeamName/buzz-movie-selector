@@ -1,4 +1,8 @@
-package edu.gatech.buzzmovieselector.model;
+package edu.gatech.buzzmovieselector.biz.impl;
+
+import edu.gatech.buzzmovieselector.biz.AuthenticationFacade;
+import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
+import edu.gatech.buzzmovieselector.entity.User;
 
 import java.util.HashMap;
 import java.util.Map;

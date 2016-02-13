@@ -12,11 +12,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import edu.gatech.buzzmovieselector.R;
-import edu.gatech.buzzmovieselector.SessionState;
-import edu.gatech.buzzmovieselector.model.AuthenticationFacade;
-import edu.gatech.buzzmovieselector.model.User;
-import edu.gatech.buzzmovieselector.model.UserManagementFacade;
-import edu.gatech.buzzmovieselector.model.UserManager;
+import edu.gatech.buzzmovieselector.service.SessionState;
+import edu.gatech.buzzmovieselector.biz.AuthenticationFacade;
+import edu.gatech.buzzmovieselector.entity.User;
+import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
+import edu.gatech.buzzmovieselector.biz.impl.UserManager;
 
 /**
  * LoginActivity is the controller for the startSession screen.
