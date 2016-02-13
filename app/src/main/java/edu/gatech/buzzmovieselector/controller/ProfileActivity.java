@@ -44,8 +44,8 @@ public class ProfileActivity extends AppCompatActivity {
      * Retrieves user parameter from passed bundle and uses it to initialize form
      */
     private void initializeForm() {
-        String bundleduserName = getIntent().getExtras().getString(PROFILE_USER_KEY, null);
-        if (bundleduserName == null) {
+        String bundledUserName = getIntent().getExtras().getString(PROFILE_USER_KEY, null);
+        if (bundledUserName == null) {
             if (SessionState.getInstance().isLoggedIn()) {
                 profileUser = SessionState.getInstance().getSessionUser();
             } else {
@@ -54,7 +54,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         } else {
             UserManagementFacade um = new UserManager();
-            profileUser = um.findUserById(bundleduserName);
+            profileUser = um.findUserById(bundledUserName);
         }
         userNameLabel.setText(profileUser.getUsername());
         populateSpinner();
