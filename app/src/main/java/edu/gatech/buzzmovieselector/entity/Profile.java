@@ -5,7 +5,7 @@ package edu.gatech.buzzmovieselector.entity;
  */
 public class Profile {
 
-    public static final String[] USER_DEGREES = { "Architecture", "Building Construction",
+    public static final String[] USER_DEGREES = { "", "Architecture", "Building Construction",
             "Industrial Design", "Computer Science", "Computational Media", "Aerospace Engineering",
             "Biomedical Engineering", "Chemical Engineering", "Civil Engineering",
             "Computer Engineering", "Electrical Engineering", "Environmental Engineering",
@@ -17,7 +17,7 @@ public class Profile {
             "International Affairs and Modern Languages", "Literature, Media, and Communication",
             "Public Policy", "Applied Mathematics", "Applied Physics", "Biochemistry", "Biology",
             "Chemistry", "Discrete Mathematics", "Earth and Atmospheric Sciences",
-            "Physics", "Psychology" };
+            "Physics", "Psychology"};
 
     private String firstName;
     private String lastName;
@@ -32,7 +32,7 @@ public class Profile {
     }
 
     public Profile() {
-        this("", "", "Computer Science", "");
+        this("", "", "", "");
     }
 
     public String getFirstName() {
