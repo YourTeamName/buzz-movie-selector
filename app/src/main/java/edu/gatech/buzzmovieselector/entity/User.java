@@ -1,9 +1,10 @@
 package edu.gatech.buzzmovieselector.entity;
 
-/**
- * Represents a User.
- * Includes username, password, and access level
- */
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+import edu.gatech.buzzmovieselector.dao.impl.UserDaoImpl;
+
+@DatabaseTable(tableName = "users", daoClass = UserDaoImpl.class)
 public class User {
 
     /**
@@ -17,17 +18,27 @@ public class User {
         @Override
         public String toString() {
             switch (this) {
-                case USER: return "USER";
-                case ADMIN: return "ADMIN";
-                case BANNED: return "BANNED";
-                default: throw new IllegalArgumentException("Invalid UserLevel enum value");
+                case USER:
+                    return "USER";
+                case ADMIN:
+                    return "ADMIN";
+                case BANNED:
+                    return "BANNED";
+                default:
+                    throw new IllegalArgumentException("Invalid UserLevel " +
+                            "enum value");
             }
         }
     }
 
+    @DatabaseField(id = true)
     private String username;
+    @DatabaseField
     private String password;
+    @DatabaseField
     private UserLevel userLevel;
+    @DatabaseField(foreign = true, foreignAutoCreate = true,
+            foreignAutoRefresh = true)
     private Profile profile;
 
     public String getUsername() {
@@ -63,10 +74,9 @@ public class User {
     }
 
     /**
-     * Default contructor
+     * Default constructor for OrmLite
      */
     public User() {
-
     }
 
     public User(String username, String password, UserLevel userLevel) {
@@ -90,7 +100,8 @@ public class User {
         } else if (userLevel.equalsIgnoreCase("banned")) {
             ul = UserLevel.BANNED;
         } else {
-            throw new IllegalArgumentException("String cannot be converted to UserLevel");
+            throw new IllegalArgumentException("String cannot be converted to" +
+                    " UserLevel");
         }
         this.userLevel = ul;
     }
@@ -117,6 +128,7 @@ public class User {
 
     /**
      * Checks to see if pass matches the stored user password
+     *
      * @param pass Given password to validate
      * @return pass equals the stored password
      */

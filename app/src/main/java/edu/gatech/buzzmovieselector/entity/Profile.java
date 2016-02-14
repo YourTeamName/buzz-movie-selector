@@ -1,8 +1,10 @@
 package edu.gatech.buzzmovieselector.entity;
 
-/**
- * ProfileActivity that holds information about a user
- */
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+import edu.gatech.buzzmovieselector.dao.impl.ProfileDaoImpl;
+
+@DatabaseTable(tableName = "profiles", daoClass = ProfileDaoImpl.class)
 public class Profile {
 
     public static final String[] USER_DEGREES = { "", "Architecture", "Building Construction",
@@ -19,10 +21,22 @@ public class Profile {
             "Chemistry", "Discrete Mathematics", "Earth and Atmospheric Sciences",
             "Physics", "Psychology"};
 
+    @DatabaseField(generatedId = true)
+    private Integer id;
+    @DatabaseField
     private String firstName;
+    @DatabaseField
     private String lastName;
+    @DatabaseField
     private String major;
+    @DatabaseField
     private String email;
+
+    /**
+     * Default constructor for OrmLite
+     */
+    public Profile() {
+    }
 
     public Profile(String firstName, String lastName, String major, String email) {
         this.firstName = firstName;
@@ -31,8 +45,12 @@ public class Profile {
         this.email = email;
     }
 
-    public Profile() {
-        this("", "", "", "");
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -66,4 +84,6 @@ public class Profile {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
 }
