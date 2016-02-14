@@ -7,6 +7,9 @@ import edu.gatech.buzzmovieselector.dao.impl.UserDaoImpl;
 @DatabaseTable(tableName = "users", daoClass = UserDaoImpl.class)
 public class User {
 
+    /**
+     * enum containing possible UserLevel values
+     */
     public enum UserLevel {
         USER,
         ADMIN,
@@ -70,6 +73,9 @@ public class User {
         this.profile = profile;
     }
 
+    /**
+     * Default constructor for OrmLite
+     */
     public User() {
     }
 
@@ -128,5 +134,10 @@ public class User {
      */
     public boolean checkPassword(String pass) {
         return password.equals(pass);
+    }
+
+    @Override
+    public String toString() {
+        return "User: " + username;
     }
 }

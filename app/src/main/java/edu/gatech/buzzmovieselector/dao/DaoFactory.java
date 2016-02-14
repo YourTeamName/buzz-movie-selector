@@ -13,7 +13,7 @@ public class DaoFactory {
     private static UserDao userDao;
     private static ProfileDao profileDao;
 
-    public static void setContex(Context newContext) {
+    public static void setContext(Context newContext) {
         context = newContext;
     }
 
