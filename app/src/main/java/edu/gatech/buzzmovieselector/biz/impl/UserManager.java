@@ -5,6 +5,7 @@ import com.j256.ormlite.dao.CloseableIterator;
 import edu.gatech.buzzmovieselector.biz.AuthenticationFacade;
 import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
 import edu.gatech.buzzmovieselector.dao.DaoFactory;
+import edu.gatech.buzzmovieselector.dao.ProfileDao;
 import edu.gatech.buzzmovieselector.dao.UserDao;
 import edu.gatech.buzzmovieselector.entity.User;
 
@@ -21,6 +22,8 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
     public void addUser(User user) {
         users.put(user.getUsername(), user);
         try {
+            ProfileDao profileDao = DaoFactory.getProfileDao();
+            profileDao.createOrUpdate(user.getProfile());
             UserDao userDao = DaoFactory.getUserDao();
             userDao.createOrUpdate(user);
         } catch (Exception e) {
@@ -41,6 +44,8 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
         // should this only work when the user exists?
         users.put(id, user);
         try {
+            ProfileDao profileDao = DaoFactory.getProfileDao();
+            profileDao.createOrUpdate(user.getProfile());
             UserDao userDao = DaoFactory.getUserDao();
             userDao.createOrUpdate(user);
         } catch (Exception e) {

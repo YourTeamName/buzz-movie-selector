@@ -85,5 +85,8 @@ public class Profile {
         this.email = email;
     }
 
-
+    @Override
+    public String toString() {
+        return "Profile: " + firstName + " " + lastName;
+    }
 }
