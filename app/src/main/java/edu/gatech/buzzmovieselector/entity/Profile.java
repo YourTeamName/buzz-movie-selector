@@ -4,10 +4,10 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import edu.gatech.buzzmovieselector.dao.impl.ProfileDaoImpl;
 
-@DatabaseTable(tableName = "users", daoClass = ProfileDaoImpl.class)
+@DatabaseTable(tableName = "profiles", daoClass = ProfileDaoImpl.class)
 public class Profile {
 
-    @DatabaseField(id = true, generatedId = true)
+    @DatabaseField(generatedId = true)
     private Integer id;
     @DatabaseField
     private String firstName;

@@ -45,6 +45,7 @@ public class WelcomeActivity extends AppCompatActivity {
         // TODO: load user data from persistent storage so that register works
         // Pass context to DaoFactory so that it can work properly later
         DaoFactory.setContex(this);
+
         UserManagementFacade um = new UserManager();
         um.addUser(new User("user", "pass"));
         restoreState();
