@@ -123,4 +123,9 @@ public class User {
     public boolean checkPassword(String pass) {
         return password.equals(pass);
     }
+
+    @Override
+    public String toString() {
+        return "User: " + username;
+    }
 }

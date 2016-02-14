@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -28,6 +30,7 @@ public class ProfileActivity extends AppCompatActivity {
     private EditText lastNameText;
     private Spinner degreeSpinner;
     private EditText emailText;
+    private CheckBox editCheckBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,7 @@ public class ProfileActivity extends AppCompatActivity {
         lastNameText = (EditText) findViewById(R.id.lastNameText);
         degreeSpinner = (Spinner) findViewById(R.id.degreeSpinner);
         emailText = (EditText) findViewById(R.id.emailText);
+        editCheckBox = (CheckBox) findViewById(R.id.editCheckBox);
         initializeForm();
     }
 
@@ -67,9 +71,9 @@ public class ProfileActivity extends AppCompatActivity {
     private void disableForm() {
         disableTextField(firstNameText);
         disableTextField(lastNameText);
-        degreeSpinner.setClickable(false);
-        degreeSpinner.setFocusableInTouchMode(false);
+        disableSpinner();
         disableTextField(emailText);
+        cancelFocus();
     }
 
     /**
@@ -78,8 +82,7 @@ public class ProfileActivity extends AppCompatActivity {
     private void enableForm() {
         enableTextField(firstNameText);
         enableTextField(lastNameText);
-        degreeSpinner.setClickable(true);
-        degreeSpinner.setFocusableInTouchMode(true);
+        enableSpinner();
         enableTextField(emailText);
     }
 
@@ -92,18 +95,29 @@ public class ProfileActivity extends AppCompatActivity {
             if (SessionState.getInstance().isLoggedIn()) {
                 profileUser = SessionState.getInstance().getSessionUser();
             } else {
-                Log.e("ProfileActivity", "Cannot get a user to view");
+                Log.e("ProfileActivity", "Cannot get a user to view profile");
                 finish();
             }
         } else {
             UserManagementFacade um = new UserManager();
             profileUser = um.findUserById(bundledUserName);
         }
+        Log.v("ProfileActivity", "profileUser is " + profileUser);
         userNameLabel.setText(profileUser.getUsername());
-        disableForm();
+        editCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Log.v("ProfileActivity", "Edit checked: " + (isChecked ? "True" : "False"));
+                if (isChecked) {
+                    enableForm();
+                } else {
+                    disableForm();
+                }
+            }
+        });
         cancelFocus();
-        populateSpinner();
         populateFields();
+        disableForm();
     }
 
     /**
@@ -117,8 +131,32 @@ public class ProfileActivity extends AppCompatActivity {
     /**
      * Called when the Save button is clicked - verifies proper values are entered
      */
-    private void validateProfile() {
+    private boolean validateProfile() {
+        return false;
+    }
 
+    /**
+     * enables spinner by showing all of the possible values
+     */
+    private void enableSpinner() {
+        populateSpinner();
+        Profile userProfile = profileUser.getProfile();
+        int degreeIndex = 0;
+        for (int i = 0; i < Profile.USER_DEGREES.length; i++) {
+            if (userProfile.getMajor().equals(Profile.USER_DEGREES[i])) {
+                degreeIndex = i;
+                break;
+            }
+        }
+        degreeSpinner.setSelection(degreeIndex);
+    }
+
+    /**
+     * disables spinner by showing only selected value
+     */
+    private void disableSpinner() {
+        depopulateSpinner();
+        degreeSpinner.setSelection(0);
     }
 
     /**
@@ -128,25 +166,25 @@ public class ProfileActivity extends AppCompatActivity {
         Profile userProfile = profileUser.getProfile();
         if (userProfile == null) {
             userProfile = new Profile();
+            profileUser.setProfile(userProfile);
         }
         firstNameText.setText(userProfile.getFirstName());
         lastNameText.setText(userProfile.getLastName());
-        int enumIndex = 0;
-        for (Profile.UserDegree ud : Profile.UserDegree.values()) {
-            if (ud == userProfile.getMajor()) {
-                break;
-            }
-            enumIndex++;
-        }
-        degreeSpinner.setSelection(enumIndex);
         emailText.setText(userProfile.getEmail());
+        // TODO: If the session user is an admin or is the same as profile being edited allow edit
     }
 
     /**
      * Populates degreeSpinner with the values from the UserDegree enum
      */
     private void populateSpinner() {
-        ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, Profile.UserDegree.values());
+        ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, Profile.USER_DEGREES);
+        degreeSpinner.setAdapter(degreeAdapter);
+    }
+
+    private void depopulateSpinner() {
+        String[] fakeList = { profileUser.getProfile().getMajor() };
+        ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, fakeList);
         degreeSpinner.setAdapter(degreeAdapter);
     }
 
@@ -154,7 +192,10 @@ public class ProfileActivity extends AppCompatActivity {
      * Updates the Profile object associated with the user
      */
     private void updateProfile() {
-
+        if (validateProfile()) {
+            Profile newProfile = new Profile();
+            profileUser.setProfile(newProfile);
+        }
     }
 
     public void saveProfile(View v) {

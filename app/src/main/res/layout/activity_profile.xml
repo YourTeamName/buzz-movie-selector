@@ -63,14 +63,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/lastNameText"
         android:layout_alignBottom="@+id/lastNameLabel"
-        android:layout_alignStart="@+id/firstNameText" />
+        android:layout_alignStart="@+id/firstNameText"
+        android:layout_alignEnd="@+id/emailText" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/degreeSpinner"
         android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/lastNameText" />
+        android:layout_alignStart="@+id/lastNameText" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -96,12 +97,14 @@
         android:text="Save"
         android:id="@+id/saveButton"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="saveProfile" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/firstNameText"
         android:layout_alignBottom="@+id/firstNameLabel"
-        android:layout_toEndOf="@+id/firstNameLabel" />
+        android:layout_alignStart="@+id/userNameText"
+        android:layout_alignEnd="@+id/emailText" />
 </RelativeLayout>

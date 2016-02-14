@@ -5,100 +5,34 @@ package edu.gatech.buzzmovieselector.entity;
  */
 public class Profile {
 
-    /**
-     * Enum that holds all possible degrees at Georgia Tech
-     */
-    public enum UserDegree {
-        ARCHITECTURE,
-        BUILDING_CONSTRUCTION,
-        INDUSTRIAL_DESIGN,
-        COMPUTER_SCIENCE,
-        COMPUTATIONAL_MEDIA,
-        AEROSPACE_E,
-        BIOMEDICAL_E,
-        CHEMICAL_E,
-        CIVIL_E,
-        COMPUTER_E,
-        ELECTRICAL_E,
-        ENVIRONMENTAL_E,
-        INDUSTRIAL_E,
-        MATERIALS_SCIENCE_E,
-        MECHANICAL_E,
-        NUCLEAR_E,
-        BUSINESS_ADMIN,
-        APPL_LANG_INTERCULTURAL,
-        ECONOMICS,
-        ECONOMICS_INTER_AFF,
-        GLOBAL_ECONOMICS_MODERN_LANG,
-        HISTORY_TECHNOLOGY_SOCIETY,
-        INTER_AFF,
-        INTER_AFF_MODERN_LANG,
-        LIT_MEDIA_COMM,
-        PUBLIC_POLICY,
-        APPL_MATH,
-        APPL_PHYSICS,
-        BIOCHEMISTRY,
-        BIOLOGY,
-        CHEMISTRY,
-        DISCRETE_MATH,
-        EARTH_SCIENCE,
-        PHYSICS,
-        PSYCHOLOGY;
-
-        @Override
-        public String toString() {
-            switch (this) {
-                case ARCHITECTURE: return "Architecture";
-                case BUILDING_CONSTRUCTION: return "Building Construction";
-                case INDUSTRIAL_DESIGN: return "Industrial Design";
-                case COMPUTER_SCIENCE: return "Computer Science";
-                case COMPUTATIONAL_MEDIA: return "Computational Media";
-                case AEROSPACE_E: return "Aerospace Engineering";
-                case BIOMEDICAL_E: return "Biomedical Engineering";
-                case CHEMICAL_E: return "Chemical Engineering";
-                case CIVIL_E: return "Civil Engineering";
-                case COMPUTER_E: return "Computer Engineering";
-                case ELECTRICAL_E: return "Electrical Engineering";
-                case ENVIRONMENTAL_E: return "Environmental Engineering";
-                case INDUSTRIAL_E: return "Industrial Engineering";
-                case MATERIALS_SCIENCE_E: return "Materials Science and Engineering";
-                case MECHANICAL_E: return "Mechanical Engineering";
-                case NUCLEAR_E: return "Nuclear Engineering";
-                case BUSINESS_ADMIN: return "Business Administration";
-                case APPL_LANG_INTERCULTURAL: return "Applied Language and Intercultural Studies";
-                case ECONOMICS: return "Economics";
-                case ECONOMICS_INTER_AFF: return "Economics and International Affairs";
-                case GLOBAL_ECONOMICS_MODERN_LANG: return "Global Economics and Modern Languages";
-                case HISTORY_TECHNOLOGY_SOCIETY: return "History, Technology, and Society";
-                case INTER_AFF: return "International Affairs";
-                case INTER_AFF_MODERN_LANG: return "International Affairs and Modern Languages";
-                case LIT_MEDIA_COMM: return "Literature, Media, and Communication";
-                case PUBLIC_POLICY: return "Public Policy";
-                case APPL_MATH: return "Applied Mathematics";
-                case APPL_PHYSICS: return "Applied Physics";
-                case BIOCHEMISTRY: return "Biochemistry";
-                case BIOLOGY: return "Biology";
-                case CHEMISTRY: return "Chemistry";
-                case DISCRETE_MATH: return "Discrete Mathematics";
-                case EARTH_SCIENCE: return "Earth and Atmospheric Sciences";
-                case PHYSICS: return "Physics";
-                case PSYCHOLOGY: return "Psychology";
-                default:
-                    throw new IllegalArgumentException("Invalid UserDegree enum value");
-            }
-        }
-    }
+    public static final String[] USER_DEGREES = { "Architecture", "Building Construction",
+            "Industrial Design", "Computer Science", "Computational Media", "Aerospace Engineering",
+            "Biomedical Engineering", "Chemical Engineering", "Civil Engineering",
+            "Computer Engineering", "Electrical Engineering", "Environmental Engineering",
+            "Industrial Engineering", "Materials Science and Engineering", "Mechanical Engineering",
+            "Nuclear Engineering", "Business Administration",
+            "Applied Language and Intercultural Studies", "Economics",
+            "Economics and International Affairs", "Global Economics and Modern Languages",
+            "History, Technology, and Society", "International Affairs",
+            "International Affairs and Modern Languages", "Literature, Media, and Communication",
+            "Public Policy", "Applied Mathematics", "Applied Physics", "Biochemistry", "Biology",
+            "Chemistry", "Discrete Mathematics", "Earth and Atmospheric Sciences",
+            "Physics", "Psychology" };
 
     private String firstName;
     private String lastName;
-    private UserDegree major;
+    private String major;
     private String email;
 
+    public Profile(String firstName, String lastName, String major, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.major = major;
+        this.email = email;
+    }
+
     public Profile() {
-        firstName = "";
-        lastName = "";
-        major = UserDegree.COMPUTER_SCIENCE;
-        email = "";
+        this("", "", "Computer Science", "");
     }
 
     public String getFirstName() {
@@ -117,11 +51,11 @@ public class Profile {
         this.lastName = lastName;
     }
 
-    public UserDegree getMajor() {
+    public String getMajor() {
         return major;
     }
 
-    public void setMajor(UserDegree major) {
+    public void setMajor(String major) {
         this.major = major;
     }
 
