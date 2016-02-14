@@ -162,10 +162,14 @@ public class ProfileActivity extends AppCompatActivity {
         populateSpinner();
         Profile userProfile = profileUser.getProfile();
         int degreeIndex = 0;
-        for (int i = 0; i < Profile.USER_DEGREES.length; i++) {
-            if (userProfile.getMajor().equals(Profile.USER_DEGREES[i])) {
-                degreeIndex = i;
-                break;
+        if (userProfile.getMajor() == null) {
+
+        } else {
+            for (int i = 0; i < Profile.USER_DEGREES.length; i++) {
+                if (userProfile.getMajor().equals(Profile.USER_DEGREES[i])) {
+                    degreeIndex = i;
+                    break;
+                }
             }
         }
         degreeSpinner.setSelection(degreeIndex);
@@ -207,7 +211,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void depopulateSpinner() {
-        String[] fakeList = { profileUser.getProfile().getMajor() };
+        String[] fakeList = { profileUser.getProfile().getMajor() == null ? "" : profileUser.getProfile().getMajor() };
         ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, fakeList);
         degreeSpinner.setAdapter(degreeAdapter);
     }

@@ -36,8 +36,6 @@ public class Profile {
      * Default constructor for OrmLite
      */
     public Profile() {
-        // necessary empty string initialization for ProfileActivity spinner
-        this("", "", "", "");
     }
 
     public Profile(String firstName, String lastName, String major, String email) {
