@@ -191,7 +191,11 @@ public class ProfileActivity extends AppCompatActivity {
         firstNameText.setText(userProfile.getFirstName());
         lastNameText.setText(userProfile.getLastName());
         emailText.setText(userProfile.getEmail());
-        // TODO: If the session user is an admin or is the same as profile being edited allow edit
+        if (profileUser.equals(SessionState.getInstance().getSessionUser()) || profileUser.getUserLevel() == User.UserLevel.ADMIN) {
+            editCheckBox.setEnabled(true);
+        } else {
+            editCheckBox.setEnabled(false);
+        }
     }
 
     /**
@@ -220,11 +224,11 @@ public class ProfileActivity extends AppCompatActivity {
             String email = emailText.getText().toString();
             Profile newProfile = new Profile(firstName, lastName, userMajor, email);
             profileUser.setProfile(newProfile);
+            finish();
         }
     }
 
     public void saveProfile(View v) {
         updateProfile();
-        finish();
     }
 }
