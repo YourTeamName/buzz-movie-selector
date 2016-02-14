@@ -103,7 +103,7 @@ public class ProfileActivity extends AppCompatActivity {
             profileUser = um.findUserById(bundledUserName);
         }
         Log.v("ProfileActivity", "profileUser is " + profileUser);
-        userNameLabel.setText(profileUser.getUsername());
+        userNameLabel.setText(profileUser.getUsername() + " Profile");
         editCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -132,6 +132,7 @@ public class ProfileActivity extends AppCompatActivity {
      * Called when the Save button is clicked - verifies proper values are entered
      */
     private boolean validateProfile() {
+        // TODO: Implement form validation for profile editing
         return false;
     }
 
