@@ -193,6 +193,7 @@ public class ProfileActivity extends AppCompatActivity {
      * Updates the Profile object associated with the user
      */
     private void updateProfile() {
+        // TODO: add persistent save in addition to updating profileUser profile
         if (validateProfile()) {
             Profile newProfile = new Profile();
             profileUser.setProfile(newProfile);
