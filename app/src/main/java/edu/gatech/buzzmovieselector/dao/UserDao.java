@@ -1,7 +1,10 @@
 package edu.gatech.buzzmovieselector.dao;
 
+import com.j256.ormlite.dao.Dao;
+import edu.gatech.buzzmovieselector.entity.User;
+
 /**
- * The DAO interface of the User entity.
+ * User DAO which has a String id (User.username)
  */
-public interface UserDao {
+public interface UserDao extends Dao<User, String> {
 }
