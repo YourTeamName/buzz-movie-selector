@@ -1,5 +1,6 @@
 package edu.gatech.buzzmovieselector.controller;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -132,8 +133,26 @@ public class ProfileActivity extends AppCompatActivity {
      * Called when the Save button is clicked - verifies proper values are entered
      */
     private boolean validateProfile() {
-        // TODO: Implement form validation for profile editing
-        return false;
+        String firstName = firstNameText.getText().toString();
+        String lastName = lastNameText.getText().toString();
+        String userMajor = degreeSpinner.getSelectedItem().toString();
+        String email = emailText.getText().toString();
+        if (firstName.equals("")) {
+            firstNameText.setError("Enter a first name");
+            return false;
+        } else if (lastName.equals("")) {
+            lastNameText.setError("Enter a last name");
+            return false;
+        } else if (userMajor.equals("")) {
+            TextView spinnerText = (TextView) degreeSpinner.getSelectedView();
+            spinnerText.setError("Enter a valid major");
+            return false;
+        } else if (email.equals("") || !email.contains("@")) {
+            emailText.setError("Enter a valid email address");
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**
@@ -195,7 +214,11 @@ public class ProfileActivity extends AppCompatActivity {
     private void updateProfile() {
         // TODO: add persistent save in addition to updating profileUser profile
         if (validateProfile()) {
-            Profile newProfile = new Profile();
+            String firstName = firstNameText.getText().toString();
+            String lastName = lastNameText.getText().toString();
+            String userMajor = degreeSpinner.getSelectedItem().toString();
+            String email = emailText.getText().toString();
+            Profile newProfile = new Profile(firstName, lastName, userMajor, email);
             profileUser.setProfile(newProfile);
         }
     }
