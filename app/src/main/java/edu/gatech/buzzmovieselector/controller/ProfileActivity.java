@@ -162,9 +162,7 @@ public class ProfileActivity extends AppCompatActivity {
         populateSpinner();
         Profile userProfile = profileUser.getProfile();
         int degreeIndex = 0;
-        if (userProfile.getMajor() == null) {
-
-        } else {
+        if (userProfile.getMajor() != null) {
             for (int i = 0; i < Profile.USER_DEGREES.length; i++) {
                 if (userProfile.getMajor().equals(Profile.USER_DEGREES[i])) {
                     degreeIndex = i;
@@ -228,6 +226,8 @@ public class ProfileActivity extends AppCompatActivity {
             String email = emailText.getText().toString();
             Profile newProfile = new Profile(firstName, lastName, userMajor, email);
             profileUser.setProfile(newProfile);
+            UserManagementFacade um = new UserManager();
+            um.updateUser(profileUser.getUsername(), profileUser);
             finish();
         }
     }

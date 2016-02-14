@@ -9,8 +9,8 @@ import edu.gatech.buzzmovieselector.biz.impl.UserManager;
 
 public class SessionState {
 
-    // Eagerly instantiated Singleton
-    private static SessionState ourInstance = new SessionState();
+    // Lazily instantiated Singleton
+    private static SessionState ourInstance = null;
     private static User sessionUser = null;
 
     private static final String SESSION_PREFS = "BMS_SESSION_PREFS";
@@ -21,6 +21,9 @@ public class SessionState {
      * @return instance of global SessionState Singleton
      */
     public static SessionState getInstance() {
+        if (ourInstance == null) {
+            ourInstance = new SessionState();
+        }
         return ourInstance;
     }
 
