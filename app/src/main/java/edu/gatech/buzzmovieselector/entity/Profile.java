@@ -18,8 +18,8 @@ public class Profile {
             "History, Technology, and Society", "International Affairs",
             "International Affairs and Modern Languages", "Literature, Media, and Communication",
             "Public Policy", "Applied Mathematics", "Applied Physics", "Biochemistry", "Biology",
-            "Chemistry", "Discrete Mathematics", "Earth and Atmospheric Sciences",
-            "Physics", "Psychology"};
+            "Chemistry", "Discrete Mathematics", "Earth and Atmospheric Sciences", "Physics",
+            "Psychology", "Computational Science and Engineering"};
 
     @DatabaseField(generatedId = true)
     private Integer id;
