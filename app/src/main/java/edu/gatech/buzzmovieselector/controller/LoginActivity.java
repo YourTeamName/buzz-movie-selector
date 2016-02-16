@@ -8,36 +8,33 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import edu.gatech.buzzmovieselector.R;
-import edu.gatech.buzzmovieselector.SessionState;
-import edu.gatech.buzzmovieselector.model.AuthenticationFacade;
-import edu.gatech.buzzmovieselector.model.User;
-import edu.gatech.buzzmovieselector.model.UserManager;
+import edu.gatech.buzzmovieselector.service.SessionState;
+import edu.gatech.buzzmovieselector.biz.AuthenticationFacade;
+import edu.gatech.buzzmovieselector.entity.User;
+import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
+import edu.gatech.buzzmovieselector.biz.impl.UserManager;
 
 /**
- * LoginActivity is the controller for the login screen.
- * Handles login, contains a login form and a cancel button
+ * LoginActivity is the controller for the startSession screen.
+ * Handles startSession, contains a startSession form and a cancel button
  */
 public class LoginActivity extends Activity {
 
     // UI references.
-    private AutoCompleteTextView mUsernameView;
-    private EditText mPasswordView;
-    private View mProgressView;
-    private View mLoginFormView;
+    private AutoCompleteTextView userText;
+    private EditText passwordText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        mUsernameView = (AutoCompleteTextView) findViewById(R.id.username);
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        userText = (AutoCompleteTextView) findViewById(R.id.username);
+        passwordText = (EditText) findViewById(R.id.password);
+        passwordText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
@@ -47,11 +44,6 @@ public class LoginActivity extends Activity {
                 return false;
             }
         });
-
-        Button loginButton = (Button) findViewById(R.id.login_button);
-
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
     }
 
     /**
@@ -60,7 +52,9 @@ public class LoginActivity extends Activity {
      * @param v Reference to widget firing event
      */
     public void login(View v) {
-        attemptLogin();
+        if (validateLogin()) {
+            attemptLogin();
+        }
     }
 
     /**
@@ -72,13 +66,31 @@ public class LoginActivity extends Activity {
     }
 
     /**
+     * Validates the startSession form
+     * @return the startSession form is valid
+     */
+    public boolean validateLogin() {
+        String userName = userText.getText().toString();
+        String userPass = passwordText.getText().toString();
+        if (userName.equals("")) {
+            userText.setError("You must enter a username");
+            return false;
+        }
+        if (userPass.equals("")) {
+            passwordText.setError("You must enter a password");
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * Clears the user entered values in the username and password fields
      */
     private void resetFields() {
-        mUsernameView.setText("");
-        mPasswordView.setText("");
-        mUsernameView.clearFocus();
-        mPasswordView.clearFocus();
+        userText.setText("");
+        passwordText.setText("");
+        userText.clearFocus();
+        passwordText.clearFocus();
     }
 
     /**
@@ -86,21 +98,22 @@ public class LoginActivity extends Activity {
      * starts BMSActivity
      */
     private void attemptLogin() {
-        AuthenticationFacade af = new UserManager();
-        String userName = mUsernameView.getText().toString();
-        String userPass = mPasswordView.getText().toString();
+        UserManager um = new UserManager();
+        AuthenticationFacade af = um;
+        UserManagementFacade uf = um;
+        String userName = userText.getText().toString();
+        String userPass = passwordText.getText().toString();
         if (af.handleLoginRequest(userName,
                 userPass)) {
-            // TODO: make a matchUser function so we don't have to import User
             User sessionUser = new User(userName, userPass, "USER");
-            SessionState.login(sessionUser, getApplicationContext());
+            SessionState.getInstance().startSession(sessionUser, getApplicationContext());
             resetFields();
             startBMS();
         } else {
-            if (!af.userExists(userName)) {
-                mUsernameView.setError("Invalid Username");
+            if (!uf.userExists(userName)) {
+                userText.setError("Invalid Username");
             } else {
-                mPasswordView.setError("Invalid Password");
+                passwordText.setError("Invalid Password");
             }
         }
     }
@@ -110,6 +123,7 @@ public class LoginActivity extends Activity {
      */
     private void startBMS() {
         Intent mainActivity = new Intent(this, BMSActivity.class);
+        finish();
         startActivity(mainActivity);
     }
 

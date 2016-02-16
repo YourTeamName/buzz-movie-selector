@@ -1,11 +1,12 @@
-package edu.gatech.buzzmovieselector.model;
+package edu.gatech.buzzmovieselector.biz.impl;
+
+import edu.gatech.buzzmovieselector.biz.AuthenticationFacade;
+import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
+import edu.gatech.buzzmovieselector.entity.User;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by robertwaters on 1/26/16.
- */
 public class UserManager implements AuthenticationFacade, UserManagementFacade {
     private static Map<String, User> users = new HashMap<>();
 
@@ -14,10 +15,8 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
         return users.get(id);
     }
 
-    public void addUser(String name, String pass) {
-        User user = new User(name, pass);
-        users.put(name, user);
-
+    public void addUser(User user) {
+        users.put(user.getUsername(), user);
     }
 
     public boolean handleLoginRequest(String name, String pass) {

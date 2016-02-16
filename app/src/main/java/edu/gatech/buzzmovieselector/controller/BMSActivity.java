@@ -1,7 +1,7 @@
 package edu.gatech.buzzmovieselector.controller;
 
-import android.os.Bundle;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
@@ -14,10 +14,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import edu.gatech.buzzmovieselector.R;
-import edu.gatech.buzzmovieselector.SessionState;
+import edu.gatech.buzzmovieselector.service.SessionState;
 
 /**
  * BMSActivity is the main screen for the app. It is only displayed to users
@@ -50,7 +49,7 @@ public class BMSActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        if (SessionState.isLoggedIn()) {
+        if (SessionState.getInstance().isLoggedIn()) {
             Log.v("BMS", "we are logged in");
         } else {
             Log.v("BMS", "we are not logged in");
@@ -64,8 +63,6 @@ public class BMSActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
         }
     }
 
@@ -99,8 +96,6 @@ public class BMSActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
@@ -109,8 +104,14 @@ public class BMSActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
+        } else if (id == R.id.nav_profile) {
+            Log.v("BMS", "View ProfileActivity");
+            Intent profileIntent = new Intent(this, ProfileActivity.class);
+            String profileUser = SessionState.getInstance().getSessionUser().getUsername();
+            profileIntent.putExtra(ProfileActivity.PROFILE_USER_KEY, profileUser);
+            startActivity(profileIntent);
         } else if (id == R.id.nav_logout) {
-            SessionState.logout(getApplicationContext());
+            SessionState.getInstance().endSession(getApplicationContext());
             finish();
         }
 

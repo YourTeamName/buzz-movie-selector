@@ -21,23 +21,25 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Username"
+        android:id="@+id/userText"
         android:layout_below="@+id/registerText"
         android:layout_alignStart="@+id/registerText"
         android:layout_marginTop="41dp"
         android:layout_alignEnd="@+id/registerText"
-        android:hint="Username" />
+        android:hint="Username"
+        android:singleLine="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/passwordText"
-        android:layout_below="@+id/Username"
-        android:layout_alignStart="@+id/Username"
+        android:layout_below="@+id/userText"
+        android:layout_alignStart="@+id/userText"
         android:layout_marginTop="41dp"
-        android:layout_alignEnd="@+id/Username"
+        android:layout_alignEnd="@+id/userText"
         android:hint="Password"
-        android:password="true" />
+        android:password="true"
+        android:singleLine="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -47,16 +49,18 @@
         android:layout_alignEnd="@+id/passwordText"
         android:layout_alignStart="@+id/passwordText"
         android:hint="Confirm Password"
-        android:password="true" />
+        android:password="true"
+        android:singleLine="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_below="@+id/Username"
-        android:layout_alignStart="@+id/Username"
+        android:id="@+id/emailText"
+        android:layout_below="@+id/userText"
+        android:layout_alignStart="@+id/userText"
         android:layout_alignEnd="@+id/passwordText"
-        android:hint="Email Address" />
+        android:hint="Email Address"
+        android:singleLine="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -65,6 +69,7 @@
         android:id="@+id/button"
         android:layout_below="@+id/passwordConfirmText"
         android:layout_alignStart="@+id/passwordConfirmText"
-        android:layout_alignEnd="@+id/passwordConfirmText" />
+        android:layout_alignEnd="@+id/passwordConfirmText"
+        android:onClick="attemptRegister" />
 
 </RelativeLayout>
