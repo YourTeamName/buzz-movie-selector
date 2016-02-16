@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import edu.gatech.buzzmovieselector.R;
+import edu.gatech.buzzmovieselector.entity.Profile;
 import edu.gatech.buzzmovieselector.entity.User;
 import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
 import edu.gatech.buzzmovieselector.biz.impl.UserManager;
@@ -42,6 +43,8 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
         User newUser = new User(userField.getText().toString(), passwordField.getText().toString());
+        Profile newProfile = new Profile("", "", "", emailField.getText().toString());
+        newUser.setProfile(newProfile);
         UserManagementFacade um = new UserManager();
         um.addUser(newUser);
         finish();

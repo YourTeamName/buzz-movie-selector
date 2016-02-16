@@ -48,6 +48,7 @@
         android:layout_centerVertical="true"
         android:layout_alignEnd="@+id/passwordText"
         android:layout_alignStart="@+id/passwordText"
+        android:imeOptions="actionDone"
         android:hint="Confirm Password"
         android:password="true"
         android:singleLine="true" />

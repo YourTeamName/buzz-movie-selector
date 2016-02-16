@@ -1,6 +1,5 @@
 package edu.gatech.buzzmovieselector.controller;
 
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -162,9 +161,7 @@ public class ProfileActivity extends AppCompatActivity {
         populateSpinner();
         Profile userProfile = profileUser.getProfile();
         int degreeIndex = 0;
-        if (userProfile.getMajor() == null) {
-
-        } else {
+        if (userProfile.getMajor() != null) {
             for (int i = 0; i < Profile.USER_DEGREES.length; i++) {
                 if (userProfile.getMajor().equals(Profile.USER_DEGREES[i])) {
                     degreeIndex = i;
@@ -226,8 +223,14 @@ public class ProfileActivity extends AppCompatActivity {
             String lastName = lastNameText.getText().toString();
             String userMajor = degreeSpinner.getSelectedItem().toString();
             String email = emailText.getText().toString();
-            Profile newProfile = new Profile(firstName, lastName, userMajor, email);
-            profileUser.setProfile(newProfile);
+            Profile uProfile = profileUser.getProfile();
+            uProfile.setFirstName(firstName);
+            uProfile.setLastName(lastName);
+            uProfile.setMajor(userMajor);
+            uProfile.setEmail(email);
+            profileUser.setProfile(uProfile);
+            UserManagementFacade um = new UserManager();
+            um.updateUser(profileUser.getUsername(), profileUser);
             finish();
         }
     }
