@@ -26,4 +26,12 @@ public class Movie {
     public int getRating() {
         return rating;
     }
+
+    public boolean equals(Object other) {
+        if (!(other instanceof Movie)) {
+            return false;
+        }
+        return this.getName().equals(other.getName())
+                && this.getYear() == other.getYear();
+    }
 }
