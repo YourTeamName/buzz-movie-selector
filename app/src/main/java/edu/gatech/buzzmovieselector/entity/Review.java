@@ -28,3 +28,4 @@ public class Review {
     public Movie getMovie() {
         return movie;
     }
+}
