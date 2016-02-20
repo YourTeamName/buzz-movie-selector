@@ -8,6 +8,7 @@ public class Movie {
     private String name;
     private int year;
     private double rating;
+    private int id;
 
     public Movie(String name, int year) {
         this.name = name;

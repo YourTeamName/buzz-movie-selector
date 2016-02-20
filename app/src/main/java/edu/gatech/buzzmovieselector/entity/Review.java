@@ -10,6 +10,7 @@ public class Review {
     private String text;
     private double rating;
     private Movie movie;
+    private int id;
 
     public Review(User user, String text, Movie movie) {
         this.text = text;
