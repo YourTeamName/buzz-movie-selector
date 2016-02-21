@@ -1,13 +1,24 @@
 package edu.gatech.buzzmovieselector.service.api;
 
-import org.json.JSONObject;
+import com.android.volley.toolbox.RequestFuture;
+
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * Holds the response of an ApiCommand
  */
-public class ApiReceiver {
-    private ApiResponseType responseType;
-    private Object responseData;
+abstract public class ApiReceiver {
+    private static int API_MAX_WAIT = 5;
+
+    protected ApiResponseType responseType;
+    protected RequestFuture responseFuture;
+
+    public ApiReceiver(RequestFuture requestFuture, ApiResponseType responseType) {
+        this.responseFuture = requestFuture;
+        this.responseType = responseType;
+    }
 
     /**
      * Gets the ApiCommand's response type
@@ -18,16 +29,25 @@ public class ApiReceiver {
     }
 
     /**
-     * Returns an object that accurately represents the corresponding responseType
-     * @return An server's response
+     * Gives the raw response
+     * @return raw response object
      */
-    public Object getResponse() {
-        if (responseType == ApiResponseType.JSON) {
-            return (JSONObject) responseData;
-        } else if (responseType == ApiResponseType.TEXT) {
-            return (String) responseData;
-        } else {
-            throw new UnsupportedOperationException();
+    protected Object getRawResponse() {
+        try {
+            return responseFuture.get(API_MAX_WAIT, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
         }
+        return null;
     }
+
+    /**
+     * Gives the correctly casted response
+     * @return correctly casted response object
+     */
+    abstract public Object getResponse();
 }

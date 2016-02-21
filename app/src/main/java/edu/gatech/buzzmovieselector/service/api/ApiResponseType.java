@@ -7,7 +7,8 @@ public enum ApiResponseType {
     JSON,
     TEXT,
     IMAGE,
-    XML;
+    XML,
+    ERROR;
 
     @Override
     public String toString() {
@@ -16,6 +17,7 @@ public enum ApiResponseType {
             case TEXT: return "Text";
             case IMAGE: return "Image";
             case XML: return "XML";
+            case ERROR: return "Error";
             default:
                 throw new IllegalArgumentException();
         }

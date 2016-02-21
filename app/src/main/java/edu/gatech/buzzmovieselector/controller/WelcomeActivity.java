@@ -3,6 +3,7 @@ package edu.gatech.buzzmovieselector.controller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
@@ -10,6 +11,7 @@ import edu.gatech.buzzmovieselector.biz.impl.UserManager;
 import edu.gatech.buzzmovieselector.dao.DaoFactory;
 import edu.gatech.buzzmovieselector.entity.User;
 import edu.gatech.buzzmovieselector.service.SessionState;
+import edu.gatech.buzzmovieselector.service.api.ApiNetwork;
 
 /**
  * WelcomeActivity is the controller for the welcome screen
@@ -49,6 +51,8 @@ public class WelcomeActivity extends AppCompatActivity {
         UserManagementFacade um = new UserManager();
         um.addUser(new User("user", "pass"));
         restoreState();
+        String test = ApiNetwork.getInstance(this).getApiString("http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/new_releases.json?page_limit=1&apikey=yedukp76ffytfuy24zsqk7f5").getResponse().toString();
+        Log.d("test string", test);
     }
 
     /**
