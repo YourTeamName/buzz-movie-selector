@@ -64,17 +64,14 @@ abstract public class ApiReceiver {
         public void run() {
             AsyncFutureTask futureTask = new AsyncFutureTask();
             try {
-                responseStatus = ApiResult.SUCCESS;
-                responseData = futureTask.execute(responseFuture).get(API_MAX_WAIT, TimeUnit.SECONDS);
+                responseData = futureTask.execute(responseFuture).get();
                 if (responseCallback != null) {
-                    responseCallback.onReceive(getResponse());
+                    responseCallback.onReceive(ApiReceiver.this);
                 }
-                Log.v("run", responseData.toString());
+                responseStatus = ApiResult.SUCCESS;
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
-                e.printStackTrace();
-            } catch (TimeoutException e) {
                 e.printStackTrace();
             }
         }
@@ -84,9 +81,10 @@ abstract public class ApiReceiver {
 
     protected ApiResponseType responseType;
     protected RequestFuture responseFuture;
-    private volatile Object responseData;
+    private Object responseData;
     private ApiCallback responseCallback = null;
-    private volatile ApiResult responseStatus = ApiResult.NOT_DONE;
+    private ApiResult responseStatus = ApiResult.NOT_DONE;
+    private Thread retrieveThread;
 
     public ApiReceiver(RequestFuture requestFuture, ApiResponseType responseType) {
         this(requestFuture, responseType, null);
@@ -108,7 +106,7 @@ abstract public class ApiReceiver {
     }
 
     /**
-     * Gets the ApiCommand's response type
+     * Gets the ApiReceiver's response type
      * @return the type of data that was returned
      */
     public ApiResponseType getResponseType() {
@@ -116,10 +114,18 @@ abstract public class ApiReceiver {
     }
 
     /**
+     * Gets the ApiReceiver's response status
+     * @return the status of the receiver
+     */
+    public ApiResult getResponseStatus() {
+        return responseStatus;
+    }
+
+    /**
      * Starts async thread to retrieve value of future
      */
     private void startRetrieve() {
-        Thread retrieveThread = new Thread(new FutureThread());
+        retrieveThread = new Thread(new FutureThread());
         retrieveThread.start();
     }
 
@@ -136,14 +142,4 @@ abstract public class ApiReceiver {
      * @return correctly casted response object
      */
     abstract public Object getResponse();
-
-    public Object getSyncRawResponse() {
-        while (responseStatus == ApiResult.NOT_DONE) {
-            // Log.v("syncrawresponse", responseStatus.toString());
-        }
-        Log.v("syncrawresponse2", responseStatus.toString());
-        return getRawResponse();
-    }
-
-
 }

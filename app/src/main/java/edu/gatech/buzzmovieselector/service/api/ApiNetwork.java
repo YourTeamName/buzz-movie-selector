@@ -27,6 +27,10 @@ public class ApiNetwork {
         return ourInstance;
     }
 
+    // sort of unconventional but commands can't access the app context
+    public static ApiNetwork getInstance() {
+        return ourInstance;
+    }
     public RequestQueue getApiRequestQueue() {
         if (apiRequestQueue == null) {
             apiRequestQueue = Volley.newRequestQueue(apiContext.getApplicationContext());
@@ -40,6 +44,14 @@ public class ApiNetwork {
     }
 
     public ApiJSONReceiver apiJSON(String url) {
+        return apiJSON(url, null);
+    }
+
+    public ApiTextReceiver apiString(String url) {
+        return apiString(url, null);
+    }
+
+    public ApiJSONReceiver apiJSON(String url, ApiCallback callback) {
         RequestFuture<JSONObject> jsonFuture = RequestFuture.newFuture();
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, url, jsonFuture, jsonFuture);
         ApiJSONReceiver jsonReceiver = new ApiJSONReceiver(jsonFuture);
@@ -47,7 +59,7 @@ public class ApiNetwork {
         return jsonReceiver;
     }
 
-    public ApiTextReceiver apiString(String url) {
+    public ApiTextReceiver apiString(String url, ApiCallback callback) {
         RequestFuture<String> stringFuture = RequestFuture.newFuture();
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, stringFuture, stringFuture);
         ApiTextReceiver stringReceiver = new ApiTextReceiver(stringFuture);

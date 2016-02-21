@@ -1,5 +1,6 @@
 package edu.gatech.buzzmovieselector.service.api.rt.command;
 
+import edu.gatech.buzzmovieselector.service.api.ApiCallback;
 import edu.gatech.buzzmovieselector.service.api.ApiCommand;
 import edu.gatech.buzzmovieselector.service.api.ApiReceiver;
 
@@ -8,7 +9,7 @@ import edu.gatech.buzzmovieselector.service.api.ApiReceiver;
  */
 public class RTRecentMovies implements ApiCommand {
     @Override
-    public ApiReceiver execute() {
+    public ApiReceiver execute(ApiCallback callback) {
         return null;
     }
 }

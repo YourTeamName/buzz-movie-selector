@@ -80,8 +80,7 @@ public class WelcomeActivity extends AppCompatActivity {
         UserManagementFacade um = new UserManager();
         um.addUser(new User("user", "pass"));
         restoreState();
-        // ApiNetwork.getInstance(getApplicationContext()).apiString("http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/new_releases.json?page_limit=1&apikey=yedukp76ffytfuy24zsqk7f5");
-        ApiNetwork.getInstance(getApplicationContext()).apiString("http://google.com/humans.txt").getSyncRawResponse();
+        ApiNetwork.getInstance(this);
     }
 
     /**
