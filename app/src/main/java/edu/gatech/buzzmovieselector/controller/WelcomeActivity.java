@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
@@ -81,9 +80,8 @@ public class WelcomeActivity extends AppCompatActivity {
         UserManagementFacade um = new UserManager();
         um.addUser(new User("user", "pass"));
         restoreState();
-        // String test = ApiNetwork.getInstance(getApplicationContext()).getApiString("http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/new_releases.json?page_limit=1&apikey=yedukp76ffytfuy24zsqk7f5").getResponse().toString();
-        String test = ApiNetwork.getInstance(getApplicationContext()).getApiString("http://google.com/humans.txt").getResponse().toString();
-        Log.d("test string", test);
+        // ApiNetwork.getInstance(getApplicationContext()).apiString("http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/new_releases.json?page_limit=1&apikey=yedukp76ffytfuy24zsqk7f5");
+        ApiNetwork.getInstance(getApplicationContext()).apiString("http://google.com/humans.txt").getSyncRawResponse();
     }
 
     /**

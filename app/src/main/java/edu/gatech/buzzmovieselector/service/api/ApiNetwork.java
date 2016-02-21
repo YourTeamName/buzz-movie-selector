@@ -11,10 +11,6 @@ import edu.gatech.buzzmovieselector.service.api.receiver.ApiJSONReceiver;
 import edu.gatech.buzzmovieselector.service.api.receiver.ApiTextReceiver;
 import org.json.JSONObject;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-
 /**
  * Provides Api networking functionality
  */
@@ -43,28 +39,19 @@ public class ApiNetwork {
         apiRequestQueue = getApiRequestQueue();
     }
 
-    public ApiReceiver getApiJSON(String url) {
+    public ApiJSONReceiver apiJSON(String url) {
         RequestFuture<JSONObject> jsonFuture = RequestFuture.newFuture();
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, url, jsonFuture, jsonFuture);
-        ApiReceiver jsonReceiver = new ApiJSONReceiver(jsonFuture);
+        ApiJSONReceiver jsonReceiver = new ApiJSONReceiver(jsonFuture);
         apiRequestQueue.add(jsonRequest);
         return jsonReceiver;
     }
 
-    public ApiReceiver getApiString(String url) {
+    public ApiTextReceiver apiString(String url) {
         RequestFuture<String> stringFuture = RequestFuture.newFuture();
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, stringFuture, stringFuture);
-        ApiReceiver stringReceiver = new ApiTextReceiver(stringFuture);
+        ApiTextReceiver stringReceiver = new ApiTextReceiver(stringFuture);
         apiRequestQueue.add(stringRequest);
-        try {
-            Log.v("getApiString", stringFuture.get(5, TimeUnit.SECONDS));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        }
         return stringReceiver;
     }
 }
