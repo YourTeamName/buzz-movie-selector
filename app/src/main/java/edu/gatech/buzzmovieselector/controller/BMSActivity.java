@@ -71,6 +71,7 @@ public class BMSActivity extends AppCompatActivity
 
         // for test purposes only
         final ArrayList<String> dvdList = new ArrayList<>();
+        // TODO: make a custom list adapter to work with POJOs
         ArrayAdapter<String> listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dvdList);
         ListView recentDVDs = (ListView) findViewById(R.id.recentDVDsList);
         recentDVDs.setAdapter(listAdapter);
@@ -78,7 +79,7 @@ public class BMSActivity extends AppCompatActivity
         rti.executeCall(new ApiCall(RTCommandFactory.getRecentDVDsCommand(), new ApiCallback() {
             @Override
             public void onReceive(ApiReceiver receiver) {
-                Log.v("onreceive", "onreceived called");
+                // TODO: make a entity builder object to automatically handle this
                 JSONObject newDVDs = (JSONObject) receiver.getResponse();
                 try {
                     JSONArray movieList = newDVDs.getJSONArray("movies");
