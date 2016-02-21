@@ -13,4 +13,8 @@ public class RTCommandFactory {
     public static ApiCommand getMovieSearchCommand(String search) {
         return new RTMovieSearch(search);
     }
+
+    public static ApiCommand getRecentMoviesCommand() {
+        return new RTRecentMovies();
+    }
 }
