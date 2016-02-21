@@ -1,38 +1,65 @@
 package edu.gatech.buzzmovieselector.entity;
 
+import java.util.Collection;
+
 /**
  * Creates a movie object with name, year produced, and rating
- */ 
+ */
 public class Movie {
 
-    private String name;
-    private int year;
-    private double rating;
     private Integer id;
+    private String title;
+    private Integer year;
+    private Double rating;
+    private Collection<Review> reviews;
 
-    public Movie(String name, int year) {
-        this.name = name;
-        this.year = year;
-        reviews = new ArrayList<Review>();
+    public Collection<Review> getReviews() {
+        return reviews;
     }
 
-    public String getName() {
-        return name;
+    public void setReviews(Collection<Review> reviews) {
+        this.reviews = reviews;
     }
 
-    public int getYear() {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Integer getYear() {
         return year;
     }
 
-    public int getRating() {
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public Double getRating() {
         return rating;
     }
 
-    public boolean equals(Object other) {
-        if (!(other instanceof Movie)) {
-            return false;
-        }
-        return this.getName().equals(other.getName())
-                && this.getYear() == other.getYear();
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
+
+    public Movie() {
+    }
+
+    public Movie(String title, int year) {
+        this.setYear(year);
+        this.setYear(year);
+    }
+
+
 }
