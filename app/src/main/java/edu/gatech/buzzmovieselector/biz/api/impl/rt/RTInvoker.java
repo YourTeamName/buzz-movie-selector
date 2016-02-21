@@ -1,6 +1,6 @@
 package edu.gatech.buzzmovieselector.biz.api.impl.rt;
 
-import edu.gatech.buzzmovieselector.biz.api.ApiCommand;
+import edu.gatech.buzzmovieselector.biz.api.ApiCall;
 import edu.gatech.buzzmovieselector.biz.api.ApiInvoker;
 import edu.gatech.buzzmovieselector.biz.api.ApiReceiver;
 
@@ -12,7 +12,7 @@ public class RTInvoker implements ApiInvoker {
     public static final String API_KEY = "yedukp76ffytfuy24zsqk7f5";
 
     @Override
-    public ApiReceiver executeCommand(ApiCommand command) {
-        return command.execute();
+    public ApiReceiver executeCall(ApiCall call) {
+        return call.getApiCommand().execute(call.getApiCallback());
     }
 }

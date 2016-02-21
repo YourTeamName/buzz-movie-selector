@@ -54,7 +54,7 @@ public class ApiNetwork {
     public ApiJSONReceiver apiJSON(String url, ApiCallback callback) {
         RequestFuture<JSONObject> jsonFuture = RequestFuture.newFuture();
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, url, jsonFuture, jsonFuture);
-        ApiJSONReceiver jsonReceiver = new ApiJSONReceiver(jsonFuture);
+        ApiJSONReceiver jsonReceiver = new ApiJSONReceiver(jsonFuture, callback);
         apiRequestQueue.add(jsonRequest);
         return jsonReceiver;
     }
@@ -62,7 +62,7 @@ public class ApiNetwork {
     public ApiTextReceiver apiString(String url, ApiCallback callback) {
         RequestFuture<String> stringFuture = RequestFuture.newFuture();
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, stringFuture, stringFuture);
-        ApiTextReceiver stringReceiver = new ApiTextReceiver(stringFuture);
+        ApiTextReceiver stringReceiver = new ApiTextReceiver(stringFuture, callback);
         apiRequestQueue.add(stringRequest);
         return stringReceiver;
     }

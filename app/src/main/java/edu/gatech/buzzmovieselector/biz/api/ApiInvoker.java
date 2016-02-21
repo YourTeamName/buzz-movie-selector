@@ -6,8 +6,8 @@ package edu.gatech.buzzmovieselector.biz.api;
 public interface ApiInvoker {
     /**
      * executes a single ApiCommand
-     * @param command ApiCommand to be executed
+     * @param call ApiCommand to be executed
      * @return result of the ApiCommand's execute method
      */
-    public ApiReceiver executeCommand(ApiCommand command);
+    public ApiReceiver executeCall(ApiCall call);
 }
