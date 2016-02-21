@@ -13,12 +13,13 @@
     tools:showIn="@layout/app_bar_bms">
 
     <SearchView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/searchView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:baselineAligned="true"
-        android:queryHint="Search for movie" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/searchView"
+            android:queryHint="Search for movie"/>
+    <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recentDVDsList" android:layout_below="@+id/searchView" android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

@@ -15,8 +15,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import edu.gatech.buzzmovieselector.R;
+import edu.gatech.buzzmovieselector.biz.api.ApiCall;
+import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
+import edu.gatech.buzzmovieselector.biz.api.ApiReceiver;
+import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
+import edu.gatech.buzzmovieselector.biz.api.impl.rt.command.RTCommandFactory;
 import edu.gatech.buzzmovieselector.service.SessionState;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * BMSActivity is the main screen for the app. It is only displayed to users
@@ -55,6 +67,34 @@ public class BMSActivity extends AppCompatActivity
             Log.v("BMS", "we are not logged in");
             // we should not be here unless we are logged in
             finish();
+        }
+
+        // for test purposes only
+        final ArrayList<String> dvdList = new ArrayList<>();
+        // TODO: make a custom list adapter to work with POJOs
+        ArrayAdapter<String> listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dvdList);
+        ListView recentDVDs = (ListView) findViewById(R.id.recentDVDsList);
+        recentDVDs.setAdapter(listAdapter);
+        RTInvoker rti = new RTInvoker();
+        rti.executeCall(new ApiCall(RTCommandFactory.getRecentDVDsCommand(), new ApiCallback() {
+            @Override
+            public void onReceive(ApiReceiver receiver) {
+                // TODO: make a entity builder object to automatically handle this
+                JSONObject newDVDs = (JSONObject) receiver.getResponse();
+                try {
+                    JSONArray movieList = newDVDs.getJSONArray("movies");
+                    for (int i = 0; i < movieList.length(); i++) {
+                        JSONObject movie = movieList.getJSONObject(i);
+                        dvdList.add(movie.getString("title"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }));
+
+        for (String s : dvdList) {
+            Log.v("BMSActivity", s);
         }
     }
 
