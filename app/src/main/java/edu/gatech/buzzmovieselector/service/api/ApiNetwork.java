@@ -1,6 +1,7 @@
 package edu.gatech.buzzmovieselector.service.api;
 
 import android.content.Context;
+import android.util.Log;
 import com.android.volley.*;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.RequestFuture;
@@ -9,6 +10,10 @@ import com.android.volley.toolbox.Volley;
 import edu.gatech.buzzmovieselector.service.api.receiver.ApiJSONReceiver;
 import edu.gatech.buzzmovieselector.service.api.receiver.ApiTextReceiver;
 import org.json.JSONObject;
+
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * Provides Api networking functionality
@@ -36,7 +41,6 @@ public class ApiNetwork {
     private ApiNetwork(Context context) {
         apiContext = context;
         apiRequestQueue = getApiRequestQueue();
-
     }
 
     public ApiReceiver getApiJSON(String url) {
@@ -52,6 +56,15 @@ public class ApiNetwork {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, stringFuture, stringFuture);
         ApiReceiver stringReceiver = new ApiTextReceiver(stringFuture);
         apiRequestQueue.add(stringRequest);
+        try {
+            Log.v("getApiString", stringFuture.get(5, TimeUnit.SECONDS));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        }
         return stringReceiver;
     }
 }
