@@ -1,4 +1,4 @@
-package edu.gatech.buzzmovieselector.service.api;
+package edu.gatech.buzzmovieselector.biz.api;
 
 /**
  * Async callback for ApiReceiver

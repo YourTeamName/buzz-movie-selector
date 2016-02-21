@@ -1,8 +1,8 @@
-package edu.gatech.buzzmovieselector.service.api.rt;
+package edu.gatech.buzzmovieselector.biz.api.impl.rt;
 
-import edu.gatech.buzzmovieselector.service.api.ApiCommand;
-import edu.gatech.buzzmovieselector.service.api.ApiInvoker;
-import edu.gatech.buzzmovieselector.service.api.ApiReceiver;
+import edu.gatech.buzzmovieselector.biz.api.ApiCommand;
+import edu.gatech.buzzmovieselector.biz.api.ApiInvoker;
+import edu.gatech.buzzmovieselector.biz.api.ApiReceiver;
 
 /**
  * Invokes commands that target the Rotten Tomatoes API

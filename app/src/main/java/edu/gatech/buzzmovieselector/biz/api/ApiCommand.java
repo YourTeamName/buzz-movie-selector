@@ -1,4 +1,4 @@
-package edu.gatech.buzzmovieselector.service.api;
+package edu.gatech.buzzmovieselector.biz.api;
 
 /**
  * Interface that allows API commands to be executed by the API invoker

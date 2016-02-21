@@ -1,10 +1,10 @@
-package edu.gatech.buzzmovieselector.service.api.rt.command;
+package edu.gatech.buzzmovieselector.biz.api.impl.rt.command;
 
-import edu.gatech.buzzmovieselector.service.api.ApiCallback;
-import edu.gatech.buzzmovieselector.service.api.ApiCommand;
-import edu.gatech.buzzmovieselector.service.api.ApiNetwork;
-import edu.gatech.buzzmovieselector.service.api.receiver.ApiJSONReceiver;
-import edu.gatech.buzzmovieselector.service.api.rt.RTInvoker;
+import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
+import edu.gatech.buzzmovieselector.biz.api.ApiCommand;
+import edu.gatech.buzzmovieselector.service.ApiNetwork;
+import edu.gatech.buzzmovieselector.biz.api.receiver.ApiJSONReceiver;
+import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 
 /**
  * Uses the Rotten Tomatoes API to get recent movies

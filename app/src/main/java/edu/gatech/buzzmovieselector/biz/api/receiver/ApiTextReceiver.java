@@ -1,9 +1,9 @@
-package edu.gatech.buzzmovieselector.service.api.receiver;
+package edu.gatech.buzzmovieselector.biz.api.receiver;
 
 import com.android.volley.toolbox.RequestFuture;
-import edu.gatech.buzzmovieselector.service.api.ApiCallback;
-import edu.gatech.buzzmovieselector.service.api.ApiReceiver;
-import edu.gatech.buzzmovieselector.service.api.ApiResponseType;
+import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
+import edu.gatech.buzzmovieselector.biz.api.ApiReceiver;
+import edu.gatech.buzzmovieselector.biz.api.ApiResponseType;
 
 /**
  * ApiReceiver for JSON objects

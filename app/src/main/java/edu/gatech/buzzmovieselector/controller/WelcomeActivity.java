@@ -14,7 +14,7 @@ import edu.gatech.buzzmovieselector.biz.impl.UserManager;
 import edu.gatech.buzzmovieselector.dao.DaoFactory;
 import edu.gatech.buzzmovieselector.entity.User;
 import edu.gatech.buzzmovieselector.service.SessionState;
-import edu.gatech.buzzmovieselector.service.api.ApiNetwork;
+import edu.gatech.buzzmovieselector.service.ApiNetwork;
 
 /**
  * WelcomeActivity is the controller for the welcome screen

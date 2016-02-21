@@ -1,6 +1,6 @@
-package edu.gatech.buzzmovieselector.service.api.rt.command;
+package edu.gatech.buzzmovieselector.biz.api.impl.rt.command;
 
-import edu.gatech.buzzmovieselector.service.api.ApiCommand;
+import edu.gatech.buzzmovieselector.biz.api.ApiCommand;
 
 /**
  * Factory for commands for the Rotten tomatoes API

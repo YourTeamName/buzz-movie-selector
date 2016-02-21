@@ -1,8 +1,8 @@
-package edu.gatech.buzzmovieselector.service.api.rt.command;
+package edu.gatech.buzzmovieselector.biz.api.impl.rt.command;
 
-import edu.gatech.buzzmovieselector.service.api.ApiCallback;
-import edu.gatech.buzzmovieselector.service.api.ApiCommand;
-import edu.gatech.buzzmovieselector.service.api.ApiReceiver;
+import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
+import edu.gatech.buzzmovieselector.biz.api.ApiCommand;
+import edu.gatech.buzzmovieselector.biz.api.ApiReceiver;
 
 /**
  * Uses the Rotten Tomatoes API to search for a movie

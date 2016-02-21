@@ -1,14 +1,14 @@
-package edu.gatech.buzzmovieselector.service.api;
+package edu.gatech.buzzmovieselector.service;
 
 import android.content.Context;
-import android.util.Log;
 import com.android.volley.*;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.RequestFuture;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import edu.gatech.buzzmovieselector.service.api.receiver.ApiJSONReceiver;
-import edu.gatech.buzzmovieselector.service.api.receiver.ApiTextReceiver;
+import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
+import edu.gatech.buzzmovieselector.biz.api.receiver.ApiJSONReceiver;
+import edu.gatech.buzzmovieselector.biz.api.receiver.ApiTextReceiver;
 import org.json.JSONObject;
 
 /**

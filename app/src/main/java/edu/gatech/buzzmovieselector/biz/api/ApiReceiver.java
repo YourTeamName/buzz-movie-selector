@@ -1,7 +1,6 @@
-package edu.gatech.buzzmovieselector.service.api;
+package edu.gatech.buzzmovieselector.biz.api;
 
 import android.os.AsyncTask;
-import android.util.Log;
 import com.android.volley.toolbox.RequestFuture;
 
 import java.util.concurrent.ExecutionException;
