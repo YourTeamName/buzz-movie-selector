@@ -76,11 +76,11 @@ public class BMSActivity extends AppCompatActivity
         ListView recentDVDs = (ListView) findViewById(R.id.recentDVDsList);
         recentDVDs.setAdapter(listAdapter);
         RTInvoker rti = new RTInvoker();
-        rti.executeCall(new ApiCall(RTCommandFactory.getRecentDVDsCommand(), new ApiCallback() {
+        rti.executeCall(new ApiCall(RTCommandFactory.getRecentDVDsCommand(), new ApiCallback<JSONObject>() {
             @Override
-            public void onReceive(ApiReceiver receiver) {
+            public void onReceive(ApiReceiver<JSONObject> receiver) {
                 // TODO: make a entity builder object to automatically handle this
-                JSONObject newDVDs = (JSONObject) receiver.getResponse();
+                JSONObject newDVDs = receiver.getResponse();
                 try {
                     JSONArray movieList = newDVDs.getJSONArray("movies");
                     for (int i = 0; i < movieList.length(); i++) {

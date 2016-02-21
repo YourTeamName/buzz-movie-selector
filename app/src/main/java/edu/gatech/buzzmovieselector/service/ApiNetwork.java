@@ -7,8 +7,7 @@ import com.android.volley.toolbox.RequestFuture;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
-import edu.gatech.buzzmovieselector.biz.api.receiver.ApiJSONReceiver;
-import edu.gatech.buzzmovieselector.biz.api.receiver.ApiTextReceiver;
+import edu.gatech.buzzmovieselector.biz.api.ApiReceiver;
 import org.json.JSONObject;
 
 /**
@@ -43,26 +42,18 @@ public class ApiNetwork {
         apiRequestQueue = getApiRequestQueue();
     }
 
-    public ApiJSONReceiver apiJSON(String url) {
-        return apiJSON(url, null);
-    }
-
-    public ApiTextReceiver apiString(String url) {
-        return apiString(url, null);
-    }
-
-    public ApiJSONReceiver apiJSON(String url, ApiCallback callback) {
+    public ApiReceiver<JSONObject> apiJSON(String url, ApiCallback callback) {
         RequestFuture<JSONObject> jsonFuture = RequestFuture.newFuture();
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, url, jsonFuture, jsonFuture);
-        ApiJSONReceiver jsonReceiver = new ApiJSONReceiver(jsonFuture, callback);
+        ApiReceiver<JSONObject> jsonReceiver = new ApiReceiver<>(jsonFuture, callback);
         apiRequestQueue.add(jsonRequest);
         return jsonReceiver;
     }
 
-    public ApiTextReceiver apiString(String url, ApiCallback callback) {
+    public ApiReceiver<String> apiString(String url, ApiCallback callback) {
         RequestFuture<String> stringFuture = RequestFuture.newFuture();
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, stringFuture, stringFuture);
-        ApiTextReceiver stringReceiver = new ApiTextReceiver(stringFuture, callback);
+        ApiReceiver<String> stringReceiver = new ApiReceiver<>(stringFuture, callback);
         apiRequestQueue.add(stringRequest);
         return stringReceiver;
     }
