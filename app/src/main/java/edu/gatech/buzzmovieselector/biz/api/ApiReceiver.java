@@ -27,7 +27,7 @@ enum ApiResult {
 /**
  * Holds the response of an ApiCommand
  */
-abstract public class ApiReceiver {
+public class ApiReceiver<T> {
 
     private class AsyncFutureTask extends AsyncTask<RequestFuture, Integer, Object> {
         @Override
@@ -63,7 +63,7 @@ abstract public class ApiReceiver {
         public void run() {
             AsyncFutureTask futureTask = new AsyncFutureTask();
             try {
-                responseData = futureTask.execute(responseFuture).get();
+                responseData = (T) futureTask.execute(responseFuture).get();
                 if (responseCallback != null) {
                     responseCallback.onReceive(ApiReceiver.this);
                 }
@@ -78,20 +78,14 @@ abstract public class ApiReceiver {
 
     private static final int API_MAX_WAIT = 5;
 
-    protected ApiResponseType responseType;
     protected RequestFuture responseFuture;
-    private Object responseData;
+    private T responseData;
     private ApiCallback responseCallback = null;
     private ApiResult responseStatus = ApiResult.NOT_DONE;
     private Thread retrieveThread;
 
-    public ApiReceiver(RequestFuture requestFuture, ApiResponseType responseType) {
-        this(requestFuture, responseType, null);
-    }
-
-    public ApiReceiver(RequestFuture requestFuture, ApiResponseType responseType, ApiCallback responseCallback) {
+    public ApiReceiver(RequestFuture requestFuture, ApiCallback responseCallback) {
         this.responseFuture = requestFuture;
-        this.responseType = responseType;
         this.responseCallback = responseCallback;
         startRetrieve();
     }
@@ -102,14 +96,6 @@ abstract public class ApiReceiver {
      */
     public void setResponseCallback(ApiCallback callback) {
         responseCallback = callback;
-    }
-
-    /**
-     * Gets the ApiReceiver's response type
-     * @return the type of data that was returned
-     */
-    public ApiResponseType getResponseType() {
-        return responseType;
     }
 
     /**
@@ -127,18 +113,11 @@ abstract public class ApiReceiver {
         retrieveThread = new Thread(new FutureThread());
         retrieveThread.start();
     }
-
-    /**
-     * Gives the raw response
-     * @return raw response object
-     */
-    protected Object getRawResponse() {
-        return responseData;
-    }
-
     /**
      * Gives the correctly casted response
      * @return correctly casted response object
      */
-    abstract public Object getResponse();
+    public T getResponse() {
+        return (T) responseData;
+    }
 }

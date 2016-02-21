@@ -5,6 +5,7 @@ import edu.gatech.buzzmovieselector.biz.api.ApiCommand;
 import edu.gatech.buzzmovieselector.biz.api.ApiReceiver;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 import edu.gatech.buzzmovieselector.service.ApiNetwork;
+import org.json.JSONObject;
 
 import java.net.URLEncoder;
 
@@ -19,7 +20,7 @@ public class RTMovieSearch implements ApiCommand {
         String query = URLEncoder.encode(search);
         url = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?q=" + query + "&page_limit=10&apikey=" + RTInvoker.API_KEY;
     }
-    public ApiReceiver execute(ApiCallback callback) {
+    public ApiReceiver<JSONObject> execute(ApiCallback callback) {
         return ApiNetwork.getInstance().apiJSON(url, callback);
     }
 }
