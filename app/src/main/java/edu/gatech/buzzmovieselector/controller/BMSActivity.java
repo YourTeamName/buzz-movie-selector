@@ -71,7 +71,9 @@ public class BMSActivity extends AppCompatActivity
 
         // for test purposes only
         final ArrayList<String> dvdList = new ArrayList<>();
+        ArrayAdapter<String> listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dvdList);
         ListView recentDVDs = (ListView) findViewById(R.id.recentDVDsList);
+        recentDVDs.setAdapter(listAdapter);
         RTInvoker rti = new RTInvoker();
         rti.executeCall(new ApiCall(RTCommandFactory.getRecentDVDsCommand(), new ApiCallback() {
             @Override
@@ -89,11 +91,11 @@ public class BMSActivity extends AppCompatActivity
                 }
             }
         }));
-        ArrayAdapter<String> listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dvdList);
+
         for (String s : dvdList) {
             Log.v("BMSActivity", s);
         }
-        recentDVDs.setAdapter(listAdapter);
+        recentDVDs.invalidate();
     }
 
     @Override
