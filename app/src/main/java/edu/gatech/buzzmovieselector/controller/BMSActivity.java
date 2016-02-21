@@ -96,7 +96,6 @@ public class BMSActivity extends AppCompatActivity
         for (String s : dvdList) {
             Log.v("BMSActivity", s);
         }
-        recentDVDs.invalidate();
     }
 
     @Override
