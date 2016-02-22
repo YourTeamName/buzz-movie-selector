@@ -56,10 +56,15 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(String title, int year) {
-        this.setYear(year);
-        this.setYear(year);
+    public Movie(String title, int year, double rating) {
+        this.title = title;
+        this.year = year;
+        this.rating = rating;
     }
 
+    @Override
+    public String toString() {
+        return "Movie: " + title + " Year: " + year + " Rate: " + rating;
+    }
 
 }
