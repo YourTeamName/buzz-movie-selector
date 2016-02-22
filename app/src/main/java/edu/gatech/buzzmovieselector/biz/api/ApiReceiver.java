@@ -27,7 +27,7 @@ enum ApiResult {
 /**
  * Holds the response of an ApiCommand
  */
-public class ApiReceiver<T, V> {
+abstract public class ApiReceiver<T, V> {
 
     private class AsyncFutureTask extends AsyncTask<RequestFuture, Integer, Object> {
         @Override
@@ -125,7 +125,5 @@ public class ApiReceiver<T, V> {
      * Gives the response converted to an Entity
      * @return converted entity object
      */
-    public V getEntity() {
-        return (V) getResponse();
-    }
+    abstract public V getEntity();
 }
