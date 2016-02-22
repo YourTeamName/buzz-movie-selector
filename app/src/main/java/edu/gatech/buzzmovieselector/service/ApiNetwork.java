@@ -62,28 +62,24 @@ public class ApiNetwork {
     /**
      * Hits an Api expecting a JSON object
      * @param url Api endpoint
-     * @param callback Callback to execute when finished
-     * @return ApiReceiver object with JSONObject response
+     * @return RequestFuture object with JSONObject response
      */
-    public ApiReceiver<JSONObject> apiJSON(String url, ApiCallback callback) {
+    public RequestFuture<JSONObject> apiJSON(String url) {
         RequestFuture<JSONObject> jsonFuture = RequestFuture.newFuture();
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, url, jsonFuture, jsonFuture);
-        ApiReceiver<JSONObject> jsonReceiver = new ApiReceiver<>(jsonFuture, callback);
         apiRequestQueue.add(jsonRequest);
-        return jsonReceiver;
+        return jsonFuture;
     }
 
     /**
      * Hits an Api expecting a string
      * @param url Api endpoint
-     * @param callback Callback to execute when finished
-     * @return ApiReceiver object with String response
+     * @return RequestFuture object with String response
      */
-    public ApiReceiver<String> apiString(String url, ApiCallback callback) {
+    public RequestFuture<String> apiString(String url) {
         RequestFuture<String> stringFuture = RequestFuture.newFuture();
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, stringFuture, stringFuture);
-        ApiReceiver<String> stringReceiver = new ApiReceiver<>(stringFuture, callback);
         apiRequestQueue.add(stringRequest);
-        return stringReceiver;
+        return stringFuture;
     }
 }

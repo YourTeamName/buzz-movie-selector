@@ -3,6 +3,7 @@ package edu.gatech.buzzmovieselector.biz.api.impl.rt.command;
 import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
 import edu.gatech.buzzmovieselector.biz.api.ApiCommand;
 import edu.gatech.buzzmovieselector.biz.api.ApiReceiver;
+import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver.RTMovieListReceiver;
 import edu.gatech.buzzmovieselector.service.ApiNetwork;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 import org.json.JSONObject;
@@ -14,7 +15,7 @@ public class RTRecentDVDs implements ApiCommand {
     private final String url = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/new_releases.json?page_limit=10&apikey=" + RTInvoker.API_KEY;
 
     @Override
-    public ApiReceiver<JSONObject> execute(ApiCallback callback) {
-        return ApiNetwork.getInstance().apiJSON(url, callback);
+    public RTMovieListReceiver execute(ApiCallback callback) {
+        return new RTMovieListReceiver(ApiNetwork.getInstance().apiJSON(url), callback);
     }
 }

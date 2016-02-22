@@ -23,6 +23,8 @@ import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
 import edu.gatech.buzzmovieselector.biz.api.ApiReceiver;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.command.RTCommandFactory;
+import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver.RTMovieListReceiver;
+import edu.gatech.buzzmovieselector.entity.Movie;
 import edu.gatech.buzzmovieselector.service.SessionState;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -76,19 +78,11 @@ public class BMSActivity extends AppCompatActivity
         ListView recentDVDs = (ListView) findViewById(R.id.recentDVDsList);
         recentDVDs.setAdapter(listAdapter);
         RTInvoker rti = new RTInvoker();
-        rti.executeCall(new ApiCall(RTCommandFactory.getRecentDVDsCommand(), new ApiCallback<JSONObject>() {
+        rti.executeCall(new ApiCall(RTCommandFactory.getRecentDVDsCommand(), new ApiCallback<RTMovieListReceiver>() {
             @Override
-            public void onReceive(ApiReceiver<JSONObject> receiver) {
-                // TODO: make a entity builder object to automatically handle this
-                JSONObject newDVDs = receiver.getResponse();
-                try {
-                    JSONArray movieList = newDVDs.getJSONArray("movies");
-                    for (int i = 0; i < movieList.length(); i++) {
-                        JSONObject movie = movieList.getJSONObject(i);
-                        dvdList.add(movie.getString("title"));
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+            public void onReceive(RTMovieListReceiver receiver) {
+                for (Movie m : receiver.getEntity()) {
+                    dvdList.add(m.toString());
                 }
             }
         }));
