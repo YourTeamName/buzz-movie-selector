@@ -1,13 +1,11 @@
 package edu.gatech.buzzmovieselector.controller;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -46,12 +44,6 @@ public class SearchResultsActivity extends AppCompatActivity {
         ArrayAdapter<String> listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dvdList);
         ListView recentDVDs = (ListView) findViewById(R.id.listView);
         recentDVDs.setAdapter(listAdapter);
-        Context context = getApplicationContext();
-        CharSequence text = search;
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
 
         for (String sd : dvdList) {
             Log.v("BMSActivity", sd);
