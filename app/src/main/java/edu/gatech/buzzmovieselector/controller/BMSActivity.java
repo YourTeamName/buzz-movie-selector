@@ -83,8 +83,8 @@ public class BMSActivity extends AppCompatActivity
             }
         }));
 
-        for (String s : dvdList) {
-            Log.v("BMSActivity", s);
+        for (String sd : dvdList) {
+            Log.v("BMSActivity", sd);
         }
     }
 
