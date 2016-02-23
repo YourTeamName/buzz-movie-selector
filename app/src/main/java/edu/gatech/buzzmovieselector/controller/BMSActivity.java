@@ -57,7 +57,7 @@ public class BMSActivity extends AppCompatActivity
         s.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                startResultsActivity();
+                startResultsActivity(s);
                 return false;
             }
 
@@ -108,9 +108,9 @@ public class BMSActivity extends AppCompatActivity
      * Helper method to be called in onCreate
      * function that starts the search results screen
      */
-    private void startResultsActivity() {
+    private void startResultsActivity(String s) {
         Intent intent = new Intent(this, SearchResultsActivity.class);
-        intent.putExtra(SearchResultsActivity.CURRENT_QUERY, s.getQuery().toString());
+        intent.putExtra("search", s);
         startActivity(intent);
     }
 
