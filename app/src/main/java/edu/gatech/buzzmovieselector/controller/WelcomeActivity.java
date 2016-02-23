@@ -1,7 +1,11 @@
 package edu.gatech.buzzmovieselector.controller;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import edu.gatech.buzzmovieselector.R;
@@ -10,12 +14,15 @@ import edu.gatech.buzzmovieselector.biz.impl.UserManager;
 import edu.gatech.buzzmovieselector.dao.DaoFactory;
 import edu.gatech.buzzmovieselector.entity.User;
 import edu.gatech.buzzmovieselector.service.SessionState;
+import edu.gatech.buzzmovieselector.service.ApiNetwork;
 
 /**
  * WelcomeActivity is the controller for the welcome screen
  * Initially loaded activity
  */
 public class WelcomeActivity extends AppCompatActivity {
+
+    private final int REQUEST_CODE_ASK_PERMISSIONS = 2340;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +46,41 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     /**
+     * Checks to see if permissions need to be requested
+     */
+    private void checkPermissions() {
+        int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.INTERNET);
+        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.INTERNET}, REQUEST_CODE_ASK_PERMISSIONS);
+        } else {
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_ASK_PERMISSIONS:
+                if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    finish();
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+    /**
      * Method for initializing hard coded values and restoring app state
      */
     private void initApp() {
         // TODO: load user data from persistent storage so that register works
         // Pass context to DaoFactory so that it can work properly later
         DaoFactory.setContext(this);
-
+        checkPermissions();
         UserManagementFacade um = new UserManager();
         um.addUser(new User("user", "pass"));
         restoreState();
+        ApiNetwork.getInstance(this);
     }
 
     /**
