@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SearchView;
 
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -48,6 +49,20 @@ public class BMSActivity extends AppCompatActivity
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+
+        SearchView s = (SearchView) findViewById(R.id.searchView);
+        s.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                startResultsActivity();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
             }
         });
 
@@ -88,6 +103,15 @@ public class BMSActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Helper method to be called in onCreate
+     * function that starts the search results screen
+     */
+    private void startResultsActivity() {
+        Intent intent = new Intent(this, SearchResultsActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -118,6 +142,16 @@ public class BMSActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Starts the profile viewer activity
+     */
+    private void startProfileActivity() {
+        Intent profileIntent = new Intent(this, ProfileActivity.class);
+        String profileUser = SessionState.getInstance().getSessionUser().getUsername();
+        profileIntent.putExtra(ProfileActivity.PROFILE_USER_KEY, profileUser);
+        startActivity(profileIntent);
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -136,10 +170,7 @@ public class BMSActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_profile) {
             Log.v("BMS", "View ProfileActivity");
-            Intent profileIntent = new Intent(this, ProfileActivity.class);
-            String profileUser = SessionState.getInstance().getSessionUser().getUsername();
-            profileIntent.putExtra(ProfileActivity.PROFILE_USER_KEY, profileUser);
-            startActivity(profileIntent);
+            startProfileActivity();
         } else if (id == R.id.nav_logout) {
             SessionState.getInstance().endSession(getApplicationContext());
             finish();
