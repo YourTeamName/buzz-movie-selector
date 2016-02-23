@@ -17,6 +17,10 @@ import edu.gatech.buzzmovieselector.biz.api.impl.rt.command.RTCommandFactory;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver.RTMovieListReceiver;
 import edu.gatech.buzzmovieselector.entity.Movie;
 
+/**
+ * Search results activity that displays the results of a search
+ * Intent from BMSActivity contains the search text
+ */
 public class SearchResultsActivity extends AppCompatActivity {
 
     @Override
@@ -27,12 +31,15 @@ public class SearchResultsActivity extends AppCompatActivity {
         //Log.d("MY", "search activity triggered");
     }
 
-    protected void displayResults() {
+    /**
+     * Displays the results of the search done from BMSActivity
+     */
+    private void displayResults() {
         final ArrayList<String> dvdList = new ArrayList<>();
         // TODO: make a custom list adapter to work with POJOs
         RTInvoker rti = new RTInvoker();
         Intent intent = getIntent();
-        String search = intent.getStringExtra("search");
+        String search = intent.getStringExtra("search"); // Get search query
         rti.executeCall(new ApiCall(RTCommandFactory.getMovieSearchCommand(search), new ApiCallback<RTMovieListReceiver>() {
             @Override
             public void onReceive(RTMovieListReceiver receiver) {
