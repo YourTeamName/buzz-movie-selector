@@ -112,6 +112,16 @@ public class BMSActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Starts the profile viewer activity
+     */
+    private void startProfileActivity() {
+        Intent profileIntent = new Intent(this, ProfileActivity.class);
+        String profileUser = SessionState.getInstance().getSessionUser().getUsername();
+        profileIntent.putExtra(ProfileActivity.PROFILE_USER_KEY, profileUser);
+        startActivity(profileIntent);
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -130,10 +140,7 @@ public class BMSActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_profile) {
             Log.v("BMS", "View ProfileActivity");
-            Intent profileIntent = new Intent(this, ProfileActivity.class);
-            String profileUser = SessionState.getInstance().getSessionUser().getUsername();
-            profileIntent.putExtra(ProfileActivity.PROFILE_USER_KEY, profileUser);
-            startActivity(profileIntent);
+            startProfileActivity();
         } else if (id == R.id.nav_logout) {
             SessionState.getInstance().endSession(getApplicationContext());
             finish();
