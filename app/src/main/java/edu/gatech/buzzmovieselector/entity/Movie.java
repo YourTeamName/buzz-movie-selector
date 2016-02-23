@@ -12,6 +12,8 @@ public class Movie {
     private Integer year;
     private Double rating;
     private Collection<Review> reviews;
+    // TODO: store actual binary image data
+    private String imageURL;
 
     public Collection<Review> getReviews() {
         return reviews;
@@ -53,6 +55,13 @@ public class Movie {
         this.rating = rating;
     }
 
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
     public Movie() {
     }
 
@@ -61,6 +70,14 @@ public class Movie {
         this.year = year;
         this.rating = rating;
     }
+
+    public Movie(String title, int year, double rating, String imageURL) {
+        this.title = title;
+        this.year = year;
+        this.rating = rating;
+        this.imageURL = imageURL;
+    }
+
 
     @Override
     public String toString() {

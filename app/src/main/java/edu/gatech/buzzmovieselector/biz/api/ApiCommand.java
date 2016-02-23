@@ -1,5 +1,7 @@
 package edu.gatech.buzzmovieselector.biz.api;
 
+import android.graphics.Bitmap;
+
 /**
  * Interface that allows API commands to be executed by the API invoker
  */

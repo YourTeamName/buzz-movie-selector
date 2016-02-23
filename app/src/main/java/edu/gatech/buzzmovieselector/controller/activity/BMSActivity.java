@@ -24,6 +24,7 @@ import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.command.RTCommandFactory;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver
         .RTMovieListReceiver;
+import edu.gatech.buzzmovieselector.controller.util.MovieAdapter;
 import edu.gatech.buzzmovieselector.entity.Movie;
 import edu.gatech.buzzmovieselector.service.SessionState;
 
@@ -88,6 +89,7 @@ public class BMSActivity extends AppCompatActivity
             finish();
         }
 
+        /*
         // for test purposes only
         final ArrayList<String> dvdList = new ArrayList<>();
         // Make a custom list adapter for list view
@@ -108,6 +110,26 @@ public class BMSActivity extends AppCompatActivity
                 runOnUiThread(new Runnable() {
                     public void run() {
                         listAdapter.notifyDataSetChanged();
+                    }
+                });
+            }
+        }));
+        */
+        final ArrayList<Movie> mList = new ArrayList<>();
+        ListView recentDVDs = (ListView) findViewById(R.id.recentDVDsList);
+        final MovieAdapter movAdapter = new MovieAdapter(this, mList);
+        recentDVDs.setAdapter(movAdapter);
+        RTInvoker rti = new RTInvoker();
+        rti.executeCall(new ApiCall(RTCommandFactory.getRecentMoviesCommand()
+                , new ApiCallback<RTMovieListReceiver>() {
+            @Override
+            public void onReceive(RTMovieListReceiver receiver) {
+                for (Movie m : receiver.getEntity()) {
+                    mList.add(m);
+                }
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        movAdapter.notifyDataSetChanged();
                     }
                 });
             }
