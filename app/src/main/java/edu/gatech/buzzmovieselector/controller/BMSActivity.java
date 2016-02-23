@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SearchView;
 
 import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.service.SessionState;
@@ -41,6 +42,20 @@ public class BMSActivity extends AppCompatActivity
             }
         });
 
+        SearchView s = (SearchView) findViewById(R.id.searchView);
+        s.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                startResultsActivity();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -56,6 +71,15 @@ public class BMSActivity extends AppCompatActivity
             // we should not be here unless we are logged in
             finish();
         }
+    }
+
+    /**
+     * Helper method to be called in onCreate
+     * function that starts the search results screen
+     */
+    private void startResultsActivity() {
+        Intent intent = new Intent(this, SearchResultsActivity.class);
+        startActivity(intent);
     }
 
     @Override
