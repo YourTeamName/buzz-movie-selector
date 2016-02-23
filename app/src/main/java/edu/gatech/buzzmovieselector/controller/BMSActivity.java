@@ -2,6 +2,7 @@ package edu.gatech.buzzmovieselector.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
@@ -37,9 +38,11 @@ public class BMSActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private SearchView s;
+    private static Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        handler = new Handler();
         setContentView(R.layout.activity_bms);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -86,7 +89,7 @@ public class BMSActivity extends AppCompatActivity
         // for test purposes only
         final ArrayList<String> dvdList = new ArrayList<>();
         // TODO: make a custom list adapter to work with POJOs
-        ArrayAdapter<String> listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dvdList);
+        final ArrayAdapter<String> listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dvdList);
         ListView recentDVDs = (ListView) findViewById(R.id.recentDVDsList);
         recentDVDs.setAdapter(listAdapter);
         RTInvoker rti = new RTInvoker();
@@ -96,12 +99,25 @@ public class BMSActivity extends AppCompatActivity
                 for (Movie m : receiver.getEntity()) {
                     dvdList.add(m.toString());
                 }
+                BMSActivity.getHandler().post(new Runnable() {
+                    public void run() {
+                        listAdapter.notifyDataSetChanged();
+                    }
+                });
             }
         }));
 
         for (String sd : dvdList) {
             Log.v("BMSActivity", sd);
         }
+    }
+
+    /**
+     * Accessor method for the activity's handler
+     * @return The handler for the activity on which to execute methods
+     */
+    private static Handler getHandler() {
+        return handler;
     }
 
     /**

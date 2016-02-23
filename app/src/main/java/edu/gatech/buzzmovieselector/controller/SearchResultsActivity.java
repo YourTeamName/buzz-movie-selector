@@ -3,6 +3,7 @@ package edu.gatech.buzzmovieselector.controller;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver.RTMovieListReceiver;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,9 +25,11 @@ import edu.gatech.buzzmovieselector.entity.Movie;
  */
 public class SearchResultsActivity extends AppCompatActivity {
 
+    private static Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        handler = new Handler();
         setContentView(R.layout.activity_search_results);
         displayResults();
         //Log.d("MY", "search activity triggered");
@@ -38,6 +41,9 @@ public class SearchResultsActivity extends AppCompatActivity {
     private void displayResults() {
         final ArrayList<String> dvdList = new ArrayList<>();
         // TODO: make a custom list adapter to work with POJOs
+        final ArrayAdapter<String> listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dvdList);
+        final ListView recentDVDs = (ListView) findViewById(R.id.searchResults);
+        recentDVDs.setAdapter(listAdapter);
         RTInvoker rti = new RTInvoker();
         Intent intent = getIntent();
         String search = intent.getStringExtra("search"); // Get search query
@@ -47,14 +53,25 @@ public class SearchResultsActivity extends AppCompatActivity {
                 for (Movie m : receiver.getEntity()) {
                     dvdList.add(m.toString());
                 }
+                SearchResultsActivity.getHandler().post(new Runnable() {
+                    public void run() {
+                        listAdapter.notifyDataSetChanged();
+                    }
+                });
             }
         }));
-        ArrayAdapter<String> listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dvdList);
-        ListView recentDVDs = (ListView) findViewById(R.id.searchResults);
-        recentDVDs.setAdapter(listAdapter);
 
         for (String sd : dvdList) {
             Log.v("BMSActivity", sd);
         }
     }
+
+    /**
+     * Accessor method for the activity's handler
+     * @return The handler for the activity on which to execute methods
+     */
+    private static Handler getHandler() {
+        return handler;
+    }
+
 }
