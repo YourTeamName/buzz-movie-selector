@@ -1,4 +1,4 @@
-package edu.gatech.buzzmovieselector.controller;
+package edu.gatech.buzzmovieselector.controller.fragment;
 
 import android.app.Activity;
 import android.net.Uri;
