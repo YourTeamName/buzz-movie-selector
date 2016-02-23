@@ -3,27 +3,27 @@ package edu.gatech.buzzmovieselector.controller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.SearchView;
-
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.biz.api.ApiCall;
 import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.command.RTCommandFactory;
-import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver.RTMovieListReceiver;
+import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver
+        .RTMovieListReceiver;
 import edu.gatech.buzzmovieselector.entity.Movie;
 import edu.gatech.buzzmovieselector.service.SessionState;
 
@@ -36,6 +36,8 @@ import java.util.ArrayList;
 public class BMSActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private SearchView searchView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,20 +45,22 @@ public class BMSActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id
+                .fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Replace with your own action", Snackbar
+                        .LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
 
-        SearchView s = (SearchView) findViewById(R.id.searchView);
-        s.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searchView = (SearchView) findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                startResultsActivity();
+                startResultsActivity(s);
                 return false;
             }
 
@@ -68,11 +72,13 @@ public class BMSActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open, R
+                .string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id
+                .nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         if (SessionState.getInstance().isLoggedIn()) {
             Log.v("BMS", "we are logged in");
@@ -84,31 +90,37 @@ public class BMSActivity extends AppCompatActivity
 
         // for test purposes only
         final ArrayList<String> dvdList = new ArrayList<>();
-        // TODO: make a custom list adapter to work with POJOs
-        ArrayAdapter<String> listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dvdList);
+        // Make a custom list adapter for list view
+        final ArrayAdapter<String> listAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, dvdList);
         ListView recentDVDs = (ListView) findViewById(R.id.recentDVDsList);
         recentDVDs.setAdapter(listAdapter);
+
+        // Call RT api to retrieve recent movies
         RTInvoker rti = new RTInvoker();
-        rti.executeCall(new ApiCall(RTCommandFactory.getMovieSearchCommand("Django"), new ApiCallback<RTMovieListReceiver>() {
+        rti.executeCall(new ApiCall(RTCommandFactory.getRecentMoviesCommand()
+                , new ApiCallback<RTMovieListReceiver>() {
             @Override
             public void onReceive(RTMovieListReceiver receiver) {
                 for (Movie m : receiver.getEntity()) {
                     dvdList.add(m.toString());
                 }
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        listAdapter.notifyDataSetChanged();
+                    }
+                });
             }
         }));
-
-        for (String sd : dvdList) {
-            Log.v("BMSActivity", sd);
-        }
     }
 
     /**
      * Helper method to be called in onCreate
      * function that starts the search results screen
      */
-    private void startResultsActivity() {
+    private void startResultsActivity(String keyword) {
         Intent intent = new Intent(this, SearchResultsActivity.class);
+        intent.putExtra(SearchResultsActivity.SEARCH_KEYWORD, keyword);
         startActivity(intent);
     }
 
@@ -147,7 +159,8 @@ public class BMSActivity extends AppCompatActivity
      */
     private void startProfileActivity() {
         Intent profileIntent = new Intent(this, ProfileActivity.class);
-        String profileUser = SessionState.getInstance().getSessionUser().getUsername();
+        String profileUser = SessionState.getInstance().getSessionUser()
+                .getUsername();
         profileIntent.putExtra(ProfileActivity.PROFILE_USER_KEY, profileUser);
         startActivity(profileIntent);
     }
