@@ -36,6 +36,7 @@ import java.util.ArrayList;
 public class BMSActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private SearchView s;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +53,7 @@ public class BMSActivity extends AppCompatActivity
             }
         });
 
-        SearchView s = (SearchView) findViewById(R.id.searchView);
+        s = (SearchView) findViewById(R.id.searchView);
         s.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -89,7 +90,7 @@ public class BMSActivity extends AppCompatActivity
         ListView recentDVDs = (ListView) findViewById(R.id.recentDVDsList);
         recentDVDs.setAdapter(listAdapter);
         RTInvoker rti = new RTInvoker();
-        rti.executeCall(new ApiCall(RTCommandFactory.getMovieSearchCommand("Django"), new ApiCallback<RTMovieListReceiver>() {
+        rti.executeCall(new ApiCall(RTCommandFactory.getRecentMoviesCommand(), new ApiCallback<RTMovieListReceiver>() {
             @Override
             public void onReceive(RTMovieListReceiver receiver) {
                 for (Movie m : receiver.getEntity()) {
