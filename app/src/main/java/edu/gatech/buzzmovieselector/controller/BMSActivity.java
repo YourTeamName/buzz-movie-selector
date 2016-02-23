@@ -74,7 +74,7 @@ public class BMSActivity extends AppCompatActivity
         ListView recentDVDs = (ListView) findViewById(R.id.recentDVDsList);
         recentDVDs.setAdapter(listAdapter);
         RTInvoker rti = new RTInvoker();
-        rti.executeCall(new ApiCall(RTCommandFactory.getRecentDVDsCommand(), new ApiCallback<RTMovieListReceiver>() {
+        rti.executeCall(new ApiCall(RTCommandFactory.getMovieSearchCommand("Django"), new ApiCallback<RTMovieListReceiver>() {
             @Override
             public void onReceive(RTMovieListReceiver receiver) {
                 for (Movie m : receiver.getEntity()) {
