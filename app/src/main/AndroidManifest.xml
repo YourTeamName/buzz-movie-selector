@@ -24,5 +24,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".controller.RegisterActivity" />
         <activity android:name=".controller.ProfileActivity"></activity>
+        <activity android:name=".controller.SearchResultsActivity"></activity>
     </application>
 </manifest>
