@@ -29,7 +29,6 @@ public class SearchResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
         displayResults();
-        //Log.d("MY", "search activity triggered");
     }
 
     /**
