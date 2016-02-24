@@ -15,6 +15,7 @@ import edu.gatech.buzzmovieselector.biz.api.ApiCall;
 import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
 import edu.gatech.buzzmovieselector.biz.api.ApiCommand;
 import edu.gatech.buzzmovieselector.biz.api.ApiReceiver;
+import edu.gatech.buzzmovieselector.biz.api.impl.general.command.GeneralCommandFactory;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 import edu.gatech.buzzmovieselector.entity.Movie;
 import edu.gatech.buzzmovieselector.service.ApiNetwork;
@@ -60,18 +61,7 @@ public class MovieAdapter extends BaseAdapter {
         final TextView movieTitleView = (TextView) rowView.findViewById(R.id.movieTitleText);
         final Movie movie = movies.get(i);
         movieTitleView.setText(movie.getTitle() + " (" + movie.getYear() + ")");
-        // TODO: make actual classes for this stuff
-        ApiCall imageCall = new ApiCall(new ApiCommand() {
-            @Override
-            public ApiReceiver<Bitmap, Bitmap> execute(ApiCallback callback) {
-                return new ApiReceiver<Bitmap, Bitmap>(ApiNetwork.getInstance().apiImage(movie.getImageURL()), callback) {
-                    @Override
-                    public Bitmap getEntity() {
-                        return getResponse();
-                    }
-                };
-            }
-        }, new ApiCallback<ApiReceiver<Bitmap, Bitmap>>() {
+        ApiCall imageCall = new ApiCall(GeneralCommandFactory.getImageCommand(movie.getImageURL()), new ApiCallback<ApiReceiver<Bitmap, Bitmap>>() {
             @Override
             public void onReceive(final ApiReceiver<Bitmap, Bitmap> receiver) {
                 hostActivity.runOnUiThread(new Runnable() {
