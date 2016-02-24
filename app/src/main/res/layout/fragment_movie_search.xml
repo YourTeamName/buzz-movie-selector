@@ -19,6 +19,8 @@
         <ListView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingBottom="@dimen/movie_item_height"
                 android:id="@+id/movieSearchList" android:layout_below="@+id/searchView" android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>
