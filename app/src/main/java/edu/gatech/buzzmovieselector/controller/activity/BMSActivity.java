@@ -1,7 +1,5 @@
 package edu.gatech.buzzmovieselector.controller.activity;
 
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -32,7 +30,6 @@ import edu.gatech.buzzmovieselector.service.SessionState;
 public class BMSActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
@@ -63,8 +60,6 @@ public class BMSActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id
                 .nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
