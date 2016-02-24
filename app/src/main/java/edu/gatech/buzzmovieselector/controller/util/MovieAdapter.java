@@ -30,8 +30,6 @@ public class MovieAdapter extends BaseAdapter {
 
     private static LayoutInflater inflater = null;
 
-    private static final int BOTTOM_OFFSET = 64;
-
     public MovieAdapter(Activity hostActivity, List<Movie> movies) {
         this.movies = movies;
         this.hostActivity = hostActivity;
