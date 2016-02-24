@@ -2,7 +2,6 @@ package edu.gatech.buzzmovieselector.controller.util;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +12,8 @@ import android.widget.TextView;
 import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.biz.api.ApiCall;
 import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
-import edu.gatech.buzzmovieselector.biz.api.ApiReceiver;
 import edu.gatech.buzzmovieselector.biz.api.impl.general.command.GeneralCommandFactory;
+import edu.gatech.buzzmovieselector.biz.api.impl.general.receiver.ImageReceiver;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 import edu.gatech.buzzmovieselector.entity.Movie;
 
@@ -59,9 +58,9 @@ public class MovieAdapter extends BaseAdapter {
         final TextView movieTitleView = (TextView) rowView.findViewById(R.id.movieTitleText);
         final Movie movie = movies.get(i);
         movieTitleView.setText(movie.getTitle() + " (" + movie.getYear() + ")");
-        ApiCall imageCall = new ApiCall(GeneralCommandFactory.getImageCommand(movie.getImageURL()), new ApiCallback<ApiReceiver<Bitmap, Bitmap>>() {
+        ApiCall imageCall = new ApiCall(GeneralCommandFactory.getImageCommand(movie.getImageURL()), new ApiCallback<ImageReceiver>() {
             @Override
-            public void onReceive(final ApiReceiver<Bitmap, Bitmap> receiver) {
+            public void onReceive(final ImageReceiver receiver) {
                 hostActivity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
