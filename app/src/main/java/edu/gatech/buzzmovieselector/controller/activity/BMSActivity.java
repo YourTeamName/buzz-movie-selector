@@ -60,7 +60,6 @@ public class BMSActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id
                 .nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new RecentDVDsFragment(), "DVDs");
