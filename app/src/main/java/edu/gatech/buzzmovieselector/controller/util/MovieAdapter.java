@@ -13,12 +13,10 @@ import android.widget.TextView;
 import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.biz.api.ApiCall;
 import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
-import edu.gatech.buzzmovieselector.biz.api.ApiCommand;
 import edu.gatech.buzzmovieselector.biz.api.ApiReceiver;
 import edu.gatech.buzzmovieselector.biz.api.impl.general.command.GeneralCommandFactory;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 import edu.gatech.buzzmovieselector.entity.Movie;
-import edu.gatech.buzzmovieselector.service.ApiNetwork;
 
 import java.util.List;
 
@@ -76,7 +74,7 @@ public class MovieAdapter extends BaseAdapter {
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
+                // TODO make this open a movie viewer activity
                 Log.v("movieadapter", "position " + i);
             }
         });
