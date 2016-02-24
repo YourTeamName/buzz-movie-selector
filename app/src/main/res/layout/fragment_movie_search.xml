@@ -19,7 +19,7 @@
         <ListView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/recentDVDsList" android:layout_below="@+id/searchView" android:layout_centerHorizontal="true"/>
+                android:id="@+id/movieSearchList" android:layout_below="@+id/searchView" android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>
 </FrameLayout>
