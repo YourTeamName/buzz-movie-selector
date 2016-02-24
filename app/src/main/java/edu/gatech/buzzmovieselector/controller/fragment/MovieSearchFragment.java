@@ -66,7 +66,11 @@ public class MovieSearchFragment extends Fragment {
         hostActivity = getActivity();
     }
 
-    public void refreshResults(View v) {
+    /**
+     * Refreshes the search results that are contained in the listview
+     * @param v View associated with the fragment
+     */
+    private void refreshResults(View v) {
         final ArrayList<Movie> mList = new ArrayList<>();
         final MovieAdapter movAdapter = new MovieAdapter(hostActivity, mList);
         movieResults.setAdapter(movAdapter);

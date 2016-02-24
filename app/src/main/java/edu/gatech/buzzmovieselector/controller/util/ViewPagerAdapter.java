@@ -30,6 +30,11 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         return fragmentList.size();
     }
 
+    /**
+     * Adds a fragment with an associated title
+     * @param fragment Fragment to add to viewpager
+     * @param title Title of the fragment tab
+     */
     public void addFragment(Fragment fragment, String title) {
         fragmentList.add(fragment);
         fragmentTitleList.add(title);
