@@ -19,6 +19,7 @@
     <string name="action_cancel">Cancel</string>
     <string name="title_welcome">Welcome to Buzz Movie Selector</string>
     <string name="link_login">Login</string>
+    <string name="searchHint">Search for movie</string>
     <string name="link_register">Register</string>
     <string name="title_activity_bms">BMSActivity</string>
 
@@ -27,4 +28,7 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_register">Register an Account</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
