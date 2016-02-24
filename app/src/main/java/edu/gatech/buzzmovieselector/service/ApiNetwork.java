@@ -1,11 +1,9 @@
 package edu.gatech.buzzmovieselector.service;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import com.android.volley.*;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.RequestFuture;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.android.volley.toolbox.*;
 import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
 import edu.gatech.buzzmovieselector.biz.api.ApiReceiver;
 import org.json.JSONObject;
@@ -81,5 +79,12 @@ public class ApiNetwork {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, stringFuture, stringFuture);
         apiRequestQueue.add(stringRequest);
         return stringFuture;
+    }
+
+    public RequestFuture<Bitmap> apiImage(String url) {
+        RequestFuture<Bitmap> bmpFuture = RequestFuture.newFuture();
+        ImageRequest imageRequest = new ImageRequest(url, bmpFuture, 0, 0, null, bmpFuture);
+        apiRequestQueue.add(imageRequest);
+        return bmpFuture;
     }
 }

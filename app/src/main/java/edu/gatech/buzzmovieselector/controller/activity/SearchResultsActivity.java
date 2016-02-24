@@ -1,4 +1,4 @@
-package edu.gatech.buzzmovieselector.controller;
+package edu.gatech.buzzmovieselector.controller.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

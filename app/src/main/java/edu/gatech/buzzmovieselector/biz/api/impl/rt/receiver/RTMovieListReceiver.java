@@ -28,7 +28,8 @@ public class RTMovieListReceiver extends ApiReceiver<JSONObject, Movie[]> {
             for (int i = 0; i < movieList.length(); i++) {
                 JSONObject movieJ = movieList.getJSONObject(i);
                 double rating = (double) movieJ.getJSONObject("ratings").getInt("audience_score") / 100.;
-                Movie movie = new Movie(movieJ.getString("title"), movieJ.getInt("year"), rating);
+                String thumbUrl = movieJ.getJSONObject("posters").getString("thumbnail");
+                Movie movie = new Movie(movieJ.getString("title"), movieJ.getInt("year"), rating, thumbUrl);
                 parsedMovies.add(movie);
             }
         } catch (JSONException e) {

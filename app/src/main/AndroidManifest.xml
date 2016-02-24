@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".controller.WelcomeActivity"
+            android:name=".controller.activity.WelcomeActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,13 +17,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.LoginActivity" />
+        <activity android:name=".controller.activity.LoginActivity" />
         <activity
-            android:name=".controller.BMSActivity"
+            android:name=".controller.activity.BMSActivity"
             android:label="@string/title_activity_bms"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".controller.RegisterActivity" />
-        <activity android:name=".controller.ProfileActivity"></activity>
-        <activity android:name=".controller.SearchResultsActivity"></activity>
+        <activity android:name=".controller.activity.RegisterActivity" />
+        <activity android:name=".controller.activity.ProfileActivity"></activity>
+        <activity android:name=".controller.activity.SearchResultsActivity"></activity>
     </application>
 </manifest>

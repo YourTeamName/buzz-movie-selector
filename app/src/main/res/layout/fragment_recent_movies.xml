@@ -2,7 +2,7 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="edu.gatech.buzzmovieselector.controller.fragment.RecentDVDsFragment">
+             tools:context="edu.gatech.buzzmovieselector.controller.fragment.RecentMoviesFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -11,5 +11,5 @@
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:paddingBottom="@dimen/movie_item_height"
-            android:id="@+id/recentDVDListView" android:layout_gravity="center"/>
+            android:id="@+id/recentMovieListView" android:layout_gravity="center"/>
 </FrameLayout>
