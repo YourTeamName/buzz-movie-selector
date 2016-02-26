@@ -1,3 +1,5 @@
+#Buzz Movie Selector
+
 Introduction
 
 This is our android application semester. We will be building a basic mobile application that serves as a movie information and referral site for Georgia Tech students. To support the site, we will access a set of REST services from Rotten Tomatoes external link: http://developer.rottentomatoes.com/docs.
