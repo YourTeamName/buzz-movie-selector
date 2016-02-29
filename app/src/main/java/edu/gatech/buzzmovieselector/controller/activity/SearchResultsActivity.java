@@ -1,5 +1,6 @@
 package edu.gatech.buzzmovieselector.controller.activity;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,8 @@ import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver
 import edu.gatech.buzzmovieselector.entity.Movie;
 
 import java.util.ArrayList;
+import android.widget.AdapterView;
+import android.view.View;
 
 /**
  * Search results activity that displays the results of a search
@@ -43,6 +46,14 @@ public class SearchResultsActivity extends AppCompatActivity {
         ListView recentDVDs = (ListView) findViewById(R.id.searchResults);
         recentDVDs.setAdapter(listAdapter);
 
+        recentDVDs.setOnItemClickListener(new ListView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(SearchResultsActivity.this, MovieRatingScreen.class);
+                startActivity(i);
+            }
+        });
+
         // Call RT api to search for movies
         RTInvoker rti = new RTInvoker();
         Intent intent = getIntent();
@@ -65,5 +76,4 @@ public class SearchResultsActivity extends AppCompatActivity {
             }
         }));
     }
-
 }
