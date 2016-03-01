@@ -23,9 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ratingBar"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="93dp" />
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,7 +32,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Rate this movie!"
         android:id="@+id/textView3"
-        android:layout_above="@+id/ratingBar"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -42,7 +41,27 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="After being wrongfully convicted for the murder of his wife, Dr. Richard Kimble (Ford) escapes from custody and sets out to prove his innocence while pursued by a team of U.S. Marshals led by Deputy Samuel Gerard (Jones)."
         android:id="@+id/textView4"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="59dp"
         android:layout_below="@+id/textView2"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/textView3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Average Rating by Your Major"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/ratingBar"
+        android:layout_alignStart="@+id/ratingBar"
+        android:layout_marginTop="59dp" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingBar2"
+        android:isIndicator="true"
+        android:layout_below="@+id/textView5"
+        android:layout_alignStart="@+id/textView5" />
+
 </RelativeLayout>

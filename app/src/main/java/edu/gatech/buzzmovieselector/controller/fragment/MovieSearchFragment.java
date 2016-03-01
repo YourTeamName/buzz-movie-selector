@@ -47,15 +47,6 @@ public class MovieSearchFragment extends Fragment {
         fragView = inflater.inflate(R.layout.fragment_movie_search, container, false);
         movieResults = (ListView) fragView.findViewById(R.id.movieSearchList);
 
-        /**movieResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.i("He", "He");
-                Intent i = new Intent(getActivity(), edu.gatech.buzzmovieselector.controller.activity.MovieRatingScreen.class);
-                startActivity(i);
-            }
-        });**/
-
         searchBar = (SearchView) fragView.findViewById(R.id.searchView);
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
