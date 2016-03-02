@@ -1,5 +1,6 @@
 package edu.gatech.buzzmovieselector.controller.activity;
 
+import android.content.pm.PackageInstaller;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,7 @@ import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.biz.MovieManagementFacade;
 import edu.gatech.buzzmovieselector.biz.impl.MovieManager;
 import edu.gatech.buzzmovieselector.entity.Movie;
+import edu.gatech.buzzmovieselector.entity.Profile;
 import edu.gatech.buzzmovieselector.entity.Review;
 import edu.gatech.buzzmovieselector.service.SessionState;
 
@@ -66,9 +68,7 @@ public class MovieRatingActivity extends AppCompatActivity {
         }
         double totalRating = 0;
         for (Review r : movieReviews) {
-            if (r.getUser().getProfile().getMajor().equals(SessionState.getInstance().getSessionUser().getProfile().getMajor())) {
-                totalRating += r.getRating();
-            }
+            totalRating += r.getRating();
         }
         double avgRating = totalRating / movieReviews.size();
         averageRating.setRating((float) avgRating);

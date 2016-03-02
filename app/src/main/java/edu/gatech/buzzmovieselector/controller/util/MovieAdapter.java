@@ -80,7 +80,7 @@ public class MovieAdapter extends BaseAdapter {
                 Intent i = new Intent(hostActivity, MovieRatingActivity.class);
                 i.putExtra(MovieRatingActivity.MOVIE_TITLE, movie.getTitle());
                 i.putExtra(MovieRatingActivity.MOVIE_YEAR, movie.getYear());
-                i.putExtra(MovieRatingActivity.MOVIE_RATING, movie.getRating());
+                i.putExtra(MovieRatingActivity.MOVIE_RATING, movie.getRating().floatValue());
                 hostActivity.startActivity(i);
             }
         });
