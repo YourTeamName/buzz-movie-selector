@@ -1,9 +1,12 @@
 package edu.gatech.buzzmovieselector.entity;
 
+import com.j256.ormlite.table.DatabaseTable;
+
 /**
  * Class for a movie review that has a rating and text evaluation of the movie
  * Each movie review also contains the movie it pertains to
  */
+@DatabaseTable(tableName = "review", daoClass = ReviewDaoImpl.class)
 public class Review {
 
     private Integer id;

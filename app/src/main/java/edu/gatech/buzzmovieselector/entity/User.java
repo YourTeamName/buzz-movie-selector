@@ -4,7 +4,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import edu.gatech.buzzmovieselector.dao.impl.UserDaoImpl;
 
-@DatabaseTable(tableName = "users", daoClass = UserDaoImpl.class)
+@DatabaseTable(tableName = "user", daoClass = UserDaoImpl.class)
 public class User {
 
     /**

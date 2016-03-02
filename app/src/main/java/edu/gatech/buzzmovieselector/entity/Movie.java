@@ -1,10 +1,13 @@
 package edu.gatech.buzzmovieselector.entity;
 
+import com.j256.ormlite.table.DatabaseTable;
+
 import java.util.Collection;
 
 /**
  * Creates a movie object with name, year produced, and rating
  */
+@DatabaseTable(tableName = "movie", daoClass = MovieDaoImpl.class)
 public class Movie {
 
     private Integer id;
