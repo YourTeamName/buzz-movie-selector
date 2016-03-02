@@ -42,7 +42,7 @@ public class MovieRatingActivity extends AppCompatActivity {
         titleText = (TextView) findViewById(R.id.movieTitle);
         String movieTitle = getIntent().getStringExtra(MOVIE_TITLE);
         int movieYear = getIntent().getIntExtra(MOVIE_YEAR, 0);
-        float movieRating = getIntent().getFloatExtra(MOVIE_RATING, 0.F);
+        double movieRating = (double) getIntent().getFloatExtra(MOVIE_RATING, 0.F);
         mm = new MovieManager();
         if (!mm.movieExists(movieTitle)) {
             Log.v("MovieRating", "Movie with that id doesn't exist");
