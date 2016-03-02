@@ -18,7 +18,7 @@ public class MovieRatingScreen extends AppCompatActivity {
         TextView title = (TextView) findViewById(R.id.textView2);
         title.setText("Title");
 
-        TextView synopsis = (TextView) findViewById(R.id.textView4);
+        TextView synopsis = (TextView) findViewById(R.id.textReview);
         synopsis.setText("Here we insert the synopsis of the film we clicked on.");
 
         RatingBar userRating = (RatingBar) findViewById(R.id.ratingBar);
