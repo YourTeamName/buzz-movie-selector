@@ -62,6 +62,10 @@ public class MovieManager implements MovieManagementFacade {
 
     @Override
     public void addReview(Review r) {
+        Movie m = r.getMovie();
+        if (!movieExists(m.getTitle())) {
+            addMovie(m);
+        }
         reviews.add(r);
     }
 }

@@ -42,10 +42,11 @@
             android:layout_alignParentEnd="true"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit Review"
-        android:id="@+id/submitReview"
-        android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit Review"
+            android:id="@+id/submitReview"
+            android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
+            android:onClick="submitClick"/>
 
 </RelativeLayout>

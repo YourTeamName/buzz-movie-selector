@@ -55,9 +55,10 @@ public class Review {
     public Review() {
     }
 
-    public Review(User user, String content, Movie movie) {
+    public Review(User user, String content, Double rating, Movie movie) {
         this.setUser(user);
         this.setContent(content);
+        this.setRating(rating);
         this.setMovie(movie);
     }
 
