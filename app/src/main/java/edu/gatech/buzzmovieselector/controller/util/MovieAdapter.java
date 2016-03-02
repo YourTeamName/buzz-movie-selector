@@ -78,7 +78,9 @@ public class MovieAdapter extends BaseAdapter {
                 // TODO make this open a movie viewer activity
                 Log.v("movieadapter", "position " + i);
                 Intent i = new Intent(hostActivity, MovieRatingActivity.class);
-                i.putExtra(MovieRatingActivity.MOVIE_TO_REVIEW, movie.getTitle() + " (" + movie.getYear() + ")");
+                i.putExtra(MovieRatingActivity.MOVIE_TITLE, movie.getTitle());
+                i.putExtra(MovieRatingActivity.MOVIE_YEAR, movie.getYear());
+                i.putExtra(MovieRatingActivity.MOVIE_RATING, movie.getRating());
                 hostActivity.startActivity(i);
             }
         });

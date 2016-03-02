@@ -19,7 +19,9 @@ import java.util.List;
 
 public class MovieRatingActivity extends AppCompatActivity {
 
-    public static final String MOVIE_TO_REVIEW = "movie";
+    public static final String MOVIE_TITLE = "movieTitle";
+    public static final String MOVIE_YEAR = "movieYear";
+    public static final String MOVIE_RATING = "movieRating";
 
     private TextView titleText;
     private TextView reviewText;
@@ -38,14 +40,17 @@ public class MovieRatingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_rating); //title of movie.
         titleText = (TextView) findViewById(R.id.movieTitle);
-        String movieTitle = getIntent().getStringExtra(MOVIE_TO_REVIEW);
+        String movieTitle = getIntent().getStringExtra(MOVIE_TITLE);
+        int movieYear = getIntent().getIntExtra(MOVIE_YEAR, 0);
+        float movieRating = getIntent().getFloatExtra(MOVIE_RATING, 0.F);
         mm = new MovieManager();
         if (!mm.movieExists(movieTitle)) {
             Log.v("MovieRating", "Movie with that id doesn't exist");
-            finish();
+            Movie currentMovie = new Movie(movieTitle, movieYear, movieRating);
+            mm.addMovie(currentMovie);
         }
         reviewMovie = mm.findMovieById(movieTitle);
-        titleText.setText(movieTitle);
+        titleText.setText(reviewMovie.getTitle() + " (" + reviewMovie.getYear() + ")");
         reviewText = (TextView) findViewById(R.id.textReview);
         userRating = (RatingBar) findViewById(R.id.userRating);
         averageRating = (RatingBar) findViewById(R.id.averageRating);
@@ -61,7 +66,9 @@ public class MovieRatingActivity extends AppCompatActivity {
         }
         double totalRating = 0;
         for (Review r : movieReviews) {
-            totalRating += r.getRating();
+            if (r.getUser().getProfile().getMajor().equals(SessionState.getInstance().getSessionUser().getProfile().getMajor())) {
+                totalRating += r.getRating();
+            }
         }
         double avgRating = totalRating / movieReviews.size();
         averageRating.setRating((float) avgRating);
