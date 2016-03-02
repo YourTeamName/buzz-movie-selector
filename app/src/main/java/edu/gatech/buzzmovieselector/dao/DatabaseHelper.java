@@ -26,7 +26,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private static final String DATABASE_NAME = "bms.db";
     // any time you make changes to your database objects, you may have to
     // increase the database version
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     // the DAO objects
     private Dao<User, String> userDao;
@@ -68,6 +68,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             Log.i(DatabaseHelper.class.getName(), "onUpgrade");
             TableUtils.dropTable(connectionSource, User.class, true);
             TableUtils.dropTable(connectionSource, Profile.class, true);
+            TableUtils.dropTable(connectionSource, Movie.class, true);
+            TableUtils.dropTable(connectionSource, Review.class, true);
             // after we drop the old databases, we create the new ones
             onCreate(db, connectionSource);
         } catch (SQLException e) {
