@@ -1,6 +1,7 @@
 package edu.gatech.buzzmovieselector.entity;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 import edu.gatech.buzzmovieselector.dao.impl.MovieDaoImpl;
 
@@ -20,6 +21,7 @@ public class Movie {
     private Integer year;
     @DatabaseField
     private Double rating;
+    @ForeignCollectionField(eager = true)
     private Collection<Review> reviews;
     // TODO: store actual binary image data
     @DatabaseField
