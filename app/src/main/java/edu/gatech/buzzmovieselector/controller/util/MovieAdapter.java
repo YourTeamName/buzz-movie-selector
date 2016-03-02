@@ -16,7 +16,7 @@ import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
 import edu.gatech.buzzmovieselector.biz.api.impl.general.command.GeneralCommandFactory;
 import edu.gatech.buzzmovieselector.biz.api.impl.general.receiver.ImageReceiver;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
-import edu.gatech.buzzmovieselector.controller.activity.MovieRatingScreen;
+import edu.gatech.buzzmovieselector.controller.activity.MovieRatingActivity;
 import edu.gatech.buzzmovieselector.entity.Movie;
 
 import java.util.List;
@@ -77,8 +77,8 @@ public class MovieAdapter extends BaseAdapter {
             public void onClick(View v) {
                 // TODO make this open a movie viewer activity
                 Log.v("movieadapter", "position " + i);
-                Intent i = new Intent(hostActivity, edu.gatech.buzzmovieselector.controller.activity.MovieRatingScreen.class);
-                i.putExtra(MovieRatingScreen.MOVIE_TO_REVIEW, movie.getTitle() + " (" + movie.getYear() + ")");
+                Intent i = new Intent(hostActivity, MovieRatingActivity.class);
+                i.putExtra(MovieRatingActivity.MOVIE_TO_REVIEW, movie.getTitle() + " (" + movie.getYear() + ")");
                 hostActivity.startActivity(i);
             }
         });

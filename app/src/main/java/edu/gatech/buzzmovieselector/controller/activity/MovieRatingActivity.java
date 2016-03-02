@@ -7,7 +7,7 @@ import android.widget.RatingBar;
 
 import edu.gatech.buzzmovieselector.R;
 
-public class MovieRatingScreen extends AppCompatActivity {
+public class MovieRatingActivity extends AppCompatActivity {
 
     public static final String MOVIE_TO_REVIEW = "movie";
 
@@ -22,9 +22,9 @@ public class MovieRatingScreen extends AppCompatActivity {
         TextView reviewText = (TextView) findViewById(R.id.textReview);
         reviewText.setText("Enter your review here");
 
-        RatingBar userRating = (RatingBar) findViewById(R.id.ratingBar);
+        RatingBar userRating = (RatingBar) findViewById(R.id.userRating);
 
-        RatingBar avgRating = (RatingBar) findViewById(R.id.ratingBar2);
+        RatingBar avgRating = (RatingBar) findViewById(R.id.averageRating);
         avgRating.setFocusable(false);
         avgRating.setRating(5.0f);
     }
