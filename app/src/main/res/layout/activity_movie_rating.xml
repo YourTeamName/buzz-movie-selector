@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Movie Title"
-        android:id="@+id/textView2"
+        android:id="@+id/movieTitle"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
@@ -22,8 +22,8 @@
     <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ratingBar"
-        android:layout_below="@+id/textView3"
+        android:id="@+id/userRating"
+        android:layout_below="@+id/askForRating"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -31,37 +31,42 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Rate this movie!"
-        android:id="@+id/textView3"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="After being wrongfully convicted for the murder of his wife, Dr. Richard Kimble (Ford) escapes from custody and sets out to prove his innocence while pursued by a team of U.S. Marshals led by Deputy Samuel Gerard (Jones)."
-        android:id="@+id/textView4"
-        android:layout_marginTop="59dp"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/textView3" />
+        android:id="@+id/askForRating"
+        android:layout_below="@+id/textReview"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="107dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Average Rating by Your Major"
-        android:id="@+id/textView5"
-        android:layout_below="@+id/ratingBar"
-        android:layout_alignStart="@+id/ratingBar"
-        android:layout_marginTop="59dp" />
+        android:id="@+id/majorAverageMessage"
+        android:layout_below="@+id/userRating"
+        android:layout_centerHorizontal="true" />
 
     <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ratingBar2"
+        android:id="@+id/averageRating"
         android:isIndicator="true"
-        android:layout_below="@+id/textView5"
-        android:layout_alignStart="@+id/textView5" />
+        android:layout_below="@+id/majorAverageMessage"
+        android:layout_alignStart="@+id/userRating" />
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textReview"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/movieTitle"
+            android:layout_alignParentEnd="true" android:hint="Enter your review hwere"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit Review"
+        android:id="@+id/submitReview"
+        android:layout_below="@+id/averageRating"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
