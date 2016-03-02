@@ -54,13 +54,12 @@
         android:layout_alignStart="@+id/userRating" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textReview"
-        android:layout_alignParentStart="true"
-        android:text="Enter your review here"
-        android:layout_below="@+id/movieTitle"
-        android:layout_alignParentEnd="true" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textReview"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/movieTitle"
+            android:layout_alignParentEnd="true" android:hint="Enter your review hwere"/>
 
     <Button
         android:layout_width="wrap_content"
