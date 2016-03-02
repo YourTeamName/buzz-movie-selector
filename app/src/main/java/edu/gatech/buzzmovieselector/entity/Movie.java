@@ -1,6 +1,8 @@
 package edu.gatech.buzzmovieselector.entity;
 
+import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import edu.gatech.buzzmovieselector.dao.impl.MovieDaoImpl;
 
 import java.util.Collection;
 
@@ -10,12 +12,17 @@ import java.util.Collection;
 @DatabaseTable(tableName = "movie", daoClass = MovieDaoImpl.class)
 public class Movie {
 
+    @DatabaseField(generatedId = true)
     private Integer id;
+    @DatabaseField
     private String title;
+    @DatabaseField
     private Integer year;
+    @DatabaseField
     private Double rating;
     private Collection<Review> reviews;
     // TODO: store actual binary image data
+    @DatabaseField
     private String imageURL;
 
     public Collection<Review> getReviews() {
