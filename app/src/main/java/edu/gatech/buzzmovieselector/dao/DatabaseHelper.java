@@ -7,7 +7,9 @@ import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import edu.gatech.buzzmovieselector.entity.Movie;
 import edu.gatech.buzzmovieselector.entity.Profile;
+import edu.gatech.buzzmovieselector.entity.Review;
 import edu.gatech.buzzmovieselector.entity.User;
 
 import java.sql.SQLException;
@@ -29,6 +31,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     // the DAO objects
     private Dao<User, String> userDao;
     private Dao<Profile, Integer> profileDao;
+    private Dao<Movie, Integer> movieDao;
+    private Dao<Review, Integer> reviewDao;
+
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -93,6 +98,30 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             profileDao = getDao(Profile.class);
         }
         return profileDao;
+    }
+
+    /**
+     * Returns the DAO for our Movie class. It
+     * will create it or just give the cached
+     * value.
+     */
+    public Dao<Movie, Integer> getMovieDao() throws SQLException {
+        if (movieDao == null) {
+            movieDao = getDao(Movie.class);
+        }
+        return movieDao;
+    }
+
+    /**
+     * Returns the DAO for our Movie class. It
+     * will create it or just give the cached
+     * value.
+     */
+    public Dao<Review, Integer> getReviewDao() throws SQLException {
+        if (reviewDao == null) {
+            reviewDao = getDao(Review.class);
+        }
+        return reviewDao;
     }
 
     /**
