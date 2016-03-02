@@ -26,7 +26,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private static final String DATABASE_NAME = "bms.db";
     // any time you make changes to your database objects, you may have to
     // increase the database version
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     // the DAO objects
     private Dao<User, String> userDao;
@@ -50,6 +50,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             Log.i(DatabaseHelper.class.getName(), "onCreate");
             TableUtils.createTable(connectionSource, User.class);
             TableUtils.createTable(connectionSource, Profile.class);
+            TableUtils.createTable(connectionSource, Movie.class);
+            TableUtils.createTable(connectionSource, Review.class);
         } catch (SQLException e) {
             Log.e(DatabaseHelper.class.getName(), "Can't create database", e);
             throw new RuntimeException(e);
