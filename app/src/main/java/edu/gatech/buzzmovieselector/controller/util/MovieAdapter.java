@@ -2,6 +2,7 @@ package edu.gatech.buzzmovieselector.controller.util;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -75,6 +76,8 @@ public class MovieAdapter extends BaseAdapter {
             public void onClick(View v) {
                 // TODO make this open a movie viewer activity
                 Log.v("movieadapter", "position " + i);
+                Intent i = new Intent(hostActivity, edu.gatech.buzzmovieselector.controller.activity.MovieRatingScreen.class);
+                hostActivity.startActivity(i);
             }
         });
         return rowView;

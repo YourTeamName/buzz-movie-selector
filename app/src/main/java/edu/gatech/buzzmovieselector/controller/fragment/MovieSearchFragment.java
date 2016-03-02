@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.content.Intent;
+import android.util.Log;
 
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -18,6 +20,7 @@ import edu.gatech.buzzmovieselector.biz.api.impl.rt.command.RTCommandFactory;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver.RTMovieListReceiver;
 import edu.gatech.buzzmovieselector.controller.util.MovieAdapter;
 import edu.gatech.buzzmovieselector.entity.Movie;
+import android.widget.AdapterView;
 
 import java.util.ArrayList;
 
@@ -43,6 +46,7 @@ public class MovieSearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fragView = inflater.inflate(R.layout.fragment_movie_search, container, false);
         movieResults = (ListView) fragView.findViewById(R.id.movieSearchList);
+
         searchBar = (SearchView) fragView.findViewById(R.id.searchView);
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
