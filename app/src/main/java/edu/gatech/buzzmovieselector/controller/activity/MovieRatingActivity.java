@@ -11,22 +11,25 @@ public class MovieRatingActivity extends AppCompatActivity {
 
     public static final String MOVIE_TO_REVIEW = "movie";
 
+    private TextView titleText;
+    private TextView reviewText;
+
+    private RatingBar averageRating;
+    private RatingBar userRating;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_rating); //title of movie.
-        TextView title = (TextView) findViewById(R.id.movieTitle);
+        titleText = (TextView) findViewById(R.id.movieTitle);
         String movieTitle = getIntent().getStringExtra(MOVIE_TO_REVIEW);
-        title.setText(movieTitle);
 
-        TextView reviewText = (TextView) findViewById(R.id.textReview);
-        reviewText.setText("Enter your review here");
+        titleText.setText(movieTitle);
 
-        RatingBar userRating = (RatingBar) findViewById(R.id.userRating);
-
-        RatingBar avgRating = (RatingBar) findViewById(R.id.averageRating);
-        avgRating.setFocusable(false);
-        avgRating.setRating(5.0f);
+        reviewText = (TextView) findViewById(R.id.textReview);
+        userRating = (RatingBar) findViewById(R.id.userRating);
+        averageRating = (RatingBar) findViewById(R.id.averageRating);
+        averageRating.setFocusable(false);
     }
 
 
