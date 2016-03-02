@@ -59,7 +59,7 @@
             android:id="@+id/textReview"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/movieTitle"
-            android:layout_alignParentEnd="true" android:hint="Enter your review hwere"/>
+            android:layout_alignParentEnd="true" android:hint="Enter your review here"/>
 
     <Button
         android:layout_width="wrap_content"
