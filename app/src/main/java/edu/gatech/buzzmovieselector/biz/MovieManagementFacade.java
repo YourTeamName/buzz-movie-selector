@@ -13,6 +13,4 @@ public interface MovieManagementFacade {
     Movie findMovieById(String id);
     boolean movieExists(String movieTitle);
     void updateMovie(String id, Movie m);
-    List<Review> getReviews(Movie m);
-    void addReview(Review r);
 }
