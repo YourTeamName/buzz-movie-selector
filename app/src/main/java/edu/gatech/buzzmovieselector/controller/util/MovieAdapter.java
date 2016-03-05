@@ -2,6 +2,7 @@ package edu.gatech.buzzmovieselector.controller.util;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
 import edu.gatech.buzzmovieselector.biz.api.impl.general.command.GeneralCommandFactory;
 import edu.gatech.buzzmovieselector.biz.api.impl.general.receiver.ImageReceiver;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
+import edu.gatech.buzzmovieselector.controller.activity.MovieRatingActivity;
 import edu.gatech.buzzmovieselector.entity.Movie;
 
 import java.util.List;
@@ -75,6 +77,11 @@ public class MovieAdapter extends BaseAdapter {
             public void onClick(View v) {
                 // TODO make this open a movie viewer activity
                 Log.v("movieadapter", "position " + i);
+                Intent i = new Intent(hostActivity, MovieRatingActivity.class);
+                i.putExtra(MovieRatingActivity.MOVIE_TITLE, movie.getTitle());
+                i.putExtra(MovieRatingActivity.MOVIE_YEAR, movie.getYear());
+                i.putExtra(MovieRatingActivity.MOVIE_RATING, movie.getRating().floatValue());
+                hostActivity.startActivity(i);
             }
         });
         return rowView;

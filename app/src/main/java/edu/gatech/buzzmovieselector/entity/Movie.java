@@ -78,6 +78,22 @@ public class Movie {
         this.imageURL = imageURL;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        // TODO: add more criteria
+        if (o == null) {
+            return false;
+        }
+        if (!Movie.class.isAssignableFrom(o.getClass())) {
+            return false;
+        }
+        final Movie m = (Movie) o;
+        if (!title.equals(m.title)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     @Override
     public String toString() {
