@@ -1,5 +1,6 @@
 package edu.gatech.buzzmovieselector.entity;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -63,12 +64,11 @@ public class Movie {
         this.imageURL = imageURL;
     }
     public Movie() {
+        reviews = new ArrayList<Review>();
     }
 
     public Movie(String title, int year, double rating) {
-        this.title = title;
-        this.year = year;
-        this.rating = rating;
+        this(title, year, rating, null);
     }
 
     public Movie(String title, int year, double rating, String imageURL) {
@@ -76,6 +76,11 @@ public class Movie {
         this.year = year;
         this.rating = rating;
         this.imageURL = imageURL;
+        reviews = new ArrayList<Review>();
+    }
+
+    public void addReview(Review r) {
+        reviews.add(r);
     }
 
     @Override
