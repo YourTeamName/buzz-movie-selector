@@ -1,10 +1,12 @@
 package edu.gatech.buzzmovieselector.entity;
 
+
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 import edu.gatech.buzzmovieselector.dao.impl.MovieDaoImpl;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -74,13 +76,13 @@ public class Movie {
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
     }
+
     public Movie() {
+        reviews = new ArrayList<Review>();
     }
 
     public Movie(String title, int year, double rating) {
-        this.title = title;
-        this.year = year;
-        this.rating = rating;
+        this(title, year, rating, null);
     }
 
     public Movie(String title, int year, double rating, String imageURL) {
@@ -88,8 +90,29 @@ public class Movie {
         this.year = year;
         this.rating = rating;
         this.imageURL = imageURL;
+        reviews = new ArrayList<Review>();
     }
 
+    public void addReview(Review r) {
+        reviews.add(r);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        // TODO: add more criteria
+        if (o == null) {
+            return false;
+        }
+        if (!Movie.class.isAssignableFrom(o.getClass())) {
+            return false;
+        }
+        final Movie m = (Movie) o;
+        if (!title.equals(m.title)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     @Override
     public String toString() {
