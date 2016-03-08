@@ -3,6 +3,7 @@ package edu.gatech.buzzmovieselector.biz;
 import edu.gatech.buzzmovieselector.entity.Movie;
 import edu.gatech.buzzmovieselector.entity.Review;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -13,4 +14,5 @@ public interface MovieManagementFacade {
     Movie findMovieById(String id);
     boolean movieExists(String movieTitle);
     void updateMovie(String id, Movie m);
+    Collection<Movie> getMovies();
 }

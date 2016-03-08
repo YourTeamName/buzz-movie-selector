@@ -5,6 +5,7 @@ import edu.gatech.buzzmovieselector.entity.Movie;
 import edu.gatech.buzzmovieselector.entity.Review;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,5 +45,10 @@ public class MovieManager implements MovieManagementFacade {
     @Override
     public void updateMovie(String id, Movie m) {
         // TODO: Implement updateMovie
+    }
+
+    @Override
+    public Collection<Movie> getMovies() {
+        return movies.values();
     }
 }
