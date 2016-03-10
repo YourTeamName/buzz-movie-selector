@@ -2,11 +2,8 @@ package edu.gatech.buzzmovieselector.biz.impl;
 
 import edu.gatech.buzzmovieselector.biz.MovieManagementFacade;
 import edu.gatech.buzzmovieselector.entity.Movie;
-import edu.gatech.buzzmovieselector.entity.Review;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**

@@ -61,7 +61,8 @@ public class BMSActivity extends AppCompatActivity
                 .nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        ViewPagerAdapter adapter = new ViewPagerAdapter
+                (getSupportFragmentManager());
         adapter.addFragment(new RecentDVDsFragment(), "DVDs");
         adapter.addFragment(new RecentMoviesFragment(), "Movies");
         adapter.addFragment(new MovieSearchFragment(), "Search");

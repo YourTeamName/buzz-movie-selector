@@ -1,7 +1,6 @@
 package edu.gatech.buzzmovieselector.controller.activity;
 
 import android.app.Activity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -10,13 +9,12 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import edu.gatech.buzzmovieselector.R;
-import edu.gatech.buzzmovieselector.service.SessionState;
 import edu.gatech.buzzmovieselector.biz.AuthenticationFacade;
-import edu.gatech.buzzmovieselector.entity.User;
 import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
 import edu.gatech.buzzmovieselector.biz.impl.UserManager;
+import edu.gatech.buzzmovieselector.entity.User;
+import edu.gatech.buzzmovieselector.service.SessionState;
 
 /**
  * LoginActivity is the controller for the startSession screen.
@@ -34,9 +32,11 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
         userText = (AutoCompleteTextView) findViewById(R.id.username);
         passwordText = (EditText) findViewById(R.id.password);
-        passwordText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        passwordText.setOnEditorActionListener(new TextView
+                .OnEditorActionListener() {
             @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+            public boolean onEditorAction(TextView textView, int id, KeyEvent
+                    keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
                     attemptLogin();
                     return true;
@@ -49,6 +49,7 @@ public class LoginActivity extends Activity {
     /**
      * login is called by clicking the Login button, attempts to login using
      * entered credentials
+     *
      * @param v Reference to widget firing event
      */
     public void login(View v) {
@@ -59,6 +60,7 @@ public class LoginActivity extends Activity {
 
     /**
      * cancel is called by clicking the Cancel button, closes LoginActivity
+     *
      * @param v Reference to widget firing event
      */
     public void cancel(View v) {
@@ -67,6 +69,7 @@ public class LoginActivity extends Activity {
 
     /**
      * Validates the startSession form
+     *
      * @return the startSession form is valid
      */
     public boolean validateLogin() {
@@ -106,7 +109,8 @@ public class LoginActivity extends Activity {
         if (af.handleLoginRequest(userName,
                 userPass)) {
             User sessionUser = new User(userName, userPass, "USER");
-            SessionState.getInstance().startSession(sessionUser, getApplicationContext());
+            SessionState.getInstance().startSession(sessionUser,
+                    getApplicationContext());
             resetFields();
             startBMS();
         } else {

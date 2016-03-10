@@ -1,6 +1,5 @@
 package edu.gatech.buzzmovieselector.controller.activity;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,8 +15,6 @@ import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver
 import edu.gatech.buzzmovieselector.entity.Movie;
 
 import java.util.ArrayList;
-import android.widget.AdapterView;
-import android.view.View;
 
 /**
  * Search results activity that displays the results of a search

@@ -63,6 +63,7 @@ public class Movie {
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
     }
+
     public Movie() {
         reviews = new ArrayList<Review>();
     }

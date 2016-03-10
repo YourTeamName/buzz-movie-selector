@@ -1,7 +1,6 @@
 package edu.gatech.buzzmovieselector.biz.api.impl.rt.command;
 
 import edu.gatech.buzzmovieselector.biz.api.ApiCommand;
-import org.json.JSONObject;
 
 /**
  * Factory for commands for the Rotten tomatoes API
@@ -14,6 +13,7 @@ public class RTCommandFactory {
 
     /**
      * Produces the ApiCommand for recent DVDs
+     *
      * @return instance of RTRecentDVDs
      */
     public static ApiCommand getRecentDVDsCommand() {
@@ -22,6 +22,7 @@ public class RTCommandFactory {
 
     /**
      * Produces the ApiCommand for searching movies
+     *
      * @param search
      * @return instance of RTMovieSearch
      */
@@ -31,6 +32,7 @@ public class RTCommandFactory {
 
     /**
      * Produces the ApiCommand for recent Movies
+     *
      * @return instance of RTRecentMovies
      */
     public static ApiCommand getRecentMoviesCommand() {

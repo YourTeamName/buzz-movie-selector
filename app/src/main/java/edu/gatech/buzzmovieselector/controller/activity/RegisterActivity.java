@@ -1,15 +1,14 @@
 package edu.gatech.buzzmovieselector.controller.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
-
 import edu.gatech.buzzmovieselector.R;
-import edu.gatech.buzzmovieselector.entity.Profile;
-import edu.gatech.buzzmovieselector.entity.User;
 import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
 import edu.gatech.buzzmovieselector.biz.impl.UserManager;
+import edu.gatech.buzzmovieselector.entity.Profile;
+import edu.gatech.buzzmovieselector.entity.User;
 
 /**
  * RegisterActivity contains the form for registering a new user
@@ -29,28 +28,34 @@ public class RegisterActivity extends AppCompatActivity {
         userField = (EditText) findViewById(R.id.userText);
         emailField = (EditText) findViewById(R.id.emailText);
         passwordField = (EditText) findViewById(R.id.passwordText);
-        passwordConfirmField = (EditText) findViewById(R.id.passwordConfirmText);
+        passwordConfirmField = (EditText) findViewById(R.id
+                .passwordConfirmText);
     }
 
     /**
      * attemptRegister is called when the Register button is clicked
      * checks whether the registration form is valid and attempts to register
      * a new user
+     *
      * @param v Reference to widget firing event
      */
     public void attemptRegister(View v) {
         if (!verifyRegister()) {
             return;
         }
-        User newUser = new User(userField.getText().toString(), passwordField.getText().toString());
-        Profile newProfile = new Profile("", "", "", emailField.getText().toString());
+        User newUser = new User(userField.getText().toString(), passwordField
+                .getText().toString());
+        Profile newProfile = new Profile("", "", "", emailField.getText()
+                .toString());
         newUser.setProfile(newProfile);
         UserManagementFacade um = new UserManager();
         um.addUser(newUser);
         finish();
     }
+
     /**
      * Checks to see if username has already been registered
+     *
      * @param username Username to check
      * @return username is already taken
      */
@@ -61,6 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     /**
      * Checks to see whether the data entered in the registration form is valid
+     *
      * @return the data entered in the registration form is valid
      */
     private boolean verifyRegister() {

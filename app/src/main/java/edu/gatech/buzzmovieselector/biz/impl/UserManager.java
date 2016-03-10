@@ -1,7 +1,6 @@
 package edu.gatech.buzzmovieselector.biz.impl;
 
 import com.j256.ormlite.dao.CloseableIterator;
-
 import edu.gatech.buzzmovieselector.biz.AuthenticationFacade;
 import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
 import edu.gatech.buzzmovieselector.dao.DaoFactory;

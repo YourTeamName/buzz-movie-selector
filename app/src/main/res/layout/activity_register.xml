@@ -1,76 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.gatech.buzzmovieselector.controller.activity.RegisterActivity">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:context="edu.gatech.buzzmovieselector.controller.activity.RegisterActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/title_register"
-        android:id="@+id/registerText"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/title_register"
+            android:id="@+id/registerText"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/userText"
-        android:layout_below="@+id/registerText"
-        android:layout_alignStart="@+id/registerText"
-        android:layout_marginTop="41dp"
-        android:layout_alignEnd="@+id/registerText"
-        android:hint="Username"
-        android:singleLine="true" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/userText"
+            android:layout_below="@+id/registerText"
+            android:layout_alignStart="@+id/registerText"
+            android:layout_marginTop="41dp"
+            android:layout_alignEnd="@+id/registerText"
+            android:hint="Username"
+            android:singleLine="true"/>
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/passwordText"
-        android:layout_below="@+id/userText"
-        android:layout_alignStart="@+id/userText"
-        android:layout_marginTop="41dp"
-        android:layout_alignEnd="@+id/userText"
-        android:hint="Password"
-        android:password="true"
-        android:singleLine="true" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/passwordText"
+            android:layout_below="@+id/userText"
+            android:layout_alignStart="@+id/userText"
+            android:layout_marginTop="41dp"
+            android:layout_alignEnd="@+id/userText"
+            android:hint="Password"
+            android:password="true"
+            android:singleLine="true"/>
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/passwordConfirmText"
-        android:layout_centerVertical="true"
-        android:layout_alignEnd="@+id/passwordText"
-        android:layout_alignStart="@+id/passwordText"
-        android:imeOptions="actionDone"
-        android:hint="Confirm Password"
-        android:password="true"
-        android:singleLine="true" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/passwordConfirmText"
+            android:layout_centerVertical="true"
+            android:layout_alignEnd="@+id/passwordText"
+            android:layout_alignStart="@+id/passwordText"
+            android:imeOptions="actionDone"
+            android:hint="Confirm Password"
+            android:password="true"
+            android:singleLine="true"/>
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/emailText"
-        android:layout_below="@+id/userText"
-        android:layout_alignStart="@+id/userText"
-        android:layout_alignEnd="@+id/passwordText"
-        android:hint="Email Address"
-        android:singleLine="true" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/emailText"
+            android:layout_below="@+id/userText"
+            android:layout_alignStart="@+id/userText"
+            android:layout_alignEnd="@+id/passwordText"
+            android:hint="Email Address"
+            android:singleLine="true"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:id="@+id/button"
-        android:layout_below="@+id/passwordConfirmText"
-        android:layout_alignStart="@+id/passwordConfirmText"
-        android:layout_alignEnd="@+id/passwordConfirmText"
-        android:onClick="attemptRegister" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:id="@+id/button"
+            android:layout_below="@+id/passwordConfirmText"
+            android:layout_alignStart="@+id/passwordConfirmText"
+            android:layout_alignEnd="@+id/passwordConfirmText"
+            android:onClick="attemptRegister"/>
 
 </RelativeLayout>

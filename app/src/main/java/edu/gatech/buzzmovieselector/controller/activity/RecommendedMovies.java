@@ -1,7 +1,7 @@
 package edu.gatech.buzzmovieselector.controller.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import edu.gatech.buzzmovieselector.R;
 
 public class RecommendedMovies extends AppCompatActivity {

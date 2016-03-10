@@ -15,9 +15,12 @@ enum ApiResult {
     @Override
     public String toString() {
         switch (this) {
-            case SUCCESS: return "Success";
-            case FAIL: return "Failed";
-            case NOT_DONE: return "Not Done";
+            case SUCCESS:
+                return "Success";
+            case FAIL:
+                return "Failed";
+            case NOT_DONE:
+                return "Not Done";
             default:
                 throw new IllegalArgumentException();
         }
@@ -29,7 +32,8 @@ enum ApiResult {
  */
 abstract public class ApiReceiver<T, V> {
 
-    private class AsyncFutureTask extends AsyncTask<RequestFuture, Integer, Object> {
+    private class AsyncFutureTask extends AsyncTask<RequestFuture, Integer,
+            Object> {
         @Override
         protected void onPreExecute() {
             responseStatus = ApiResult.NOT_DONE;
@@ -52,6 +56,7 @@ abstract public class ApiReceiver<T, V> {
             }
             return null;
         }
+
         @Override
         protected void onPostExecute(Object result) {
             super.onPostExecute(result);
@@ -84,7 +89,8 @@ abstract public class ApiReceiver<T, V> {
     private ApiResult responseStatus = ApiResult.NOT_DONE;
     private Thread retrieveThread;
 
-    public ApiReceiver(RequestFuture requestFuture, ApiCallback responseCallback) {
+    public ApiReceiver(RequestFuture requestFuture, ApiCallback
+            responseCallback) {
         this.responseFuture = requestFuture;
         this.responseCallback = responseCallback;
         startRetrieve();
@@ -92,6 +98,7 @@ abstract public class ApiReceiver<T, V> {
 
     /**
      * sets a callback to be executed when the value of the future is retrieved
+     *
      * @param callback ApiCallback class to execute
      */
     public void setResponseCallback(ApiCallback callback) {
@@ -100,6 +107,7 @@ abstract public class ApiReceiver<T, V> {
 
     /**
      * Gets the ApiReceiver's response status
+     *
      * @return the status of the receiver
      */
     public ApiResult getResponseStatus() {
@@ -113,8 +121,10 @@ abstract public class ApiReceiver<T, V> {
         retrieveThread = new Thread(new FutureThread());
         retrieveThread.start();
     }
+
     /**
      * Gives the correctly casted response
+     *
      * @return correctly casted response object
      */
     public T getResponse() {
@@ -123,6 +133,7 @@ abstract public class ApiReceiver<T, V> {
 
     /**
      * Gives the response converted to an Entity
+     *
      * @return converted entity object
      */
     abstract public V getEntity();
