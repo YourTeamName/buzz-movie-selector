@@ -1,7 +1,6 @@
 package edu.gatech.buzzmovieselector.biz.impl;
 
 import com.j256.ormlite.dao.CloseableIterator;
-
 import edu.gatech.buzzmovieselector.biz.AuthenticationFacade;
 import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
 import edu.gatech.buzzmovieselector.dao.DaoFactory;
@@ -32,9 +31,22 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
         }
     }
 
-    public boolean handleLoginRequest(String name, String pass) {
-        User u = findUserById(name);
-        return u != null && u.checkPassword(pass);
+    public User getUser(String username, String password) {
+        User user = null;
+        try {
+            UserDao userDao = DaoFactory.getUserDao();
+            user = userDao.queryForId(username);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (user == null || user.checkPassword(password)) {
+            return null;
+        }
+        return user;
+    }
+
+    public boolean login(String username, String password) {
+        return getUser(username, password) == null;
     }
 
     public boolean userExists(String username) {
