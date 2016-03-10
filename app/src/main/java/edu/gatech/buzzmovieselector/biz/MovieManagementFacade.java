@@ -15,4 +15,5 @@ public interface MovieManagementFacade {
     boolean movieExists(String movieTitle);
     void updateMovie(String id, Movie m);
     Collection<Movie> getMovies();
+    Collection<Movie> getRecommendationsByMajor(String major);
 }

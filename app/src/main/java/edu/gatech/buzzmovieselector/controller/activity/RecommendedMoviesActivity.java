@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.biz.MovieManagementFacade;
@@ -25,27 +27,15 @@ public class RecommendedMoviesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommended_movies);
         ListView recommendations = (ListView) findViewById(R.id.recommendedMovieList);
-        final ArrayList<Movie> mList = new ArrayList<>();
+        List<Movie> mList = new ArrayList<Movie>();
         final MovieAdapter movAdapter = new MovieAdapter(this, mList);
         recommendations.setAdapter(movAdapter);
         MovieManagementFacade manager = new MovieManager();
-        Collection<Movie> movies = manager.getMovies();
 
         Profile currentUserProfile = SessionState.getInstance().getSessionUser().getProfile();
         if (currentUserProfile != null && currentUserProfile.getMajor() != null) {
-            for (Movie m : movies) {
-                double totalPoints = 0.0;
-                for (Review r : m.getReviews()) {
-                    if (currentUserProfile.getMajor().equals(
-                            r.getUser().getProfile().getMajor())) {
-                        totalPoints += r.getRating();
-                    }
-                }
-                double average = totalPoints / m.getReviews().size();
-                if (average >= 4.0) {
-                    mList.add(m);
-                }
-            }
+            mList = (List<Movie>) manager.getRecommendationsByMajor(
+                        SessionState.getInstance().getSessionUser().getProfile().getMajor());
             movAdapter.notifyDataSetChanged();
         } else {
             Context context = getApplicationContext();

@@ -51,4 +51,22 @@ public class MovieManager implements MovieManagementFacade {
     public Collection<Movie> getMovies() {
         return movies.values();
     }
+
+    @Override
+    public Collection<Movie> getRecommendationsByMajor(String major) {
+        Collection<Movie> mList = new ArrayList<Movie>();
+        for (Movie m : movies.values()) {
+            double totalPoints = 0.0;
+            for (Review r : m.getReviews()) {
+                if (major.equals(r.getUser().getProfile().getMajor())) {
+                    totalPoints += r.getRating();
+                }
+            }
+            double average = totalPoints / m.getReviews().size();
+            if (average >= 4.0) {
+                mList.add(m);
+            }
+        }
+        return mList;
+    }
 }
