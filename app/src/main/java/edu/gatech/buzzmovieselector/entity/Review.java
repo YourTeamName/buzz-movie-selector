@@ -1,15 +1,26 @@
 package edu.gatech.buzzmovieselector.entity;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+import edu.gatech.buzzmovieselector.dao.impl.ReviewDaoImpl;
+
 /**
  * Class for a movie review that has a rating and text evaluation of the movie
  * Each movie review also contains the movie it pertains to
  */
+@DatabaseTable(tableName = "review", daoClass = ReviewDaoImpl.class)
 public class Review {
 
     private Integer id;
+    @DatabaseField(foreign = true, foreignAutoCreate = true,
+            foreignAutoRefresh = true)
     private User user;
+    @DatabaseField
     private String content;
+    @DatabaseField
     private Double rating;
+    @DatabaseField(foreign = true, foreignAutoCreate = true,
+            foreignAutoRefresh = true)
     private Movie movie;
 
     public Integer getId() {

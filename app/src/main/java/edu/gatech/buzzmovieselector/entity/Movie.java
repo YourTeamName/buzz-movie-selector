@@ -1,19 +1,32 @@
 package edu.gatech.buzzmovieselector.entity;
 
+
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
+import com.j256.ormlite.table.DatabaseTable;
+import edu.gatech.buzzmovieselector.dao.impl.MovieDaoImpl;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
 /**
  * Creates a movie object with name, year produced, and rating
  */
+@DatabaseTable(tableName = "movie", daoClass = MovieDaoImpl.class)
 public class Movie {
 
+    @DatabaseField(generatedId = true)
     private Integer id;
+    @DatabaseField
     private String title;
+    @DatabaseField
     private Integer year;
+    @DatabaseField
     private Double rating;
+    @ForeignCollectionField(eager = true)
     private Collection<Review> reviews;
     // TODO: store actual binary image data
+    @DatabaseField
     private String imageURL;
 
     public Collection<Review> getReviews() {
@@ -63,6 +76,7 @@ public class Movie {
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
     }
+
     public Movie() {
         reviews = new ArrayList<Review>();
     }

@@ -28,7 +28,7 @@
         <activity android:name=".controller.activity.ProfileActivity" />
         <activity android:name=".controller.activity.SearchResultsActivity" />
         <activity android:name=".controller.activity.MovieRatingActivity" />
-        <activity android:name=".controller.activity.RecommendedMovies"></activity>
+        <activity android:name=".controller.activity.RecommendedMoviesActivity"></activity>
     </application>
 
 </manifest>

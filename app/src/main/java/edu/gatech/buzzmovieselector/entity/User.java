@@ -4,7 +4,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import edu.gatech.buzzmovieselector.dao.impl.UserDaoImpl;
 
-@DatabaseTable(tableName = "users", daoClass = UserDaoImpl.class)
+@DatabaseTable(tableName = "user", daoClass = UserDaoImpl.class)
 public class User {
 
     /**
@@ -129,15 +129,15 @@ public class User {
     /**
      * Checks to see if pass matches the stored user password
      *
-     * @param pass Given password to validate
+     * @param password Given password to validate
      * @return pass equals the stored password
      */
-    public boolean checkPassword(String pass) {
-        return password.equals(pass);
+    public boolean checkPassword(String password) {
+        return this.password.equals(password);
     }
 
     @Override
     public String toString() {
-        return "User: " + username;
+        return "User: " + username + " UserLevel: " + userLevel;
     }
 }

@@ -103,7 +103,7 @@ public class LoginActivity extends Activity {
         UserManagementFacade uf = um;
         String userName = userText.getText().toString();
         String userPass = passwordText.getText().toString();
-        if (af.handleLoginRequest(userName,
+        if (af.login(userName,
                 userPass)) {
             User sessionUser = new User(userName, userPass, "USER");
             SessionState.getInstance().startSession(sessionUser, getApplicationContext());

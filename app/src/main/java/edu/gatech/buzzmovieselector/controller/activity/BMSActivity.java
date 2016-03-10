@@ -70,6 +70,7 @@ public class BMSActivity extends AppCompatActivity
         tabLayout.setupWithViewPager(viewPager);
         if (SessionState.getInstance().isLoggedIn()) {
             Log.v("BMS", "we are logged in");
+            Log.v("BMS", "CREDENTIALS:"+SessionState.getInstance().getSessionUser().getPassword());
         } else {
             Log.v("BMS", "we are not logged in");
             // we should not be here unless we are logged in
@@ -137,7 +138,7 @@ public class BMSActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_recommended_movies) {
-            Intent i = new Intent(this, RecommendedMovies.class);
+            Intent i = new Intent(this, RecommendedMoviesActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_manage) {
 
