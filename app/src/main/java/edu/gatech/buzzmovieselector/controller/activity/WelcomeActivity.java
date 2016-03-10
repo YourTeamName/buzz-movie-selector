@@ -12,6 +12,7 @@ import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
 import edu.gatech.buzzmovieselector.biz.impl.UserManager;
 import edu.gatech.buzzmovieselector.dao.DaoFactory;
+import edu.gatech.buzzmovieselector.entity.Profile;
 import edu.gatech.buzzmovieselector.entity.User;
 import edu.gatech.buzzmovieselector.service.ApiNetwork;
 import edu.gatech.buzzmovieselector.service.SessionState;
@@ -77,12 +78,19 @@ public class WelcomeActivity extends AppCompatActivity {
      * Method for initializing hard coded values and restoring app state
      */
     private void initApp() {
-        // TODO: load user data from persistent storage so that register works
+
+
         // Pass context to DaoFactory so that it can work properly later
         DaoFactory.setContext(this);
-        checkPermissions();
+
+        // test user
+        User testUser = new User("user", "pass");
+        testUser.setProfile(new Profile("George", "Burdell", "Computer " +
+                "Science", "gp@gatech.edu"));
         UserManagementFacade um = new UserManager();
-        um.addUser(new User("user", "pass"));
+        um.addUser(testUser);
+
+        checkPermissions();
         restoreState();
         ApiNetwork.getInstance(this);
     }
@@ -117,7 +125,6 @@ public class WelcomeActivity extends AppCompatActivity {
      * session and user data is still valid
      */
     private boolean verifyLogin() {
-        return SessionState.getInstance().isLoggedIn() && SessionState
-                .getInstance().verifySession();
+        return SessionState.getInstance().isLoggedIn();
     }
 }

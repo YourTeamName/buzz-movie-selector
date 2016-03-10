@@ -2,6 +2,7 @@ package edu.gatech.buzzmovieselector.service;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
 import edu.gatech.buzzmovieselector.biz.impl.UserManager;
 import edu.gatech.buzzmovieselector.entity.User;
@@ -63,13 +64,16 @@ public class SessionState {
     public boolean restoreState(Context context) {
         SharedPreferences saveSession = context.getSharedPreferences
                 (SESSION_PREFS, Context.MODE_PRIVATE);
-        String userName = saveSession.getString(USER_PREFIX + "username", null);
-        String userPass = saveSession.getString(USER_PREFIX + "password", null);
+        String username = saveSession.getString(USER_PREFIX + "username", null);
+        String password = saveSession.getString(USER_PREFIX + "password", null);
         String userLevel = saveSession.getString(USER_PREFIX + "level", null);
-        if (userName == null || userPass == null || userLevel == null) {
+        if (username == null || password == null || userLevel == null) {
             return false;
         }
-        sessionUser = new User(userName, userPass, userLevel);
+        UserManagementFacade um = new UserManager();
+        sessionUser = um.getUser(username, password);
+        Log.v("SESSION STATE", "CREDENTIALS:" + SessionState.getInstance
+                ().getSessionUser().getProfile());
         return true;
     }
 
@@ -78,6 +82,7 @@ public class SessionState {
      *
      * @param context Context of shared preferences
      */
+
     public void saveState(Context context) {
         SharedPreferences saveSession = context.getSharedPreferences
                 (SESSION_PREFS, Context.MODE_PRIVATE);
@@ -126,16 +131,6 @@ public class SessionState {
     public void endSession(Context context) {
         sessionUser = null;
         clearSaveState(context);
-    }
-
-    public boolean verifySession() {
-        UserManagementFacade uf = new UserManager();
-        String userName = sessionUser.getUsername();
-        if (userName == null || !uf.userExists(userName)) {
-            return false;
-        }
-        User realUser = uf.findUserById(userName);
-        return realUser.equals(sessionUser);
     }
 
     /**

@@ -14,7 +14,7 @@ import edu.gatech.buzzmovieselector.entity.Movie;
 import edu.gatech.buzzmovieselector.entity.Review;
 import edu.gatech.buzzmovieselector.service.SessionState;
 
-import java.util.List;
+import java.util.Collection;
 
 public class MovieRatingActivity extends AppCompatActivity {
 
@@ -61,7 +61,7 @@ public class MovieRatingActivity extends AppCompatActivity {
     }
 
     private void loadRating() {
-        List<Review> movieReviews = mm.getReviews(reviewMovie);
+        Collection<Review> movieReviews = reviewMovie.getReviews();
         if (movieReviews.size() == 0) {
             return;
         }
@@ -78,7 +78,7 @@ public class MovieRatingActivity extends AppCompatActivity {
         double usrRating = (double) userRating.getRating();
         Review userReview = new Review(SessionState.getInstance()
                 .getSessionUser(), reviewContent, usrRating, reviewMovie);
-        mm.addReview(userReview);
+        reviewMovie.addReview(userReview);
         finish();
     }
 

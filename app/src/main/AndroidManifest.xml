@@ -19,15 +19,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".controller.activity.LoginActivity"/>
-        <activity
-                android:name=".controller.activity.BMSActivity"
-                android:label="@string/title_activity_bms"
-                android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".controller.activity.BMSActivity"
+                  android:label="@string/title_activity_bms"
+                  android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".controller.activity.RegisterActivity"/>
         <activity android:name=".controller.activity.ProfileActivity"/>
         <activity android:name=".controller.activity.SearchResultsActivity"/>
         <activity android:name=".controller.activity.MovieRatingActivity"/>
-        <activity android:name=".controller.activity.RecommendedMovies"/>
+        <activity android:name=".controller.activity.RecommendedMoviesActivity"/>
+
     </application>
 
 </manifest>

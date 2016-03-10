@@ -10,4 +10,10 @@ public interface UserManagementFacade {
     boolean userExists(String username);
 
     void updateUser(String id, User user);
+
+    /**
+     * @return the user if the credentials are correct, null if the user does
+     * not exit or credentials are incorrect
+     */
+    User getUser(String username, String password);
 }

@@ -7,7 +7,9 @@ import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import edu.gatech.buzzmovieselector.entity.Movie;
 import edu.gatech.buzzmovieselector.entity.Profile;
+import edu.gatech.buzzmovieselector.entity.Review;
 import edu.gatech.buzzmovieselector.entity.User;
 
 import java.sql.SQLException;
@@ -24,11 +26,14 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private static final String DATABASE_NAME = "bms.db";
     // any time you make changes to your database objects, you may have to
     // increase the database version
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 8;
 
     // the DAO objects
     private Dao<User, String> userDao;
     private Dao<Profile, Integer> profileDao;
+    private Dao<Movie, Integer> movieDao;
+    private Dao<Review, Integer> reviewDao;
+
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -45,6 +50,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             Log.i(DatabaseHelper.class.getName(), "onCreate");
             TableUtils.createTable(connectionSource, User.class);
             TableUtils.createTable(connectionSource, Profile.class);
+            TableUtils.createTable(connectionSource, Movie.class);
+            TableUtils.createTable(connectionSource, Review.class);
         } catch (SQLException e) {
             Log.e(DatabaseHelper.class.getName(), "Can't create database", e);
             throw new RuntimeException(e);
@@ -63,6 +70,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             Log.i(DatabaseHelper.class.getName(), "onUpgrade");
             TableUtils.dropTable(connectionSource, User.class, true);
             TableUtils.dropTable(connectionSource, Profile.class, true);
+            TableUtils.dropTable(connectionSource, Movie.class, true);
+            TableUtils.dropTable(connectionSource, Review.class, true);
             // after we drop the old databases, we create the new ones
             onCreate(db, connectionSource);
         } catch (SQLException e) {
@@ -93,6 +102,30 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             profileDao = getDao(Profile.class);
         }
         return profileDao;
+    }
+
+    /**
+     * Returns the DAO for our Movie class. It
+     * will create it or just give the cached
+     * value.
+     */
+    public Dao<Movie, Integer> getMovieDao() throws SQLException {
+        if (movieDao == null) {
+            movieDao = getDao(Movie.class);
+        }
+        return movieDao;
+    }
+
+    /**
+     * Returns the DAO for our Movie class. It
+     * will create it or just give the cached
+     * value.
+     */
+    public Dao<Review, Integer> getReviewDao() throws SQLException {
+        if (reviewDao == null) {
+            reviewDao = getDao(Review.class);
+        }
+        return reviewDao;
     }
 
     /**
