@@ -8,6 +8,7 @@ import edu.gatech.buzzmovieselector.dao.DaoFactory;
 import edu.gatech.buzzmovieselector.dao.ProfileDao;
 import edu.gatech.buzzmovieselector.dao.UserDao;
 import edu.gatech.buzzmovieselector.entity.User;
+import edu.gatech.buzzmovieselector.service.SessionState;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,6 +44,7 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
     public void updateUser(String id, User user) {
         // should this only work when the user exists?
         users.put(id, user);
+        SessionState.getInstance().setSessionUser(user);
         try {
             ProfileDao profileDao = DaoFactory.getProfileDao();
             profileDao.createOrUpdate(user.getProfile());
