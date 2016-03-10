@@ -2,6 +2,7 @@ package edu.gatech.buzzmovieselector.service;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
 import edu.gatech.buzzmovieselector.biz.impl.UserManager;
 import edu.gatech.buzzmovieselector.entity.User;
@@ -71,6 +72,7 @@ public class SessionState {
         }
         UserManagementFacade um = new UserManager();
         sessionUser = um.getUser(username, password);
+        Log.v("SESSION STATE", "CREDENTIALS:"+SessionState.getInstance().getSessionUser().getProfile());
         return true;
     }
 
@@ -127,16 +129,6 @@ public class SessionState {
     public void endSession(Context context) {
         sessionUser = null;
         clearSaveState(context);
-    }
-
-    public boolean verifySession() {
-        UserManagementFacade uf = new UserManager();
-        String userName = sessionUser.getUsername();
-        if (userName == null || !uf.userExists(userName)) {
-            return false;
-        }
-        User realUser = uf.findUserById(userName);
-        return realUser.equals(sessionUser);
     }
 
     /**
