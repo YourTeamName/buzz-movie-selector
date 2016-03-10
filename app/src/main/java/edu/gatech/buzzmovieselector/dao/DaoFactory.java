@@ -12,6 +12,8 @@ public class DaoFactory {
 
     private static UserDao userDao;
     private static ProfileDao profileDao;
+    private static MovieDao movieDao;
+    private static ReviewDao reviewDao;
 
     public static void setContext(Context newContext) {
         context = newContext;
@@ -39,5 +41,29 @@ public class DaoFactory {
                     DatabaseHelper.class).getProfileDao();
         }
         return profileDao;
+    }
+
+    public static MovieDao getMovieDao() throws Exception {
+        if (movieDao == null) {
+            if (context == null) {
+                throw new Exception("Context must be set before calling " +
+                        "getXxxDao");
+            }
+            movieDao = (MovieDao) OpenHelperManager.getHelper(context,
+                    DatabaseHelper.class).getMovieDao();
+        }
+        return movieDao;
+    }
+
+    public static ReviewDao getReviewDao() throws Exception {
+        if (reviewDao == null) {
+            if (context == null) {
+                throw new Exception("Context must be set before calling " +
+                        "getXxxDao");
+            }
+            reviewDao = (ReviewDao) OpenHelperManager.getHelper(context,
+                    DatabaseHelper.class).getReviewDao();
+        }
+        return reviewDao;
     }
 }
