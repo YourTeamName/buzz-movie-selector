@@ -24,7 +24,6 @@ public class RecommendedMoviesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommended_movies);
         ListView recommendations = (ListView) findViewById(R.id.recommendedMovieList);
-        List<Movie> mList;
         final ArrayList<Movie> adapterList = new ArrayList<>();
         final MovieAdapter movAdapter = new MovieAdapter(this, adapterList);
         recommendations.setAdapter(movAdapter);
@@ -32,7 +31,7 @@ public class RecommendedMoviesActivity extends AppCompatActivity {
 
         Profile currentUserProfile = SessionState.getInstance().getSessionUser().getProfile();
         if (currentUserProfile != null && currentUserProfile.getMajor() != null) {
-            mList = (List<Movie>) manager.getRecommendationsByMajor(
+            List<Movie> mList = (List<Movie>) manager.getRecommendationsByMajor(
                         SessionState.getInstance().getSessionUser().getProfile().getMajor());
             for (Movie movie : mList) {
                 adapterList.add(movie);
