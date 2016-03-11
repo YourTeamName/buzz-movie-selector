@@ -9,11 +9,9 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 tools:context=".controller.activity.RecommendedMoviesActivity">
 
-    <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:paddingBottom="@dimen/movie_item_height"
-            android:id="@+id/recommendedMovieList"
-            android:layout_gravity="center"/>
+    <ListView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/recommendedMovieList"
+              android:layout_alignParentBottom="true" android:layout_alignParentTop="true"
+              android:layout_alignParentStart="true"/>
 </RelativeLayout>

@@ -24,8 +24,9 @@ public class RecommendedMoviesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommended_movies);
         ListView recommendations = (ListView) findViewById(R.id.recommendedMovieList);
-        List<Movie> mList = new ArrayList<Movie>();
-        final MovieAdapter movAdapter = new MovieAdapter(this, mList);
+        List<Movie> mList;
+        final ArrayList<Movie> adapterList = new ArrayList<>();
+        final MovieAdapter movAdapter = new MovieAdapter(this, adapterList);
         recommendations.setAdapter(movAdapter);
         MovieManagementFacade manager = new MovieManager();
 
@@ -36,6 +37,7 @@ public class RecommendedMoviesActivity extends AppCompatActivity {
             for (Movie movie : mList) {
                 Log.v("RECMAND", movie.toString());
                 Log.v("RECMAND", movie.getImageURL());
+                adapterList.add(movie);
             }
             movAdapter.notifyDataSetChanged();
         } else {
