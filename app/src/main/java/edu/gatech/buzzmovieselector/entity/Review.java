@@ -4,12 +4,14 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import edu.gatech.buzzmovieselector.dao.impl.ReviewDaoImpl;
 
+import java.io.Serializable;
+
 /**
  * Class for a movie review that has a rating and text evaluation of the movie
  * Each movie review also contains the movie it pertains to
  */
 @DatabaseTable(tableName = "review", daoClass = ReviewDaoImpl.class)
-public class Review {
+public class Review implements Serializable {
 
     private Integer id;
     @DatabaseField(foreign = true, foreignAutoCreate = true,

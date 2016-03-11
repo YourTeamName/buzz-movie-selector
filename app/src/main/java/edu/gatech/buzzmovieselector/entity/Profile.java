@@ -4,8 +4,10 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import edu.gatech.buzzmovieselector.dao.impl.ProfileDaoImpl;
 
+import java.io.Serializable;
+
 @DatabaseTable(tableName = "profile", daoClass = ProfileDaoImpl.class)
-public class Profile {
+public class Profile implements Serializable {
 
     public static final String[] USER_DEGREES = {"", "Architecture",
             "Building Construction",

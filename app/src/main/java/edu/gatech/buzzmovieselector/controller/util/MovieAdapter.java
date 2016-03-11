@@ -87,6 +87,8 @@ public class MovieAdapter extends BaseAdapter {
                 i.putExtra(MovieRatingActivity.MOVIE_YEAR, movie.getYear());
                 i.putExtra(MovieRatingActivity.MOVIE_RATING, movie.getRating
                         ().floatValue());
+                i.putputExtra(MovieRatingActivity.MOVIE_RATING, movie.getRating
+                        ().floatValue());
                 hostActivity.startActivity(i);
             }
         });
