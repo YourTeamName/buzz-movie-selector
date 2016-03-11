@@ -4,8 +4,10 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import edu.gatech.buzzmovieselector.dao.impl.UserDaoImpl;
 
+import java.io.Serializable;
+
 @DatabaseTable(tableName = "user", daoClass = UserDaoImpl.class)
-public class User {
+public class User implements Serializable {
 
     /**
      * enum containing possible UserLevel values

@@ -72,8 +72,6 @@ public class SessionState {
         }
         UserManagementFacade um = new UserManager();
         sessionUser = um.getUser(username, password);
-        Log.v("SESSION STATE", "CREDENTIALS:" + SessionState.getInstance
-                ().getSessionUser().getProfile());
         return true;
     }
 

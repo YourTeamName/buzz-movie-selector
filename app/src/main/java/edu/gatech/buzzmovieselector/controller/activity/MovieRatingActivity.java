@@ -21,6 +21,7 @@ public class MovieRatingActivity extends AppCompatActivity {
     public static final String MOVIE_TITLE = "movieTitle";
     public static final String MOVIE_YEAR = "movieYear";
     public static final String MOVIE_RATING = "movieRating";
+    public static final String MOVIE_IMAGE = "movieImage";
 
     private TextView titleText;
     private TextView reviewText;
@@ -43,10 +44,11 @@ public class MovieRatingActivity extends AppCompatActivity {
         int movieYear = getIntent().getIntExtra(MOVIE_YEAR, 0);
         double movieRating = (double) getIntent().getFloatExtra(MOVIE_RATING,
                 0.F);
+        String movieImage = getIntent().getStringExtra(MOVIE_IMAGE);
         mm = new MovieManager();
         if (!mm.movieExists(movieTitle)) {
             Log.v("MovieRating", "Movie with that id doesn't exist");
-            Movie currentMovie = new Movie(movieTitle, movieYear, movieRating);
+            Movie currentMovie = new Movie(movieTitle, movieYear, movieRating, movieImage);
             mm.addMovie(currentMovie);
         }
         reviewMovie = mm.findMovieById(movieTitle);
