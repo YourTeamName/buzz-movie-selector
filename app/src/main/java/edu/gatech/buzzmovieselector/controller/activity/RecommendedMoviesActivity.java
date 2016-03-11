@@ -3,6 +3,7 @@ package edu.gatech.buzzmovieselector.controller.activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 import edu.gatech.buzzmovieselector.R;
@@ -32,6 +33,10 @@ public class RecommendedMoviesActivity extends AppCompatActivity {
         if (currentUserProfile != null && currentUserProfile.getMajor() != null) {
             mList = (List<Movie>) manager.getRecommendationsByMajor(
                         SessionState.getInstance().getSessionUser().getProfile().getMajor());
+            for (Movie movie : mList) {
+                Log.v("RECMAND", movie.toString());
+                Log.v("RECMAND", movie.getImageURL());
+            }
             movAdapter.notifyDataSetChanged();
         } else {
             Context context = getApplicationContext();

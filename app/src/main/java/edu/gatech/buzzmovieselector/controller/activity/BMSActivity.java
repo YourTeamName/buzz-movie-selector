@@ -71,7 +71,6 @@ public class BMSActivity extends AppCompatActivity
         tabLayout.setupWithViewPager(viewPager);
         if (SessionState.getInstance().isLoggedIn()) {
             Log.v("BMS", "we are logged in");
-            Log.v("BMS", "CREDENTIALS:"+SessionState.getInstance().getSessionUser().getPassword());
         } else {
             Log.v("BMS", "we are not logged in");
             // we should not be here unless we are logged in
