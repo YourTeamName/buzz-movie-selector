@@ -35,8 +35,6 @@ public class RecommendedMoviesActivity extends AppCompatActivity {
             mList = (List<Movie>) manager.getRecommendationsByMajor(
                         SessionState.getInstance().getSessionUser().getProfile().getMajor());
             for (Movie movie : mList) {
-                Log.v("RECMAND", movie.toString());
-                Log.v("RECMAND", movie.getImageURL());
                 adapterList.add(movie);
             }
             movAdapter.notifyDataSetChanged();

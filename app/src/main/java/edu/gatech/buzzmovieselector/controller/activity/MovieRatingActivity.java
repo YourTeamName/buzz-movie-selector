@@ -18,10 +18,7 @@ import java.util.Collection;
 
 public class MovieRatingActivity extends AppCompatActivity {
 
-    public static final String MOVIE_TITLE = "movieTitle";
-    public static final String MOVIE_YEAR = "movieYear";
-    public static final String MOVIE_RATING = "movieRating";
-    public static final String MOVIE_IMAGE = "movieImage";
+    public static final String MOVIE_OBJECT = "movieObject";
 
     private TextView titleText;
     private TextView reviewText;
@@ -40,18 +37,13 @@ public class MovieRatingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_rating); //title of movie.
         titleText = (TextView) findViewById(R.id.movieTitle);
-        String movieTitle = getIntent().getStringExtra(MOVIE_TITLE);
-        int movieYear = getIntent().getIntExtra(MOVIE_YEAR, 0);
-        double movieRating = (double) getIntent().getFloatExtra(MOVIE_RATING,
-                0.F);
-        String movieImage = getIntent().getStringExtra(MOVIE_IMAGE);
+        reviewMovie = (Movie) getIntent().getSerializableExtra(MOVIE_OBJECT);
         mm = new MovieManager();
-        if (!mm.movieExists(movieTitle)) {
+        if (!mm.movieExists(reviewMovie.getTitle())) {
             Log.v("MovieRating", "Movie with that id doesn't exist");
-            Movie currentMovie = new Movie(movieTitle, movieYear, movieRating, movieImage);
-            mm.addMovie(currentMovie);
+            mm.addMovie(reviewMovie);
         }
-        reviewMovie = mm.findMovieById(movieTitle);
+        reviewMovie = mm.findMovieById(reviewMovie.getTitle());
         titleText.setText(reviewMovie.getTitle() + " (" + reviewMovie.getYear
                 () + ")");
         reviewText = (TextView) findViewById(R.id.textReview);
