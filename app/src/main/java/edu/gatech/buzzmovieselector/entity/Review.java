@@ -68,6 +68,13 @@ public class Review implements Serializable {
     public Review() {
     }
 
+    /**
+     * Creates a review with the given information
+     * @param user The user that wrote the review
+     * @param content The string of the review itself
+     * @param rating The rating given to the movie
+     * @param movie The movie the rating is assigned to
+     */
     public Review(User user, String content, Double rating, Movie movie) {
         this.setUser(user);
         this.setContent(content);

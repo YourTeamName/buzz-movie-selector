@@ -81,16 +81,33 @@ public class User implements Serializable {
     public User() {
     }
 
+    /**
+     * Creates a user with the given information
+     * @param username The name of the user
+     * @param password The password needed to log in
+     * @param userLevel The level of the account
+     */
     public User(String username, String password, UserLevel userLevel) {
         this.username = username;
         this.password = password;
         this.userLevel = userLevel;
     }
 
+    /**
+     * Chained constructor without a user level
+     * @param username The username of the user
+     * @param password The password needed to log in
+     */
     public User(String username, String password) {
         this(username, password, UserLevel.USER);
     }
 
+    /**
+     * Creates a user with the given information
+     * @param username The username of the user
+     * @param password The password to log in
+     * @param userLevel The string representation of the user's level
+     */
     public User(String username, String password, String userLevel) {
         this.username = username;
         this.password = password;
@@ -108,6 +125,11 @@ public class User implements Serializable {
         this.userLevel = ul;
     }
 
+    /**
+     * Checks to see if two users are the same
+     * @param o The other user
+     * @return True if the users have the same username, password, and level
+     */
     @Override
     public boolean equals(Object o) {
         if (o == null) {

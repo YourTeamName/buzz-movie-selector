@@ -5,10 +5,25 @@ import edu.gatech.buzzmovieselector.entity.User;
 public interface UserManagementFacade {
     void addUser(User user);
 
+    /**
+     * Searches for and returns a user object corresponding to a passed-in id
+     * @param id The username for which to search
+     * @return The user object from the map
+     */
     User findUserById(String id);
 
+    /**
+     * Finds if a user exists in the map
+     * @param username The id to search for in the map
+     * @return True if the user exists
+     */
     boolean userExists(String username);
 
+    /**
+     * Updates a user in the map of users
+     * @param id The username of the user
+     * @param user The updated user object corresponding to the username
+     */
     void updateUser(String id, User user);
 
     /**
