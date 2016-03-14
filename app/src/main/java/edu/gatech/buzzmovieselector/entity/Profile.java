@@ -4,21 +4,32 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import edu.gatech.buzzmovieselector.dao.impl.ProfileDaoImpl;
 
-@DatabaseTable(tableName = "profiles", daoClass = ProfileDaoImpl.class)
-public class Profile {
+import java.io.Serializable;
 
-    public static final String[] USER_DEGREES = { "", "Architecture", "Building Construction",
-            "Industrial Design", "Computer Science", "Computational Media", "Aerospace Engineering",
-            "Biomedical Engineering", "Chemical Engineering", "Civil Engineering",
-            "Computer Engineering", "Electrical Engineering", "Environmental Engineering",
-            "Industrial Engineering", "Materials Science and Engineering", "Mechanical Engineering",
+@DatabaseTable(tableName = "profile", daoClass = ProfileDaoImpl.class)
+public class Profile implements Serializable {
+
+    public static final String[] USER_DEGREES = {"", "Architecture",
+            "Building Construction",
+            "Industrial Design", "Computer Science", "Computational Media",
+            "Aerospace Engineering",
+            "Biomedical Engineering", "Chemical Engineering", "Civil " +
+            "Engineering",
+            "Computer Engineering", "Electrical Engineering", "Environmental " +
+            "Engineering",
+            "Industrial Engineering", "Materials Science and Engineering",
+            "Mechanical Engineering",
             "Nuclear Engineering", "Business Administration",
             "Applied Language and Intercultural Studies", "Economics",
-            "Economics and International Affairs", "Global Economics and Modern Languages",
+            "Economics and International Affairs", "Global Economics and " +
+            "Modern Languages",
             "History, Technology, and Society", "International Affairs",
-            "International Affairs and Modern Languages", "Literature, Media, and Communication",
-            "Public Policy", "Applied Mathematics", "Applied Physics", "Biochemistry", "Biology",
-            "Chemistry", "Discrete Mathematics", "Earth and Atmospheric Sciences", "Physics",
+            "International Affairs and Modern Languages", "Literature, Media," +
+            " and Communication",
+            "Public Policy", "Applied Mathematics", "Applied Physics",
+            "Biochemistry", "Biology",
+            "Chemistry", "Discrete Mathematics", "Earth and Atmospheric " +
+            "Sciences", "Physics",
             "Psychology", "Computational Science and Engineering"};
 
     @DatabaseField(generatedId = true)
@@ -38,7 +49,8 @@ public class Profile {
     public Profile() {
     }
 
-    public Profile(String firstName, String lastName, String major, String email) {
+    public Profile(String firstName, String lastName, String major, String
+            email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.major = major;

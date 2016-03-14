@@ -9,7 +9,8 @@ import edu.gatech.buzzmovieselector.biz.api.ApiReceiver;
  */
 public class TextReceiver extends ApiReceiver<String, String> {
 
-    public TextReceiver(RequestFuture requestFuture, ApiCallback responseCallback) {
+    public TextReceiver(RequestFuture requestFuture, ApiCallback
+            responseCallback) {
         super(requestFuture, responseCallback);
     }
 

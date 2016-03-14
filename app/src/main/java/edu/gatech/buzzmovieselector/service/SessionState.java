@@ -2,10 +2,10 @@ package edu.gatech.buzzmovieselector.service;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
-import edu.gatech.buzzmovieselector.entity.User;
+import android.util.Log;
 import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
 import edu.gatech.buzzmovieselector.biz.impl.UserManager;
+import edu.gatech.buzzmovieselector.entity.User;
 
 public class SessionState {
 
@@ -18,6 +18,7 @@ public class SessionState {
 
     /**
      * Global Session State for the application
+     *
      * @return instance of global SessionState Singleton
      */
     public static SessionState getInstance() {
@@ -29,6 +30,7 @@ public class SessionState {
 
     /**
      * Sets a user to be currently logged into the session
+     *
      * @param u sets the sessionUser variable of the SessionState
      */
     public void setSessionUser(User u) {
@@ -37,6 +39,7 @@ public class SessionState {
 
     /**
      * User currently logged into the session
+     *
      * @return stored sessionUser variable
      */
     public User getSessionUser() {
@@ -45,6 +48,7 @@ public class SessionState {
 
     /**
      * Checks to see if a session user has been set
+     *
      * @return the session user is not equal to null
      */
     public boolean isLoggedIn() {
@@ -53,32 +57,41 @@ public class SessionState {
 
     /**
      * Checks to see if existing state was stored and tries to restore it
+     *
      * @param context Context of shared preferences
      * @return a saved state exists
      */
     public boolean restoreState(Context context) {
-        SharedPreferences saveSession = context.getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
-        String userName = saveSession.getString(USER_PREFIX +  "username", null);
-        String userPass = saveSession.getString(USER_PREFIX +  "password", null);
-        String userLevel = saveSession.getString(USER_PREFIX +  "level", null);
-        if (userName == null || userPass == null || userLevel == null) {
+        SharedPreferences saveSession = context.getSharedPreferences
+                (SESSION_PREFS, Context.MODE_PRIVATE);
+        String username = saveSession.getString(USER_PREFIX + "username", null);
+        String password = saveSession.getString(USER_PREFIX + "password", null);
+        String userLevel = saveSession.getString(USER_PREFIX + "level", null);
+        if (username == null || password == null || userLevel == null) {
             return false;
         }
-        sessionUser = new User(userName, userPass, userLevel);
+        UserManagementFacade um = new UserManager();
+        sessionUser = um.getUser(username, password);
         return true;
     }
 
     /**
      * Saves the current session state into shared preferences
+     *
      * @param context Context of shared preferences
      */
+
     public void saveState(Context context) {
-        SharedPreferences saveSession = context.getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences saveSession = context.getSharedPreferences
+                (SESSION_PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = saveSession.edit();
         if (sessionUser != null) {
-            editor.putString(USER_PREFIX +  "username", sessionUser.getUsername());
-            editor.putString(USER_PREFIX +  "password", sessionUser.getPassword());
-            editor.putString(USER_PREFIX +  "level", sessionUser.getUserLevel().toString());
+            editor.putString(USER_PREFIX + "username", sessionUser
+                    .getUsername());
+            editor.putString(USER_PREFIX + "password", sessionUser
+                    .getPassword());
+            editor.putString(USER_PREFIX + "level", sessionUser.getUserLevel
+                    ().toString());
         }
         editor.clear();
         editor.apply();
@@ -86,10 +99,12 @@ public class SessionState {
 
     /**
      * Clears the stored session state in shared preferences
+     *
      * @param context Context of shared preferences
      */
     public void clearSaveState(Context context) {
-        SharedPreferences saveSession = context.getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences saveSession = context.getSharedPreferences
+                (SESSION_PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = saveSession.edit();
         editor.clear();
         editor.apply();
@@ -97,7 +112,8 @@ public class SessionState {
 
     /**
      * Creates a session for the user
-     * @param user User to create session for
+     *
+     * @param user    User to create session for
      * @param context Application context
      */
     public void startSession(User user, Context context) {
@@ -107,21 +123,12 @@ public class SessionState {
 
     /**
      * Ends the current user session
+     *
      * @param context Application context
      */
     public void endSession(Context context) {
         sessionUser = null;
         clearSaveState(context);
-    }
-
-    public boolean verifySession() {
-        UserManagementFacade uf = new UserManager();
-        String userName = sessionUser.getUsername();
-        if (userName == null || !uf.userExists(userName)) {
-            return false;
-        }
-        User realUser = uf.findUserById(userName);
-        return realUser.equals(sessionUser);
     }
 
     /**

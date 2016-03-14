@@ -1,117 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".controller.ProfileActivity"
-    android:id="@+id/profileLayout">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:context=".controller.ProfileActivity"
+                android:id="@+id/profileLayout">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="First Name"
-        android:id="@+id/firstNameLabel"
-        android:layout_above="@+id/lastNameLabel"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="50dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="First Name"
+            android:id="@+id/firstNameLabel"
+            android:layout_above="@+id/lastNameLabel"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="50dp"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/userNameText"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/userNameText"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Last Name"
-        android:id="@+id/lastNameLabel"
-        android:layout_above="@+id/degreeLabel"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="50dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Last Name"
+            android:id="@+id/lastNameLabel"
+            android:layout_above="@+id/degreeLabel"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="50dp"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Major"
-        android:id="@+id/degreeLabel"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Major"
+            android:id="@+id/degreeLabel"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Email"
-        android:id="@+id/emailLabel"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/degreeLabel"
-        android:layout_alignParentStart="true" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Email"
+            android:id="@+id/emailLabel"
+            android:layout_marginTop="50dp"
+            android:layout_below="@+id/degreeLabel"
+            android:layout_alignParentStart="true"/>
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/lastNameText"
-        android:imeOptions="actionNext"
-        android:layout_alignBottom="@+id/lastNameLabel"
-        android:layout_alignStart="@+id/firstNameText"
-        android:layout_alignEnd="@+id/emailText"
-        android:singleLine="true" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lastNameText"
+            android:imeOptions="actionNext"
+            android:layout_alignBottom="@+id/lastNameLabel"
+            android:layout_alignStart="@+id/firstNameText"
+            android:layout_alignEnd="@+id/emailText"
+            android:singleLine="true"/>
 
     <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/degreeSpinner"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/lastNameText" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/degreeSpinner"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignStart="@+id/lastNameText"/>
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:imeOptions="actionDone"
-        android:id="@+id/emailText"
-        android:layout_alignBottom="@+id/emailLabel"
-        android:layout_alignParentEnd="true"
-        android:singleLine="true" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:imeOptions="actionDone"
+            android:id="@+id/emailText"
+            android:layout_alignBottom="@+id/emailLabel"
+            android:layout_alignParentEnd="true"
+            android:singleLine="true"/>
 
     <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit"
-        android:id="@+id/editCheckBox"
-        android:layout_below="@+id/emailLabel"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="50dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            android:id="@+id/editCheckBox"
+            android:layout_below="@+id/emailLabel"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="50dp"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:id="@+id/saveButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="saveProfile" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:id="@+id/saveButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="saveProfile"/>
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/firstNameText"
-        android:imeOptions="actionNext"
-        android:layout_alignBottom="@+id/firstNameLabel"
-        android:layout_alignStart="@+id/userNameText"
-        android:layout_alignEnd="@+id/emailText"
-        android:singleLine="true" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/firstNameText"
+            android:imeOptions="actionNext"
+            android:layout_alignBottom="@+id/firstNameLabel"
+            android:layout_alignStart="@+id/userNameText"
+            android:layout_alignEnd="@+id/emailText"
+            android:singleLine="true"/>
 </RelativeLayout>

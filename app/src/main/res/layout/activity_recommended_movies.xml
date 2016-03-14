@@ -7,12 +7,11 @@
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                tools:context="edu.gatech.buzzmovieselector.controller.activity.SearchResultsActivity">
+                tools:context=".controller.activity.RecommendedMoviesActivity">
 
-    <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/searchResults"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"/>
+    <ListView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/recommendedMovieList"
+              android:layout_alignParentBottom="true" android:layout_alignParentTop="true"
+              android:layout_alignParentStart="true"/>
 </RelativeLayout>

@@ -1,7 +1,7 @@
 package edu.gatech.buzzmovieselector.controller.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
 import edu.gatech.buzzmovieselector.biz.impl.UserManager;
@@ -47,6 +46,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     /**
      * Helper method for enable editable on an EditText
+     *
      * @param e EditText view to enable
      */
     private void enableTextField(EditText e) {
@@ -57,6 +57,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     /**
      * Helper method for disabling editable on an EditText
+     *
      * @param e EditText view to disable
      */
     private void disableTextField(EditText e) {
@@ -87,10 +88,12 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     /**
-     * Retrieves user parameter from passed bundle and uses it to initialize form
+     * Retrieves user parameter from passed bundle and uses it to initialize
+     * form
      */
     private void initializeForm() {
-        String bundledUserName = getIntent().getExtras().getString(PROFILE_USER_KEY, null);
+        String bundledUserName = getIntent().getExtras().getString
+                (PROFILE_USER_KEY, null);
         if (bundledUserName == null) {
             if (SessionState.getInstance().isLoggedIn()) {
                 profileUser = SessionState.getInstance().getSessionUser();
@@ -104,10 +107,13 @@ public class ProfileActivity extends AppCompatActivity {
         }
         Log.v("ProfileActivity", "profileUser is " + profileUser);
         userNameLabel.setText(profileUser.getUsername() + " Profile");
-        editCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        editCheckBox.setOnCheckedChangeListener(new CompoundButton
+                .OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Log.v("ProfileActivity", "Edit checked: " + (isChecked ? "True" : "False"));
+            public void onCheckedChanged(CompoundButton buttonView, boolean
+                    isChecked) {
+                Log.v("ProfileActivity", "Edit checked: " + (isChecked ?
+                        "True" : "False"));
                 if (isChecked) {
                     enableForm();
                 } else {
@@ -124,12 +130,14 @@ public class ProfileActivity extends AppCompatActivity {
      * Cancels focus from all form elements
      */
     private void cancelFocus() {
-        RelativeLayout formLayout = (RelativeLayout) findViewById(R.id.profileLayout);
+        RelativeLayout formLayout = (RelativeLayout) findViewById(R.id
+                .profileLayout);
         formLayout.requestFocus();
     }
 
     /**
-     * Called when the Save button is clicked - verifies proper values are entered
+     * Called when the Save button is clicked - verifies proper values are
+     * entered
      */
     private boolean validateProfile() {
         String firstName = firstNameText.getText().toString();
@@ -181,7 +189,8 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     /**
-     * Retrieves existing user profile information and uses it to populate the fields
+     * Retrieves existing user profile information and uses it to populate
+     * the fields
      */
     private void populateFields() {
         Profile userProfile = profileUser.getProfile();
@@ -192,7 +201,8 @@ public class ProfileActivity extends AppCompatActivity {
         firstNameText.setText(userProfile.getFirstName());
         lastNameText.setText(userProfile.getLastName());
         emailText.setText(userProfile.getEmail());
-        if (profileUser.equals(SessionState.getInstance().getSessionUser()) || profileUser.getUserLevel() == User.UserLevel.ADMIN) {
+        if (profileUser.equals(SessionState.getInstance().getSessionUser())
+                || profileUser.getUserLevel() == User.UserLevel.ADMIN) {
             editCheckBox.setEnabled(true);
         } else {
             editCheckBox.setEnabled(false);
@@ -203,13 +213,16 @@ public class ProfileActivity extends AppCompatActivity {
      * Populates degreeSpinner with the values from the UserDegree enum
      */
     private void populateSpinner() {
-        ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, Profile.USER_DEGREES);
+        ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout
+                .support_simple_spinner_dropdown_item, Profile.USER_DEGREES);
         degreeSpinner.setAdapter(degreeAdapter);
     }
 
     private void depopulateSpinner() {
-        String[] fakeList = { profileUser.getProfile().getMajor() == null ? "" : profileUser.getProfile().getMajor() };
-        ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, fakeList);
+        String[] fakeList = {profileUser.getProfile().getMajor() == null ? ""
+                : profileUser.getProfile().getMajor()};
+        ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout
+                .support_simple_spinner_dropdown_item, fakeList);
         degreeSpinner.setAdapter(degreeAdapter);
     }
 

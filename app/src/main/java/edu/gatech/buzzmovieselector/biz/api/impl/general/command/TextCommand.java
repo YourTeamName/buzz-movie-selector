@@ -18,6 +18,7 @@ public class TextCommand implements ApiCommand {
 
     @Override
     public TextReceiver execute(ApiCallback callback) {
-        return new TextReceiver(ApiNetwork.getInstance().apiString(url), callback);
+        return new TextReceiver(ApiNetwork.getInstance().apiString(url),
+                callback);
     }
 }

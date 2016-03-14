@@ -14,7 +14,8 @@ import edu.gatech.buzzmovieselector.biz.api.ApiCall;
 import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.command.RTCommandFactory;
-import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver.RTMovieListReceiver;
+import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver
+        .RTMovieListReceiver;
 import edu.gatech.buzzmovieselector.controller.util.MovieAdapter;
 import edu.gatech.buzzmovieselector.entity.Movie;
 
@@ -34,8 +35,10 @@ public class RecentDVDsFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_recent_dvds, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_recent_dvds, container,
+                false);
         movieList = (ListView) v.findViewById(R.id.recentDVDListView);
         final ArrayList<Movie> mList = new ArrayList<>();
         final MovieAdapter movAdapter = new MovieAdapter(hostActivity, mList);

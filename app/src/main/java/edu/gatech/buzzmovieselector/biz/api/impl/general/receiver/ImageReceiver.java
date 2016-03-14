@@ -10,7 +10,8 @@ import edu.gatech.buzzmovieselector.biz.api.ApiReceiver;
  */
 public class ImageReceiver extends ApiReceiver<Bitmap, Bitmap> {
 
-    public ImageReceiver(RequestFuture requestFuture, ApiCallback responseCallback) {
+    public ImageReceiver(RequestFuture requestFuture, ApiCallback
+            responseCallback) {
         super(requestFuture, responseCallback);
     }
 

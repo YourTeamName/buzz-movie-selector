@@ -13,7 +13,8 @@ import android.widget.TextView;
 import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.biz.api.ApiCall;
 import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
-import edu.gatech.buzzmovieselector.biz.api.impl.general.command.GeneralCommandFactory;
+import edu.gatech.buzzmovieselector.biz.api.impl.general.command
+        .GeneralCommandFactory;
 import edu.gatech.buzzmovieselector.biz.api.impl.general.receiver.ImageReceiver;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 import edu.gatech.buzzmovieselector.controller.activity.MovieRatingActivity;
@@ -35,7 +36,8 @@ public class MovieAdapter extends BaseAdapter {
     public MovieAdapter(Activity hostActivity, List<Movie> movies) {
         this.movies = movies;
         this.hostActivity = hostActivity;
-        inflater = (LayoutInflater) hostActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater = (LayoutInflater) hostActivity.getSystemService(Context
+                .LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -55,12 +57,16 @@ public class MovieAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
+        Log.v("movieadapter", "getView " + i);
         View rowView = inflater.inflate(R.layout.movie_list, null);
-        final ImageView movieThumbView = (ImageView) rowView.findViewById(R.id.movieImage);
-        final TextView movieTitleView = (TextView) rowView.findViewById(R.id.movieTitleText);
+        final ImageView movieThumbView = (ImageView) rowView.findViewById(R
+                .id.movieImage);
+        final TextView movieTitleView = (TextView) rowView.findViewById(R.id
+                .movieTitleText);
         final Movie movie = movies.get(i);
         movieTitleView.setText(movie.getTitle() + " (" + movie.getYear() + ")");
-        ApiCall imageCall = new ApiCall(GeneralCommandFactory.getImageCommand(movie.getImageURL()), new ApiCallback<ImageReceiver>() {
+        ApiCall imageCall = new ApiCall(GeneralCommandFactory.getImageCommand
+                (movie.getImageURL()), new ApiCallback<ImageReceiver>() {
             @Override
             public void onReceive(final ImageReceiver receiver) {
                 hostActivity.runOnUiThread(new Runnable() {
@@ -78,9 +84,7 @@ public class MovieAdapter extends BaseAdapter {
                 // TODO make this open a movie viewer activity
                 Log.v("movieadapter", "position " + i);
                 Intent i = new Intent(hostActivity, MovieRatingActivity.class);
-                i.putExtra(MovieRatingActivity.MOVIE_TITLE, movie.getTitle());
-                i.putExtra(MovieRatingActivity.MOVIE_YEAR, movie.getYear());
-                i.putExtra(MovieRatingActivity.MOVIE_RATING, movie.getRating().floatValue());
+                i.putExtra(MovieRatingActivity.MOVIE_OBJECT, movie);
                 hostActivity.startActivity(i);
             }
         });

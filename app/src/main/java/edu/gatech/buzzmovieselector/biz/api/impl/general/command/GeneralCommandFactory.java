@@ -1,9 +1,6 @@
 package edu.gatech.buzzmovieselector.biz.api.impl.general.command;
 
 import edu.gatech.buzzmovieselector.biz.api.ApiCommand;
-import edu.gatech.buzzmovieselector.biz.api.impl.rt.command.RTMovieSearch;
-import edu.gatech.buzzmovieselector.biz.api.impl.rt.command.RTRecentDVDs;
-import edu.gatech.buzzmovieselector.biz.api.impl.rt.command.RTRecentMovies;
 
 /**
  * Factory for general API commands
@@ -12,6 +9,7 @@ public class GeneralCommandFactory {
 
     /**
      * Gives the API command for a general image request
+     *
      * @param url request url
      * @return ImageCommand with url parameter
      */
@@ -21,6 +19,7 @@ public class GeneralCommandFactory {
 
     /**
      * Gives the API command for a general JSON request
+     *
      * @param url request url
      * @return JSONCommand with url parameter
      */
@@ -30,6 +29,7 @@ public class GeneralCommandFactory {
 
     /**
      * Gives the API command for a general text request
+     *
      * @param url request url
      * @return TextCommand with url parameter
      */

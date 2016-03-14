@@ -12,9 +12,10 @@ import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
 import edu.gatech.buzzmovieselector.biz.impl.UserManager;
 import edu.gatech.buzzmovieselector.dao.DaoFactory;
+import edu.gatech.buzzmovieselector.entity.Profile;
 import edu.gatech.buzzmovieselector.entity.User;
-import edu.gatech.buzzmovieselector.service.SessionState;
 import edu.gatech.buzzmovieselector.service.ApiNetwork;
+import edu.gatech.buzzmovieselector.service.SessionState;
 
 /**
  * WelcomeActivity is the controller for the welcome screen
@@ -49,15 +50,18 @@ public class WelcomeActivity extends AppCompatActivity {
      * Checks to see if permissions need to be requested
      */
     private void checkPermissions() {
-        int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.INTERNET);
+        int permissionCheck = ContextCompat.checkSelfPermission
+                (getApplicationContext(), Manifest.permission.INTERNET);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.INTERNET}, REQUEST_CODE_ASK_PERMISSIONS);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest
+                    .permission.INTERNET}, REQUEST_CODE_ASK_PERMISSIONS);
         } else {
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String
+            permissions[], int[] grantResults) {
         switch (requestCode) {
             case REQUEST_CODE_ASK_PERMISSIONS:
                 if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
@@ -65,7 +69,8 @@ public class WelcomeActivity extends AppCompatActivity {
                 }
                 break;
             default:
-                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+                super.onRequestPermissionsResult(requestCode, permissions,
+                        grantResults);
         }
     }
 
@@ -73,12 +78,19 @@ public class WelcomeActivity extends AppCompatActivity {
      * Method for initializing hard coded values and restoring app state
      */
     private void initApp() {
-        // TODO: load user data from persistent storage so that register works
+
+
         // Pass context to DaoFactory so that it can work properly later
         DaoFactory.setContext(this);
-        checkPermissions();
+
+        // test user
+        User testUser = new User("user", "pass");
+        testUser.setProfile(new Profile("George", "Burdell", "Computer " +
+                "Science", "gp@gatech.edu"));
         UserManagementFacade um = new UserManager();
-        um.addUser(new User("user", "pass"));
+        um.addUser(testUser);
+
+        checkPermissions();
         restoreState();
         ApiNetwork.getInstance(this);
     }
@@ -113,7 +125,6 @@ public class WelcomeActivity extends AppCompatActivity {
      * session and user data is still valid
      */
     private boolean verifyLogin() {
-        return SessionState.getInstance().isLoggedIn() && SessionState
-                .getInstance().verifySession();
+        return SessionState.getInstance().isLoggedIn();
     }
 }
