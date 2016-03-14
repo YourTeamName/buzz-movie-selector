@@ -2,6 +2,8 @@ package edu.gatech.buzzmovieselector.biz;
 
 import edu.gatech.buzzmovieselector.entity.User;
 
+import java.util.List;
+
 public interface UserManagementFacade {
     void addUser(User user);
 
@@ -16,4 +18,9 @@ public interface UserManagementFacade {
      * not exit or credentials are incorrect
      */
     User getUser(String username, String password);
+
+    /**
+     * @return all users
+     */
+    List<User> findAll();
 }

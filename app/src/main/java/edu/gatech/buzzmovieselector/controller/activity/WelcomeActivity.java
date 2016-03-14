@@ -79,16 +79,21 @@ public class WelcomeActivity extends AppCompatActivity {
      */
     private void initApp() {
 
-
         // Pass context to DaoFactory so that it can work properly later
         DaoFactory.setContext(this);
 
         // test user
-        User testUser = new User("user", "pass", "locked");
+        User testUser = new User("user", "pass", "user");
         testUser.setProfile(new Profile("George", "Burdell", "Computer " +
                 "Science", "gp@gatech.edu"));
         UserManagementFacade um = new UserManager();
         um.addUser(testUser);
+
+        // test admin
+        User testAdmin = new User("admin", "admin", "admin");
+        testUser.setProfile(new Profile("Admin", "Burdell", "Computer " +
+                "Science", "gp@gatech.edu"));
+        um.addUser(testAdmin);
 
         checkPermissions();
         restoreState();

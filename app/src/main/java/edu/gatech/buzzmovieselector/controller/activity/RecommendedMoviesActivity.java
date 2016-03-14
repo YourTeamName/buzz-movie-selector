@@ -8,7 +8,7 @@ import android.widget.Toast;
 import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.biz.MovieManagementFacade;
 import edu.gatech.buzzmovieselector.biz.impl.MovieManager;
-import edu.gatech.buzzmovieselector.controller.util.MovieAdapter;
+import edu.gatech.buzzmovieselector.controller.util.MovieListAdapter;
 import edu.gatech.buzzmovieselector.entity.Movie;
 import edu.gatech.buzzmovieselector.entity.Profile;
 import edu.gatech.buzzmovieselector.service.SessionState;
@@ -25,7 +25,7 @@ public class RecommendedMoviesActivity extends AppCompatActivity {
         ListView recommendations = (ListView) findViewById(R.id
                 .recommendedMovieList);
         final ArrayList<Movie> adapterList = new ArrayList<>();
-        final MovieAdapter movAdapter = new MovieAdapter(this, adapterList);
+        final MovieListAdapter movAdapter = new MovieListAdapter(this, adapterList);
         recommendations.setAdapter(movAdapter);
         MovieManagementFacade manager = new MovieManager();
 

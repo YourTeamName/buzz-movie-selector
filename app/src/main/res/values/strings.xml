@@ -21,7 +21,7 @@
     <string name="link_login">Login</string>
     <string name="searchHint">Search for movie</string>
     <string name="link_register">Register</string>
-    <string name="title_activity_bms">BMSActivity</string>
+    <string name="title_activity_bms">BuzzMovieSelector</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

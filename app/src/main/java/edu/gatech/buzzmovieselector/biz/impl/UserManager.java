@@ -8,6 +8,8 @@ import edu.gatech.buzzmovieselector.dao.UserDao;
 import edu.gatech.buzzmovieselector.entity.User;
 import edu.gatech.buzzmovieselector.service.SessionState;
 
+import java.util.List;
+
 public class UserManager implements AuthenticationFacade, UserManagementFacade {
 
     public User findUserById(String username) {
@@ -73,6 +75,18 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<User> findAll() {
+        List<User> users = null;
+        try {
+            UserDao userDao = DaoFactory.getUserDao();
+            users = userDao.queryForAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users;
     }
 
     public UserManager() {

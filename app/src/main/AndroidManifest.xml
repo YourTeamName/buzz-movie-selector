@@ -19,14 +19,27 @@
             </intent-filter>
         </activity>
         <activity android:name=".controller.activity.LoginActivity"/>
-        <activity android:name=".controller.activity.BMSActivity"
-                  android:label="@string/title_activity_bms"
-                  android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".controller.activity.RegisterActivity"/>
-        <activity android:name=".controller.activity.ProfileActivity"/>
+        <activity
+                android:name=".controller.activity.BMSActivity"
+                android:label="@string/title_activity_bms"
+                android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+                android:name=".controller.activity.RegisterActivity"
+                android:label="Sign Up"/>
+        <activity
+                android:name=".controller.activity.ProfileActivity"
+                android:label="Profile"/>
         <activity android:name=".controller.activity.SearchResultsActivity"/>
-        <activity android:name=".controller.activity.MovieRatingActivity"/>
-        <activity android:name=".controller.activity.RecommendedMoviesActivity"/>
+        <activity
+                android:name=".controller.activity.MovieRatingActivity"
+                android:label="Rate Movie"/>
+        <activity
+                android:name=".controller.activity.RecommendedMoviesActivity"
+                android:label="Recommended Movies"/>
+        <activity android:name=".controller.activity.AdminActivity"
+                  android:label="Admin"/>
+        <activity android:name=".controller.activity.UserStatusActivity"
+                  android:label="User Status"/>
 
     </application>
 

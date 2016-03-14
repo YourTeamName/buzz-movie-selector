@@ -65,8 +65,8 @@ public class SessionState {
                 (SESSION_PREFS, Context.MODE_PRIVATE);
         String username = saveSession.getString(USER_PREFIX + "username", null);
         String password = saveSession.getString(USER_PREFIX + "password", null);
-        String userLevel = saveSession.getString(USER_PREFIX + "level", null);
-        if (username == null || password == null || userLevel == null) {
+        String userStatus = saveSession.getString(USER_PREFIX + "status", null);
+        if (username == null || password == null || userStatus == null) {
             return false;
         }
         UserManagementFacade um = new UserManager();
@@ -89,7 +89,7 @@ public class SessionState {
                     .getUsername());
             editor.putString(USER_PREFIX + "password", sessionUser
                     .getPassword());
-            editor.putString(USER_PREFIX + "level", sessionUser.getUserStatus
+            editor.putString(USER_PREFIX + "status", sessionUser.getUserStatus
                     ().toString());
         }
         editor.clear();

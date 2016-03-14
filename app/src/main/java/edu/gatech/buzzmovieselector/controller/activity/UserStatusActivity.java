@@ -2,6 +2,8 @@ package edu.gatech.buzzmovieselector.controller.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import edu.gatech.buzzmovieselector.R;
@@ -72,13 +74,14 @@ public class UserStatusActivity extends AppCompatActivity {
     /**
      * Handler for banButton
      */
-    private void onBanButtonClick() {
+    public void onBanButtonClick(View view) {
         if (currentUser.getUserStatus().equals(User.UserStatus.BANNED)) {
             currentUser.setUserStatus(User.UserStatus.USER);
         } else if (currentUser.getUserStatus().equals(User.UserStatus.USER)) {
             currentUser.setUserStatus(User.UserStatus.BANNED);
         }
         initializeForm();
+        Log.v("USER STATUS", currentUser.getUserStatus().toString());
         UserManagementFacade userManager = new UserManager();
         userManager.updateUser(currentUser);
     }
@@ -86,13 +89,14 @@ public class UserStatusActivity extends AppCompatActivity {
     /**
      * Handler for lockButton
      */
-    private void onLockButtonClick() {
+    public void onLockButtonClick(View view) {
         if (currentUser.getUserStatus().equals(User.UserStatus.LOCKED)) {
             currentUser.setUserStatus(User.UserStatus.USER);
         } else if (currentUser.getUserStatus().equals(User.UserStatus.USER)) {
             currentUser.setUserStatus(User.UserStatus.LOCKED);
         }
         initializeForm();
+        Log.v("USER STATUS", currentUser.getUserStatus().toString());
         UserManagementFacade userManager = new UserManager();
         userManager.updateUser(currentUser);
     }

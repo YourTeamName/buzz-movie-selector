@@ -16,7 +16,7 @@ import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.command.RTCommandFactory;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver
         .RTMovieListReceiver;
-import edu.gatech.buzzmovieselector.controller.util.MovieAdapter;
+import edu.gatech.buzzmovieselector.controller.util.MovieListAdapter;
 import edu.gatech.buzzmovieselector.entity.Movie;
 
 import java.util.ArrayList;
@@ -76,7 +76,7 @@ public class MovieSearchFragment extends Fragment {
      */
     private void refreshResults(View v) {
         final ArrayList<Movie> mList = new ArrayList<>();
-        final MovieAdapter movAdapter = new MovieAdapter(hostActivity, mList);
+        final MovieListAdapter movAdapter = new MovieListAdapter(hostActivity, mList);
         movieResults.setAdapter(movAdapter);
         RTInvoker rti = new RTInvoker();
         rti.executeCall(new ApiCall(RTCommandFactory.getMovieSearchCommand
