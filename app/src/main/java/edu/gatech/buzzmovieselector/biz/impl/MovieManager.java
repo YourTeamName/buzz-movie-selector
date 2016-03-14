@@ -89,9 +89,9 @@ public class MovieManager implements MovieManagementFacade {
         List<Movie> recommendedList = new ArrayList<Movie>();
         for (Movie movie : movieList) {
             double totalPoints = 0.0;
-            for (Review r : movie.getReviews()) {
-                if (major.equals(r.getUser().getProfile().getMajor())) {
-                    totalPoints += r.getRating();
+            for (Review review : movie.getReviews()) {
+                if (major.equals(review.getUser().getProfile().getMajor())) {
+                    totalPoints += review.getRating();
                 }
             }
             double average = totalPoints / movie.getReviews().size();
