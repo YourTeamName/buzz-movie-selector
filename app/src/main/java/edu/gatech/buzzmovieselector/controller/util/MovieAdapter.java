@@ -57,7 +57,6 @@ public class MovieAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
-        Log.v("movieadapter", "getView " + i);
         View rowView = inflater.inflate(R.layout.movie_list, null);
         final ImageView movieThumbView = (ImageView) rowView.findViewById(R
                 .id.movieImage);

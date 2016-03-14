@@ -39,11 +39,11 @@ public class MovieRatingActivity extends AppCompatActivity {
         titleText = (TextView) findViewById(R.id.movieTitle);
         reviewMovie = (Movie) getIntent().getSerializableExtra(MOVIE_OBJECT);
         mm = new MovieManager();
-        if (!mm.movieExists(reviewMovie.getTitle())) {
+        if (!mm.movieExists(reviewMovie.getId())) {
             Log.v("MovieRating", "Movie with that id doesn't exist");
             mm.addMovie(reviewMovie);
         }
-        reviewMovie = mm.findMovieById(reviewMovie.getTitle());
+        reviewMovie = mm.findMovieById(reviewMovie.getId());
         titleText.setText(reviewMovie.getTitle() + " (" + reviewMovie.getYear
                 () + ")");
         reviewText = (TextView) findViewById(R.id.textReview);
@@ -73,6 +73,8 @@ public class MovieRatingActivity extends AppCompatActivity {
         Review userReview = new Review(SessionState.getInstance()
                 .getSessionUser(), reviewContent, usrRating, reviewMovie);
         reviewMovie.addReview(userReview);
+        MovieManagementFacade mm = new MovieManager();
+        mm.updateMovie(reviewMovie);
         finish();
     }
 

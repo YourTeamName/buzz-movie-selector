@@ -1,95 +1,104 @@
 package edu.gatech.buzzmovieselector.biz.impl;
 
 import edu.gatech.buzzmovieselector.biz.MovieManagementFacade;
+import edu.gatech.buzzmovieselector.dao.DaoFactory;
+import edu.gatech.buzzmovieselector.dao.MovieDao;
 import edu.gatech.buzzmovieselector.entity.Movie;
 import edu.gatech.buzzmovieselector.entity.Review;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Implementation of the MovieManagementFacade
  */
 public class MovieManager implements MovieManagementFacade {
 
-    private static Map<String, Movie> movies = null;
-    private static List<Review> reviews = null;
-
-    private void loadMovieInfo() {
-        movies = new HashMap<>();
-        reviews = new ArrayList<>();
+    public MovieManager() {
     }
 
-    public MovieManager() {
-        if (movies == null) {
-            loadMovieInfo();
+    @Override
+    public void addMovie(Movie movie) {
+        try {
+            MovieDao movieDao = DaoFactory.getMovieDao();
+            movieDao.createOrUpdate(movie);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     @Override
-    public void addMovie(Movie m) {
-        movies.put(m.getTitle(), m);
+    public Movie findMovieById(Integer id) {
+        Movie movie = null;
+        try {
+            movie = DaoFactory.getMovieDao().queryForId(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return movie;
     }
 
     @Override
-    public Movie findMovieById(String id) {
-        return movies.get(id);
+    public boolean movieExists(Integer id) {
+        Movie movie = null;
+        try {
+            movie = DaoFactory.getMovieDao().queryForId(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return movie != null;
     }
 
     @Override
-    public boolean movieExists(String movieTitle) {
-        return movies.containsKey(movieTitle);
-    }
-
-    @Override
-    public void updateMovie(String id, Movie m) {
-        // TODO: Implement updateMovie
+    public void updateMovie(Movie movie) {
+        try {
+            MovieDao movieDao = DaoFactory.getMovieDao();
+            movieDao.createOrUpdate(movie);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public List<Review> getReviews(Movie m) {
-        // TODO: make this more efficient
-        List<Review> reviewList = new ArrayList<>();
-        for (Review r : reviews) {
-            if (r.getMovie().equals(m)) {
-                reviewList.add(r);
-            }
-        }
-        return reviewList;
+        // TODO: to be implemented
+        return null;
     }
 
     @Override
     public void addReview(Review r) {
-        Movie m = r.getMovie();
-        if (!movieExists(m.getTitle())) {
-            addMovie(m);
-        }
-        reviews.add(r);
+        // TODO: to be implemented
     }
 
     @Override
     public Collection<Movie> getMovies() {
-        return movies.values();
+        List<Movie> movieList = null;
+        try {
+            MovieDao movieDao = DaoFactory.getMovieDao();
+            movieList = movieDao.queryForAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return movieList;
     }
 
     @Override
     public Collection<Movie> getRecommendationsByMajor(String major) {
-        Collection<Movie> mList = new ArrayList<Movie>();
-        for (Movie m : movies.values()) {
+        Collection<Movie> movieList = getMovies();
+        List<Movie> recommendedList = new ArrayList<Movie>();
+        for (Movie movie : movieList) {
             double totalPoints = 0.0;
-            for (Review r : m.getReviews()) {
-                if (major.equals(r.getUser().getProfile().getMajor())) {
-                    totalPoints += r.getRating();
+            for (Review review : movie.getReviews()) {
+                if (major.equals(review.getUser().getProfile().getMajor())) {
+                    totalPoints += review.getRating();
                 }
             }
-            double average = totalPoints / m.getReviews().size();
+            double average = totalPoints / movie.getReviews().size();
             if (average >= 4.0) {
-                mList.add(m);
+                recommendedList.add(movie);
             }
         }
-        return mList;
+        return recommendedList;
     }
 }
