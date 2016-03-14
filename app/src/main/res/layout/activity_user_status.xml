@@ -20,14 +20,14 @@
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
+            android:text="Ban"
             android:id="@+id/button2"
             android:layout_marginTop="45dp" android:layout_below="@+id/userStatusLabel"
-            android:layout_toStartOf="@+id/userStatusLabel"/>
+            android:layout_toStartOf="@+id/userStatusLabel" android:clickable="true"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
+            android:text="Lock"
             android:id="@+id/button3" android:layout_alignBottom="@+id/button2"
-            android:layout_toEndOf="@+id/userStatusLabel"/>
+            android:layout_toEndOf="@+id/userStatusLabel" android:clickable="true"/>
 </RelativeLayout>
