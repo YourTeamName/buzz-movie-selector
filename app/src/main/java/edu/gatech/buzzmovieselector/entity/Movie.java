@@ -16,7 +16,7 @@ import java.util.Collection;
 @DatabaseTable(tableName = "movie", daoClass = MovieDaoImpl.class)
 public class Movie implements Serializable {
 
-    @DatabaseField(generatedId = true)
+    @DatabaseField(generatedId = true, allowGeneratedIdInsert = true)
     private Integer id;
     @DatabaseField
     private String title;
@@ -94,6 +94,12 @@ public class Movie implements Serializable {
         reviews = new ArrayList<Review>();
     }
 
+    public Movie(Integer id, String title, int year, double rating, String
+            imageURL) {
+        this(title, year, rating, imageURL);
+        this.setId(id);
+    }
+
     public void addReview(Review r) {
         reviews.add(r);
     }
@@ -117,7 +123,8 @@ public class Movie implements Serializable {
 
     @Override
     public String toString() {
-        return "Movie: " + title + " Year: " + year + " Rate: " + rating;
+        return "Movie: " + title + "ID: " + id + " Year: " + year + " Rate: "
+                + rating;
     }
 
 }

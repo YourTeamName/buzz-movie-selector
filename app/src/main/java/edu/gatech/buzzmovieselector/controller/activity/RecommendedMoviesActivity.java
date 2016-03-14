@@ -23,17 +23,22 @@ public class RecommendedMoviesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommended_movies);
-        ListView recommendations = (ListView) findViewById(R.id.recommendedMovieList);
+        ListView recommendations = (ListView) findViewById(R.id
+                .recommendedMovieList);
         final ArrayList<Movie> adapterList = new ArrayList<>();
         final MovieAdapter movAdapter = new MovieAdapter(this, adapterList);
         recommendations.setAdapter(movAdapter);
         MovieManagementFacade manager = new MovieManager();
 
-        Profile currentUserProfile = SessionState.getInstance().getSessionUser().getProfile();
-        if (currentUserProfile != null && currentUserProfile.getMajor() != null) {
+        Profile currentUserProfile = SessionState.getInstance()
+                .getSessionUser().getProfile();
+        if (currentUserProfile != null && currentUserProfile.getMajor() !=
+                null) {
             List<Movie> mList = (List<Movie>) manager.getRecommendationsByMajor(
-                        SessionState.getInstance().getSessionUser().getProfile().getMajor());
+                    SessionState.getInstance().getSessionUser().getProfile()
+                            .getMajor());
             for (Movie movie : mList) {
+                Log.v("RECMD", movie.toString());
                 adapterList.add(movie);
             }
             movAdapter.notifyDataSetChanged();

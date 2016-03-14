@@ -1,5 +1,6 @@
 package edu.gatech.buzzmovieselector.biz;
 
+import com.j256.ormlite.stmt.query.In;
 import edu.gatech.buzzmovieselector.entity.Movie;
 import edu.gatech.buzzmovieselector.entity.Review;
 
@@ -12,11 +13,11 @@ import java.util.List;
 public interface MovieManagementFacade {
     void addMovie(Movie m);
 
-    Movie findMovieById(String id);
+    Movie findMovieById(Integer id);
 
-    boolean movieExists(String movieTitle);
+    boolean movieExists(Integer id);
 
-    void updateMovie(String id, Movie m);
+    void updateMovie(Movie m);
 
     Collection<Movie> getMovies();
 
