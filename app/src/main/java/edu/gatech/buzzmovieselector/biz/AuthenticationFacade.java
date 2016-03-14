@@ -1,9 +1,12 @@
 package edu.gatech.buzzmovieselector.biz;
 
+import edu.gatech.buzzmovieselector.entity.User;
+
 public interface AuthenticationFacade {
+
     /**
-     * @return true if the credentials are correct, false if the user does
+     * @return the user if the credentials are correct, null if the user does
      * not exit or credentials are incorrect
      */
-    boolean login(String username, String password);
+    User login(String username, String password);
 }

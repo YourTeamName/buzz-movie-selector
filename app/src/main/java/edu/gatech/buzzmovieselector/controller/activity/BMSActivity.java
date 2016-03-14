@@ -125,7 +125,7 @@ public class BMSActivity extends AppCompatActivity
         Intent profileIntent = new Intent(this, ProfileActivity.class);
         String profileUser = SessionState.getInstance().getSessionUser()
                 .getUsername();
-        profileIntent.putExtra(ProfileActivity.PROFILE_USER_KEY, profileUser);
+        profileIntent.putExtra(ProfileActivity.KEY_PROFILE_USER, profileUser);
         startActivity(profileIntent);
     }
 

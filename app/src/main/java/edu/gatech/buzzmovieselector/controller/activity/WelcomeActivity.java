@@ -84,7 +84,7 @@ public class WelcomeActivity extends AppCompatActivity {
         DaoFactory.setContext(this);
 
         // test user
-        User testUser = new User("user", "pass");
+        User testUser = new User("user", "pass", "locked");
         testUser.setProfile(new Profile("George", "Burdell", "Computer " +
                 "Science", "gp@gatech.edu"));
         UserManagementFacade um = new UserManager();

@@ -2,7 +2,6 @@ package edu.gatech.buzzmovieselector.service;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
 import edu.gatech.buzzmovieselector.biz.impl.UserManager;
 import edu.gatech.buzzmovieselector.entity.User;
@@ -90,7 +89,7 @@ public class SessionState {
                     .getUsername());
             editor.putString(USER_PREFIX + "password", sessionUser
                     .getPassword());
-            editor.putString(USER_PREFIX + "level", sessionUser.getUserLevel
+            editor.putString(USER_PREFIX + "level", sessionUser.getUserStatus
                     ().toString());
         }
         editor.clear();

@@ -9,7 +9,7 @@ public interface UserManagementFacade {
 
     boolean userExists(String username);
 
-    void updateUser(String id, User user);
+    void updateUser(User user);
 
     /**
      * @return the user if the credentials are correct, null if the user does

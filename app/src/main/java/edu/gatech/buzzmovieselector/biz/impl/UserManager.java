@@ -46,8 +46,8 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
         return user;
     }
 
-    public boolean login(String username, String password) {
-        return getUser(username, password) != null;
+    public User login(String username, String password) {
+        return getUser(username, password);
     }
 
     public boolean userExists(String username) {
@@ -60,7 +60,7 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
         return user != null;
     }
 
-    public void updateUser(String id, User user) {
+    public void updateUser(User user) {
         if (user.getUsername().equals(SessionState.getInstance()
                 .getSessionUser().getUsername())) {
             SessionState.getInstance().setSessionUser(user);
