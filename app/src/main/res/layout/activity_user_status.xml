@@ -11,7 +11,7 @@
             android:text="New Text"
             android:id="@+id/usernameLabel"
             android:textSize="30dp"
-            android:layout_marginTop="62dp"
+            android:layout_marginTop="65dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"/>
 
@@ -30,12 +30,11 @@
             android:layout_height="wrap_content"
             android:text="BAN"
             android:id="@+id/banButton"
-            android:layout_marginTop="79dp"
             android:clickable="true"
-            android:layout_marginEnd="81dp"
+            android:onClick="onBanButtonClicked"
             android:layout_below="@+id/userStatusLabel"
-            android:layout_alignEnd="@+id/userStatusLabel"
-            android:onClick="onBanButtonClick"/>
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="79dp"/>
 
     <Button
             android:layout_width="wrap_content"
@@ -43,10 +42,9 @@
             android:text="LOCK"
             android:id="@+id/lockButton"
             android:clickable="true"
-            android:layout_marginStart="86dp"
-            android:layout_alignTop="@+id/banButton"
-            android:layout_alignStart="@+id/userStatusLabel"
-            android:onClick="onLockButtonClick"/>
+            android:onClick="onLockButtonClicked"
+            android:layout_below="@+id/banButton"
+            android:layout_centerHorizontal="true"/>
 
     <TextView
             android:layout_width="wrap_content"
@@ -63,6 +61,6 @@
             android:text="Status:"
             android:id="@+id/textView3"
             android:textSize="20dp"
-            android:layout_above="@+id/banButton"
+            android:layout_alignBottom="@+id/userStatusLabel"
             android:layout_toStartOf="@+id/userStatusLabel"/>
 </RelativeLayout>

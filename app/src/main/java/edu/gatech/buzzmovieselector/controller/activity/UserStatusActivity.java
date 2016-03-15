@@ -74,7 +74,7 @@ public class UserStatusActivity extends AppCompatActivity {
     /**
      * Handler for banButton
      */
-    public void onBanButtonClick(View view) {
+    public void onBanButtonClicked(View view) {
         if (currentUser.getUserStatus().equals(User.UserStatus.BANNED)) {
             currentUser.setUserStatus(User.UserStatus.USER);
         } else if (currentUser.getUserStatus().equals(User.UserStatus.USER)) {
@@ -89,7 +89,7 @@ public class UserStatusActivity extends AppCompatActivity {
     /**
      * Handler for lockButton
      */
-    public void onLockButtonClick(View view) {
+    public void onLockButtonClicked(View view) {
         if (currentUser.getUserStatus().equals(User.UserStatus.LOCKED)) {
             currentUser.setUserStatus(User.UserStatus.USER);
         } else if (currentUser.getUserStatus().equals(User.UserStatus.USER)) {

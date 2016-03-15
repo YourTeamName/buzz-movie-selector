@@ -7,13 +7,23 @@
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                tools:context="edu.gatech.buzzmovieselector.controller.activity.BanUserActivity">
+                tools:context="edu.gatech.buzzmovieselector.controller.activity.AdminActivity">
 
     <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/userListView"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/button2"
             android:layout_alignParentStart="true"/>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:id="@+id/button2"
+            android:layout_alignParentTop="true"
+            android:layout_alignEnd="@+id/userListView"
+            android:layout_alignParentStart="true"
+            android:onClick="onLogoutClicked"/>
 
 </RelativeLayout>
