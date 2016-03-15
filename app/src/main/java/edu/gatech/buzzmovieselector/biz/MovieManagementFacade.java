@@ -10,28 +10,27 @@ import java.util.List;
  * Movie manager that retrieves info on movies
  */
 public interface MovieManagementFacade {
-    void addMovie(Movie m);
+    void addMovie(Movie movie);
 
     /**
      * Finds the movie corresponding to the title passed in
      * @param id The name of the movie being searched
      * @return The movie object associated with the title
      */
-    Movie findMovieById(String id);
+    Movie findMovieById(Integer id);
 
     /**
      * Finds if a movie exists or not
      * @param movieTitle The title of the movie to search for
      * @return True if the movie is found
      */
-    boolean movieExists(String movieTitle);
+    boolean movieExists(Integer movieTitle);
 
     /**
      * Updates a movie object with another that contains new information
-     * @param id The name of the movie
      * @param m The new movie with updated reviews, ratings, etc.
      */
-    void updateMovie(String id, Movie m);
+    void updateMovie(Movie m);
 
     /**
      * Returns the total collection of movies in the map

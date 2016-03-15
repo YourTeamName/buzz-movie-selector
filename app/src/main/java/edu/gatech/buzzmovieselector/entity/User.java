@@ -10,12 +10,13 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     /**
-     * enum containing possible UserLevel values
+     * enum containing possible UserStatus values
      */
-    public enum UserLevel {
+    public enum UserStatus {
         USER,
         ADMIN,
-        BANNED;
+        BANNED,
+        LOCKED;
 
         @Override
         public String toString() {
@@ -26,8 +27,10 @@ public class User implements Serializable {
                     return "ADMIN";
                 case BANNED:
                     return "BANNED";
+                case LOCKED:
+                    return "LOCKED";
                 default:
-                    throw new IllegalArgumentException("Invalid UserLevel " +
+                    throw new IllegalArgumentException("Invalid UserStatus " +
                             "enum value");
             }
         }
@@ -38,7 +41,7 @@ public class User implements Serializable {
     @DatabaseField
     private String password;
     @DatabaseField
-    private UserLevel userLevel;
+    private UserStatus userStatus;
     @DatabaseField(foreign = true, foreignAutoCreate = true,
             foreignAutoRefresh = true)
     private Profile profile;
@@ -59,12 +62,12 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public UserLevel getUserLevel() {
-        return userLevel;
+    public UserStatus getUserStatus() {
+        return userStatus;
     }
 
-    public void setUserLevel(UserLevel userLevel) {
-        this.userLevel = userLevel;
+    public void setUserStatus(UserStatus userStatus) {
+        this.userStatus = userStatus;
     }
 
     public Profile getProfile() {
@@ -85,12 +88,12 @@ public class User implements Serializable {
      * Creates a user with the given information
      * @param username The name of the user
      * @param password The password needed to log in
-     * @param userLevel The level of the account
+     * @param userStatus The level of the account
      */
-    public User(String username, String password, UserLevel userLevel) {
+    public User(String username, String password, UserStatus userStatus) {
         this.username = username;
         this.password = password;
-        this.userLevel = userLevel;
+        this.userStatus = userStatus;
     }
 
     /**
@@ -99,30 +102,30 @@ public class User implements Serializable {
      * @param password The password needed to log in
      */
     public User(String username, String password) {
-        this(username, password, UserLevel.USER);
+        this(username, password, UserStatus.USER);
     }
 
     /**
      * Creates a user with the given information
      * @param username The username of the user
      * @param password The password to log in
-     * @param userLevel The string representation of the user's level
+     * @param userStatus The string representation of the user's level
      */
-    public User(String username, String password, String userLevel) {
+    public User(String username, String password, String userStatus) {
         this.username = username;
         this.password = password;
-        UserLevel ul;
-        if (userLevel.equalsIgnoreCase("admin")) {
-            ul = UserLevel.ADMIN;
-        } else if (userLevel.equalsIgnoreCase("user")) {
-            ul = UserLevel.USER;
-        } else if (userLevel.equalsIgnoreCase("banned")) {
-            ul = UserLevel.BANNED;
+        if (userStatus.equalsIgnoreCase("admin")) {
+            this.userStatus = UserStatus.ADMIN;
+        } else if (userStatus.equalsIgnoreCase("user")) {
+            this.userStatus = UserStatus.USER;
+        } else if (userStatus.equalsIgnoreCase("banned")) {
+            this.userStatus = UserStatus.BANNED;
+        } else if (userStatus.equalsIgnoreCase("locked")) {
+            this.userStatus = UserStatus.LOCKED;
         } else {
             throw new IllegalArgumentException("String cannot be converted to" +
-                    " UserLevel");
+                    " UserStatus");
         }
-        this.userLevel = ul;
     }
 
     /**
@@ -143,7 +146,7 @@ public class User implements Serializable {
             return false;
         } else if (!password.equals(u.password)) {
             return false;
-        } else if (!userLevel.equals(u.userLevel)) {
+        } else if (!userStatus.equals(u.userStatus)) {
             return false;
         } else {
             return true;
@@ -162,6 +165,6 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User: " + username + " UserLevel: " + userLevel;
+        return "User: " + username + " UserStatus: " + userStatus;
     }
 }

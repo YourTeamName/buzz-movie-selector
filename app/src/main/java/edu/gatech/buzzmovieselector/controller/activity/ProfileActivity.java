@@ -20,7 +20,7 @@ import edu.gatech.buzzmovieselector.service.SessionState;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    public static final String PROFILE_USER_KEY = "profileUser";
+    public static final String KEY_PROFILE_USER = "profileUser";
 
     private User profileUser;
 
@@ -93,7 +93,7 @@ public class ProfileActivity extends AppCompatActivity {
      */
     private void initializeForm() {
         String bundledUserName = getIntent().getExtras().getString
-                (PROFILE_USER_KEY, null);
+                (KEY_PROFILE_USER, null);
         if (bundledUserName == null) {
             if (SessionState.getInstance().isLoggedIn()) {
                 profileUser = SessionState.getInstance().getSessionUser();
@@ -202,7 +202,7 @@ public class ProfileActivity extends AppCompatActivity {
         lastNameText.setText(userProfile.getLastName());
         emailText.setText(userProfile.getEmail());
         if (profileUser.equals(SessionState.getInstance().getSessionUser())
-                || profileUser.getUserLevel() == User.UserLevel.ADMIN) {
+                || profileUser.getUserStatus() == User.UserStatus.ADMIN) {
             editCheckBox.setEnabled(true);
         } else {
             editCheckBox.setEnabled(false);
@@ -243,7 +243,7 @@ public class ProfileActivity extends AppCompatActivity {
             uProfile.setEmail(email);
             profileUser.setProfile(uProfile);
             UserManagementFacade um = new UserManager();
-            um.updateUser(profileUser.getUsername(), profileUser);
+            um.updateUser(profileUser);
             finish();
         }
     }
