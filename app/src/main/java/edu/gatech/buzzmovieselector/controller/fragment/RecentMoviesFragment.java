@@ -15,7 +15,7 @@ import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.command.RTCommandFactory;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver
         .RTMovieListReceiver;
-import edu.gatech.buzzmovieselector.controller.util.MovieAdapter;
+import edu.gatech.buzzmovieselector.controller.util.MovieListAdapter;
 import edu.gatech.buzzmovieselector.entity.Movie;
 
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class RecentMoviesFragment extends Fragment {
                 false);
         movieList = (ListView) v.findViewById(R.id.recentMovieListView);
         final ArrayList<Movie> mList = new ArrayList<>();
-        final MovieAdapter movAdapter = new MovieAdapter(hostActivity, mList);
+        final MovieListAdapter movAdapter = new MovieListAdapter(hostActivity, mList);
         movieList.setAdapter(movAdapter);
         RTInvoker rti = new RTInvoker();
         rti.executeCall(new ApiCall(RTCommandFactory.getRecentMoviesCommand()

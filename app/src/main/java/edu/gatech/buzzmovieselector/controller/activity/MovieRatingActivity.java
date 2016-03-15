@@ -18,7 +18,7 @@ import java.util.Collection;
 
 public class MovieRatingActivity extends AppCompatActivity {
 
-    public static final String MOVIE_OBJECT = "movieObject";
+    public static final String CURRENT_MOVIE = "currentMovie";
 
     private TextView titleText;
     private TextView reviewText;
@@ -37,7 +37,7 @@ public class MovieRatingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_rating); //title of movie.
         titleText = (TextView) findViewById(R.id.movieTitle);
-        reviewMovie = (Movie) getIntent().getSerializableExtra(MOVIE_OBJECT);
+        reviewMovie = (Movie) getIntent().getSerializableExtra(CURRENT_MOVIE);
         mm = new MovieManager();
         if (!mm.movieExists(reviewMovie.getId())) {
             Log.v("MovieRating", "Movie with that id doesn't exist");
