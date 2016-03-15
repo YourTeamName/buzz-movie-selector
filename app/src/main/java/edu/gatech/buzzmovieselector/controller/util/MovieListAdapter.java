@@ -33,6 +33,11 @@ public class MovieListAdapter extends BaseAdapter {
 
     private static LayoutInflater inflater = null;
 
+    /**
+     * Constructs a new movie adapter to display movies in a list
+     * @param hostActivity The activity to host the adapter
+     * @param movies The list of movies to go into the adapter
+     */
     public MovieListAdapter(Activity hostActivity, List<Movie> movies) {
         this.movies = movies;
         this.hostActivity = hostActivity;

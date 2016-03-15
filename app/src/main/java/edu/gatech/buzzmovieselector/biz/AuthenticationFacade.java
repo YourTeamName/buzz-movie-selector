@@ -2,6 +2,9 @@ package edu.gatech.buzzmovieselector.biz;
 
 import edu.gatech.buzzmovieselector.entity.User;
 
+/**
+ * Interface for implementing an authenticator for the login activity
+ */
 public interface AuthenticationFacade {
 
     /**

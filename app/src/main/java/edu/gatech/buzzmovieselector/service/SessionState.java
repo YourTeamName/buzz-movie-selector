@@ -6,6 +6,9 @@ import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
 import edu.gatech.buzzmovieselector.biz.impl.UserManager;
 import edu.gatech.buzzmovieselector.entity.User;
 
+/**
+ * Global state that maintains the user logged into the application
+ */
 public class SessionState {
 
     // Lazily instantiated Singleton
