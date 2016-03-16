@@ -63,8 +63,9 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
     }
 
     public void updateUser(User user) {
-        if (user.getUsername().equals(SessionState.getInstance()
-                .getSessionUser().getUsername())) {
+        if (SessionState.getInstance().getSessionUser() != null
+                && user.getUsername().equals(
+                SessionState.getInstance().getSessionUser().getUsername())) {
             SessionState.getInstance().setSessionUser(user);
         }
         try {

@@ -27,9 +27,12 @@ public class LoginActivity extends Activity {
     private AutoCompleteTextView userText;
     private EditText passwordText;
 
+    int loginAttempts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loginAttempts = 0;
         setContentView(R.layout.activity_login);
         userText = (AutoCompleteTextView) findViewById(R.id.username);
         passwordText = (EditText) findViewById(R.id.password);
@@ -135,6 +138,15 @@ public class LoginActivity extends Activity {
                 userText.setError("Invalid Username");
             } else {
                 passwordText.setError("Invalid Password");
+                loginAttempts++;
+                if (loginAttempts >= 3) {
+                    User attemptedUser = uf.findUserById(userName);
+                    attemptedUser.setUserStatus(User.UserStatus.LOCKED);
+                    uf.updateUser(attemptedUser);
+                    Toast.makeText(LoginActivity.this, "Account locked: " +
+                            "too many attempts", Toast
+                            .LENGTH_SHORT).show();
+                }
             }
         }
     }
