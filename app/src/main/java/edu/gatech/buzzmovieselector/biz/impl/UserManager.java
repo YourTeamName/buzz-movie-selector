@@ -8,6 +8,8 @@ import edu.gatech.buzzmovieselector.dao.UserDao;
 import edu.gatech.buzzmovieselector.entity.User;
 import edu.gatech.buzzmovieselector.service.SessionState;
 
+import java.util.List;
+
 public class UserManager implements AuthenticationFacade, UserManagementFacade {
 
     public User findUserById(String username) {
@@ -46,8 +48,8 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
         return user;
     }
 
-    public boolean login(String username, String password) {
-        return getUser(username, password) != null;
+    public User login(String username, String password) {
+        return getUser(username, password);
     }
 
     public boolean userExists(String username) {
@@ -60,9 +62,10 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
         return user != null;
     }
 
-    public void updateUser(String id, User user) {
-        if (user.getUsername().equals(SessionState.getInstance()
-                .getSessionUser().getUsername())) {
+    public void updateUser(User user) {
+        if (SessionState.getInstance().getSessionUser() != null
+                && user.getUsername().equals(
+                SessionState.getInstance().getSessionUser().getUsername())) {
             SessionState.getInstance().setSessionUser(user);
         }
         try {
@@ -73,6 +76,18 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<User> findAll() {
+        List<User> users = null;
+        try {
+            UserDao userDao = DaoFactory.getUserDao();
+            users = userDao.queryForAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users;
     }
 
     public UserManager() {

@@ -2,11 +2,13 @@ package edu.gatech.buzzmovieselector.service;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
 import edu.gatech.buzzmovieselector.biz.impl.UserManager;
 import edu.gatech.buzzmovieselector.entity.User;
 
+/**
+ * Global state that maintains the user logged into the application
+ */
 public class SessionState {
 
     // Lazily instantiated Singleton
@@ -66,8 +68,8 @@ public class SessionState {
                 (SESSION_PREFS, Context.MODE_PRIVATE);
         String username = saveSession.getString(USER_PREFIX + "username", null);
         String password = saveSession.getString(USER_PREFIX + "password", null);
-        String userLevel = saveSession.getString(USER_PREFIX + "level", null);
-        if (username == null || password == null || userLevel == null) {
+        String userStatus = saveSession.getString(USER_PREFIX + "status", null);
+        if (username == null || password == null || userStatus == null) {
             return false;
         }
         UserManagementFacade um = new UserManager();
@@ -90,7 +92,7 @@ public class SessionState {
                     .getUsername());
             editor.putString(USER_PREFIX + "password", sessionUser
                     .getPassword());
-            editor.putString(USER_PREFIX + "level", sessionUser.getUserLevel
+            editor.putString(USER_PREFIX + "status", sessionUser.getUserStatus
                     ().toString());
         }
         editor.clear();

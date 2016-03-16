@@ -16,7 +16,7 @@ import java.util.Collection;
 @DatabaseTable(tableName = "movie", daoClass = MovieDaoImpl.class)
 public class Movie implements Serializable {
 
-    @DatabaseField(generatedId = true)
+    @DatabaseField(generatedId = true, allowGeneratedIdInsert = true)
     private Integer id;
     @DatabaseField
     private String title;
@@ -30,36 +30,53 @@ public class Movie implements Serializable {
     @DatabaseField
     private String imageURL;
 
+    /**
+     * @return A list of reviews for a movie
+     */
     public Collection<Review> getReviews() {
         return reviews;
     }
 
+    /**
+     * @param reviews Assigns reviews to a movie
+     */
     public void setReviews(Collection<Review> reviews) {
         this.reviews = reviews;
     }
 
+    /**
+     * @return The name of the movie
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     * @param id The name to assign the movie to
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     * @return The title of the movie
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * @param title Sets the movie title to this
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     * @return The year the movie was made
+     */
     public Integer getYear() {
         return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
     }
 
     public Double getRating() {
@@ -74,18 +91,30 @@ public class Movie implements Serializable {
         return imageURL;
     }
 
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
-    }
-
+    /**
+     * Empty constructor for a movie object
+     */
     public Movie() {
         reviews = new ArrayList<Review>();
     }
 
+    /**
+     * Creates a movie with the given title, year, and rating
+     * @param title The title of the movie
+     * @param year The year the movie was made
+     * @param rating The rating of the movie
+     */
     public Movie(String title, int year, double rating) {
         this(title, year, rating, null);
     }
 
+    /**
+     * Creates a movie with the given title, rating, year, and image
+     * @param title The title of the movie
+     * @param year The year the movie was made
+     * @param rating The rating of the movie
+     * @param imageURL The image of the movie
+     */
     public Movie(String title, int year, double rating, String imageURL) {
         this.title = title;
         this.year = year;
@@ -94,10 +123,33 @@ public class Movie implements Serializable {
         reviews = new ArrayList<Review>();
     }
 
+    /**
+     * Creates a movie with the given information
+     * @param id The integer id of the movie
+     * @param title The movie title
+     * @param year The year the movie was made
+     * @param rating The movie's rating
+     * @param imageURL The movie's poster
+     */
+    public Movie(Integer id, String title, int year, double rating, String
+            imageURL) {
+        this(title, year, rating, imageURL);
+        this.setId(id);
+    }
+
+    /**
+     * Adds a review to the list of reviews for the movie
+     * @param r The review to add
+     */
     public void addReview(Review r) {
         reviews.add(r);
     }
 
+    /**
+     * Checks if two movies have the same title
+     * @param o The other movie to check equality
+     * @return True if the movies have the same title
+     */
     @Override
     public boolean equals(Object o) {
         // TODO: add more criteria
@@ -117,7 +169,8 @@ public class Movie implements Serializable {
 
     @Override
     public String toString() {
-        return "Movie: " + title + " Year: " + year + " Rate: " + rating;
+        return "Movie: " + title + "ID: " + id + " Year: " + year + " Rate: "
+                + rating;
     }
 
 }

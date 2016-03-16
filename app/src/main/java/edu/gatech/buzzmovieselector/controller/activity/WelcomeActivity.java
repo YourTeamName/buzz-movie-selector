@@ -8,6 +8,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
 import edu.gatech.buzzmovieselector.biz.impl.UserManager;
@@ -31,17 +32,39 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
         initApp();
         if (verifyLogin()) {
-            Intent mainActivity = new Intent(this, BMSActivity.class);
-            startActivity(mainActivity);
-        } else {
-            // if not logged in or invalid session state, clear everything
-            SessionState.getInstance().endSession(getApplicationContext());
+            User user = SessionState.getInstance().getSessionUser();
+            switch (user.getUserStatus()) {
+                case USER:
+                    Intent bmsActivity = new Intent(this, BMSActivity.class);
+                    startActivity(bmsActivity);
+                    return;
+                case ADMIN:
+                    Intent adminActivity = new Intent(this, AdminActivity
+                            .class);
+                    startActivity(adminActivity);
+                    return;
+                case BANNED:
+                    Toast.makeText(WelcomeActivity.this, "Your account has " +
+                            "been banned since last time. Please try to login" +
+                            " again or contact an administrator.", Toast
+                            .LENGTH_SHORT).show();
+                    break;
+                case LOCKED:
+                    Toast.makeText(WelcomeActivity.this, "Your account has " +
+                            "been locked since last time. Please try to login" +
+                            " again or contact an administrator.", Toast
+                            .LENGTH_SHORT).show();
+                    break;
+            }
         }
+        // if not logged in or invalid session state, clear everything
+        SessionState.getInstance().endSession(getApplicationContext());
     }
 
     /**
      * Checks to see if there is a stored state and restores it
      */
+
     private void restoreState() {
         SessionState.getInstance().restoreState(getApplicationContext());
     }
@@ -79,16 +102,21 @@ public class WelcomeActivity extends AppCompatActivity {
      */
     private void initApp() {
 
-
         // Pass context to DaoFactory so that it can work properly later
         DaoFactory.setContext(this);
 
         // test user
-        User testUser = new User("user", "pass");
+        User testUser = new User("user", "pass", "user");
         testUser.setProfile(new Profile("George", "Burdell", "Computer " +
                 "Science", "gp@gatech.edu"));
         UserManagementFacade um = new UserManager();
         um.addUser(testUser);
+
+        // test admin
+        User testAdmin = new User("admin", "admin", "admin");
+        testUser.setProfile(new Profile("Admin", "Burdell", "Computer " +
+                "Science", "gp@gatech.edu"));
+        um.addUser(testAdmin);
 
         checkPermissions();
         restoreState();

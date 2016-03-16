@@ -9,6 +9,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.biz.AuthenticationFacade;
 import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
@@ -26,9 +27,12 @@ public class LoginActivity extends Activity {
     private AutoCompleteTextView userText;
     private EditText passwordText;
 
+    int loginAttempts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loginAttempts = 0;
         setContentView(R.layout.activity_login);
         userText = (AutoCompleteTextView) findViewById(R.id.username);
         passwordText = (EditText) findViewById(R.id.password);
@@ -106,18 +110,43 @@ public class LoginActivity extends Activity {
         UserManagementFacade uf = um;
         String userName = userText.getText().toString();
         String userPass = passwordText.getText().toString();
-        if (af.login(userName,
-                userPass)) {
-            User sessionUser = new User(userName, userPass, "USER");
-            SessionState.getInstance().startSession(sessionUser,
+        User attemptUser = af.login(userName, userPass);
+        if (attemptUser != null) {
+            SessionState.getInstance().startSession(attemptUser,
                     getApplicationContext());
             resetFields();
-            startBMS();
+            switch (attemptUser.getUserStatus()) {
+                case USER:
+                    startBMS();
+                    break;
+                case ADMIN:
+                    startAdmin();
+                    break;
+                case BANNED:
+                    Toast.makeText(LoginActivity.this, "Sorry, this user is " +
+                            "currently banned", Toast
+                            .LENGTH_SHORT).show();
+                    break;
+                case LOCKED:
+                    Toast.makeText(LoginActivity.this, "Sorry, this user is " +
+                            "currently locked", Toast
+                            .LENGTH_SHORT).show();
+
+            }
         } else {
             if (!uf.userExists(userName)) {
                 userText.setError("Invalid Username");
             } else {
                 passwordText.setError("Invalid Password");
+                loginAttempts++;
+                if (loginAttempts >= 3) {
+                    User attemptedUser = uf.findUserById(userName);
+                    attemptedUser.setUserStatus(User.UserStatus.LOCKED);
+                    uf.updateUser(attemptedUser);
+                    Toast.makeText(LoginActivity.this, "Account locked: " +
+                            "too many attempts", Toast
+                            .LENGTH_SHORT).show();
+                }
             }
         }
     }
@@ -126,9 +155,15 @@ public class LoginActivity extends Activity {
      * Creates Intent for the BMSActivity and launches it
      */
     private void startBMS() {
-        Intent mainActivity = new Intent(this, BMSActivity.class);
+        Intent bmsActivity = new Intent(this, BMSActivity.class);
         finish();
-        startActivity(mainActivity);
+        startActivity(bmsActivity);
+    }
+
+    public void startAdmin() {
+        Intent adminActivity = new Intent(this, AdminActivity.class);
+        finish();
+        startActivity(adminActivity);
     }
 
 }

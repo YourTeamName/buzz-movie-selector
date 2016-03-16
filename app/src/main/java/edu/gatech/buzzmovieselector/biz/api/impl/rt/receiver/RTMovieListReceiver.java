@@ -32,8 +32,8 @@ public class RTMovieListReceiver extends ApiReceiver<JSONObject, Movie[]> {
                         .getInt("audience_score") / 100.;
                 String thumbUrl = movieJ.getJSONObject("posters").getString
                         ("thumbnail");
-                Movie movie = new Movie(movieJ.getString("title"), movieJ
-                        .getInt("year"), rating, thumbUrl);
+                Movie movie = new Movie(movieJ.getInt("id"), movieJ.getString
+                        ("title"), movieJ.getInt("year"), rating, thumbUrl);
                 parsedMovies.add(movie);
             }
         } catch (JSONException e) {

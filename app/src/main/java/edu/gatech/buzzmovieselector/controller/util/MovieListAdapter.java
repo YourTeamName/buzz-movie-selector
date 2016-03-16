@@ -23,9 +23,9 @@ import edu.gatech.buzzmovieselector.entity.Movie;
 import java.util.List;
 
 /**
- * Movie Adapter allows Movie POJOs to be displayed in ListViews
+ * Movie List Adapter allows Movie POJOs to be displayed in ListViews
  */
-public class MovieAdapter extends BaseAdapter {
+public class MovieListAdapter extends BaseAdapter {
 
     private List<Movie> movies;
     private Activity hostActivity;
@@ -33,7 +33,12 @@ public class MovieAdapter extends BaseAdapter {
 
     private static LayoutInflater inflater = null;
 
-    public MovieAdapter(Activity hostActivity, List<Movie> movies) {
+    /**
+     * Constructs a new movie adapter to display movies in a list
+     * @param hostActivity The activity to host the adapter
+     * @param movies The list of movies to go into the adapter
+     */
+    public MovieListAdapter(Activity hostActivity, List<Movie> movies) {
         this.movies = movies;
         this.hostActivity = hostActivity;
         inflater = (LayoutInflater) hostActivity.getSystemService(Context
@@ -57,11 +62,12 @@ public class MovieAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
-        Log.v("movieadapter", "getView " + i);
-        View rowView = inflater.inflate(R.layout.movie_list, null);
-        final ImageView movieThumbView = (ImageView) rowView.findViewById(R
+        if (view == null) {
+            view = inflater.inflate(R.layout.movie_list_item, null);
+        }
+        final ImageView movieThumbView = (ImageView) view.findViewById(R
                 .id.movieImage);
-        final TextView movieTitleView = (TextView) rowView.findViewById(R.id
+        final TextView movieTitleView = (TextView) view.findViewById(R.id
                 .movieTitleText);
         final Movie movie = movies.get(i);
         movieTitleView.setText(movie.getTitle() + " (" + movie.getYear() + ")");
@@ -78,16 +84,16 @@ public class MovieAdapter extends BaseAdapter {
             }
         });
         rti.executeCall(imageCall);
-        rowView.setOnClickListener(new View.OnClickListener() {
+        view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO make this open a movie viewer activity
                 Log.v("movieadapter", "position " + i);
                 Intent i = new Intent(hostActivity, MovieRatingActivity.class);
-                i.putExtra(MovieRatingActivity.MOVIE_OBJECT, movie);
+                i.putExtra(MovieRatingActivity.CURRENT_MOVIE, movie);
                 hostActivity.startActivity(i);
             }
         });
-        return rowView;
+        return view;
     }
 }
