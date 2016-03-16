@@ -139,7 +139,7 @@ public class LoginActivity extends Activity {
             } else {
                 passwordText.setError("Invalid Password");
                 loginAttempts++;
-                if (loginAttempts == 3) {
+                if (loginAttempts >= 3) {
                     User attemptedUser = uf.findUserById(userName);
                     attemptedUser.setUserStatus(User.UserStatus.LOCKED);
                     uf.updateUser(attemptedUser);
