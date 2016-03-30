@@ -9,5 +9,5 @@ public interface ApiCommand {
      *
      * @return result from calling the API
      */
-    public ApiReceiver execute(ApiCallback callback);
+    ApiReceiver execute(ApiCallback callback);
 }

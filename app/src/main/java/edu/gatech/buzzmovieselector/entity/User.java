@@ -146,11 +146,7 @@ public class User implements Serializable {
             return false;
         } else if (!password.equals(u.password)) {
             return false;
-        } else if (!userStatus.equals(u.userStatus)) {
-            return false;
-        } else {
-            return true;
-        }
+        } else return userStatus.equals(u.userStatus);
     }
 
     /**

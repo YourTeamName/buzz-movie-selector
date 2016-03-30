@@ -40,7 +40,7 @@ public class RTMovieListReceiver extends ApiReceiver<JSONObject, Movie[]> {
             e.printStackTrace();
         }
         Movie[] movieArray = new Movie[parsedMovies.size()];
-        movieArray = (Movie[]) parsedMovies.toArray(movieArray);
+        movieArray = parsedMovies.toArray(movieArray);
         return movieArray;
     }
 }

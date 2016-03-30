@@ -128,7 +128,7 @@ abstract public class ApiReceiver<T, V> {
      * @return correctly casted response object
      */
     public T getResponse() {
-        return (T) responseData;
+        return responseData;
     }
 
     /**

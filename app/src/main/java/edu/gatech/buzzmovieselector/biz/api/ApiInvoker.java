@@ -10,5 +10,5 @@ public interface ApiInvoker {
      * @param call ApiCommand to be executed
      * @return result of the ApiCommand's execute method
      */
-    public ApiReceiver executeCall(ApiCall call);
+    ApiReceiver executeCall(ApiCall call);
 }

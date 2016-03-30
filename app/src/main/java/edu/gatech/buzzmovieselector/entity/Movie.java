@@ -160,11 +160,7 @@ public class Movie implements Serializable {
             return false;
         }
         final Movie m = (Movie) o;
-        if (!title.equals(m.title)) {
-            return false;
-        } else {
-            return true;
-        }
+        return title.equals(m.title);
     }
 
     @Override
