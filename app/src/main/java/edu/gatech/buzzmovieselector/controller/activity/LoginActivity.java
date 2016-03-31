@@ -78,8 +78,8 @@ public class LoginActivity extends Activity {
      * @return the startSession form is valid
      */
     public boolean validateLogin() {
-        String userName = userText.getText().toString();
-        String userPass = passwordText.getText().toString();
+        final String userName = userText.getText().toString();
+        final String userPass = passwordText.getText().toString();
         if (userName.equals("")) {
             userText.setError("You must enter a username");
             return false;
@@ -106,12 +106,12 @@ public class LoginActivity extends Activity {
      * starts BMSActivity
      */
     private void attemptLogin() {
-        UserManager um = new UserManager();
-        AuthenticationFacade af = um;
-        UserManagementFacade uf = um;
-        String userName = userText.getText().toString();
-        String userPass = passwordText.getText().toString();
-        User attemptUser = af.login(userName, userPass);
+        final UserManager um = new UserManager();
+        final AuthenticationFacade af = um;
+        final UserManagementFacade uf = um;
+        final String userName = userText.getText().toString();
+        final String userPass = passwordText.getText().toString();
+        final User attemptUser = af.login(userName, userPass);
         if (attemptUser != null) {
             SessionState.getInstance().startSession(attemptUser,
                     getApplicationContext());
@@ -142,7 +142,7 @@ public class LoginActivity extends Activity {
                 passwordText.setError("Invalid Password");
                 loginAttempts++;
                 if (loginAttempts >= LOCK_ATTEMPTS) {
-                    User attemptedUser = uf.findUserById(userName);
+                    final User attemptedUser = uf.findUserById(userName);
                     attemptedUser.setUserStatus(User.UserStatus.LOCKED);
                     uf.updateUser(attemptedUser);
                     Toast.makeText(LoginActivity.this, "Account locked: " +
@@ -157,13 +157,13 @@ public class LoginActivity extends Activity {
      * Creates Intent for the BMSActivity and launches it
      */
     private void startBMS() {
-        Intent bmsActivity = new Intent(this, BMSActivity.class);
+        final Intent bmsActivity = new Intent(this, BMSActivity.class);
         finish();
         startActivity(bmsActivity);
     }
 
     public void startAdmin() {
-        Intent adminActivity = new Intent(this, AdminActivity.class);
+        final Intent adminActivity = new Intent(this, AdminActivity.class);
         finish();
         startActivity(adminActivity);
     }

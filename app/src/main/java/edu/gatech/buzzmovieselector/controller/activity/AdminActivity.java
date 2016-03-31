@@ -21,13 +21,13 @@ public class AdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        UserManagementFacade um = new UserManager();
+        final UserManagementFacade um = new UserManager();
 
-        List<User> userList = um.findAll();
+        final List<User> userList = um.findAll();
 
-        UserListAdapter adapter = new UserListAdapter(userList, this);
+        final UserListAdapter adapter = new UserListAdapter(userList, this);
 
-        ListView listview = (ListView) findViewById(R.id.userListView);
+        final ListView listview = (ListView) findViewById(R.id.userListView);
         listview.setAdapter(adapter);
 
     }
@@ -35,13 +35,13 @@ public class AdminActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        UserManagementFacade um = new UserManager();
+        final UserManagementFacade um = new UserManager();
 
-        List<User> userList = um.findAll();
+        final List<User> userList = um.findAll();
 
-        UserListAdapter adapter = new UserListAdapter(userList, this);
+        final UserListAdapter adapter = new UserListAdapter(userList, this);
 
-        ListView listview = (ListView) findViewById(R.id.userListView);
+        final ListView listview = (ListView) findViewById(R.id.userListView);
         listview.setAdapter(adapter);
 
     }
