@@ -131,6 +131,7 @@ public class LoginActivity extends Activity {
                     Toast.makeText(LoginActivity.this, "Sorry, this user is " +
                             "currently locked", Toast
                             .LENGTH_SHORT).show();
+                    break;
 
             }
         } else {
