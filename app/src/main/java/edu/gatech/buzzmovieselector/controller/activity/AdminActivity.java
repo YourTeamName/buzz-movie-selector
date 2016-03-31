@@ -52,6 +52,10 @@ public class AdminActivity extends AppCompatActivity {
     public void onBackPressed() {
     }
 
+    /**
+     * Handles logout
+     * @param view The view of the activity
+     */
     public void onLogoutClicked(View view) {
         SessionState.getInstance().endSession(getApplicationContext());
         finish();

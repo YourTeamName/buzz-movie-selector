@@ -15,9 +15,16 @@ import java.util.List;
  */
 public class MovieManager implements MovieManagementFacade {
 
+    /**
+     * Default constructor for a movie manager
+     */
     public MovieManager() {
     }
 
+    /**
+     * Adds a movie to the manager
+     * @param movie The movie to add
+     */
     @Override
     public void addMovie(Movie movie) {
         try {
@@ -28,6 +35,11 @@ public class MovieManager implements MovieManagementFacade {
         }
     }
 
+    /**
+     * Finds movie by its integer id
+     * @param id The name of the movie being searched
+     * @return The movie
+     */
     @Override
     public Movie findMovieById(Integer id) {
         Movie movie = null;

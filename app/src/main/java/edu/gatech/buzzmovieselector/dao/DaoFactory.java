@@ -26,7 +26,7 @@ public class DaoFactory {
     /**
      * Returns a UserDao object to interface with the database
      * @return A UserDao object
-     * @throws Exception
+     * @throws Exception an exception from the database
      */
     public static UserDao getUserDao() throws Exception {
         if (userDao == null) {
@@ -43,7 +43,7 @@ public class DaoFactory {
     /**
      * Returns a ProfileDao object to interface with the database
      * @return A ProfileDao object
-     * @throws Exception
+     * @throws Exception an exception from the database
      */
     public static ProfileDao getProfileDao() throws Exception {
         if (profileDao == null) {
@@ -60,7 +60,7 @@ public class DaoFactory {
     /**
      * Returns a MovieDao object to interface with the database
      * @return A MovieDao object
-     * @throws Exception
+     * @throws Exception an exception from the database
      */
     public static MovieDao getMovieDao() throws Exception {
         if (movieDao == null) {
@@ -77,7 +77,7 @@ public class DaoFactory {
     /**
      * Returns a ReviewDao object to interface with the database
      * @return A ReviewDao object
-     * @throws Exception
+     * @throws Exception an exception from the database
      */
     public static ReviewDao getReviewDao() throws Exception {
         if (reviewDao == null) {

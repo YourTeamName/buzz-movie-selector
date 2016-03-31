@@ -93,6 +93,11 @@ public class ApiNetwork {
         return stringFuture;
     }
 
+    /**
+     * Hits an api expecting a bitmap
+     * @param url api endpoint
+     * @return object with bitmap response
+     */
     public RequestFuture<Bitmap> apiImage(String url) {
         RequestFuture<Bitmap> bmpFuture = RequestFuture.newFuture();
         ImageRequest imageRequest = new ImageRequest(url, bmpFuture, 0, 0,

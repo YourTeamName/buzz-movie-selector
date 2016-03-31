@@ -89,6 +89,11 @@ abstract public class ApiReceiver<T, V> {
     private ApiResult responseStatus = ApiResult.NOT_DONE;
     private Thread retrieveThread;
 
+    /**
+     * Constructor for a receiver
+     * @param requestFuture The request
+     * @param responseCallback The callback for the command
+     */
     public ApiReceiver(RequestFuture requestFuture, ApiCallback
             responseCallback) {
         this.responseFuture = requestFuture;

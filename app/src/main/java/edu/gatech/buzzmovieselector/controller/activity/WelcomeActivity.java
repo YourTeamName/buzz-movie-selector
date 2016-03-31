@@ -26,6 +26,10 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_ASK_PERMISSIONS = 2340;
 
+    /**
+     * Sets up the welcome activity
+     * @param savedInstanceState The instance state of the activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +69,9 @@ public class WelcomeActivity extends AppCompatActivity {
      * Checks to see if there is a stored state and restores it
      */
 
+    /**
+     * Restores state of the activity
+     */
     private void restoreState() {
         SessionState.getInstance().restoreState(getApplicationContext());
     }
@@ -82,6 +89,12 @@ public class WelcomeActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Requests permissions
+     * @param requestCode code number
+     * @param permissions the permissions to request
+     * @param grantResults check whether to grant the results
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, String
             permissions[], int[] grantResults) {
