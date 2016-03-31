@@ -27,7 +27,8 @@ public class LoginActivity extends Activity {
     private AutoCompleteTextView userText;
     private EditText passwordText;
 
-    private int loginAttempts;
+    int loginAttempts;
+    private static final int LOCK_ATTEMPTS = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
