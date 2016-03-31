@@ -117,13 +117,13 @@ public class User implements Serializable {
     public User(String username, String password, String userStatus) {
         this.username = username;
         this.password = password;
-        if (userStatus.equalsIgnoreCase("admin")) {
+        if ("admin".equalsIgnoreCase(userStatus)) {
             this.userStatus = UserStatus.ADMIN;
-        } else if (userStatus.equalsIgnoreCase("user")) {
+        } else if ("user".equalsIgnoreCase(userStatus)) {
             this.userStatus = UserStatus.USER;
-        } else if (userStatus.equalsIgnoreCase("banned")) {
+        } else if ("banned".equalsIgnoreCase(userStatus)) {
             this.userStatus = UserStatus.BANNED;
-        } else if (userStatus.equalsIgnoreCase("locked")) {
+        } else if ("locked".equalsIgnoreCase(userStatus)) {
             this.userStatus = UserStatus.LOCKED;
         } else {
             throw new IllegalArgumentException("String cannot be converted to" +

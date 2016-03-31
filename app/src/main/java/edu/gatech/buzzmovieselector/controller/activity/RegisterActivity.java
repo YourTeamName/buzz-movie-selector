@@ -90,7 +90,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
         String pass1 = passwordField.getText().toString();
         String pass2 = passwordConfirmField.getText().toString();
-        if (pass1.equals("")) {
+        if ("".equals(pass1)) {
             passwordField.setError("You must enter a password");
             return false;
         }
