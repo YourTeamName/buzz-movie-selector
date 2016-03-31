@@ -28,6 +28,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     /**
      * Sets up the welcome activity
+     *
      * @param savedInstanceState The instance state of the activity
      */
     @Override
@@ -91,8 +92,9 @@ public class WelcomeActivity extends AppCompatActivity {
 
     /**
      * Requests permissions
-     * @param requestCode code number
-     * @param permissions the permissions to request
+     *
+     * @param requestCode  code number
+     * @param permissions  the permissions to request
      * @param grantResults check whether to grant the results
      */
     @Override

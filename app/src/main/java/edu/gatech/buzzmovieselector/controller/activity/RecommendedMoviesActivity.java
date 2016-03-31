@@ -25,7 +25,8 @@ public class RecommendedMoviesActivity extends AppCompatActivity {
         ListView recommendations = (ListView) findViewById(R.id
                 .recommendedMovieList);
         final ArrayList<Movie> adapterList = new ArrayList<>();
-        final MovieListAdapter movAdapter = new MovieListAdapter(this, adapterList);
+        final MovieListAdapter movAdapter = new MovieListAdapter(this,
+                adapterList);
         recommendations.setAdapter(movAdapter);
         MovieManagementFacade manager = new MovieManager();
 

@@ -91,7 +91,8 @@ abstract public class ApiReceiver<T, V> {
 
     /**
      * Constructor for a receiver
-     * @param requestFuture The request
+     *
+     * @param requestFuture    The request
      * @param responseCallback The callback for the command
      */
     public ApiReceiver(RequestFuture requestFuture, ApiCallback

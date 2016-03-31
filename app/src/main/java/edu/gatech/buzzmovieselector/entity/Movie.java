@@ -100,8 +100,9 @@ public class Movie implements Serializable {
 
     /**
      * Creates a movie with the given title, year, and rating
-     * @param title The title of the movie
-     * @param year The year the movie was made
+     *
+     * @param title  The title of the movie
+     * @param year   The year the movie was made
      * @param rating The rating of the movie
      */
     public Movie(String title, int year, double rating) {
@@ -110,9 +111,10 @@ public class Movie implements Serializable {
 
     /**
      * Creates a movie with the given title, rating, year, and image
-     * @param title The title of the movie
-     * @param year The year the movie was made
-     * @param rating The rating of the movie
+     *
+     * @param title    The title of the movie
+     * @param year     The year the movie was made
+     * @param rating   The rating of the movie
      * @param imageURL The image of the movie
      */
     public Movie(String title, int year, double rating, String imageURL) {
@@ -125,10 +127,11 @@ public class Movie implements Serializable {
 
     /**
      * Creates a movie with the given information
-     * @param id The integer id of the movie
-     * @param title The movie title
-     * @param year The year the movie was made
-     * @param rating The movie's rating
+     *
+     * @param id       The integer id of the movie
+     * @param title    The movie title
+     * @param year     The year the movie was made
+     * @param rating   The movie's rating
      * @param imageURL The movie's poster
      */
     public Movie(Integer id, String title, int year, double rating, String
@@ -139,6 +142,7 @@ public class Movie implements Serializable {
 
     /**
      * Adds a review to the list of reviews for the movie
+     *
      * @param r The review to add
      */
     public void addReview(Review r) {
@@ -147,6 +151,7 @@ public class Movie implements Serializable {
 
     /**
      * Checks if two movies have the same title
+     *
      * @param o The other movie to check equality
      * @return True if the movies have the same title
      */

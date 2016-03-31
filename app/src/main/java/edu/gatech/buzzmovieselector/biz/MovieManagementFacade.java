@@ -14,6 +14,7 @@ public interface MovieManagementFacade {
 
     /**
      * Finds the movie corresponding to the title passed in
+     *
      * @param id The name of the movie being searched
      * @return The movie object associated with the title
      */
@@ -21,6 +22,7 @@ public interface MovieManagementFacade {
 
     /**
      * Finds if a movie exists or not
+     *
      * @param movieTitle The title of the movie to search for
      * @return True if the movie is found
      */
@@ -28,18 +30,21 @@ public interface MovieManagementFacade {
 
     /**
      * Updates a movie object with another that contains new information
+     *
      * @param m The new movie with updated reviews, ratings, etc.
      */
     void updateMovie(Movie m);
 
     /**
      * Returns the total collection of movies in the map
+     *
      * @return The collection of movies
      */
     Collection<Movie> getMovies();
 
     /**
      * Returns a collection of movies that have a rating by major of >= 4.0
+     *
      * @param major The major to filter ratings by
      * @return The collection of movies that meet the rating threshold
      */
@@ -47,6 +52,7 @@ public interface MovieManagementFacade {
 
     /**
      * Returns a total list of reviews for a movie
+     *
      * @param m The movie for which to get the reviews
      * @return The list of reviews for the movie
      */
@@ -54,6 +60,7 @@ public interface MovieManagementFacade {
 
     /**
      * Adds a review to a movie
+     *
      * @param r The review to add to a movie
      */
     void addReview(Review r);

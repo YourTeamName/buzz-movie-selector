@@ -36,10 +36,12 @@
         <activity
                 android:name=".controller.activity.RecommendedMoviesActivity"
                 android:label="Recommended Movies"/>
-        <activity android:name=".controller.activity.AdminActivity"
-                  android:label="Admin"/>
-        <activity android:name=".controller.activity.UserStatusActivity"
-                  android:label="User Status"/>
+        <activity
+                android:name=".controller.activity.AdminActivity"
+                android:label="Admin"/>
+        <activity
+                android:name=".controller.activity.UserStatusActivity"
+                android:label="User Status"/>
 
     </application>
 

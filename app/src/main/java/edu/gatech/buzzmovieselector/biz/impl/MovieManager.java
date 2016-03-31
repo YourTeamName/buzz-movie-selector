@@ -23,6 +23,7 @@ public class MovieManager implements MovieManagementFacade {
 
     /**
      * Adds a movie to the manager
+     *
      * @param movie The movie to add
      */
     @Override
@@ -37,6 +38,7 @@ public class MovieManager implements MovieManagementFacade {
 
     /**
      * Finds movie by its integer id
+     *
      * @param id The name of the movie being searched
      * @return The movie
      */

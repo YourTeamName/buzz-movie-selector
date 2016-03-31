@@ -41,7 +41,8 @@ public class RecentDVDsFragment extends Fragment {
                 false);
         movieList = (ListView) v.findViewById(R.id.recentDVDListView);
         final ArrayList<Movie> mList = new ArrayList<>();
-        final MovieListAdapter movAdapter = new MovieListAdapter(hostActivity, mList);
+        final MovieListAdapter movAdapter = new MovieListAdapter
+                (hostActivity, mList);
         movieList.setAdapter(movAdapter);
         RTInvoker rti = new RTInvoker();
         rti.executeCall(new ApiCall(RTCommandFactory.getRecentDVDsCommand()
