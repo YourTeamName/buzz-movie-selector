@@ -134,25 +134,20 @@ public class User implements Serializable {
     /**
      * Checks to see if two users are the same
      *
-     * @param o The other user
+     * @param user The other user
      * @return True if the users have the same username, password, and level
      */
     @Override
-    public boolean equals(Object o) {
-        if (o == null) {
+    public boolean equals(Object user) {
+        if (user == null) {
             return false;
         }
-        if (!User.class.isAssignableFrom(o.getClass())) {
+        if (!User.class.isAssignableFrom(user.getClass())) {
             return false;
         }
-        final User u = (User) o;
-        if (!username.equals(u.username)) {
-            return false;
-        } else if (!password.equals(u.password)) {
-            return false;
-        } else {
-            return userStatus.equals(u.userStatus);
-        }
+        final User u = (User) user;
+        return username.equals(u.username) && password.equals(u.password) &&
+                userStatus.equals(u.userStatus);
     }
 
     /**
