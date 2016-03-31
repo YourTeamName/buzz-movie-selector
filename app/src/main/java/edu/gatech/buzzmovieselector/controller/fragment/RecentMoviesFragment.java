@@ -40,7 +40,8 @@ public class RecentMoviesFragment extends Fragment {
                 false);
         movieList = (ListView) v.findViewById(R.id.recentMovieListView);
         final ArrayList<Movie> mList = new ArrayList<>();
-        final MovieListAdapter movAdapter = new MovieListAdapter(hostActivity, mList);
+        final MovieListAdapter movAdapter = new MovieListAdapter
+                (hostActivity, mList);
         movieList.setAdapter(movAdapter);
         RTInvoker rti = new RTInvoker();
         rti.executeCall(new ApiCall(RTCommandFactory.getRecentMoviesCommand()

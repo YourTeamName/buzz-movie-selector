@@ -76,7 +76,8 @@ public class MovieSearchFragment extends Fragment {
      */
     private void refreshResults(View v) {
         final ArrayList<Movie> mList = new ArrayList<>();
-        final MovieListAdapter movAdapter = new MovieListAdapter(hostActivity, mList);
+        final MovieListAdapter movAdapter = new MovieListAdapter
+                (hostActivity, mList);
         movieResults.setAdapter(movAdapter);
         RTInvoker rti = new RTInvoker();
         rti.executeCall(new ApiCall(RTCommandFactory.getMovieSearchCommand

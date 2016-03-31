@@ -9,6 +9,7 @@ public class ApiCall {
 
     /**
      * Constructor for a call
+     *
      * @param command Command for call
      */
     public ApiCall(ApiCommand command) {
@@ -17,7 +18,8 @@ public class ApiCall {
 
     /**
      * Constructor for call
-     * @param command Command for the call
+     *
+     * @param command  Command for the call
      * @param callback Callback for the call
      */
     public ApiCall(ApiCommand command, ApiCallback callback) {
@@ -27,6 +29,7 @@ public class ApiCall {
 
     /**
      * Getter for the command
+     *
      * @return the command
      */
     public ApiCommand getApiCommand() {
@@ -35,6 +38,7 @@ public class ApiCall {
 
     /**
      * Getter for the callback
+     *
      * @return the callback
      */
     public ApiCallback getApiCallback() {

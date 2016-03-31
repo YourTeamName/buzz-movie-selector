@@ -9,6 +9,7 @@ public interface UserManagementFacade {
 
     /**
      * Searches for and returns a user object corresponding to a passed-in id
+     *
      * @param id The username for which to search
      * @return The user object from the map
      */
@@ -16,6 +17,7 @@ public interface UserManagementFacade {
 
     /**
      * Finds if a user exists in the map
+     *
      * @param username The id to search for in the map
      * @return True if the user exists
      */
@@ -23,6 +25,7 @@ public interface UserManagementFacade {
 
     /**
      * Updates a user in the map of users
+     *
      * @param user The updated user object corresponding to the username
      */
     void updateUser(User user);

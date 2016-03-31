@@ -95,6 +95,7 @@ public class ApiNetwork {
 
     /**
      * Hits an api expecting a bitmap
+     *
      * @param url api endpoint
      * @return object with bitmap response
      */

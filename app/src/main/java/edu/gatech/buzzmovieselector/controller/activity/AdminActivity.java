@@ -2,8 +2,6 @@ package edu.gatech.buzzmovieselector.controller.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
@@ -54,6 +52,7 @@ public class AdminActivity extends AppCompatActivity {
 
     /**
      * Handles logout
+     *
      * @param view The view of the activity
      */
     public void onLogoutClicked(View view) {
