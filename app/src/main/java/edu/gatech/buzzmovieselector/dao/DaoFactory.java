@@ -6,7 +6,7 @@ import com.j256.ormlite.android.apptools.OpenHelperManager;
 /**
  * The DAO factory that provides access to all DAOs.
  */
-public class DaoFactory {
+public final class DaoFactory {
 
     private static Context context;
 
@@ -15,8 +15,12 @@ public class DaoFactory {
     private static MovieDao movieDao;
     private static ReviewDao reviewDao;
 
+    private DaoFactory() {
+    }
+
     /**
      * Sets the context of the factory
+     *
      * @param newContext The context to set
      */
     public static void setContext(Context newContext) {
@@ -25,6 +29,7 @@ public class DaoFactory {
 
     /**
      * Returns a UserDao object to interface with the database
+     *
      * @return A UserDao object
      * @throws Exception
      */
@@ -42,6 +47,7 @@ public class DaoFactory {
 
     /**
      * Returns a ProfileDao object to interface with the database
+     *
      * @return A ProfileDao object
      * @throws Exception
      */
@@ -59,6 +65,7 @@ public class DaoFactory {
 
     /**
      * Returns a MovieDao object to interface with the database
+     *
      * @return A MovieDao object
      * @throws Exception
      */
@@ -76,6 +83,7 @@ public class DaoFactory {
 
     /**
      * Returns a ReviewDao object to interface with the database
+     *
      * @return A ReviewDao object
      * @throws Exception
      */
