@@ -80,11 +80,11 @@ public class LoginActivity extends Activity {
     public boolean validateLogin() {
         String userName = userText.getText().toString();
         String userPass = passwordText.getText().toString();
-        if (userName.equals("")) {
+        if ("".equals(userName)) {
             userText.setError("You must enter a username");
             return false;
         }
-        if (userPass.equals("")) {
+        if ("".equals(userName)) {
             passwordText.setError("You must enter a password");
             return false;
         }
