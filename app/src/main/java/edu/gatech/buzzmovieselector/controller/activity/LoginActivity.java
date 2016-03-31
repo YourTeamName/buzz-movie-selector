@@ -27,7 +27,8 @@ public class LoginActivity extends Activity {
     private AutoCompleteTextView userText;
     private EditText passwordText;
 
-    int loginAttempts;
+    private int loginAttempts;
+    private static final int LOCK_ATTEMPTS = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,7 +141,7 @@ public class LoginActivity extends Activity {
             } else {
                 passwordText.setError("Invalid Password");
                 loginAttempts++;
-                if (loginAttempts >= 3) {
+                if (loginAttempts >= LOCK_ATTEMPTS) {
                     User attemptedUser = uf.findUserById(userName);
                     attemptedUser.setUserStatus(User.UserStatus.LOCKED);
                     uf.updateUser(attemptedUser);
