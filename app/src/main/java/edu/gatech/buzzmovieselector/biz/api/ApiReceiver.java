@@ -50,7 +50,7 @@ abstract public class ApiReceiver<T, V> {
 
         @Override
         protected Object doInBackground(RequestFuture... params) {
-            RequestFuture future = params[0];
+            final RequestFuture future = params[0];
             try {
                 return future.get(API_MAX_WAIT, TimeUnit.SECONDS);
             } catch (InterruptedException e) {
@@ -75,7 +75,7 @@ abstract public class ApiReceiver<T, V> {
     private class FutureThread implements Runnable {
         @Override
         public void run() {
-            AsyncFutureTask futureTask = new AsyncFutureTask();
+            final AsyncFutureTask futureTask = new AsyncFutureTask();
             try {
                 responseData = (T) futureTask.execute(responseFuture).get();
                 if (responseCallback != null) {
