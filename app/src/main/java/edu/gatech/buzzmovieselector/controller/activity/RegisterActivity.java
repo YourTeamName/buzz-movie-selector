@@ -71,7 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
      */
     private boolean verifyRegister() {
         String userName = userField.getText().toString();
-        if (userName.equals("")) {
+        if ("".equals(userName)) {
             userField.setError("You must enter a username");
             return false;
         }
@@ -80,7 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
             return false;
         }
         String email = emailField.getText().toString();
-        if (email.equals("")) {
+        if ("".equals(email)) {
             emailField.setError("You must enter an email");
             return false;
         }
