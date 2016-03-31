@@ -27,7 +27,7 @@ public class LoginActivity extends Activity {
     private AutoCompleteTextView userText;
     private EditText passwordText;
 
-    int loginAttempts;
+    private int loginAttempts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
