@@ -84,7 +84,7 @@ public class LoginActivity extends Activity {
             userText.setError("You must enter a username");
             return false;
         }
-        if ("".equals(userName)) {
+        if ("".equals(userPass)) {
             passwordText.setError("You must enter a password");
             return false;
         }
