@@ -78,15 +78,9 @@ public class LoginActivity extends Activity {
      * @return the startSession form is valid
      */
     public boolean validateLogin() {
-<<<<<<< HEAD
-        final String userName = userText.getText().toString();
-        final String userPass = passwordText.getText().toString();
-        if (userName.equals("")) {
-=======
         String userName = userText.getText().toString();
         String userPass = passwordText.getText().toString();
         if ("".equals(userName)) {
->>>>>>> 9f656a5b654d01f9d0033a8b86a9675241c05457
             userText.setError("You must enter a username");
             return false;
         }
