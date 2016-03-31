@@ -15,6 +15,9 @@ public final class DaoFactory {
     private static MovieDao movieDao;
     private static ReviewDao reviewDao;
 
+    /**
+     * Empty constructor
+     */
     private DaoFactory() {
     }
 

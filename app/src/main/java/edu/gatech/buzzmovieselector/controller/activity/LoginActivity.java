@@ -28,6 +28,7 @@ public class LoginActivity extends Activity {
     private EditText passwordText;
 
     int loginAttempts;
+    private static final int LOCK_ATTEMPTS = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,11 +80,11 @@ public class LoginActivity extends Activity {
     public boolean validateLogin() {
         String userName = userText.getText().toString();
         String userPass = passwordText.getText().toString();
-        if (userName.equals("")) {
+        if ("".equals(userName)) {
             userText.setError("You must enter a username");
             return false;
         }
-        if (userPass.equals("")) {
+        if ("".equals(userName)) {
             passwordText.setError("You must enter a password");
             return false;
         }
