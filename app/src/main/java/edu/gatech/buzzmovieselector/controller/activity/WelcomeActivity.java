@@ -24,7 +24,7 @@ import edu.gatech.buzzmovieselector.service.SessionState;
  */
 public class WelcomeActivity extends AppCompatActivity {
 
-    private final int REQUEST_CODE_ASK_PERMISSIONS = 2340;
+    private static final int REQUEST_CODE_ASK_PERMISSIONS = 2340;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
