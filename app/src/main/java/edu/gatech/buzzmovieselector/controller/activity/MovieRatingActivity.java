@@ -55,25 +55,25 @@ public class MovieRatingActivity extends AppCompatActivity {
     }
 
     private void loadRating() {
-        Collection<Review> movieReviews = reviewMovie.getReviews();
+        final Collection<Review> movieReviews = reviewMovie.getReviews();
         if (movieReviews.size() == 0) {
             return;
         }
         double totalRating = 0;
-        for (Review r : movieReviews) {
+        for (final Review r : movieReviews) {
             totalRating += r.getRating();
         }
-        double avgRating = totalRating / movieReviews.size();
+        final double avgRating = totalRating / movieReviews.size();
         averageRating.setRating((float) avgRating);
     }
 
     private void submitReview() {
-        String reviewContent = contentText.getText().toString();
-        double usrRating = (double) userRating.getRating();
-        Review userReview = new Review(SessionState.getInstance()
+        final String reviewContent = contentText.getText().toString();
+        final double usrRating = (double) userRating.getRating();
+        final Review userReview = new Review(SessionState.getInstance()
                 .getSessionUser(), reviewContent, usrRating, reviewMovie);
         reviewMovie.addReview(userReview);
-        MovieManagementFacade mm = new MovieManager();
+        final MovieManagementFacade mm = new MovieManager();
         mm.updateMovie(reviewMovie);
         finish();
     }

@@ -29,7 +29,7 @@ public class MovieManager implements MovieManagementFacade {
     @Override
     public void addMovie(Movie movie) {
         try {
-            MovieDao movieDao = DaoFactory.getMovieDao();
+            final MovieDao movieDao = DaoFactory.getMovieDao();
             movieDao.createOrUpdate(movie);
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,7 +67,7 @@ public class MovieManager implements MovieManagementFacade {
     @Override
     public void updateMovie(Movie movie) {
         try {
-            MovieDao movieDao = DaoFactory.getMovieDao();
+            final MovieDao movieDao = DaoFactory.getMovieDao();
             movieDao.createOrUpdate(movie);
         } catch (Exception e) {
             e.printStackTrace();
@@ -89,7 +89,7 @@ public class MovieManager implements MovieManagementFacade {
     public Collection<Movie> getMovies() {
         List<Movie> movieList = null;
         try {
-            MovieDao movieDao = DaoFactory.getMovieDao();
+            final MovieDao movieDao = DaoFactory.getMovieDao();
             movieList = movieDao.queryForAll();
         } catch (Exception e) {
             e.printStackTrace();
@@ -99,16 +99,16 @@ public class MovieManager implements MovieManagementFacade {
 
     @Override
     public Collection<Movie> getRecommendationsByMajor(String major) {
-        Collection<Movie> movieList = getMovies();
-        List<Movie> recommendedList = new ArrayList<Movie>();
-        for (Movie movie : movieList) {
+        final Collection<Movie> movieList = getMovies();
+        final List<Movie> recommendedList = new ArrayList<Movie>();
+        for (final Movie movie : movieList) {
             double totalPoints = 0.0;
-            for (Review review : movie.getReviews()) {
+            for (final Review review : movie.getReviews()) {
                 if (major.equals(review.getUser().getProfile().getMajor())) {
                     totalPoints += review.getRating();
                 }
             }
-            double average = totalPoints / movie.getReviews().size();
+            final double average = totalPoints / movie.getReviews().size();
             if (average >= 4.0) {
                 recommendedList.add(movie);
             }
