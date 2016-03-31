@@ -144,17 +144,17 @@ public class ProfileActivity extends AppCompatActivity {
         String lastName = lastNameText.getText().toString();
         String userMajor = degreeSpinner.getSelectedItem().toString();
         String email = emailText.getText().toString();
-        if (firstName.equals("")) {
+        if ("".equals(firstName)) {
             firstNameText.setError("Enter a first name");
             return false;
-        } else if (lastName.equals("")) {
+        } else if ("".equals(lastName)) {
             lastNameText.setError("Enter a last name");
             return false;
-        } else if (userMajor.equals("")) {
+        } else if ("".equals(userMajor)) {
             TextView spinnerText = (TextView) degreeSpinner.getSelectedView();
             spinnerText.setError("Enter a valid major");
             return false;
-        } else if (email.equals("") || !email.contains("@")) {
+        } else if ("".equals(email) || !email.contains("@")) {
             emailText.setError("Enter a valid email address");
             return false;
         } else {
