@@ -72,8 +72,8 @@ public class ApiNetwork {
      * @return RequestFuture object with JSONObject response
      */
     public RequestFuture<JSONObject> apiJSON(String url) {
-        RequestFuture<JSONObject> jsonFuture = RequestFuture.newFuture();
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method
+        final RequestFuture<JSONObject> jsonFuture = RequestFuture.newFuture();
+        final JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method
                 .GET, url, jsonFuture, jsonFuture);
         apiRequestQueue.add(jsonRequest);
         return jsonFuture;
@@ -86,8 +86,8 @@ public class ApiNetwork {
      * @return RequestFuture object with String response
      */
     public RequestFuture<String> apiString(String url) {
-        RequestFuture<String> stringFuture = RequestFuture.newFuture();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET,
+        final RequestFuture<String> stringFuture = RequestFuture.newFuture();
+        final StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 url, stringFuture, stringFuture);
         apiRequestQueue.add(stringRequest);
         return stringFuture;
@@ -100,8 +100,8 @@ public class ApiNetwork {
      * @return object with bitmap response
      */
     public RequestFuture<Bitmap> apiImage(String url) {
-        RequestFuture<Bitmap> bmpFuture = RequestFuture.newFuture();
-        ImageRequest imageRequest = new ImageRequest(url, bmpFuture, 0, 0,
+        final RequestFuture<Bitmap> bmpFuture = RequestFuture.newFuture();
+        final ImageRequest imageRequest = new ImageRequest(url, bmpFuture, 0, 0,
                 null, bmpFuture);
         apiRequestQueue.add(imageRequest);
         return bmpFuture;
