@@ -27,7 +27,7 @@ public class LoginActivity extends Activity {
     private AutoCompleteTextView userText;
     private EditText passwordText;
 
-    private int loginAttempts;
+    int loginAttempts;
     private static final int LOCK_ATTEMPTS = 3;
 
     @Override
@@ -78,13 +78,19 @@ public class LoginActivity extends Activity {
      * @return the startSession form is valid
      */
     public boolean validateLogin() {
+<<<<<<< HEAD
         final String userName = userText.getText().toString();
         final String userPass = passwordText.getText().toString();
         if (userName.equals("")) {
+=======
+        String userName = userText.getText().toString();
+        String userPass = passwordText.getText().toString();
+        if ("".equals(userName)) {
+>>>>>>> 9f656a5b654d01f9d0033a8b86a9675241c05457
             userText.setError("You must enter a username");
             return false;
         }
-        if (userPass.equals("")) {
+        if ("".equals(userName)) {
             passwordText.setError("You must enter a password");
             return false;
         }
