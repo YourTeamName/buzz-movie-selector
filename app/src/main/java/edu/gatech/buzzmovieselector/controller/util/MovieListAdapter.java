@@ -72,7 +72,7 @@ public class MovieListAdapter extends BaseAdapter {
                 .movieTitleText);
         final Movie movie = movies.get(i);
         movieTitleView.setText(movie.getTitle() + " (" + movie.getYear() + ")");
-        ApiCall imageCall = new ApiCall(GeneralCommandFactory.getImageCommand
+        final ApiCall imageCall = new ApiCall(GeneralCommandFactory.getImageCommand
                 (movie.getImageURL()), new ApiCallback<ImageReceiver>() {
             @Override
             public void onReceive(final ImageReceiver receiver) {
@@ -90,7 +90,7 @@ public class MovieListAdapter extends BaseAdapter {
             public void onClick(View v) {
                 // TODO make this open a movie viewer activity
                 Log.v("movieadapter", "position " + i);
-                Intent i = new Intent(hostActivity, MovieRatingActivity.class);
+                final Intent i = new Intent(hostActivity, MovieRatingActivity.class);
                 i.putExtra(MovieRatingActivity.CURRENT_MOVIE, movie);
                 hostActivity.startActivity(i);
             }
