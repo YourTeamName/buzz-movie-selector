@@ -8,8 +8,17 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 enum ApiResult {
+    /**
+     * success
+     */
     SUCCESS,
+    /**
+     * fail
+     */
     FAIL,
+    /**
+     * not done
+     */
     NOT_DONE;
 
     @Override
