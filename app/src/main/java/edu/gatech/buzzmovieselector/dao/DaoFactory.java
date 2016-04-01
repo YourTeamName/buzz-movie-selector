@@ -39,7 +39,6 @@ public final class DaoFactory {
      * Returns a UserDao object to interface with the database
      *
      * @return A UserDao object
-     * @throws IllegalStateException if context is null
      */
     public static UserDao getUserDao() {
         if (userDao == null) {
@@ -61,7 +60,6 @@ public final class DaoFactory {
      * Returns a ProfileDao object to interface with the database
      *
      * @return A ProfileDao object
-     * @throws IllegalStateException if context is null
      */
     public static ProfileDao getProfileDao() {
         if (profileDao == null) {
@@ -83,7 +81,6 @@ public final class DaoFactory {
      * Returns a MovieDao object to interface with the database
      *
      * @return A MovieDao object
-     * @throws IllegalStateException if context is null
      */
     public static MovieDao getMovieDao() {
         if (movieDao == null) {
@@ -106,7 +103,6 @@ public final class DaoFactory {
      * Returns a ReviewDao object to interface with the database
      *
      * @return A ReviewDao object
-     * @throws IllegalStateException if context is null
      */
     public static ReviewDao getReviewDao() {
         if (reviewDao == null) {
