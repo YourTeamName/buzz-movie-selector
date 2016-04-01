@@ -43,12 +43,12 @@ public class RegisterActivity extends AppCompatActivity {
         if (!verifyRegister()) {
             return;
         }
-        User newUser = new User(userField.getText().toString(), passwordField
+        final User newUser = new User(userField.getText().toString(), passwordField
             .getText().toString());
-        Profile newProfile = new Profile("", "", "", emailField.getText()
+        final Profile newProfile = new Profile("", "", "", emailField.getText()
             .toString());
         newUser.setProfile(newProfile);
-        UserManagementFacade um = new UserManager();
+        final UserManagementFacade um = new UserManager();
         um.addUser(newUser);
         finish();
     }
@@ -60,7 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
      * @return username is already taken
      */
     private boolean usernameExists(String username) {
-        UserManagementFacade uf = new UserManager();
+        final UserManagementFacade uf = new UserManager();
         return uf.userExists(username);
     }
 
@@ -70,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
      * @return the data entered in the registration form is valid
      */
     private boolean verifyRegister() {
-        String userName = userField.getText().toString();
+        final String userName = userField.getText().toString();
         if ("".equals(userName)) {
             userField.setError("You must enter a username");
             return false;
@@ -79,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
             userField.setError("Username is already registered");
             return false;
         }
-        String email = emailField.getText().toString();
+        final String email = emailField.getText().toString();
         if ("".equals(email)) {
             emailField.setError("You must enter an email");
             return false;
@@ -88,8 +88,8 @@ public class RegisterActivity extends AppCompatActivity {
             emailField.setError("You must enter a valid email");
             return false;
         }
-        String pass1 = passwordField.getText().toString();
-        String pass2 = passwordConfirmField.getText().toString();
+        final String pass1 = passwordField.getText().toString();
+        final String pass2 = passwordConfirmField.getText().toString();
         if ("".equals(pass1)) {
             passwordField.setError("You must enter a password");
             return false;
