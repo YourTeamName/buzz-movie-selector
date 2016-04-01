@@ -17,7 +17,7 @@ public final class DaoFactory {
     private static MovieDao movieDao;
     private static ReviewDao reviewDao;
 
-    private final static String ERROR_MSG = "Context must be set before " +
+    private static final String ERROR_MSG = "Context must be set before " +
         "calling getXxxDao";
 
     /**
