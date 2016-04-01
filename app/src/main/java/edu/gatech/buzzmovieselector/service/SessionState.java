@@ -89,9 +89,9 @@ public final class SessionState {
      */
 
     public void saveState(Context context) {
-        SharedPreferences saveSession = context
+        final SharedPreferences saveSession = context
             .getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = saveSession.edit();
+        final SharedPreferences.Editor editor = saveSession.edit();
         if (sessionUser != null) {
             editor.putString(USER_PREFIX + "username", sessionUser
                 .getUsername());
@@ -110,9 +110,9 @@ public final class SessionState {
      * @param context Context of shared preferences
      */
     public void clearSaveState(Context context) {
-        SharedPreferences saveSession = context
+        final SharedPreferences saveSession = context
             .getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = saveSession.edit();
+        final SharedPreferences.Editor editor = saveSession.edit();
         editor.clear();
         editor.apply();
     }

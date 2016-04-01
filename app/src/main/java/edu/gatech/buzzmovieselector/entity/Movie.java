@@ -149,23 +149,22 @@ public class Movie implements Serializable {
         reviews.add(r);
     }
 
-    /**
-     * Checks if two movies have the same title
-     *
-     * @param o The other movie to check equality
-     * @return True if the movies have the same title
-     */
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object movie) {
         // TODO: add more criteria
-        if (o == null) {
+        if (movie == null) {
             return false;
         }
-        if (!Movie.class.isAssignableFrom(o.getClass())) {
+        if (!Movie.class.isAssignableFrom(movie.getClass())) {
             return false;
         }
-        final Movie m = (Movie) o;
+        final Movie m = (Movie) movie;
         return title.equals(m.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 
     @Override
