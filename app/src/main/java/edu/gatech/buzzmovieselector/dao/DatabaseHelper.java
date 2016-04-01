@@ -19,7 +19,7 @@ import java.sql.SQLException;
  * database. This class also usually provides
  * the DAOs used by the other classes.
  */
-class DatabaseHelper extends OrmLiteSqliteOpenHelper {
+public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     // name of the database file for your application -- change to something
     // appropriate for your app

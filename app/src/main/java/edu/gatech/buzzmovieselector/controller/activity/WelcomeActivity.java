@@ -41,7 +41,8 @@ public class WelcomeActivity extends AppCompatActivity {
             final User user = SessionState.getInstance().getSessionUser();
             switch (user.getUserStatus()) {
                 case USER:
-                    final Intent bmsActivity = new Intent(this, BMSActivity.class);
+                    final Intent bmsActivity = new Intent(this, BMSActivity
+                        .class);
                     startActivity(bmsActivity);
                     return;
                 case ADMIN:
@@ -85,8 +86,8 @@ public class WelcomeActivity extends AppCompatActivity {
         final int permissionCheck = ContextCompat.checkSelfPermission(
             getApplicationContext(), Manifest.permission.INTERNET);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest
-                                                                     .permission.INTERNET},
+            ActivityCompat.requestPermissions(this,
+                new String[]{Manifest.permission.INTERNET},
                 REQUEST_CODE_ASK_PERMISSIONS);
         }
     }
@@ -158,7 +159,8 @@ public class WelcomeActivity extends AppCompatActivity {
      * @param v Reference to widget firing event
      */
     public void startRegister(View v) {
-        final Intent registerActivity = new Intent(this, RegisterActivity.class);
+        final Intent registerActivity = new Intent(this, RegisterActivity
+            .class);
         startActivity(registerActivity);
     }
 
