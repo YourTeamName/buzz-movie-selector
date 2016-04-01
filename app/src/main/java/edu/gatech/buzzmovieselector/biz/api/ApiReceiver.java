@@ -53,7 +53,7 @@ public abstract class ApiReceiver<T, V> {
      * @param requestFuture    The request
      * @param responseCallback The callback for the command
      */
-    public ApiReceiver(RequestFuture requestFuture,
+    protected ApiReceiver(RequestFuture requestFuture,
         ApiCallback responseCallback) {
         this.responseFuture = requestFuture;
         this.responseCallback = responseCallback;

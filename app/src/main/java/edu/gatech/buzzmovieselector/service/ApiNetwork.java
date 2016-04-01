@@ -57,7 +57,7 @@ public final class ApiNetwork {
      *
      * @return the singleton's RequestQueue instance
      */
-    public RequestQueue getApiRequestQueue() {
+    private RequestQueue getApiRequestQueue() {
         if (apiRequestQueue == null) {
             apiRequestQueue = Volley.newRequestQueue(apiContext
                 .getApplicationContext());

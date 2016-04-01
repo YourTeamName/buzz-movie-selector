@@ -26,7 +26,7 @@ public final class RTCommandFactory {
     /**
      * Produces the ApiCommand for searching movies
      *
-     * @param search
+     * @param search the search query
      * @return instance of RTMovieSearch
      */
     public static ApiCommand getMovieSearchCommand(String search) {

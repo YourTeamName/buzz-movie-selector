@@ -64,7 +64,7 @@ public class MovieSearchFragment extends Fragment {
     }
 
     /**
-     * Refreshes the search results that are contained in the listview
+     * Refreshes the search results that are contained in the list view
      */
     private void refreshResults() {
         final ArrayList<Movie> mList = new ArrayList<>();

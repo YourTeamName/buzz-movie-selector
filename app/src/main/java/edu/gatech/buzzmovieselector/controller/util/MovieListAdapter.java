@@ -89,8 +89,6 @@ public class MovieListAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO make this open a movie viewer activity
-                Log.v("movieadapter", "position " + i);
                 final Intent i = new Intent(hostActivity, MovieRatingActivity
                     .class);
                 i.putExtra(MovieRatingActivity.CURRENT_MOVIE, movie);
