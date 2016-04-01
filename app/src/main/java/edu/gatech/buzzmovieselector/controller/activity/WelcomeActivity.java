@@ -38,14 +38,14 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
         initApp();
         if (verifyLogin()) {
-            User user = SessionState.getInstance().getSessionUser();
+            final User user = SessionState.getInstance().getSessionUser();
             switch (user.getUserStatus()) {
                 case USER:
-                    Intent bmsActivity = new Intent(this, BMSActivity.class);
+                    final Intent bmsActivity = new Intent(this, BMSActivity.class);
                     startActivity(bmsActivity);
                     return;
                 case ADMIN:
-                    Intent adminActivity = new Intent(this, AdminActivity
+                    final Intent adminActivity = new Intent(this, AdminActivity
                         .class);
                     startActivity(adminActivity);
                     return;
@@ -82,7 +82,7 @@ public class WelcomeActivity extends AppCompatActivity {
      * Checks to see if permissions need to be requested
      */
     private void checkPermissions() {
-        int permissionCheck = ContextCompat.checkSelfPermission(
+        final int permissionCheck = ContextCompat.checkSelfPermission(
             getApplicationContext(), Manifest.permission.INTERNET);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest
@@ -123,14 +123,14 @@ public class WelcomeActivity extends AppCompatActivity {
         DaoFactory.setContext(this);
 
         // test user
-        User testUser = new User("user", "pass", "user");
+        final User testUser = new User("user", "pass", "user");
         testUser.setProfile(new Profile("George", "Burdell", "Computer " +
             "Science", "gp@gatech.edu"));
-        UserManagementFacade um = new UserManager();
+        final UserManagementFacade um = new UserManager();
         um.addUser(testUser);
 
         // test admin
-        User testAdmin = new User("admin", "admin", "admin");
+        final User testAdmin = new User("admin", "admin", "admin");
         testUser.setProfile(new Profile("Admin", "Burdell", "Computer " +
             "Science", "gp@gatech.edu"));
         um.addUser(testAdmin);
@@ -147,7 +147,7 @@ public class WelcomeActivity extends AppCompatActivity {
      * @param v Reference to widget firing event
      */
     public void startLogin(View v) {
-        Intent loginActivity = new Intent(this, LoginActivity.class);
+        final Intent loginActivity = new Intent(this, LoginActivity.class);
         startActivity(loginActivity);
     }
 
@@ -158,7 +158,7 @@ public class WelcomeActivity extends AppCompatActivity {
      * @param v Reference to widget firing event
      */
     public void startRegister(View v) {
-        Intent registerActivity = new Intent(this, RegisterActivity.class);
+        final Intent registerActivity = new Intent(this, RegisterActivity.class);
         startActivity(registerActivity);
     }
 
