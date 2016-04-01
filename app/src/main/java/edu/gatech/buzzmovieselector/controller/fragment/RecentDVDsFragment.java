@@ -32,14 +32,14 @@ public class RecentDVDsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
         Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_recent_dvds, container,
+        final View v = inflater.inflate(R.layout.fragment_recent_dvds, container,
             false);
-        ListView movieList = (ListView) v.findViewById(R.id.recentDVDListView);
+        final ListView movieList = (ListView) v.findViewById(R.id.recentDVDListView);
         final ArrayList<Movie> mList = new ArrayList<>();
         final MovieListAdapter movAdapter = new MovieListAdapter(hostActivity,
             mList);
         movieList.setAdapter(movAdapter);
-        RTInvoker rti = new RTInvoker();
+        final RTInvoker rti = new RTInvoker();
         rti.executeCall(new ApiCall(RTCommandFactory.getRecentDVDsCommand(),
             new ApiCallback<RTMovieListReceiver>() {
                 @Override

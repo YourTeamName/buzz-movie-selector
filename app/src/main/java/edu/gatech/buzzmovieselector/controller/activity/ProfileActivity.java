@@ -242,7 +242,7 @@ public class ProfileActivity extends AppCompatActivity {
             uProfile.setMajor(userMajor);
             uProfile.setEmail(email);
             profileUser.setProfile(uProfile);
-            UserManagementFacade um = new UserManager();
+            final UserManagementFacade um = new UserManager();
             um.updateUser(profileUser);
             finish();
         }
