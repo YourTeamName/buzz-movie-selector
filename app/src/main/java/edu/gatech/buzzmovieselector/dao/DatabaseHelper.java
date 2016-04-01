@@ -62,7 +62,6 @@ class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(connectionSource, Review.class);
         } catch (SQLException e) {
             Log.e(DatabaseHelper.class.getName(), "Can't create database", e);
-            throw new RuntimeException(e);
         }
     }
 
@@ -89,7 +88,6 @@ class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             onCreate(db, connectionSource);
         } catch (SQLException e) {
             Log.e(DatabaseHelper.class.getName(), "Can't drop databases", e);
-            throw new RuntimeException(e);
         }
     }
 
@@ -100,7 +98,7 @@ class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      *
      * @return the database object for the user
      */
-    public Dao<User, String> getUserDao() throws SQLException {
+    Dao<User, String> getUserDao() throws SQLException {
         if (userDao == null) {
             userDao = getDao(User.class);
         }
@@ -112,7 +110,7 @@ class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      * will create it or just give the cached
      * value.
      */
-    public Dao<Profile, Integer> getProfileDao() throws SQLException {
+    Dao<Profile, Integer> getProfileDao() throws SQLException {
         if (profileDao == null) {
             profileDao = getDao(Profile.class);
         }
@@ -124,7 +122,7 @@ class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      * will create it or just give the cached
      * value.
      */
-    public Dao<Movie, Integer> getMovieDao() throws SQLException {
+    Dao<Movie, Integer> getMovieDao() throws SQLException {
         if (movieDao == null) {
             movieDao = getDao(Movie.class);
         }
@@ -136,7 +134,7 @@ class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      * will create it or just give the cached
      * value.
      */
-    public Dao<Review, Integer> getReviewDao() throws SQLException {
+    Dao<Review, Integer> getReviewDao() throws SQLException {
         if (reviewDao == null) {
             reviewDao = getDao(Review.class);
         }
