@@ -4,11 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.ImageRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.RequestFuture;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.android.volley.toolbox.*;
 import org.json.JSONObject;
 
 /**
@@ -17,8 +13,18 @@ import org.json.JSONObject;
 public final class ApiNetwork {
 
     private static ApiNetwork ourInstance = null;
-    private RequestQueue apiRequestQueue;
     private static Context apiContext;
+    private RequestQueue apiRequestQueue;
+
+    /**
+     * Private constructor for Singleton
+     *
+     * @param context Android application context
+     */
+    private ApiNetwork(Context context) {
+        apiContext = context;
+        apiRequestQueue = getApiRequestQueue();
+    }
 
     /**
      * Gets the ApiNetwork instance. This must be called before getInstance()
@@ -53,16 +59,6 @@ public final class ApiNetwork {
                     .getApplicationContext());
         }
         return apiRequestQueue;
-    }
-
-    /**
-     * Private constructor for Singleton
-     *
-     * @param context Android application context
-     */
-    private ApiNetwork(Context context) {
-        apiContext = context;
-        apiRequestQueue = getApiRequestQueue();
     }
 
     /**

@@ -11,12 +11,17 @@ import edu.gatech.buzzmovieselector.entity.User;
  */
 public final class SessionState {
 
+    private static final String SESSION_PREFS = "BMS_SESSION_PREFS";
+    private static final String USER_PREFIX = "sessionUser_";
     // Lazily instantiated Singleton
     private static SessionState ourInstance = null;
     private static User sessionUser = null;
 
-    private static final String SESSION_PREFS = "BMS_SESSION_PREFS";
-    private static final String USER_PREFIX = "sessionUser_";
+    /**
+     * private constructor for Singleton design pattern
+     */
+    private SessionState() {
+    }
 
     /**
      * Global Session State for the application
@@ -31,21 +36,21 @@ public final class SessionState {
     }
 
     /**
-     * Sets a user to be currently logged into the session
-     *
-     * @param u sets the sessionUser variable of the SessionState
-     */
-    public void setSessionUser(User u) {
-        sessionUser = u;
-    }
-
-    /**
      * User currently logged into the session
      *
      * @return stored sessionUser variable
      */
     public User getSessionUser() {
         return sessionUser;
+    }
+
+    /**
+     * Sets a user to be currently logged into the session
+     *
+     * @param u sets the sessionUser variable of the SessionState
+     */
+    public void setSessionUser(User u) {
+        sessionUser = u;
     }
 
     /**
@@ -131,11 +136,5 @@ public final class SessionState {
     public void endSession(Context context) {
         sessionUser = null;
         clearSaveState(context);
-    }
-
-    /**
-     * private constructor for Singleton design pattern
-     */
-    private SessionState() {
     }
 }

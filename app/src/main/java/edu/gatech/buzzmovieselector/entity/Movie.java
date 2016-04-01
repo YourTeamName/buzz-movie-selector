@@ -31,6 +31,55 @@ public class Movie implements Serializable {
     private String imageURL;
 
     /**
+     * Empty constructor for a movie object
+     */
+    public Movie() {
+        reviews = new ArrayList<Review>();
+    }
+
+    /**
+     * Creates a movie with the given title, year, and rating
+     *
+     * @param title  The title of the movie
+     * @param year   The year the movie was made
+     * @param rating The rating of the movie
+     */
+    public Movie(String title, int year, double rating) {
+        this(title, year, rating, null);
+    }
+
+    /**
+     * Creates a movie with the given title, rating, year, and image
+     *
+     * @param title    The title of the movie
+     * @param year     The year the movie was made
+     * @param rating   The rating of the movie
+     * @param imageURL The image of the movie
+     */
+    public Movie(String title, int year, double rating, String imageURL) {
+        this.title = title;
+        this.year = year;
+        this.rating = rating;
+        this.imageURL = imageURL;
+        reviews = new ArrayList<Review>();
+    }
+
+    /**
+     * Creates a movie with the given information
+     *
+     * @param id       The integer id of the movie
+     * @param title    The movie title
+     * @param year     The year the movie was made
+     * @param rating   The movie's rating
+     * @param imageURL The movie's poster
+     */
+    public Movie(Integer id, String title, int year, double rating, String
+            imageURL) {
+        this(title, year, rating, imageURL);
+        this.setId(id);
+    }
+
+    /**
      * @return A list of reviews for a movie
      */
     public Collection<Review> getReviews() {
@@ -89,55 +138,6 @@ public class Movie implements Serializable {
 
     public String getImageURL() {
         return imageURL;
-    }
-
-    /**
-     * Empty constructor for a movie object
-     */
-    public Movie() {
-        reviews = new ArrayList<Review>();
-    }
-
-    /**
-     * Creates a movie with the given title, year, and rating
-     *
-     * @param title  The title of the movie
-     * @param year   The year the movie was made
-     * @param rating The rating of the movie
-     */
-    public Movie(String title, int year, double rating) {
-        this(title, year, rating, null);
-    }
-
-    /**
-     * Creates a movie with the given title, rating, year, and image
-     *
-     * @param title    The title of the movie
-     * @param year     The year the movie was made
-     * @param rating   The rating of the movie
-     * @param imageURL The image of the movie
-     */
-    public Movie(String title, int year, double rating, String imageURL) {
-        this.title = title;
-        this.year = year;
-        this.rating = rating;
-        this.imageURL = imageURL;
-        reviews = new ArrayList<Review>();
-    }
-
-    /**
-     * Creates a movie with the given information
-     *
-     * @param id       The integer id of the movie
-     * @param title    The movie title
-     * @param year     The year the movie was made
-     * @param rating   The movie's rating
-     * @param imageURL The movie's poster
-     */
-    public Movie(Integer id, String title, int year, double rating, String
-            imageURL) {
-        this(title, year, rating, imageURL);
-        this.setId(id);
     }
 
     /**

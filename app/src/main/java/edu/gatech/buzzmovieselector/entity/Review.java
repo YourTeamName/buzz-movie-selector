@@ -25,6 +25,24 @@ public class Review implements Serializable {
             foreignAutoRefresh = true)
     private Movie movie;
 
+    public Review() {
+    }
+
+    /**
+     * Creates a review with the given information
+     *
+     * @param user    The user that wrote the review
+     * @param content The string of the review itself
+     * @param rating  The rating given to the movie
+     * @param movie   The movie the rating is assigned to
+     */
+    public Review(User user, String content, Double rating, Movie movie) {
+        this.setUser(user);
+        this.setContent(content);
+        this.setRating(rating);
+        this.setMovie(movie);
+    }
+
     public Integer getId() {
         return id;
     }
@@ -63,24 +81,6 @@ public class Review implements Serializable {
 
     public void setMovie(Movie movie) {
         this.movie = movie;
-    }
-
-    public Review() {
-    }
-
-    /**
-     * Creates a review with the given information
-     *
-     * @param user    The user that wrote the review
-     * @param content The string of the review itself
-     * @param rating  The rating given to the movie
-     * @param movie   The movie the rating is assigned to
-     */
-    public Review(User user, String content, Double rating, Movie movie) {
-        this.setUser(user);
-        this.setContent(content);
-        this.setRating(rating);
-        this.setMovie(movie);
     }
 
 }

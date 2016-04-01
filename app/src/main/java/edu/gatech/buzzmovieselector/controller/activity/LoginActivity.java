@@ -23,12 +23,11 @@ import edu.gatech.buzzmovieselector.service.SessionState;
  */
 public class LoginActivity extends Activity {
 
+    private static final int LOCK_ATTEMPTS = 3;
+    int loginAttempts;
     // UI references.
     private AutoCompleteTextView userText;
     private EditText passwordText;
-
-    int loginAttempts;
-    private static final int LOCK_ATTEMPTS = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

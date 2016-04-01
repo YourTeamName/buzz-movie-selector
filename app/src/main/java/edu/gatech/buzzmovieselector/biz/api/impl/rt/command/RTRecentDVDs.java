@@ -3,8 +3,7 @@ package edu.gatech.buzzmovieselector.biz.api.impl.rt.command;
 import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
 import edu.gatech.buzzmovieselector.biz.api.ApiCommand;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
-import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver
-        .RTMovieListReceiver;
+import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver.RTMovieListReceiver;
 import edu.gatech.buzzmovieselector.service.ApiNetwork;
 
 /**

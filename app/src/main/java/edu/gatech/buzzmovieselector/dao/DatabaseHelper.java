@@ -37,6 +37,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     /**
      * Constructor for database helper
+     *
      * @param context Context of the helper
      */
     public DatabaseHelper(Context context) {
@@ -47,7 +48,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      * This is called when the database is first created. Usually you should
      * call createTable statements here to create
      * the tables that will store your data.
-     * @param db The sql database
+     *
+     * @param db               The sql database
      * @param connectionSource The connection source of the helper
      */
     @Override
@@ -68,10 +70,11 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      * This is called when your application is upgraded and it has a higher
      * version number. This allows you to adjust
      * the various data to match the new version number.
-     * @param db sql db to upgrade
+     *
+     * @param db               sql db to upgrade
      * @param connectionSource the connection source of the db
-     * @param oldVersion the old version
-     * @param newVersion the new version
+     * @param oldVersion       the old version
+     * @param newVersion       the new version
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, ConnectionSource
@@ -94,6 +97,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      * Returns the DAO for our User class. It
      * will create it or just give the cached
      * value.
+     *
      * @return the database object for the user
      */
     public Dao<User, String> getUserDao() throws SQLException {

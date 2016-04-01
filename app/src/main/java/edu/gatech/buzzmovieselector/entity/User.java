@@ -9,33 +9,6 @@ import java.io.Serializable;
 @DatabaseTable(tableName = "user", daoClass = UserDaoImpl.class)
 public class User implements Serializable {
 
-    /**
-     * enum containing possible UserStatus values
-     */
-    public enum UserStatus {
-        USER,
-        ADMIN,
-        BANNED,
-        LOCKED;
-
-        @Override
-        public String toString() {
-            switch (this) {
-                case USER:
-                    return "USER";
-                case ADMIN:
-                    return "ADMIN";
-                case BANNED:
-                    return "BANNED";
-                case LOCKED:
-                    return "LOCKED";
-                default:
-                    throw new IllegalArgumentException("Invalid UserStatus " +
-                            "enum value");
-            }
-        }
-    }
-
     @DatabaseField(id = true)
     private String username;
     @DatabaseField
@@ -45,39 +18,6 @@ public class User implements Serializable {
     @DatabaseField(foreign = true, foreignAutoCreate = true,
             foreignAutoRefresh = true)
     private Profile profile;
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public UserStatus getUserStatus() {
-        return userStatus;
-    }
-
-    public void setUserStatus(UserStatus userStatus) {
-        this.userStatus = userStatus;
-    }
-
-    public Profile getProfile() {
-        return profile;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-    }
-
     /**
      * Default constructor for OrmLite
      */
@@ -131,6 +71,38 @@ public class User implements Serializable {
         }
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public UserStatus getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(UserStatus userStatus) {
+        this.userStatus = userStatus;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
     /**
      * Checks to see if two users are the same
      *
@@ -163,5 +135,32 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User: " + username + " UserStatus: " + userStatus;
+    }
+
+    /**
+     * enum containing possible UserStatus values
+     */
+    public enum UserStatus {
+        USER,
+        ADMIN,
+        BANNED,
+        LOCKED;
+
+        @Override
+        public String toString() {
+            switch (this) {
+                case USER:
+                    return "USER";
+                case ADMIN:
+                    return "ADMIN";
+                case BANNED:
+                    return "BANNED";
+                case LOCKED:
+                    return "LOCKED";
+                default:
+                    throw new IllegalArgumentException("Invalid UserStatus " +
+                            "enum value");
+            }
+        }
     }
 }

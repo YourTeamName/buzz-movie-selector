@@ -41,63 +41,12 @@ enum ApiResult {
  */
 abstract public class ApiReceiver<T, V> {
 
-    private class AsyncFutureTask extends AsyncTask<RequestFuture, Integer,
-            Object> {
-        @Override
-        protected void onPreExecute() {
-            responseStatus = ApiResult.NOT_DONE;
-        }
-
-        @Override
-        protected Object doInBackground(RequestFuture... params) {
-            final RequestFuture future = params[0];
-            try {
-                return future.get(API_MAX_WAIT, TimeUnit.SECONDS);
-            } catch (InterruptedException e) {
-                responseStatus = ApiResult.FAIL;
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                responseStatus = ApiResult.FAIL;
-                e.printStackTrace();
-            } catch (TimeoutException e) {
-                responseStatus = ApiResult.FAIL;
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Object result) {
-            super.onPostExecute(result);
-        }
-    }
-
-    private class FutureThread implements Runnable {
-        @Override
-        public void run() {
-            final AsyncFutureTask futureTask = new AsyncFutureTask();
-            try {
-                responseData = (T) futureTask.execute(responseFuture).get();
-                if (responseCallback != null) {
-                    responseCallback.onReceive(ApiReceiver.this);
-                }
-                responseStatus = ApiResult.SUCCESS;
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     private static final int API_MAX_WAIT = 5;
-
     protected RequestFuture responseFuture;
     private T responseData;
     private ApiCallback responseCallback = null;
     private ApiResult responseStatus = ApiResult.NOT_DONE;
     private Thread retrieveThread;
-
     /**
      * Constructor for a receiver
      *
@@ -152,4 +101,53 @@ abstract public class ApiReceiver<T, V> {
      * @return converted entity object
      */
     abstract public V getEntity();
+
+    private class AsyncFutureTask extends AsyncTask<RequestFuture, Integer,
+            Object> {
+        @Override
+        protected void onPreExecute() {
+            responseStatus = ApiResult.NOT_DONE;
+        }
+
+        @Override
+        protected Object doInBackground(RequestFuture... params) {
+            final RequestFuture future = params[0];
+            try {
+                return future.get(API_MAX_WAIT, TimeUnit.SECONDS);
+            } catch (InterruptedException e) {
+                responseStatus = ApiResult.FAIL;
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                responseStatus = ApiResult.FAIL;
+                e.printStackTrace();
+            } catch (TimeoutException e) {
+                responseStatus = ApiResult.FAIL;
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object result) {
+            super.onPostExecute(result);
+        }
+    }
+
+    private class FutureThread implements Runnable {
+        @Override
+        public void run() {
+            final AsyncFutureTask futureTask = new AsyncFutureTask();
+            try {
+                responseData = (T) futureTask.execute(responseFuture).get();
+                if (responseCallback != null) {
+                    responseCallback.onReceive(ApiReceiver.this);
+                }
+                responseStatus = ApiResult.SUCCESS;
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

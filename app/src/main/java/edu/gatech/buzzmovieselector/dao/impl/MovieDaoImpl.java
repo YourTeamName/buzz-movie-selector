@@ -11,8 +11,7 @@ public class MovieDaoImpl extends BaseDaoImpl<Movie, Integer>
         implements MovieDao {
 
     // this constructor must be defined
-    public MovieDaoImpl(ConnectionSource connectionSource)
-            throws SQLException {
+    public MovieDaoImpl(ConnectionSource connectionSource) throws SQLException {
         super(connectionSource, Movie.class);
     }
 

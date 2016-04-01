@@ -20,10 +20,9 @@ import java.util.List;
  */
 public class UserListAdapter extends BaseAdapter implements ListAdapter {
 
+    private static LayoutInflater inflater = null;
     private List<User> users = new ArrayList<>();
     private Context context;
-
-    private static LayoutInflater inflater = null;
 
     public UserListAdapter(List<User> users, Context context) {
         this.users = users;

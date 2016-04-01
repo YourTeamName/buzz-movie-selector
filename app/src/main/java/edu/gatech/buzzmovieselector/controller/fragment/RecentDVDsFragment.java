@@ -14,8 +14,7 @@ import edu.gatech.buzzmovieselector.biz.api.ApiCall;
 import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.command.RTCommandFactory;
-import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver
-        .RTMovieListReceiver;
+import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver.RTMovieListReceiver;
 import edu.gatech.buzzmovieselector.controller.util.MovieListAdapter;
 import edu.gatech.buzzmovieselector.entity.Movie;
 

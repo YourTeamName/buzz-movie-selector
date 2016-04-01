@@ -40,8 +40,8 @@ public class BMSActivity extends AppCompatActivity
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id
-                .fab);
+        final FloatingActionButton fab =
+                (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,7 +50,8 @@ public class BMSActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
-        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id
+                .drawer_layout);
         final ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R
                 .string.navigation_drawer_close);
@@ -61,8 +62,8 @@ public class BMSActivity extends AppCompatActivity
                 .nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
-        final ViewPagerAdapter adapter = new ViewPagerAdapter
-                (getSupportFragmentManager());
+        final ViewPagerAdapter adapter =
+                new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new RecentDVDsFragment(), "DVDs");
         adapter.addFragment(new RecentMoviesFragment(), "Movies");
         adapter.addFragment(new MovieSearchFragment(), "Search");
@@ -80,7 +81,8 @@ public class BMSActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id
+                .drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         }
@@ -144,7 +146,8 @@ public class BMSActivity extends AppCompatActivity
             finish();
         }
 
-        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id
+                .drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

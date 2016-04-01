@@ -12,6 +12,9 @@ import java.util.List;
 
 public class UserManager implements AuthenticationFacade, UserManagementFacade {
 
+    public UserManager() {
+    }
+
     public User findUserById(String username) {
         User user = null;
         try {
@@ -88,8 +91,5 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
             e.printStackTrace();
         }
         return users;
-    }
-
-    public UserManager() {
     }
 }

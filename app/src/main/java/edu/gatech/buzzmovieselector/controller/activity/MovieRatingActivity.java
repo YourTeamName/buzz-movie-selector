@@ -21,7 +21,6 @@ public class MovieRatingActivity extends AppCompatActivity {
     public static final String CURRENT_MOVIE = "currentMovie";
 
     private TextView titleText;
-    private TextView reviewText;
 
     private RatingBar averageRating;
     private RatingBar userRating;
@@ -44,9 +43,8 @@ public class MovieRatingActivity extends AppCompatActivity {
             mm.addMovie(reviewMovie);
         }
         reviewMovie = mm.findMovieById(reviewMovie.getId());
-        titleText.setText(reviewMovie.getTitle() + " (" + reviewMovie.getYear
-                () + ")");
-        reviewText = (TextView) findViewById(R.id.textReview);
+        titleText.setText(reviewMovie.getTitle() + " (" + reviewMovie.
+                getYear() + ")");
         userRating = (RatingBar) findViewById(R.id.userRating);
         averageRating = (RatingBar) findViewById(R.id.averageRating);
         contentText = (EditText) findViewById(R.id.textReview);

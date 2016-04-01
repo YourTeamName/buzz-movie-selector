@@ -13,8 +13,7 @@ import android.widget.TextView;
 import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.biz.api.ApiCall;
 import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
-import edu.gatech.buzzmovieselector.biz.api.impl.general.command
-        .GeneralCommandFactory;
+import edu.gatech.buzzmovieselector.biz.api.impl.general.command.GeneralCommandFactory;
 import edu.gatech.buzzmovieselector.biz.api.impl.general.receiver.ImageReceiver;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 import edu.gatech.buzzmovieselector.controller.activity.MovieRatingActivity;
@@ -27,11 +26,10 @@ import java.util.List;
  */
 public class MovieListAdapter extends BaseAdapter {
 
+    private static LayoutInflater inflater = null;
+    private final RTInvoker rti = new RTInvoker();
     private List<Movie> movies;
     private Activity hostActivity;
-    private final RTInvoker rti = new RTInvoker();
-
-    private static LayoutInflater inflater = null;
 
     /**
      * Constructs a new movie adapter to display movies in a list
@@ -72,25 +70,28 @@ public class MovieListAdapter extends BaseAdapter {
                 .movieTitleText);
         final Movie movie = movies.get(i);
         movieTitleView.setText(movie.getTitle() + " (" + movie.getYear() + ")");
-        final ApiCall imageCall = new ApiCall(GeneralCommandFactory.getImageCommand
-                (movie.getImageURL()), new ApiCallback<ImageReceiver>() {
-            @Override
-            public void onReceive(final ImageReceiver receiver) {
-                hostActivity.runOnUiThread(new Runnable() {
+        final ApiCall imageCall = new ApiCall(GeneralCommandFactory
+                .getImageCommand(movie.getImageURL()),
+                new ApiCallback<ImageReceiver>() {
                     @Override
-                    public void run() {
-                        movieThumbView.setImageBitmap(receiver.getEntity());
+                    public void onReceive(final ImageReceiver receiver) {
+                        hostActivity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                movieThumbView.setImageBitmap(receiver
+                                        .getEntity());
+                            }
+                        });
                     }
                 });
-            }
-        });
         rti.executeCall(imageCall);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO make this open a movie viewer activity
                 Log.v("movieadapter", "position " + i);
-                final Intent i = new Intent(hostActivity, MovieRatingActivity.class);
+                final Intent i = new Intent(hostActivity, MovieRatingActivity
+                        .class);
                 i.putExtra(MovieRatingActivity.CURRENT_MOVIE, movie);
                 hostActivity.startActivity(i);
             }
