@@ -82,7 +82,7 @@ public class UserStatusActivity extends AppCompatActivity {
         }
         initializeForm();
         Log.v("USER STATUS", currentUser.getUserStatus().toString());
-        UserManagementFacade userManager = new UserManager();
+        final UserManagementFacade userManager = new UserManager();
         userManager.updateUser(currentUser);
     }
 
@@ -97,7 +97,7 @@ public class UserStatusActivity extends AppCompatActivity {
         }
         initializeForm();
         Log.v("USER STATUS", currentUser.getUserStatus().toString());
-        UserManagementFacade userManager = new UserManager();
+        final UserManagementFacade userManager = new UserManager();
         userManager.updateUser(currentUser);
     }
 }
