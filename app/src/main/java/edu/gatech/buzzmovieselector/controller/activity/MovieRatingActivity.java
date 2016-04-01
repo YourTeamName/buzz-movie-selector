@@ -20,14 +20,10 @@ public class MovieRatingActivity extends AppCompatActivity {
 
     public static final String CURRENT_MOVIE = "currentMovie";
 
-    private TextView titleText;
-
     private RatingBar averageRating;
     private RatingBar userRating;
 
     private EditText contentText;
-
-    private MovieManagementFacade mm;
 
     private Movie reviewMovie;
 
@@ -35,9 +31,9 @@ public class MovieRatingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_rating); //title of movie.
-        titleText = (TextView) findViewById(R.id.movieTitle);
+        TextView titleText = (TextView) findViewById(R.id.movieTitle);
         reviewMovie = (Movie) getIntent().getSerializableExtra(CURRENT_MOVIE);
-        mm = new MovieManager();
+        MovieManagementFacade mm = new MovieManager();
         if (!mm.movieExists(reviewMovie.getId())) {
             Log.v("MovieRating", "Movie with that id doesn't exist");
             mm.addMovie(reviewMovie);

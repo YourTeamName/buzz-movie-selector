@@ -30,9 +30,6 @@ import edu.gatech.buzzmovieselector.service.SessionState;
 public class BMSActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,14 +58,14 @@ public class BMSActivity extends AppCompatActivity
         final NavigationView navigationView = (NavigationView) findViewById(R.id
                 .nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
         final ViewPagerAdapter adapter =
                 new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new RecentDVDsFragment(), "DVDs");
         adapter.addFragment(new RecentMoviesFragment(), "Movies");
         adapter.addFragment(new MovieSearchFragment(), "Search");
         viewPager.setAdapter(adapter);
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
         if (SessionState.getInstance().isLoggedIn()) {
             Log.v("BMS", "we are logged in");

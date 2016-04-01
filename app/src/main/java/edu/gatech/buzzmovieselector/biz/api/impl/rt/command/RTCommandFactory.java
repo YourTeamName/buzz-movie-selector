@@ -7,12 +7,11 @@ import edu.gatech.buzzmovieselector.biz.api.ApiCommand;
  */
 public final class RTCommandFactory {
 
-    private RTCommandFactory() {
-    }
-
     // cache static commands
     private static ApiCommand recentDVDsCommand = new RTRecentDVDs();
     private static ApiCommand recentMoviesCommand = new RTRecentMovies();
+    private RTCommandFactory() {
+    }
 
     /**
      * Produces the ApiCommand for recent DVDs

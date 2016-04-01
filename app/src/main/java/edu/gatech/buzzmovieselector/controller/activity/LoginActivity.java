@@ -11,8 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import edu.gatech.buzzmovieselector.R;
-import edu.gatech.buzzmovieselector.biz.AuthenticationFacade;
-import edu.gatech.buzzmovieselector.biz.UserManagementFacade;
 import edu.gatech.buzzmovieselector.biz.impl.UserManager;
 import edu.gatech.buzzmovieselector.entity.User;
 import edu.gatech.buzzmovieselector.service.SessionState;
@@ -24,7 +22,7 @@ import edu.gatech.buzzmovieselector.service.SessionState;
 public class LoginActivity extends Activity {
 
     private static final int LOCK_ATTEMPTS = 3;
-    int loginAttempts;
+    private int loginAttempts;
     // UI references.
     private AutoCompleteTextView userText;
     private EditText passwordText;
@@ -76,7 +74,7 @@ public class LoginActivity extends Activity {
      *
      * @return the startSession form is valid
      */
-    public boolean validateLogin() {
+    private boolean validateLogin() {
         final String userName = userText.getText().toString();
         final String userPass = passwordText.getText().toString();
         if ("".equals(userName)) {
@@ -106,11 +104,9 @@ public class LoginActivity extends Activity {
      */
     private void attemptLogin() {
         final UserManager um = new UserManager();
-        final AuthenticationFacade af = um;
-        final UserManagementFacade uf = um;
         final String userName = userText.getText().toString();
         final String userPass = passwordText.getText().toString();
-        final User attemptUser = af.login(userName, userPass);
+        final User attemptUser = um.login(userName, userPass);
         if (attemptUser != null) {
             SessionState.getInstance().startSession(attemptUser,
                     getApplicationContext());
@@ -135,15 +131,15 @@ public class LoginActivity extends Activity {
 
             }
         } else {
-            if (!uf.userExists(userName)) {
+            if (!um.userExists(userName)) {
                 userText.setError("Invalid Username");
             } else {
                 passwordText.setError("Invalid Password");
                 loginAttempts++;
                 if (loginAttempts >= LOCK_ATTEMPTS) {
-                    final User attemptedUser = uf.findUserById(userName);
+                    final User attemptedUser = um.findUserById(userName);
                     attemptedUser.setUserStatus(User.UserStatus.LOCKED);
-                    uf.updateUser(attemptedUser);
+                    um.updateUser(attemptedUser);
                     Toast.makeText(LoginActivity.this, "Account locked: " +
                             "too many attempts", Toast
                             .LENGTH_SHORT).show();
@@ -161,7 +157,7 @@ public class LoginActivity extends Activity {
         startActivity(bmsActivity);
     }
 
-    public void startAdmin() {
+    private void startAdmin() {
         final Intent adminActivity = new Intent(this, AdminActivity.class);
         finish();
         startActivity(adminActivity);

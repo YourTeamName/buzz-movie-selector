@@ -13,7 +13,8 @@ import android.widget.TextView;
 import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.biz.api.ApiCall;
 import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
-import edu.gatech.buzzmovieselector.biz.api.impl.general.command.GeneralCommandFactory;
+import edu.gatech.buzzmovieselector.biz.api.impl.general.command
+        .GeneralCommandFactory;
 import edu.gatech.buzzmovieselector.biz.api.impl.general.receiver.ImageReceiver;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 import edu.gatech.buzzmovieselector.controller.activity.MovieRatingActivity;

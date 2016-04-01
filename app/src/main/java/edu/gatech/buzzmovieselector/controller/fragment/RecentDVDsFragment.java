@@ -14,15 +14,16 @@ import edu.gatech.buzzmovieselector.biz.api.ApiCall;
 import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.command.RTCommandFactory;
-import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver.RTMovieListReceiver;
+import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver
+        .RTMovieListReceiver;
 import edu.gatech.buzzmovieselector.controller.util.MovieListAdapter;
 import edu.gatech.buzzmovieselector.entity.Movie;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class RecentDVDsFragment extends Fragment {
 
-    private ListView movieList;
     private Activity hostActivity;
 
     public RecentDVDsFragment() {
@@ -38,7 +39,7 @@ public class RecentDVDsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_recent_dvds, container,
                 false);
-        movieList = (ListView) v.findViewById(R.id.recentDVDListView);
+        ListView movieList = (ListView) v.findViewById(R.id.recentDVDListView);
         final ArrayList<Movie> mList = new ArrayList<>();
         final MovieListAdapter movAdapter = new MovieListAdapter
                 (hostActivity, mList);
@@ -48,9 +49,7 @@ public class RecentDVDsFragment extends Fragment {
                 , new ApiCallback<RTMovieListReceiver>() {
             @Override
             public void onReceive(RTMovieListReceiver receiver) {
-                for (Movie m : receiver.getEntity()) {
-                    mList.add(m);
-                }
+                Collections.addAll(mList, receiver.getEntity());
                 if (hostActivity == null) {
                     return;
                 }

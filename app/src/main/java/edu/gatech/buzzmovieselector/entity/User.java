@@ -18,6 +18,7 @@ public class User implements Serializable {
     @DatabaseField(foreign = true, foreignAutoCreate = true,
             foreignAutoRefresh = true)
     private Profile profile;
+
     /**
      * Default constructor for OrmLite
      */
