@@ -53,8 +53,8 @@ public abstract class ApiReceiver<T, V> {
      * @param requestFuture    The request
      * @param responseCallback The callback for the command
      */
-    public ApiReceiver(RequestFuture requestFuture, ApiCallback
-            responseCallback) {
+    public ApiReceiver(RequestFuture requestFuture,
+        ApiCallback responseCallback) {
         this.responseFuture = requestFuture;
         this.responseCallback = responseCallback;
         startRetrieve();
@@ -103,7 +103,7 @@ public abstract class ApiReceiver<T, V> {
     public abstract V getEntity();
 
     private class AsyncFutureTask extends AsyncTask<RequestFuture, Integer,
-            Object> {
+        Object> {
         @Override
         protected void onPreExecute() {
             responseStatus = ApiResult.NOT_DONE;
@@ -115,16 +115,11 @@ public abstract class ApiReceiver<T, V> {
             try {
                 return future.get(API_MAX_WAIT, TimeUnit.SECONDS);
             } catch (InterruptedException | ExecutionException |
-                    TimeoutException e) {
+                TimeoutException e) {
                 responseStatus = ApiResult.FAIL;
                 e.printStackTrace();
             }
             return null;
-        }
-
-        @Override
-        protected void onPostExecute(Object result) {
-            super.onPostExecute(result);
         }
     }
 

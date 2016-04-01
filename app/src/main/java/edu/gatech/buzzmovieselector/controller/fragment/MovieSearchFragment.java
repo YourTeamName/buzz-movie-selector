@@ -29,25 +29,18 @@ public class MovieSearchFragment extends Fragment {
 
     private String searchQuery = "";
 
-    private View fragView;
-
     public MovieSearchFragment() {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        fragView = inflater.inflate(R.layout.fragment_movie_search,
-                container, false);
+        Bundle savedInstanceState) {
+        View fragView = inflater.inflate(R.layout.fragment_movie_search,
+            container, false);
         movieResults = (ListView) fragView.findViewById(R.id.movieSearchList);
 
         SearchView searchBar = (SearchView) fragView.findViewById(R.id
-                .searchView);
+            .searchView);
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -76,24 +69,24 @@ public class MovieSearchFragment extends Fragment {
     private void refreshResults() {
         final ArrayList<Movie> mList = new ArrayList<>();
         final MovieListAdapter movAdapter = new MovieListAdapter(hostActivity,
-                mList);
+            mList);
         movieResults.setAdapter(movAdapter);
         final RTInvoker rti = new RTInvoker();
         rti.executeCall(new ApiCall(RTCommandFactory
-                .getMovieSearchCommand(searchQuery),
-                new ApiCallback<RTMovieListReceiver>() {
-                    @Override
-                    public void onReceive(RTMovieListReceiver receiver) {
-                        Collections.addAll(mList, receiver.getEntity());
-                        if (hostActivity == null) {
-                            return;
-                        }
-                        hostActivity.runOnUiThread(new Runnable() {
-                            public void run() {
-                                movAdapter.notifyDataSetChanged();
-                            }
-                        });
+            .getMovieSearchCommand(searchQuery),
+            new ApiCallback<RTMovieListReceiver>() {
+                @Override
+                public void onReceive(RTMovieListReceiver receiver) {
+                    Collections.addAll(mList, receiver.getEntity());
+                    if (hostActivity == null) {
+                        return;
                     }
-                }));
+                    hostActivity.runOnUiThread(new Runnable() {
+                        public void run() {
+                            movAdapter.notifyDataSetChanged();
+                        }
+                    });
+                }
+            }));
     }
 }

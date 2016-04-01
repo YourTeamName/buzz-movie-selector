@@ -40,7 +40,7 @@ public class MovieRatingActivity extends AppCompatActivity {
         }
         reviewMovie = mm.findMovieById(reviewMovie.getId());
         titleText.setText(reviewMovie.getTitle() + " (" + reviewMovie.
-                getYear() + ")");
+            getYear() + ")");
         userRating = (RatingBar) findViewById(R.id.userRating);
         averageRating = (RatingBar) findViewById(R.id.averageRating);
         contentText = (EditText) findViewById(R.id.textReview);
@@ -65,7 +65,9 @@ public class MovieRatingActivity extends AppCompatActivity {
         final String reviewContent = contentText.getText().toString();
         final double usrRating = (double) userRating.getRating();
         final Review userReview = new Review(SessionState.getInstance()
-                .getSessionUser(), reviewContent, usrRating, reviewMovie);
+            .getSessionUser(),
+            reviewContent, usrRating,
+            reviewMovie);
         reviewMovie.addReview(userReview);
         final MovieManagementFacade mm = new MovieManager();
         mm.updateMovie(reviewMovie);

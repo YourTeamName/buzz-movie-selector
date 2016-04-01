@@ -45,20 +45,20 @@ public class WelcomeActivity extends AppCompatActivity {
                     return;
                 case ADMIN:
                     Intent adminActivity = new Intent(this, AdminActivity
-                            .class);
+                        .class);
                     startActivity(adminActivity);
                     return;
                 case BANNED:
                     Toast.makeText(WelcomeActivity.this, "Your account has " +
-                            "been banned since last time. Please try to login" +
-                            " again or contact an administrator.", Toast
-                            .LENGTH_SHORT).show();
+                        "been banned since last time. Please try to login" +
+                        " again or contact an administrator.", Toast
+                        .LENGTH_SHORT).show();
                     break;
                 case LOCKED:
                     Toast.makeText(WelcomeActivity.this, "Your account has " +
-                            "been locked since last time. Please try to login" +
-                            " again or contact an administrator.", Toast
-                            .LENGTH_SHORT).show();
+                        "been locked since last time. Please try to login" +
+                        " again or contact an administrator.", Toast
+                        .LENGTH_SHORT).show();
                     break;
             }
         }
@@ -81,11 +81,12 @@ public class WelcomeActivity extends AppCompatActivity {
      * Checks to see if permissions need to be requested
      */
     private void checkPermissions() {
-        int permissionCheck = ContextCompat.checkSelfPermission
-                (getApplicationContext(), Manifest.permission.INTERNET);
+        int permissionCheck = ContextCompat.checkSelfPermission(
+            getApplicationContext(), Manifest.permission.INTERNET);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest
-                    .permission.INTERNET}, REQUEST_CODE_ASK_PERMISSIONS);
+                                                                     .permission.INTERNET},
+                REQUEST_CODE_ASK_PERMISSIONS);
         }
     }
 
@@ -98,7 +99,7 @@ public class WelcomeActivity extends AppCompatActivity {
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, String
-            permissions[], int[] grantResults) {
+        permissions[], int[] grantResults) {
         switch (requestCode) {
             case REQUEST_CODE_ASK_PERMISSIONS:
                 if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
@@ -107,7 +108,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 break;
             default:
                 super.onRequestPermissionsResult(requestCode, permissions,
-                        grantResults);
+                    grantResults);
         }
     }
 
@@ -123,14 +124,14 @@ public class WelcomeActivity extends AppCompatActivity {
         // test user
         User testUser = new User("user", "pass", "user");
         testUser.setProfile(new Profile("George", "Burdell", "Computer " +
-                "Science", "gp@gatech.edu"));
+            "Science", "gp@gatech.edu"));
         UserManagementFacade um = new UserManager();
         um.addUser(testUser);
 
         // test admin
         User testAdmin = new User("admin", "admin", "admin");
         testUser.setProfile(new Profile("Admin", "Burdell", "Computer " +
-                "Science", "gp@gatech.edu"));
+            "Science", "gp@gatech.edu"));
         um.addUser(testAdmin);
 
         checkPermissions();

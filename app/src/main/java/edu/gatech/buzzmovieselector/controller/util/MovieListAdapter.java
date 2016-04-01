@@ -14,7 +14,7 @@ import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.biz.api.ApiCall;
 import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
 import edu.gatech.buzzmovieselector.biz.api.impl.general.command
-        .GeneralCommandFactory;
+    .GeneralCommandFactory;
 import edu.gatech.buzzmovieselector.biz.api.impl.general.receiver.ImageReceiver;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 import edu.gatech.buzzmovieselector.controller.activity.MovieRatingActivity;
@@ -42,7 +42,7 @@ public class MovieListAdapter extends BaseAdapter {
         this.movies = movies;
         this.hostActivity = hostActivity;
         inflater = (LayoutInflater) hostActivity.getSystemService(Context
-                .LAYOUT_INFLATER_SERVICE);
+            .LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -66,25 +66,25 @@ public class MovieListAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.movie_list_item, null);
         }
         final ImageView movieThumbView = (ImageView) view.findViewById(R
-                .id.movieImage);
+            .id.movieImage);
         final TextView movieTitleView = (TextView) view.findViewById(R.id
-                .movieTitleText);
+            .movieTitleText);
         final Movie movie = movies.get(i);
         movieTitleView.setText(movie.getTitle() + " (" + movie.getYear() + ")");
         final ApiCall imageCall = new ApiCall(GeneralCommandFactory
-                .getImageCommand(movie.getImageURL()),
-                new ApiCallback<ImageReceiver>() {
-                    @Override
-                    public void onReceive(final ImageReceiver receiver) {
-                        hostActivity.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                movieThumbView.setImageBitmap(receiver
-                                        .getEntity());
-                            }
-                        });
-                    }
-                });
+            .getImageCommand(movie.getImageURL()),
+            new ApiCallback<ImageReceiver>() {
+                @Override
+                public void onReceive(final ImageReceiver receiver) {
+                    hostActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            movieThumbView.setImageBitmap(receiver
+                                .getEntity());
+                        }
+                    });
+                }
+            });
         rti.executeCall(imageCall);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +92,7 @@ public class MovieListAdapter extends BaseAdapter {
                 // TODO make this open a movie viewer activity
                 Log.v("movieadapter", "position " + i);
                 final Intent i = new Intent(hostActivity, MovieRatingActivity
-                        .class);
+                    .class);
                 i.putExtra(MovieRatingActivity.CURRENT_MOVIE, movie);
                 hostActivity.startActivity(i);
             }

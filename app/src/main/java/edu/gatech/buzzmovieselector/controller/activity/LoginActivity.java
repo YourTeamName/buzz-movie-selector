@@ -35,10 +35,10 @@ public class LoginActivity extends Activity {
         userText = (AutoCompleteTextView) findViewById(R.id.username);
         passwordText = (EditText) findViewById(R.id.password);
         passwordText.setOnEditorActionListener(new TextView
-                .OnEditorActionListener() {
+            .OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent
-                    keyEvent) {
+                keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
                     attemptLogin();
                     return true;
@@ -109,7 +109,7 @@ public class LoginActivity extends Activity {
         final User attemptUser = um.login(userName, userPass);
         if (attemptUser != null) {
             SessionState.getInstance().startSession(attemptUser,
-                    getApplicationContext());
+                getApplicationContext());
             resetFields();
             switch (attemptUser.getUserStatus()) {
                 case USER:
@@ -120,13 +120,13 @@ public class LoginActivity extends Activity {
                     break;
                 case BANNED:
                     Toast.makeText(LoginActivity.this, "Sorry, this user is " +
-                            "currently banned", Toast
-                            .LENGTH_SHORT).show();
+                        "currently banned", Toast
+                        .LENGTH_SHORT).show();
                     break;
                 case LOCKED:
                     Toast.makeText(LoginActivity.this, "Sorry, this user is " +
-                            "currently locked", Toast
-                            .LENGTH_SHORT).show();
+                        "currently locked", Toast
+                        .LENGTH_SHORT).show();
                     break;
 
             }
@@ -141,8 +141,8 @@ public class LoginActivity extends Activity {
                     attemptedUser.setUserStatus(User.UserStatus.LOCKED);
                     um.updateUser(attemptedUser);
                     Toast.makeText(LoginActivity.this, "Account locked: " +
-                            "too many attempts", Toast
-                            .LENGTH_SHORT).show();
+                        "too many attempts", Toast
+                        .LENGTH_SHORT).show();
                 }
             }
         }

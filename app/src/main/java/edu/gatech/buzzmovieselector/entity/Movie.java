@@ -74,7 +74,7 @@ public class Movie implements Serializable {
      * @param imageURL The movie's poster
      */
     public Movie(Integer id, String title, int year, double rating, String
-            imageURL) {
+        imageURL) {
         this(title, year, rating, imageURL);
         this.setId(id);
     }
@@ -171,7 +171,7 @@ public class Movie implements Serializable {
     @Override
     public String toString() {
         return "Movie: " + title + "ID: " + id + " Year: " + year + " Rate: "
-                + rating;
+            + rating;
     }
 
 }

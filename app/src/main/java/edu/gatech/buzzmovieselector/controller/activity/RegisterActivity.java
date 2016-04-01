@@ -29,7 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
         emailField = (EditText) findViewById(R.id.emailText);
         passwordField = (EditText) findViewById(R.id.passwordText);
         passwordConfirmField = (EditText) findViewById(R.id
-                .passwordConfirmText);
+            .passwordConfirmText);
     }
 
     /**
@@ -44,9 +44,9 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
         User newUser = new User(userField.getText().toString(), passwordField
-                .getText().toString());
+            .getText().toString());
         Profile newProfile = new Profile("", "", "", emailField.getText()
-                .toString());
+            .toString());
         newUser.setProfile(newProfile);
         UserManagementFacade um = new UserManager();
         um.addUser(newUser);

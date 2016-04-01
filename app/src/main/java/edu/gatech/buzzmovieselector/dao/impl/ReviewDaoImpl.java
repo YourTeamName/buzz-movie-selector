@@ -8,11 +8,11 @@ import edu.gatech.buzzmovieselector.entity.Review;
 import java.sql.SQLException;
 
 public class ReviewDaoImpl extends BaseDaoImpl<Review, Integer>
-        implements ReviewDao {
+    implements ReviewDao {
 
     // this constructor must be defined
     public ReviewDaoImpl(ConnectionSource connectionSource)
-            throws SQLException {
+        throws SQLException {
         super(connectionSource, Review.class);
     }
 

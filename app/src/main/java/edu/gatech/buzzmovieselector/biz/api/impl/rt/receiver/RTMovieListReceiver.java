@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class RTMovieListReceiver extends ApiReceiver<JSONObject, Movie[]> {
 
     public RTMovieListReceiver(RequestFuture requestFuture, ApiCallback
-            responseCallback) {
+        responseCallback) {
         super(requestFuture, responseCallback);
     }
 
@@ -29,11 +29,12 @@ public class RTMovieListReceiver extends ApiReceiver<JSONObject, Movie[]> {
             for (int i = 0; i < movieList.length(); i++) {
                 JSONObject movieJ = movieList.getJSONObject(i);
                 double rating = (double) movieJ.getJSONObject("ratings")
-                        .getInt("audience_score") / 100.;
+                    .getInt("audience_score") / 100.;
                 String thumbUrl = movieJ.getJSONObject("posters").getString
-                        ("thumbnail");
-                Movie movie = new Movie(movieJ.getInt("id"), movieJ.getString
-                        ("title"), movieJ.getInt("year"), rating, thumbUrl);
+                    ("thumbnail");
+                Movie movie = new Movie(movieJ.getInt("id"), movieJ
+                    .getString("title"), movieJ.getInt("year"), rating,
+                    thumbUrl);
                 parsedMovies.add(movie);
             }
         } catch (JSONException e) {

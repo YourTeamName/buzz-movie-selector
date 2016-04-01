@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public class JSONReceiver extends ApiReceiver<JSONObject, JSONObject> {
 
     public JSONReceiver(RequestFuture requestFuture, ApiCallback
-            responseCallback) {
+        responseCallback) {
         super(requestFuture, responseCallback);
     }
 

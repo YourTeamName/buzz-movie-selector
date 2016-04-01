@@ -69,8 +69,8 @@ public final class SessionState {
      * @return a saved state exists
      */
     public boolean restoreState(Context context) {
-        SharedPreferences saveSession = context.getSharedPreferences
-                (SESSION_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences saveSession = context
+            .getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
         String username = saveSession.getString(USER_PREFIX + "username", null);
         String password = saveSession.getString(USER_PREFIX + "password", null);
         String userStatus = saveSession.getString(USER_PREFIX + "status", null);
@@ -89,16 +89,16 @@ public final class SessionState {
      */
 
     public void saveState(Context context) {
-        SharedPreferences saveSession = context.getSharedPreferences
-                (SESSION_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences saveSession = context
+            .getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = saveSession.edit();
         if (sessionUser != null) {
             editor.putString(USER_PREFIX + "username", sessionUser
-                    .getUsername());
+                .getUsername());
             editor.putString(USER_PREFIX + "password", sessionUser
-                    .getPassword());
+                .getPassword());
             editor.putString(USER_PREFIX + "status", sessionUser.getUserStatus
-                    ().toString());
+                ().toString());
         }
         editor.clear();
         editor.apply();
@@ -110,8 +110,8 @@ public final class SessionState {
      * @param context Context of shared preferences
      */
     public void clearSaveState(Context context) {
-        SharedPreferences saveSession = context.getSharedPreferences
-                (SESSION_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences saveSession = context
+            .getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = saveSession.edit();
         editor.clear();
         editor.apply();

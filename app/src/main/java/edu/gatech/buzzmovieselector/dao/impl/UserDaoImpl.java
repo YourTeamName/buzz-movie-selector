@@ -11,11 +11,11 @@ import java.sql.SQLException;
  * OrmLite Android implementation of the UserDao interface.
  */
 public class UserDaoImpl extends BaseDaoImpl<User, String>
-        implements UserDao {
+    implements UserDao {
 
     // this constructor must be defined
     public UserDaoImpl(ConnectionSource connectionSource)
-            throws SQLException {
+        throws SQLException {
         super(connectionSource, User.class);
     }
 

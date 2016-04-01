@@ -19,6 +19,6 @@ public class JSONCommand implements ApiCommand {
     @Override
     public JSONReceiver execute(ApiCallback callback) {
         return new JSONReceiver(ApiNetwork.getInstance().apiJSON(url),
-                callback);
+            callback);
     }
 }

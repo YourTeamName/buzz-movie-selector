@@ -15,14 +15,14 @@ public class Review implements Serializable {
 
     private Integer id;
     @DatabaseField(foreign = true, foreignAutoCreate = true,
-            foreignAutoRefresh = true)
+        foreignAutoRefresh = true)
     private User user;
     @DatabaseField
     private String content;
     @DatabaseField
     private Double rating;
     @DatabaseField(foreign = true, foreignAutoCreate = true,
-            foreignAutoRefresh = true)
+        foreignAutoRefresh = true)
     private Movie movie;
 
     public Review() {

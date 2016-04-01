@@ -6,6 +6,7 @@ import edu.gatech.buzzmovieselector.dao.MovieDao;
 import edu.gatech.buzzmovieselector.entity.Movie;
 import edu.gatech.buzzmovieselector.entity.Review;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -28,10 +29,10 @@ public class MovieManager implements MovieManagementFacade {
      */
     @Override
     public void addMovie(Movie movie) {
+        MovieDao movieDao = DaoFactory.getMovieDao();
         try {
-            final MovieDao movieDao = DaoFactory.getMovieDao();
             movieDao.createOrUpdate(movie);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -47,7 +48,7 @@ public class MovieManager implements MovieManagementFacade {
         Movie movie = null;
         try {
             movie = DaoFactory.getMovieDao().queryForId(id);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return movie;
@@ -58,7 +59,7 @@ public class MovieManager implements MovieManagementFacade {
         Movie movie = null;
         try {
             movie = DaoFactory.getMovieDao().queryForId(id);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return movie != null;
@@ -69,7 +70,7 @@ public class MovieManager implements MovieManagementFacade {
         try {
             final MovieDao movieDao = DaoFactory.getMovieDao();
             movieDao.createOrUpdate(movie);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -91,7 +92,7 @@ public class MovieManager implements MovieManagementFacade {
         try {
             final MovieDao movieDao = DaoFactory.getMovieDao();
             movieList = movieDao.queryForAll();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return movieList;

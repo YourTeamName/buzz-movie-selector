@@ -8,6 +8,7 @@ import edu.gatech.buzzmovieselector.dao.UserDao;
 import edu.gatech.buzzmovieselector.entity.User;
 import edu.gatech.buzzmovieselector.service.SessionState;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class UserManager implements AuthenticationFacade, UserManagementFacade {
@@ -20,7 +21,7 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
         try {
             UserDao userDao = DaoFactory.getUserDao();
             user = userDao.queryForId(username);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return user;
@@ -32,7 +33,7 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
             profileDao.createOrUpdate(user.getProfile());
             UserDao userDao = DaoFactory.getUserDao();
             userDao.createOrUpdate(user);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -42,7 +43,7 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
         try {
             UserDao userDao = DaoFactory.getUserDao();
             user = userDao.queryForId(username);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         if (user == null || !user.checkPassword(password)) {
@@ -59,16 +60,16 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
         User user = null;
         try {
             user = DaoFactory.getUserDao().queryForId(username);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return user != null;
     }
 
     public void updateUser(User user) {
-        if (SessionState.getInstance().getSessionUser() != null
-                && user.getUsername().equals(
-                SessionState.getInstance().getSessionUser().getUsername())) {
+        if (SessionState.getInstance().getSessionUser() != null && user
+            .getUsername().equals(SessionState.getInstance().getSessionUser()
+                .getUsername())) {
             SessionState.getInstance().setSessionUser(user);
         }
         try {
@@ -76,7 +77,7 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
             profileDao.createOrUpdate(user.getProfile());
             UserDao userDao = DaoFactory.getUserDao();
             userDao.createOrUpdate(user);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -87,7 +88,7 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
         try {
             UserDao userDao = DaoFactory.getUserDao();
             users = userDao.queryForAll();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return users;

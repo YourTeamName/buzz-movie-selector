@@ -19,6 +19,6 @@ public class ImageCommand implements ApiCommand {
     @Override
     public ImageReceiver execute(ApiCallback callback) {
         return new ImageReceiver(ApiNetwork.getInstance().apiImage(url),
-                callback);
+            callback);
     }
 }

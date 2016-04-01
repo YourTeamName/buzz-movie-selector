@@ -4,7 +4,7 @@ import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
 import edu.gatech.buzzmovieselector.biz.api.ApiCommand;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver
-        .RTMovieListReceiver;
+    .RTMovieListReceiver;
 import edu.gatech.buzzmovieselector.service.ApiNetwork;
 
 /**
@@ -13,12 +13,12 @@ import edu.gatech.buzzmovieselector.service.ApiNetwork;
 public class RTRecentMovies implements ApiCommand {
 
     private final String url = "http://api.rottentomatoes.com/api/public/v1" +
-            ".0/lists/movies/in_theaters.json?page_limit=10&apikey=" +
-            RTInvoker.API_KEY;
+        ".0/lists/movies/in_theaters.json?page_limit=10&apikey=" +
+        RTInvoker.API_KEY;
 
     @Override
     public RTMovieListReceiver execute(ApiCallback callback) {
         return new RTMovieListReceiver(ApiNetwork.getInstance().apiJSON(url),
-                callback);
+            callback);
     }
 }

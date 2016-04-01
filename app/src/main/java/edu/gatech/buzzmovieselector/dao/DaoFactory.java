@@ -3,6 +3,8 @@ package edu.gatech.buzzmovieselector.dao;
 import android.content.Context;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
+import java.sql.SQLException;
+
 /**
  * The DAO factory that provides access to all DAOs.
  */
@@ -14,6 +16,9 @@ public final class DaoFactory {
     private static ProfileDao profileDao;
     private static MovieDao movieDao;
     private static ReviewDao reviewDao;
+
+    private final static String ERROR_MSG = "Context must be set before " +
+        "calling getXxxDao";
 
     /**
      * Empty constructor
@@ -34,16 +39,20 @@ public final class DaoFactory {
      * Returns a UserDao object to interface with the database
      *
      * @return A UserDao object
-     * @throws Exception an exception from the database
+     * @throws IllegalStateException if context is null
      */
-    public static UserDao getUserDao() throws Exception {
+    public static UserDao getUserDao() {
         if (userDao == null) {
             if (context == null) {
-                throw new Exception("Context must be set before calling " +
-                        "getXxxDao");
+                throw new IllegalStateException(ERROR_MSG);
             }
-            userDao = (UserDao) OpenHelperManager.getHelper(context,
-                    DatabaseHelper.class).getUserDao();
+            try {
+                userDao = (UserDao) OpenHelperManager.getHelper(context,
+                    DatabaseHelper.class)
+                    .getUserDao();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return userDao;
     }
@@ -52,16 +61,20 @@ public final class DaoFactory {
      * Returns a ProfileDao object to interface with the database
      *
      * @return A ProfileDao object
-     * @throws Exception an exception from the database
+     * @throws IllegalStateException if context is null
      */
-    public static ProfileDao getProfileDao() throws Exception {
+    public static ProfileDao getProfileDao() {
         if (profileDao == null) {
             if (context == null) {
-                throw new Exception("Context must be set before calling " +
-                        "getXxxDao");
+                throw new IllegalStateException(ERROR_MSG);
             }
-            profileDao = (ProfileDao) OpenHelperManager.getHelper(context,
-                    DatabaseHelper.class).getProfileDao();
+            try {
+                profileDao = (ProfileDao) OpenHelperManager.getHelper(context,
+                    DatabaseHelper.class)
+                    .getProfileDao();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return profileDao;
     }
@@ -70,16 +83,21 @@ public final class DaoFactory {
      * Returns a MovieDao object to interface with the database
      *
      * @return A MovieDao object
-     * @throws Exception an exception from the database
+     * @throws IllegalStateException if context is null
      */
-    public static MovieDao getMovieDao() throws Exception {
+    public static MovieDao getMovieDao() {
         if (movieDao == null) {
             if (context == null) {
-                throw new Exception("Context must be set before calling " +
-                        "getXxxDao");
+                throw new IllegalStateException(ERROR_MSG);
             }
-            movieDao = (MovieDao) OpenHelperManager.getHelper(context,
-                    DatabaseHelper.class).getMovieDao();
+            try {
+                movieDao = (MovieDao) OpenHelperManager.getHelper(context,
+                    DatabaseHelper
+                        .class)
+                    .getMovieDao();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return movieDao;
     }
@@ -88,16 +106,20 @@ public final class DaoFactory {
      * Returns a ReviewDao object to interface with the database
      *
      * @return A ReviewDao object
-     * @throws Exception an exception from the database
+     * @throws IllegalStateException if context is null
      */
-    public static ReviewDao getReviewDao() throws Exception {
+    public static ReviewDao getReviewDao() {
         if (reviewDao == null) {
             if (context == null) {
-                throw new Exception("Context must be set before calling " +
-                        "getXxxDao");
+                throw new IllegalStateException(ERROR_MSG);
             }
-            reviewDao = (ReviewDao) OpenHelperManager.getHelper(context,
-                    DatabaseHelper.class).getReviewDao();
+            try {
+                reviewDao = (ReviewDao) OpenHelperManager.getHelper(context,
+                    DatabaseHelper.class)
+                    .getReviewDao();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return reviewDao;
     }

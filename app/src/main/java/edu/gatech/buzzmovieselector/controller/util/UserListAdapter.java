@@ -28,7 +28,7 @@ public class UserListAdapter extends BaseAdapter implements ListAdapter {
         this.users = users;
         this.context = context;
         inflater = (LayoutInflater) context.getSystemService(Context
-                .LAYOUT_INFLATER_SERVICE);
+            .LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -53,10 +53,10 @@ public class UserListAdapter extends BaseAdapter implements ListAdapter {
         }
 
         TextView listItemText = (TextView) view.findViewById(R.id
-                .usernameLabel);
+            .usernameLabel);
         final User user = users.get(position);
         listItemText.setText(user.getUsername() + " (" + user.getUserStatus()
-                + ")");
+            + ")");
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

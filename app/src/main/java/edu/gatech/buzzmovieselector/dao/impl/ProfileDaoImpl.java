@@ -11,11 +11,11 @@ import java.sql.SQLException;
  * OrmLite Android implementation of the ProfileDao interface.
  */
 public class ProfileDaoImpl extends BaseDaoImpl<Profile, Integer>
-        implements ProfileDao {
+    implements ProfileDao {
 
     // this constructor must be defined
-    public ProfileDaoImpl(ConnectionSource connectionSource)
-            throws SQLException {
+    public ProfileDaoImpl(ConnectionSource connectionSource) throws
+        SQLException {
         super(connectionSource, Profile.class);
     }
 

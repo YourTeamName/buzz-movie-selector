@@ -10,27 +10,48 @@ import java.io.Serializable;
 public class Profile implements Serializable {
 
     public static final String[] USER_DEGREES = {"", "Architecture",
-            "Building Construction",
-            "Industrial Design", "Computer Science", "Computational Media",
-            "Aerospace Engineering",
-            "Biomedical Engineering", "Chemical Engineering", "Civil " +
-            "Engineering",
-            "Computer Engineering", "Electrical Engineering", "Environmental " +
-            "Engineering",
-            "Industrial Engineering", "Materials Science and Engineering",
-            "Mechanical Engineering",
-            "Nuclear Engineering", "Business Administration",
-            "Applied Language and Intercultural Studies", "Economics",
-            "Economics and International Affairs", "Global Economics and " +
-            "Modern Languages",
-            "History, Technology, and Society", "International Affairs",
-            "International Affairs and Modern Languages", "Literature, Media," +
-            " and Communication",
-            "Public Policy", "Applied Mathematics", "Applied Physics",
-            "Biochemistry", "Biology",
-            "Chemistry", "Discrete Mathematics", "Earth and Atmospheric " +
-            "Sciences", "Physics",
-            "Psychology", "Computational Science and Engineering"};
+                                                 "Building Construction",
+                                                 "Industrial Design",
+                                                 "Computer Science",
+                                                 "Computational Media",
+                                                 "Aerospace Engineering",
+                                                 "Biomedical Engineering",
+                                                 "Chemical Engineering",
+                                                 "Civil Engineering",
+                                                 "Computer Engineering",
+                                                 "Electrical Engineering",
+                                                 "Environmental Engineering",
+                                                 "Industrial Engineering",
+                                                 "Materials Science and " +
+                                                     "Engineering",
+                                                 "Mechanical Engineering",
+                                                 "Nuclear Engineering",
+                                                 "Business Administration",
+                                                 "Applied Language and " +
+                                                     "Intercultural " +
+                                                     "Studies", "Economics",
+                                                 "Economics and International" +
+                                                     " Affairs",
+                                                 "Global Economics and Modern" +
+                                                     " Languages",
+                                                 "History, Technology, and " +
+                                                     "Society",
+                                                 "International Affairs",
+                                                 "International Affairs and " +
+                                                     "Modern Languages",
+                                                 "Literature, Media and " +
+                                                     "Communication",
+                                                 "Public Policy", "Applied " +
+                                                     "Mathematics",
+                                                 "Applied Physics",
+                                                 "Biochemistry", "Biology",
+                                                 "Chemistry", "Discrete " +
+                                                     "Mathematics",
+                                                 "Earth and Atmospheric " +
+                                                     "Sciences", "Physics",
+                                                 "Psychology", "Computational" +
+                                                     " Science and " +
+                                                     "Engineering"};
 
     @DatabaseField(generatedId = true)
     private Integer id;
@@ -50,7 +71,7 @@ public class Profile implements Serializable {
     }
 
     public Profile(String firstName, String lastName, String major, String
-            email) {
+        email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.major = major;

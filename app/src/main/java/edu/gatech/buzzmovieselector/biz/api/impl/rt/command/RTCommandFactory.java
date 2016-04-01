@@ -10,6 +10,7 @@ public final class RTCommandFactory {
     // cache static commands
     private static ApiCommand recentDVDsCommand = new RTRecentDVDs();
     private static ApiCommand recentMoviesCommand = new RTRecentMovies();
+
     private RTCommandFactory() {
     }
 

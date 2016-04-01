@@ -16,7 +16,7 @@ public class User implements Serializable {
     @DatabaseField
     private UserStatus userStatus;
     @DatabaseField(foreign = true, foreignAutoCreate = true,
-            foreignAutoRefresh = true)
+        foreignAutoRefresh = true)
     private Profile profile;
 
     /**
@@ -33,9 +33,9 @@ public class User implements Serializable {
      * @param userStatus The level of the account
      */
     public User(String username, String password, UserStatus userStatus) {
-        this.username = username;
-        this.password = password;
-        this.userStatus = userStatus;
+        this.setUsername(username);
+        this.setPassword(password);
+        this.setUserStatus(userStatus);
     }
 
     /**
@@ -68,7 +68,7 @@ public class User implements Serializable {
             this.userStatus = UserStatus.LOCKED;
         } else {
             throw new IllegalArgumentException("String cannot be converted to" +
-                    " UserStatus");
+                " UserStatus");
         }
     }
 
@@ -120,7 +120,7 @@ public class User implements Serializable {
         }
         final User u = (User) user;
         return username.equals(u.username) && password.equals(u.password) &&
-                userStatus.equals(u.userStatus);
+            userStatus.equals(u.userStatus);
     }
 
     /**
@@ -160,7 +160,7 @@ public class User implements Serializable {
                     return "LOCKED";
                 default:
                     throw new IllegalArgumentException("Invalid UserStatus " +
-                            "enum value");
+                        "enum value");
             }
         }
     }

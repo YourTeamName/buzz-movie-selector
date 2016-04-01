@@ -11,7 +11,7 @@ import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.command.RTCommandFactory;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver
-        .RTMovieListReceiver;
+    .RTMovieListReceiver;
 import edu.gatech.buzzmovieselector.entity.Movie;
 
 import java.util.ArrayList;
@@ -39,7 +39,8 @@ public class SearchResultsActivity extends AppCompatActivity {
 
         // Create customized adapter for list view
         final ArrayAdapter<String> listAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, dvdList);
+            android.R
+                .layout.simple_list_item_1, dvdList);
         ListView recentDVDs = (ListView) findViewById(R.id.searchResults);
         recentDVDs.setAdapter(listAdapter);
 
@@ -49,20 +50,21 @@ public class SearchResultsActivity extends AppCompatActivity {
         // Get search query
         String search = intent.getStringExtra(SEARCH_KEYWORD);
         // Excute the command and refresh list view
-        rti.executeCall(new ApiCall(RTCommandFactory.getMovieSearchCommand
-                (search), new ApiCallback<RTMovieListReceiver>() {
-            @Override
-            public void onReceive(RTMovieListReceiver receiver) {
-                for (Movie m : receiver.getEntity()) {
-                    dvdList.add(m.toString());
-                }
-                // NotifyDataSetChanged() must be called on the UI thread
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        listAdapter.notifyDataSetChanged();
+        rti.executeCall(new ApiCall(RTCommandFactory
+            .getMovieSearchCommand(search), new
+            ApiCallback<RTMovieListReceiver>() {
+                @Override
+                public void onReceive(RTMovieListReceiver receiver) {
+                    for (Movie m : receiver.getEntity()) {
+                        dvdList.add(m.toString());
                     }
-                });
-            }
-        }));
+                    // NotifyDataSetChanged() must be called on the UI thread
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            listAdapter.notifyDataSetChanged();
+                        }
+                    });
+                }
+            }));
     }
 }

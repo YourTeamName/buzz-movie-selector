@@ -60,7 +60,7 @@ public final class ApiNetwork {
     public RequestQueue getApiRequestQueue() {
         if (apiRequestQueue == null) {
             apiRequestQueue = Volley.newRequestQueue(apiContext
-                    .getApplicationContext());
+                .getApplicationContext());
         }
         return apiRequestQueue;
     }
@@ -74,8 +74,8 @@ public final class ApiNetwork {
     public RequestFuture<JSONObject> apiJSON(String url) {
         final RequestFuture<JSONObject> jsonFuture = RequestFuture.newFuture();
         final JsonObjectRequest jsonRequest = new JsonObjectRequest(Request
-                .Method
-                .GET, url, jsonFuture, jsonFuture);
+            .Method
+            .GET, url, jsonFuture, jsonFuture);
         apiRequestQueue.add(jsonRequest);
         return jsonFuture;
     }
@@ -89,8 +89,10 @@ public final class ApiNetwork {
     public RequestFuture<String> apiString(String url) {
         final RequestFuture<String> stringFuture = RequestFuture.newFuture();
         final StringRequest stringRequest = new StringRequest(Request.Method
-                .GET,
-                url, stringFuture, stringFuture);
+            .GET,
+            url,
+            stringFuture,
+            stringFuture);
         apiRequestQueue.add(stringRequest);
         return stringFuture;
     }
@@ -104,7 +106,7 @@ public final class ApiNetwork {
     public RequestFuture<Bitmap> apiImage(String url) {
         final RequestFuture<Bitmap> bmpFuture = RequestFuture.newFuture();
         final ImageRequest imageRequest = new ImageRequest(url, bmpFuture, 0, 0,
-                null, bmpFuture);
+            null, bmpFuture);
         apiRequestQueue.add(imageRequest);
         return bmpFuture;
     }

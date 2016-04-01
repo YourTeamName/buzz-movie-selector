@@ -92,8 +92,8 @@ public class ProfileActivity extends AppCompatActivity {
      * form
      */
     private void initializeForm() {
-        String bundledUserName = getIntent().getExtras().getString
-                (KEY_PROFILE_USER, null);
+        String bundledUserName = getIntent().getExtras()
+            .getString(KEY_PROFILE_USER, null);
         if (bundledUserName == null) {
             if (SessionState.getInstance().isLoggedIn()) {
                 profileUser = SessionState.getInstance().getSessionUser();
@@ -108,12 +108,12 @@ public class ProfileActivity extends AppCompatActivity {
         Log.v("ProfileActivity", "profileUser is " + profileUser);
         userNameLabel.setText(profileUser.getUsername() + " Profile");
         editCheckBox.setOnCheckedChangeListener(new CompoundButton
-                .OnCheckedChangeListener() {
+            .OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean
-                    isChecked) {
+                isChecked) {
                 Log.v("ProfileActivity", "Edit checked: " + (isChecked ?
-                        "True" : "False"));
+                    "True" : "False"));
                 if (isChecked) {
                     enableForm();
                 } else {
@@ -131,7 +131,7 @@ public class ProfileActivity extends AppCompatActivity {
      */
     private void cancelFocus() {
         RelativeLayout formLayout = (RelativeLayout) findViewById(R.id
-                .profileLayout);
+            .profileLayout);
         formLayout.requestFocus();
     }
 
@@ -202,7 +202,7 @@ public class ProfileActivity extends AppCompatActivity {
         lastNameText.setText(userProfile.getLastName());
         emailText.setText(userProfile.getEmail());
         if (profileUser.equals(SessionState.getInstance().getSessionUser())
-                || profileUser.getUserStatus() == User.UserStatus.ADMIN) {
+            || profileUser.getUserStatus() == User.UserStatus.ADMIN) {
             editCheckBox.setEnabled(true);
         } else {
             editCheckBox.setEnabled(false);
@@ -214,15 +214,15 @@ public class ProfileActivity extends AppCompatActivity {
      */
     private void populateSpinner() {
         ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout
-                .support_simple_spinner_dropdown_item, Profile.USER_DEGREES);
+            .support_simple_spinner_dropdown_item, Profile.USER_DEGREES);
         degreeSpinner.setAdapter(degreeAdapter);
     }
 
     private void depopulateSpinner() {
         String[] fakeList = {profileUser.getProfile().getMajor() == null ? ""
-                : profileUser.getProfile().getMajor()};
+                                 : profileUser.getProfile().getMajor()};
         ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout
-                .support_simple_spinner_dropdown_item, fakeList);
+            .support_simple_spinner_dropdown_item, fakeList);
         degreeSpinner.setAdapter(degreeAdapter);
     }
 
