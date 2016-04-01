@@ -9,7 +9,7 @@ import edu.gatech.buzzmovieselector.entity.User;
 /**
  * Global state that maintains the user logged into the application
  */
-public class SessionState {
+public final class SessionState {
 
     // Lazily instantiated Singleton
     private static SessionState ourInstance = null;

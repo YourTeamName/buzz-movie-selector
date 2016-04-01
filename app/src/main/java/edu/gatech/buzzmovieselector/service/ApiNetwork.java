@@ -14,7 +14,7 @@ import org.json.JSONObject;
 /**
  * Provides Api networking functionality
  */
-public class ApiNetwork {
+public final class ApiNetwork {
 
     private static ApiNetwork ourInstance = null;
     private RequestQueue apiRequestQueue;
