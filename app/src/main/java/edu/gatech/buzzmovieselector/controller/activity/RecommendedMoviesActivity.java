@@ -37,7 +37,7 @@ public class RecommendedMoviesActivity extends AppCompatActivity {
             final List<Movie> mList = (List<Movie>) manager.getRecommendationsByMajor(
                 SessionState.getInstance().getSessionUser().getProfile()
                     .getMajor());
-            for (Movie movie : mList) {
+            for (final Movie movie : mList) {
                 adapterList.add(movie);
             }
             movAdapter.notifyDataSetChanged();
