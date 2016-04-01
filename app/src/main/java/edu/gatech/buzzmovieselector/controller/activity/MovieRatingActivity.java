@@ -31,9 +31,9 @@ public class MovieRatingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_rating); //title of movie.
-        TextView titleText = (TextView) findViewById(R.id.movieTitle);
+        final TextView titleText = (TextView) findViewById(R.id.movieTitle);
         reviewMovie = (Movie) getIntent().getSerializableExtra(CURRENT_MOVIE);
-        MovieManagementFacade mm = new MovieManager();
+        final MovieManagementFacade mm = new MovieManager();
         if (!mm.movieExists(reviewMovie.getId())) {
             Log.v("MovieRating", "Movie with that id doesn't exist");
             mm.addMovie(reviewMovie);

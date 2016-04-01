@@ -65,7 +65,7 @@ public class BMSActivity extends AppCompatActivity
         adapter.addFragment(new RecentMoviesFragment(), "Movies");
         adapter.addFragment(new MovieSearchFragment(), "Search");
         viewPager.setAdapter(adapter);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        final TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
         if (SessionState.getInstance().isLoggedIn()) {
             Log.v("BMS", "we are logged in");

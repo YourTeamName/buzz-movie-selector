@@ -35,11 +35,11 @@ public class MovieSearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
         Bundle savedInstanceState) {
-        View fragView = inflater.inflate(R.layout.fragment_movie_search,
+        final View fragView = inflater.inflate(R.layout.fragment_movie_search,
             container, false);
         movieResults = (ListView) fragView.findViewById(R.id.movieSearchList);
 
-        SearchView searchBar = (SearchView) fragView.findViewById(R.id
+        final SearchView searchBar = (SearchView) fragView.findViewById(R.id
             .searchView);
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

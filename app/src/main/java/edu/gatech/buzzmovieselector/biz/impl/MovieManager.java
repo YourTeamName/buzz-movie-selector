@@ -29,7 +29,7 @@ public class MovieManager implements MovieManagementFacade {
      */
     @Override
     public void addMovie(Movie movie) {
-        MovieDao movieDao = DaoFactory.getMovieDao();
+        final MovieDao movieDao = DaoFactory.getMovieDao();
         try {
             movieDao.createOrUpdate(movie);
         } catch (SQLException e) {
