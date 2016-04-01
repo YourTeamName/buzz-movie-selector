@@ -41,7 +41,7 @@ public class SearchResultsActivity extends AppCompatActivity {
         final ArrayAdapter<String> listAdapter = new ArrayAdapter<>(this,
             android.R
                 .layout.simple_list_item_1, dvdList);
-        ListView recentDVDs = (ListView) findViewById(R.id.searchResults);
+        final ListView recentDVDs = (ListView) findViewById(R.id.searchResults);
         recentDVDs.setAdapter(listAdapter);
 
         // Call RT api to search for movies
