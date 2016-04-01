@@ -127,17 +127,9 @@ public class BMSActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         final int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_recommended_movies) {
+        if (id == R.id.nav_recommended_movies) {
             final Intent i = new Intent(this, RecommendedMoviesActivity.class);
             startActivity(i);
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
         } else if (id == R.id.nav_profile) {
             Log.v("BMS", "View ProfileActivity");
             startProfileActivity();

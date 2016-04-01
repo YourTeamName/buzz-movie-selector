@@ -4,7 +4,11 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.*;
+import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.RequestFuture;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import org.json.JSONObject;
 
 /**
@@ -69,7 +73,8 @@ public final class ApiNetwork {
      */
     public RequestFuture<JSONObject> apiJSON(String url) {
         final RequestFuture<JSONObject> jsonFuture = RequestFuture.newFuture();
-        final JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method
+        final JsonObjectRequest jsonRequest = new JsonObjectRequest(Request
+                .Method
                 .GET, url, jsonFuture, jsonFuture);
         apiRequestQueue.add(jsonRequest);
         return jsonFuture;
@@ -83,7 +88,8 @@ public final class ApiNetwork {
      */
     public RequestFuture<String> apiString(String url) {
         final RequestFuture<String> stringFuture = RequestFuture.newFuture();
-        final StringRequest stringRequest = new StringRequest(Request.Method.GET,
+        final StringRequest stringRequest = new StringRequest(Request.Method
+                .GET,
                 url, stringFuture, stringFuture);
         apiRequestQueue.add(stringRequest);
         return stringFuture;

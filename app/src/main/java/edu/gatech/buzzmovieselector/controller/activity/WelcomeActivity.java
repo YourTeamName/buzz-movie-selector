@@ -86,7 +86,6 @@ public class WelcomeActivity extends AppCompatActivity {
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest
                     .permission.INTERNET}, REQUEST_CODE_ASK_PERMISSIONS);
-        } else {
         }
     }
 
@@ -115,6 +114,7 @@ public class WelcomeActivity extends AppCompatActivity {
     /**
      * Method for initializing hard coded values and restoring app state
      */
+
     private void initApp() {
 
         // Pass context to DaoFactory so that it can work properly later

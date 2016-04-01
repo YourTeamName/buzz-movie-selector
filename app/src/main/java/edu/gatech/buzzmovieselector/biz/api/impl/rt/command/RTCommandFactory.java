@@ -5,7 +5,10 @@ import edu.gatech.buzzmovieselector.biz.api.ApiCommand;
 /**
  * Factory for commands for the Rotten tomatoes API
  */
-public class RTCommandFactory {
+public final class RTCommandFactory {
+
+    private RTCommandFactory() {
+    }
 
     // cache static commands
     private static ApiCommand recentDVDsCommand = new RTRecentDVDs();
