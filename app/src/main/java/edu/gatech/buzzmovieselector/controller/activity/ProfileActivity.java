@@ -92,7 +92,7 @@ public class ProfileActivity extends AppCompatActivity {
      * form
      */
     private void initializeForm() {
-        String bundledUserName = getIntent().getExtras()
+        final String bundledUserName = getIntent().getExtras()
             .getString(KEY_PROFILE_USER, null);
         if (bundledUserName == null) {
             if (SessionState.getInstance().isLoggedIn()) {
@@ -102,7 +102,7 @@ public class ProfileActivity extends AppCompatActivity {
                 finish();
             }
         } else {
-            UserManagementFacade um = new UserManager();
+            final UserManagementFacade um = new UserManager();
             profileUser = um.findUserById(bundledUserName);
         }
         Log.v("ProfileActivity", "profileUser is " + profileUser);
@@ -130,7 +130,7 @@ public class ProfileActivity extends AppCompatActivity {
      * Cancels focus from all form elements
      */
     private void cancelFocus() {
-        RelativeLayout formLayout = (RelativeLayout) findViewById(R.id
+        final RelativeLayout formLayout = (RelativeLayout) findViewById(R.id
             .profileLayout);
         formLayout.requestFocus();
     }
@@ -140,10 +140,10 @@ public class ProfileActivity extends AppCompatActivity {
      * entered
      */
     private boolean validateProfile() {
-        String firstName = firstNameText.getText().toString();
-        String lastName = lastNameText.getText().toString();
-        String userMajor = degreeSpinner.getSelectedItem().toString();
-        String email = emailText.getText().toString();
+        final String firstName = firstNameText.getText().toString();
+        final String lastName = lastNameText.getText().toString();
+        final String userMajor = degreeSpinner.getSelectedItem().toString();
+        final String email = emailText.getText().toString();
         if ("".equals(firstName)) {
             firstNameText.setError("Enter a first name");
             return false;
@@ -151,7 +151,7 @@ public class ProfileActivity extends AppCompatActivity {
             lastNameText.setError("Enter a last name");
             return false;
         } else if ("".equals(userMajor)) {
-            TextView spinnerText = (TextView) degreeSpinner.getSelectedView();
+            final TextView spinnerText = (TextView) degreeSpinner.getSelectedView();
             spinnerText.setError("Enter a valid major");
             return false;
         } else if ("".equals(email) || !email.contains("@")) {
@@ -167,7 +167,7 @@ public class ProfileActivity extends AppCompatActivity {
      */
     private void enableSpinner() {
         populateSpinner();
-        Profile userProfile = profileUser.getProfile();
+        final Profile userProfile = profileUser.getProfile();
         int degreeIndex = 0;
         if (userProfile.getMajor() != null) {
             for (int i = 0; i < Profile.USER_DEGREES.length; i++) {
@@ -213,15 +213,15 @@ public class ProfileActivity extends AppCompatActivity {
      * Populates degreeSpinner with the values from the UserDegree enum
      */
     private void populateSpinner() {
-        ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout
+        final ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout
             .support_simple_spinner_dropdown_item, Profile.USER_DEGREES);
         degreeSpinner.setAdapter(degreeAdapter);
     }
 
     private void depopulateSpinner() {
-        String[] fakeList = {profileUser.getProfile().getMajor() == null ? ""
+        final String[] fakeList = {profileUser.getProfile().getMajor() == null ? ""
                                  : profileUser.getProfile().getMajor()};
-        ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout
+        final ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout
             .support_simple_spinner_dropdown_item, fakeList);
         degreeSpinner.setAdapter(degreeAdapter);
     }
@@ -232,11 +232,11 @@ public class ProfileActivity extends AppCompatActivity {
     private void updateProfile() {
         // TODO: add persistent save in addition to updating profileUser profile
         if (validateProfile()) {
-            String firstName = firstNameText.getText().toString();
-            String lastName = lastNameText.getText().toString();
-            String userMajor = degreeSpinner.getSelectedItem().toString();
-            String email = emailText.getText().toString();
-            Profile uProfile = profileUser.getProfile();
+            final String firstName = firstNameText.getText().toString();
+            final String lastName = lastNameText.getText().toString();
+            final String userMajor = degreeSpinner.getSelectedItem().toString();
+            final String email = emailText.getText().toString();
+            final Profile uProfile = profileUser.getProfile();
             uProfile.setFirstName(firstName);
             uProfile.setLastName(lastName);
             uProfile.setMajor(userMajor);
