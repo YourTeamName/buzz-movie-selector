@@ -69,15 +69,15 @@ public final class SessionState {
      * @return a saved state exists
      */
     public boolean restoreState(Context context) {
-        SharedPreferences saveSession = context
+        final SharedPreferences saveSession = context
             .getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
-        String username = saveSession.getString(USER_PREFIX + "username", null);
-        String password = saveSession.getString(USER_PREFIX + "password", null);
-        String userStatus = saveSession.getString(USER_PREFIX + "status", null);
+        final String username = saveSession.getString(USER_PREFIX + "username", null);
+        final String password = saveSession.getString(USER_PREFIX + "password", null);
+        final String userStatus = saveSession.getString(USER_PREFIX + "status", null);
         if (username == null || password == null || userStatus == null) {
             return false;
         }
-        UserManagementFacade um = new UserManager();
+        final UserManagementFacade um = new UserManager();
         sessionUser = um.getUser(username, password);
         return true;
     }

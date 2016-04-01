@@ -45,10 +45,10 @@ public class SearchResultsActivity extends AppCompatActivity {
         recentDVDs.setAdapter(listAdapter);
 
         // Call RT api to search for movies
-        RTInvoker rti = new RTInvoker();
-        Intent intent = getIntent();
+        final RTInvoker rti = new RTInvoker();
+        final Intent intent = getIntent();
         // Get search query
-        String search = intent.getStringExtra(SEARCH_KEYWORD);
+        final String search = intent.getStringExtra(SEARCH_KEYWORD);
         // Excute the command and refresh list view
         rti.executeCall(new ApiCall(RTCommandFactory
             .getMovieSearchCommand(search), new
