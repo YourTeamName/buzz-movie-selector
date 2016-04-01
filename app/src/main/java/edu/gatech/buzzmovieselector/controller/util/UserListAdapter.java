@@ -52,7 +52,7 @@ public class UserListAdapter extends BaseAdapter implements ListAdapter {
             view = inflater.inflate(R.layout.user_list_item, null);
         }
 
-        TextView listItemText = (TextView) view.findViewById(R.id
+        final TextView listItemText = (TextView) view.findViewById(R.id
             .usernameLabel);
         final User user = users.get(position);
         listItemText.setText(user.getUsername() + " (" + user.getUserStatus()
@@ -61,7 +61,7 @@ public class UserListAdapter extends BaseAdapter implements ListAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent starter = new Intent(context, UserStatusActivity.class);
+                final Intent starter = new Intent(context, UserStatusActivity.class);
                 starter.putExtra(UserStatusActivity.CURRENT_USER, user);
                 context.startActivity(starter);
             }
