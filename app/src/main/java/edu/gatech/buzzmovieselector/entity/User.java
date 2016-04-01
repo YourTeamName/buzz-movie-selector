@@ -104,12 +104,6 @@ public class User implements Serializable {
         this.profile = profile;
     }
 
-    /**
-     * Checks to see if two users are the same
-     *
-     * @param user The other user
-     * @return True if the users have the same username, password, and level
-     */
     @Override
     public boolean equals(Object user) {
         if (user == null) {
@@ -121,6 +115,11 @@ public class User implements Serializable {
         final User u = (User) user;
         return username.equals(u.username) && password.equals(u.password) &&
             userStatus.equals(u.userStatus);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 
     /**
