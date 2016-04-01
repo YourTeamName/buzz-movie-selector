@@ -70,6 +70,13 @@ public class Profile implements Serializable {
     public Profile() {
     }
 
+    /**
+     *
+     * @param firstName
+     * @param lastName
+     * @param major
+     * @param email
+     */
     public Profile(String firstName, String lastName, String major, String
         email) {
         this.firstName = firstName;
@@ -78,42 +85,82 @@ public class Profile implements Serializable {
         this.email = email;
     }
 
+    /**
+     * getter for id
+     * @return id
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     * setter for id
+     * @param id to set to
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     * getter
+     * @return the firstName of user
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * setter for first name
+     * @param firstName the name to change to
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     * getter for last name
+     * @return the last name of user
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * setter for last name
+     * @param lastName
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+     * getter for major
+     * @return major
+     */
     public String getMajor() {
         return major;
     }
 
+    /**
+     * setter for major
+     * @param major
+     */
     public void setMajor(String major) {
         this.major = major;
     }
 
+    /**
+     * getter for email
+     * @return email
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * set email
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
     }

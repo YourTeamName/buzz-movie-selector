@@ -19,7 +19,7 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
     public User findUserById(String username) {
         User user = null;
         try {
-            UserDao userDao = DaoFactory.getUserDao();
+            final UserDao userDao = DaoFactory.getUserDao();
             user = userDao.queryForId(username);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -29,9 +29,9 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
 
     public void addUser(User user) {
         try {
-            ProfileDao profileDao = DaoFactory.getProfileDao();
+            final ProfileDao profileDao = DaoFactory.getProfileDao();
             profileDao.createOrUpdate(user.getProfile());
-            UserDao userDao = DaoFactory.getUserDao();
+            final UserDao userDao = DaoFactory.getUserDao();
             userDao.createOrUpdate(user);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -41,7 +41,7 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
     public User getUser(String username, String password) {
         User user = null;
         try {
-            UserDao userDao = DaoFactory.getUserDao();
+            final UserDao userDao = DaoFactory.getUserDao();
             user = userDao.queryForId(username);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -79,7 +79,7 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
     public List<User> findAll() {
         List<User> users = null;
         try {
-            UserDao userDao = DaoFactory.getUserDao();
+            final UserDao userDao = DaoFactory.getUserDao();
             users = userDao.queryForAll();
         } catch (SQLException e) {
             e.printStackTrace();
