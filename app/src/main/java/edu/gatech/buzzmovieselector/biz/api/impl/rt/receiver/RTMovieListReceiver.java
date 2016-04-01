@@ -22,17 +22,17 @@ public class RTMovieListReceiver extends ApiReceiver<JSONObject, Movie[]> {
 
     @Override
     public Movie[] getEntity() {
-        ArrayList<Movie> parsedMovies = new ArrayList<>();
-        JSONObject moviesList = getResponse();
+        final ArrayList<Movie> parsedMovies = new ArrayList<>();
+        final JSONObject moviesList = getResponse();
         try {
-            JSONArray movieList = moviesList.getJSONArray("movies");
+            final JSONArray movieList = moviesList.getJSONArray("movies");
             for (int i = 0; i < movieList.length(); i++) {
-                JSONObject movieJ = movieList.getJSONObject(i);
-                double rating = (double) movieJ.getJSONObject("ratings")
+                final JSONObject movieJ = movieList.getJSONObject(i);
+                final double rating = (double) movieJ.getJSONObject("ratings")
                     .getInt("audience_score") / 100.;
-                String thumbUrl = movieJ.getJSONObject("posters").getString
+                final String thumbUrl = movieJ.getJSONObject("posters").getString
                     ("thumbnail");
-                Movie movie = new Movie(movieJ.getInt("id"), movieJ
+                final Movie movie = new Movie(movieJ.getInt("id"), movieJ
                     .getString("title"), movieJ.getInt("year"), rating,
                     thumbUrl);
                 parsedMovies.add(movie);
