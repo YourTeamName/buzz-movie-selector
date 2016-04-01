@@ -72,14 +72,7 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
                 .getUsername())) {
             SessionState.getInstance().setSessionUser(user);
         }
-        try {
-            ProfileDao profileDao = DaoFactory.getProfileDao();
-            profileDao.createOrUpdate(user.getProfile());
-            UserDao userDao = DaoFactory.getUserDao();
-            userDao.createOrUpdate(user);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        addUser(user);
     }
 
     @Override
