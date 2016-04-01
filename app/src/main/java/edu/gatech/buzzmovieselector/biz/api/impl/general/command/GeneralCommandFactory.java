@@ -6,7 +6,9 @@ import edu.gatech.buzzmovieselector.biz.api.ApiCommand;
  * Factory for general API commands
  */
 public final class GeneralCommandFactory {
-
+    /**
+     * private constructor for GeneralCommandFactory
+     */
     private GeneralCommandFactory() {
     }
 

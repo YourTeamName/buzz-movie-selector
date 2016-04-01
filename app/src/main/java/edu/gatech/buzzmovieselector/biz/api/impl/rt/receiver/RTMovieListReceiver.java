@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * Receives json objects from ApiCalls and makes them into Movie objects
  */
 public class RTMovieListReceiver extends ApiReceiver<JSONObject, Movie[]> {
-
+    public static final int MAXIMUM_SCORE = 100;
     public RTMovieListReceiver(RequestFuture requestFuture, ApiCallback
         responseCallback) {
         super(requestFuture, responseCallback);
@@ -29,7 +29,7 @@ public class RTMovieListReceiver extends ApiReceiver<JSONObject, Movie[]> {
             for (int i = 0; i < movieList.length(); i++) {
                 final JSONObject movieJ = movieList.getJSONObject(i);
                 final double rating = (double) movieJ.getJSONObject("ratings")
-                    .getInt("audience_score") / 100.;
+                    .getInt("audience_score") / MAXIMUM_SCORE;
                 final String thumbUrl = movieJ.getJSONObject("posters").getString
                     ("thumbnail");
                 final Movie movie = new Movie(movieJ.getInt("id"), movieJ

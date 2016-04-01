@@ -15,7 +15,7 @@ import java.util.List;
  * Implementation of the MovieManagementFacade
  */
 public class MovieManager implements MovieManagementFacade {
-
+    public static final int FOUR_RATING = 4;
     /**
      * Default constructor for a movie manager
      */
@@ -110,7 +110,7 @@ public class MovieManager implements MovieManagementFacade {
                 }
             }
             final double average = totalPoints / movie.getReviews().size();
-            if (average >= 4.0) {
+            if (average >= FOUR_RATING) {
                 recommendedList.add(movie);
             }
         }

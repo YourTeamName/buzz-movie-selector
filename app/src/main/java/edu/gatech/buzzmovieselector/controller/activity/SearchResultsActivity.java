@@ -55,7 +55,7 @@ public class SearchResultsActivity extends AppCompatActivity {
             ApiCallback<RTMovieListReceiver>() {
                 @Override
                 public void onReceive(RTMovieListReceiver receiver) {
-                    for (Movie m : receiver.getEntity()) {
+                    for (final Movie m : receiver.getEntity()) {
                         dvdList.add(m.toString());
                     }
                     // NotifyDataSetChanged() must be called on the UI thread
