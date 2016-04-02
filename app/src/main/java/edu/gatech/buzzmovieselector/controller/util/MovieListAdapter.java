@@ -61,12 +61,13 @@ public class MovieListAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
+        View newView = null;
         if (view == null) {
-            view = inflater.inflate(R.layout.movie_list_item, null);
+            newView = inflater.inflate(R.layout.movie_list_item, null);
         }
-        final ImageView movieThumbView = (ImageView) view.findViewById(R
+        final ImageView movieThumbView = (ImageView) newView.findViewById(R
             .id.movieImage);
-        final TextView movieTitleView = (TextView) view.findViewById(R.id
+        final TextView movieTitleView = (TextView) newView.findViewById(R.id
             .movieTitleText);
         final Movie movie = movies.get(i);
         movieTitleView.setText(movie.getTitle() + " (" + movie.getYear() + ")");
@@ -85,7 +86,7 @@ public class MovieListAdapter extends BaseAdapter {
                 }
             });
         rti.executeCall(imageCall);
-        view.setOnClickListener(new View.OnClickListener() {
+        newView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final Intent i = new Intent(hostActivity, MovieRatingActivity
@@ -94,6 +95,6 @@ public class MovieListAdapter extends BaseAdapter {
                 hostActivity.startActivity(i);
             }
         });
-        return view;
+        return newView;
     }
 }

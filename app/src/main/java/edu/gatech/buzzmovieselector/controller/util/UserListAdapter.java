@@ -48,26 +48,28 @@ public class UserListAdapter extends BaseAdapter implements ListAdapter {
 
     @Override
     public View getView(final int position, View view, ViewGroup parent) {
+        View newView = null;
         if (view == null) {
-            view = inflater.inflate(R.layout.user_list_item, null);
+            newView = inflater.inflate(R.layout.user_list_item, null);
         }
-
-        final TextView listItemText = (TextView) view.findViewById(R.id
+        assert newView != null;
+        final TextView listItemText = (TextView) newView.findViewById(R.id
             .usernameLabel);
         final User user = users.get(position);
         listItemText.setText(user.getUsername() + " (" + user.getUserStatus()
             + ")");
 
-        view.setOnClickListener(new View.OnClickListener() {
+        newView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Intent starter = new Intent(context, UserStatusActivity.class);
+                final Intent starter = new Intent(context, UserStatusActivity
+                    .class);
                 starter.putExtra(UserStatusActivity.CURRENT_USER, user);
                 context.startActivity(starter);
             }
         });
 
-        return view;
+        return newView;
     }
 
 }
