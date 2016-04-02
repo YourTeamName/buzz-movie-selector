@@ -51,8 +51,9 @@ public class UserListAdapter extends BaseAdapter implements ListAdapter {
         View newView = null;
         if (view == null) {
             newView = inflater.inflate(R.layout.user_list_item, null);
+        } else {
+            newView = view;
         }
-        assert newView != null;
         final TextView listItemText = (TextView) newView.findViewById(R.id
             .usernameLabel);
         final User user = users.get(position);

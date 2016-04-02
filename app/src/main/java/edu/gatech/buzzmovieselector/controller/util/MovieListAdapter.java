@@ -64,6 +64,8 @@ public class MovieListAdapter extends BaseAdapter {
         View newView = null;
         if (view == null) {
             newView = inflater.inflate(R.layout.movie_list_item, null);
+        } else {
+            newView = view;
         }
         final ImageView movieThumbView = (ImageView) newView.findViewById(R
             .id.movieImage);
