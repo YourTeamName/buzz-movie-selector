@@ -105,21 +105,33 @@ public class User implements Serializable {
     }
 
     /**
-     * 
-     * @return
+     * Gets user status
+     * @return status of the user
      */
     public UserStatus getUserStatus() {
         return userStatus;
     }
 
+    /**
+     * Sets user status
+     * @param userStatus status to set to
+     */
     public void setUserStatus(UserStatus userStatus) {
         this.userStatus = userStatus;
     }
 
+    /**
+     * Gets user's profile
+     * @return the profile
+     */
     public Profile getProfile() {
         return profile;
     }
 
+    /**
+     * Sets profile to one given
+     * @param profile profile to set to
+     */
     public void setProfile(Profile profile) {
         this.profile = profile;
     }

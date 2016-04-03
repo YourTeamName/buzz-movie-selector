@@ -13,7 +13,11 @@ import java.sql.SQLException;
 public class UserDaoImpl extends BaseDaoImpl<User, String>
     implements UserDao {
 
-    // this constructor must be defined
+    /**
+     * Necessary constructor to define
+     * @param connectionSource connection source
+     * @throws SQLException a database exception
+     */
     public UserDaoImpl(ConnectionSource connectionSource)
         throws SQLException {
         super(connectionSource, User.class);

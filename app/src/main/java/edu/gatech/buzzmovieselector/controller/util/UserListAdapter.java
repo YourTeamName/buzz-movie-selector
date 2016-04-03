@@ -24,6 +24,11 @@ public class UserListAdapter extends BaseAdapter implements ListAdapter {
     private List<User> users = new ArrayList<>();
     private Context context;
 
+    /**
+     * Constructor for user list adaptor
+     * @param users the users to display
+     * @param context the context of the activity
+     */
     public UserListAdapter(List<User> users, Context context) {
         this.users = users;
         this.context = context;

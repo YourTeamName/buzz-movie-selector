@@ -5,6 +5,10 @@ import edu.gatech.buzzmovieselector.entity.User;
 import java.util.List;
 
 public interface UserManagementFacade {
+    /**
+     * Adds a user to the user manager
+     * @param user the user to add
+     */
     void addUser(User user);
 
     /**
@@ -31,6 +35,9 @@ public interface UserManagementFacade {
     void updateUser(User user);
 
     /**
+     * Gets a user from the manager
+     * @param username the name of the user
+     * @param password the password of the user
      * @return the user if the credentials are correct, null if the user does
      * not exit or credentials are incorrect
      */

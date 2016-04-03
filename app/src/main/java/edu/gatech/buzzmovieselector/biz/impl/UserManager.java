@@ -13,9 +13,13 @@ import java.util.List;
 
 public class UserManager implements AuthenticationFacade, UserManagementFacade {
 
+    /**
+     * No arg constructor
+     */
     public UserManager() {
     }
 
+    @Override
     public User findUserById(String username) {
         User user = null;
         try {
@@ -27,6 +31,7 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
         return user;
     }
 
+    @Override
     public void addUser(User user) {
         try {
             final ProfileDao profileDao = DaoFactory.getProfileDao();
@@ -38,6 +43,7 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
         }
     }
 
+    @Override
     public User getUser(String username, String password) {
         User user = null;
         try {
@@ -52,10 +58,17 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
         return user;
     }
 
+    /**
+     * Logs in a user
+     * @param username The username of the user
+     * @param password The user's password
+     * @return the user object for the user
+     */
     public User login(String username, String password) {
         return getUser(username, password);
     }
 
+    @Override
     public boolean userExists(String username) {
         User user = null;
         try {
@@ -66,6 +79,7 @@ public class UserManager implements AuthenticationFacade, UserManagementFacade {
         return user != null;
     }
 
+    @Override
     public void updateUser(User user) {
         if (SessionState.getInstance().getSessionUser() != null && user
             .getUsername().equals(SessionState.getInstance().getSessionUser()
