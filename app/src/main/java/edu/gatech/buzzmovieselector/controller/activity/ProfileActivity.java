@@ -138,6 +138,7 @@ public class ProfileActivity extends AppCompatActivity {
     /**
      * Called when the Save button is clicked - verifies proper values are
      * entered
+     * @return true if the profile was validated
      */
     private boolean validateProfile() {
         final String firstName = firstNameText.getText().toString();
@@ -218,6 +219,9 @@ public class ProfileActivity extends AppCompatActivity {
         degreeSpinner.setAdapter(degreeAdapter);
     }
 
+    /**
+     * Takes away spinner choices
+     */
     private void depopulateSpinner() {
         final String[] fakeList = {profileUser.getProfile().getMajor() == null ? ""
                                  : profileUser.getProfile().getMajor()};
@@ -230,7 +234,6 @@ public class ProfileActivity extends AppCompatActivity {
      * Updates the Profile object associated with the user
      */
     private void updateProfile() {
-        // TODO: add persistent save in addition to updating profileUser profile
         if (validateProfile()) {
             final String firstName = firstNameText.getText().toString();
             final String lastName = lastNameText.getText().toString();
@@ -248,6 +251,10 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Saves the profile entered
+     * @param v the current view
+     */
     public void saveProfile(View v) {
         updateProfile();
     }

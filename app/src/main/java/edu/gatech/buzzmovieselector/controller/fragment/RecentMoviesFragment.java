@@ -25,6 +25,9 @@ public class RecentMoviesFragment extends Fragment {
 
     private Activity hostActivity;
 
+    /**
+     * Default constructor
+     */
     public RecentMoviesFragment() {
     }
 

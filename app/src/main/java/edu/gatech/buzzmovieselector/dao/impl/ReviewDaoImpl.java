@@ -10,7 +10,11 @@ import java.sql.SQLException;
 public class ReviewDaoImpl extends BaseDaoImpl<Review, Integer>
     implements ReviewDao {
 
-    // this constructor must be defined
+    /**
+     * Constructor
+     * @param connectionSource the connection source
+     * @throws SQLException a database exception
+     */
     public ReviewDaoImpl(ConnectionSource connectionSource)
         throws SQLException {
         super(connectionSource, Review.class);

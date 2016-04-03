@@ -16,6 +16,10 @@ public class RTMovieSearch implements ApiCommand {
 
     private String url;
 
+    /**
+     * Constructor for movie search
+     * @param search the string to search for
+     */
     public RTMovieSearch(String search) {
         final String query = URLEncoder.encode(search);
         url = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?q="

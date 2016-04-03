@@ -29,6 +29,9 @@ public class MovieSearchFragment extends Fragment {
 
     private String searchQuery = "";
 
+    /**
+     * Empty constructor
+     */
     public MovieSearchFragment() {
     }
 

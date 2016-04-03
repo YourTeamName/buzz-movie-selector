@@ -15,6 +15,12 @@ import java.util.ArrayList;
  */
 public class RTMovieListReceiver extends ApiReceiver<JSONObject, Movie[]> {
     public static final int MAXIMUM_SCORE = 100;
+
+    /**
+     * Default constructor
+     * @param requestFuture the request
+     * @param responseCallback callback for the receiver
+     */
     public RTMovieListReceiver(RequestFuture requestFuture, ApiCallback
         responseCallback) {
         super(requestFuture, responseCallback);

@@ -48,6 +48,9 @@ public class MovieRatingActivity extends AppCompatActivity {
         loadRating();
     }
 
+    /**
+     * Loads the rating for a movie
+     */
     private void loadRating() {
         final Collection<Review> movieReviews = reviewMovie.getReviews();
         if (movieReviews.size() == 0) {
@@ -61,6 +64,9 @@ public class MovieRatingActivity extends AppCompatActivity {
         averageRating.setRating((float) avgRating);
     }
 
+    /**
+     * Submits a review for a movie
+     */
     private void submitReview() {
         final String reviewContent = contentText.getText().toString();
         final double usrRating = (double) userRating.getRating();
@@ -74,6 +80,10 @@ public class MovieRatingActivity extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * Registers a submit review click
+     * @param v the view
+     */
     public void submitClick(View v) {
         submitReview();
     }

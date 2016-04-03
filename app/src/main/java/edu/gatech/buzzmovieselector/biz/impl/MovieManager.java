@@ -76,17 +76,6 @@ public class MovieManager implements MovieManagementFacade {
     }
 
     @Override
-    public List<Review> getReviews(Movie movie) {
-        // TODO: to be implemented
-        return null;
-    }
-
-    @Override
-    public void addReview(Review review) {
-        // TODO: to be implemented
-    }
-
-    @Override
     public Collection<Movie> getMovies() {
         List<Movie> movieList = null;
         try {

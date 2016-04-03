@@ -13,7 +13,11 @@ import java.sql.SQLException;
 public class ProfileDaoImpl extends BaseDaoImpl<Profile, Integer>
     implements ProfileDao {
 
-    // this constructor must be defined
+    /**
+     * Constructor that must be defined
+     * @param connectionSource the connection source
+     * @throws SQLException a database exception
+     */
     public ProfileDaoImpl(ConnectionSource connectionSource) throws
         SQLException {
         super(connectionSource, Profile.class);

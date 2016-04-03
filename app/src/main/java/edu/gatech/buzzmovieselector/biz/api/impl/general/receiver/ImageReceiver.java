@@ -10,6 +10,11 @@ import edu.gatech.buzzmovieselector.biz.api.ApiReceiver;
  */
 public class ImageReceiver extends ApiReceiver<Bitmap, Bitmap> {
 
+    /**
+     * Default constructor for an image receiver
+     * @param requestFuture the request
+     * @param responseCallback the callback for the request
+     */
     public ImageReceiver(RequestFuture requestFuture, ApiCallback
         responseCallback) {
         super(requestFuture, responseCallback);

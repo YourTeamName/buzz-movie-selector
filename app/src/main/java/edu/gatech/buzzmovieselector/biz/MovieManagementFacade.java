@@ -10,6 +10,10 @@ import java.util.List;
  * Movie manager that retrieves info on movies
  */
 public interface MovieManagementFacade {
+    /**
+     * Adds a movie to the manager
+     * @param movie the movie to add
+     */
     void addMovie(Movie movie);
 
     /**

@@ -10,7 +10,11 @@ import java.sql.SQLException;
 public class MovieDaoImpl extends BaseDaoImpl<Movie, Integer>
     implements MovieDao {
 
-    // this constructor must be defined
+    /**
+     * Constructor for moviedao that must be defined
+     * @param connectionSource the connection source
+     * @throws SQLException a database exception
+     */
     public MovieDaoImpl(ConnectionSource connectionSource) throws SQLException {
         super(connectionSource, Movie.class);
     }

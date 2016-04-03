@@ -72,22 +72,42 @@ public class User implements Serializable {
         }
     }
 
+    /**
+     * Gets the username
+     * @return the username
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Sets the username
+     * @param username the username to set
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     * Gets the password
+     * @return the current password
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Sets the password
+     * @param password password to set
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     * 
+     * @return
+     */
     public UserStatus getUserStatus() {
         return userStatus;
     }
@@ -117,9 +137,12 @@ public class User implements Serializable {
             userStatus.equals(u.userStatus);
     }
 
-    @Override
+    /**
+     * Creates a hashcode for a user object
+     * @return The hashcode
+     */
     public int hashCode() {
-        return super.hashCode();
+        return username.hashCode() + password.hashCode();
     }
 
     /**

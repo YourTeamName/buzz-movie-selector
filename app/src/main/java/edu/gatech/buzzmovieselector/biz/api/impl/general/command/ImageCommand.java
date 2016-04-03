@@ -12,6 +12,10 @@ public class ImageCommand implements ApiCommand {
 
     private String url;
 
+    /**
+     * Defaut constructor for an image command
+     * @param url The image url
+     */
     public ImageCommand(String url) {
         this.url = url;
     }

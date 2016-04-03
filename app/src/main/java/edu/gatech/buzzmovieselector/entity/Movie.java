@@ -26,7 +26,6 @@ public class Movie implements Serializable {
     private Double rating;
     @ForeignCollectionField(eager = true)
     private Collection<Review> reviews;
-    // TODO: store actual binary image data
     @DatabaseField
     private String imageURL;
 
@@ -128,21 +127,32 @@ public class Movie implements Serializable {
         return year;
     }
 
+    /**
+     * Gets the rating
+     * @return the rating
+     */
     public Double getRating() {
         return rating;
     }
 
+    /**
+     * Sets the rating
+     * @param rating the rating to set
+     */
     public void setRating(Double rating) {
         this.rating = rating;
     }
 
+    /**
+     * Gets the image url
+     * @return the image url
+     */
     public String getImageURL() {
         return imageURL;
     }
 
     /**
      * Adds a review to the list of reviews for the movie
-     *
      * @param r The review to add
      */
     public void addReview(Review r) {
@@ -151,7 +161,6 @@ public class Movie implements Serializable {
 
     @Override
     public boolean equals(Object movie) {
-        // TODO: add more criteria
         if (movie == null) {
             return false;
         }
@@ -162,9 +171,12 @@ public class Movie implements Serializable {
         return title.equals(m.title);
     }
 
-    @Override
+    /**
+     * Creates a hashcode for a movie object
+     * @return The hashcode
+     */
     public int hashCode() {
-        return super.hashCode();
+        return title.hashCode() + year;
     }
 
     @Override

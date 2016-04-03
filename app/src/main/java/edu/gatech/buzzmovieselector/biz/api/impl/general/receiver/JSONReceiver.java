@@ -10,6 +10,11 @@ import org.json.JSONObject;
  */
 public class JSONReceiver extends ApiReceiver<JSONObject, JSONObject> {
 
+    /**
+     * Default constructor for a json receiver
+     * @param requestFuture the request
+     * @param responseCallback the callback for the request
+     */
     public JSONReceiver(RequestFuture requestFuture, ApiCallback
         responseCallback) {
         super(requestFuture, responseCallback);

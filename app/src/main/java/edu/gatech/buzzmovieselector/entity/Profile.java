@@ -71,11 +71,11 @@ public class Profile implements Serializable {
     }
 
     /**
-     *
-     * @param firstName
-     * @param lastName
-     * @param major
-     * @param email
+     * Profile constructor
+     * @param firstName the first name of the user
+     * @param lastName the last name of the user
+     * @param major the user's major
+     * @param email the user's email
      */
     public Profile(String firstName, String lastName, String major, String
         email) {
@@ -127,7 +127,7 @@ public class Profile implements Serializable {
 
     /**
      * setter for last name
-     * @param lastName
+     * @param lastName the last name to set
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
@@ -135,7 +135,7 @@ public class Profile implements Serializable {
 
     /**
      * getter for major
-     * @return major
+     * @return major the major to get
      */
     public String getMajor() {
         return major;
@@ -143,7 +143,7 @@ public class Profile implements Serializable {
 
     /**
      * setter for major
-     * @param major
+     * @param major the major to set
      */
     public void setMajor(String major) {
         this.major = major;
@@ -151,7 +151,7 @@ public class Profile implements Serializable {
 
     /**
      * getter for email
-     * @return email
+     * @return email the email to get
      */
     public String getEmail() {
         return email;
@@ -159,7 +159,7 @@ public class Profile implements Serializable {
 
     /**
      * set email
-     * @param email
+     * @param email the email to set
      */
     public void setEmail(String email) {
         this.email = email;

@@ -26,6 +26,9 @@ public class RecentDVDsFragment extends Fragment {
 
     private Activity hostActivity;
 
+    /**
+     * Default constructor
+     */
     public RecentDVDsFragment() {
     }
 

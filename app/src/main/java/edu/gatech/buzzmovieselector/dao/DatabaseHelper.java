@@ -97,7 +97,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      * value.
      *
      * @return the database object for the user
-     * @throws SQLException
+     * @throws SQLException a database exception
      */
     Dao<User, String> getUserDao() throws SQLException {
         if (userDao == null) {
@@ -111,7 +111,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      * will create it or just give the cached
      * value.
      * @return the profileDao object
-     * @throws SQLException
+     * @throws SQLException a database exception
      */
     Dao<Profile, Integer> getProfileDao() throws SQLException {
         if (profileDao == null) {
@@ -125,7 +125,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      * will create it or just give the cached
      * value.
      * @return the movieDao
-     * @throws SQLException
+     * @throws SQLException a database exception
      */
     Dao<Movie, Integer> getMovieDao() throws SQLException {
         if (movieDao == null) {
@@ -139,7 +139,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      * will create it or just give the cached
      * value.
      * @return reviewDao object
-     * @throws SQLException
+     * @throws SQLException a database exception
      */
     Dao<Review, Integer> getReviewDao() throws SQLException {
         if (reviewDao == null) {

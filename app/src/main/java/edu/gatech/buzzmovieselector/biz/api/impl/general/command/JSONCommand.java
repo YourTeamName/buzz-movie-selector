@@ -12,6 +12,10 @@ public class JSONCommand implements ApiCommand {
 
     private String url;
 
+    /**
+     * Default constructor for a json command
+     * @param url the url for the command
+     */
     public JSONCommand(String url) {
         this.url = url;
     }

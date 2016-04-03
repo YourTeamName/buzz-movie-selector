@@ -11,6 +11,9 @@ public final class RTCommandFactory {
     private static ApiCommand recentDVDsCommand = new RTRecentDVDs();
     private static ApiCommand recentMoviesCommand = new RTRecentMovies();
 
+    /**
+     * Default no arg constructor
+     */
     private RTCommandFactory() {
     }
 

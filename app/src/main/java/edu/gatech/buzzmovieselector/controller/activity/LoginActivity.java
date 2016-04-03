@@ -157,6 +157,9 @@ public class LoginActivity extends Activity {
         startActivity(bmsActivity);
     }
 
+    /**
+     * Starts the admin activity if the user is an admin
+     */
     private void startAdmin() {
         final Intent adminActivity = new Intent(this, AdminActivity.class);
         finish();
