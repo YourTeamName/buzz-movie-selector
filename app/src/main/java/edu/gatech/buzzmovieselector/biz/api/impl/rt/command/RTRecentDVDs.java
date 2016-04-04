@@ -14,7 +14,7 @@ public class RTRecentDVDs implements ApiCommand {
 
     @Override
     public RTMovieListReceiver execute(ApiCallback callback) {
-        String url = "http://api.rottentomatoes.com/api/public/v1" +
+        final String url = "http://api.rottentomatoes.com/api/public/v1" +
             ".0/lists/dvds/new_releases.json?page_limit=10&apikey=" +
             RTInvoker.API_KEY;
         return new RTMovieListReceiver(ApiNetwork.getInstance().apiJSON(url),
