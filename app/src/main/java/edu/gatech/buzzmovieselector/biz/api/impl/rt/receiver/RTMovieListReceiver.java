@@ -46,7 +46,7 @@ public class RTMovieListReceiver extends ApiReceiver<JSONObject, Movie[]> {
                 parsedMovies.add(movie);
             }
         } catch (JSONException e) {
-            Log.e("RTMovieListReceiver Error", "Can't get JSONObject", e);
+            Log.e("RTMovieListReceiver Err", "Can't get JSONObject", e);
         }
         Movie[] movieArray = new Movie[parsedMovies.size()];
         movieArray = parsedMovies.toArray(movieArray);
