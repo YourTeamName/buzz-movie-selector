@@ -49,7 +49,7 @@ public class SearchResultsActivity extends AppCompatActivity {
         final Intent intent = getIntent();
         // Get search query
         final String search = intent.getStringExtra(SEARCH_KEYWORD);
-        // Excute the command and refresh list view
+        // Execute the command and refresh list view
         rti.executeCall(new ApiCall(RTCommandFactory
             .getMovieSearchCommand(search), new
             ApiCallback<RTMovieListReceiver>() {

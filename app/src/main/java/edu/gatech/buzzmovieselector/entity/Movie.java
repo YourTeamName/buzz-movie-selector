@@ -33,7 +33,7 @@ public class Movie implements Serializable {
      * Empty constructor for a movie object
      */
     public Movie() {
-        reviews = new ArrayList<Review>();
+        reviews = new ArrayList<>();
     }
 
     /**
@@ -60,7 +60,7 @@ public class Movie implements Serializable {
         this.year = year;
         this.rating = rating;
         this.imageURL = imageURL;
-        reviews = new ArrayList<Review>();
+        reviews = new ArrayList<>();
     }
 
     /**

@@ -94,7 +94,7 @@ public class MovieManager implements MovieManagementFacade {
     @Override
     public Collection<Movie> getRecommendationsByMajor(String major) {
         final Collection<Movie> movieList = getMovies();
-        final List<Movie> recommendedList = new ArrayList<Movie>();
+        final List<Movie> recommendedList = new ArrayList<>();
         for (final Movie movie : movieList) {
             double totalPoints = 0.0;
             for (final Review review : movie.getReviews()) {

@@ -53,7 +53,7 @@ public class UserListAdapter extends BaseAdapter implements ListAdapter {
 
     @Override
     public View getView(final int position, View view, ViewGroup parent) {
-        View newView = null;
+        View newView;
         if (view == null) {
             newView = inflater.inflate(R.layout.user_list_item, null);
         } else {

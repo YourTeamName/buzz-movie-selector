@@ -61,7 +61,7 @@ public class MovieListAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
-        View newView = null;
+        View newView;
         if (view == null) {
             newView = inflater.inflate(R.layout.movie_list_item, null);
         } else {
