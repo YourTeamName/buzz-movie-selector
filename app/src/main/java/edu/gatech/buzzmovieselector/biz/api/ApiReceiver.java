@@ -1,6 +1,7 @@
 package edu.gatech.buzzmovieselector.biz.api;
 
 import android.os.AsyncTask;
+import android.util.Log;
 import com.android.volley.toolbox.RequestFuture;
 
 import java.util.concurrent.ExecutionException;
@@ -46,6 +47,8 @@ public abstract class ApiReceiver<T, V> {
     private T responseData;
     private ApiCallback responseCallback = null;
     private ApiResult responseStatus = ApiResult.NOT_DONE;
+
+    public static final String API_RECEIVER_ERROR = "API Receiver Error";
 
     /**
      * Constructor for a receiver
@@ -117,7 +120,7 @@ public abstract class ApiReceiver<T, V> {
             } catch (InterruptedException | ExecutionException |
                 TimeoutException e) {
                 responseStatus = ApiResult.FAIL;
-                e.printStackTrace();
+                Log.e(API_RECEIVER_ERROR, "Can't perform the next request", e);
             }
             return null;
         }
@@ -134,7 +137,7 @@ public abstract class ApiReceiver<T, V> {
                 }
                 responseStatus = ApiResult.SUCCESS;
             } catch (InterruptedException | ExecutionException e) {
-                e.printStackTrace();
+                Log.e(API_RECEIVER_ERROR, "Can't receive data", e);
             }
         }
     }

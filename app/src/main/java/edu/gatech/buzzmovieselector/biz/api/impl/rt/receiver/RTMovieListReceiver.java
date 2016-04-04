@@ -1,5 +1,6 @@
 package edu.gatech.buzzmovieselector.biz.api.impl.rt.receiver;
 
+import android.util.Log;
 import com.android.volley.toolbox.RequestFuture;
 import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
 import edu.gatech.buzzmovieselector.biz.api.ApiReceiver;
@@ -18,7 +19,8 @@ public class RTMovieListReceiver extends ApiReceiver<JSONObject, Movie[]> {
 
     /**
      * Default constructor
-     * @param requestFuture the request
+     *
+     * @param requestFuture    the request
      * @param responseCallback callback for the receiver
      */
     public RTMovieListReceiver(RequestFuture requestFuture, ApiCallback
@@ -36,15 +38,15 @@ public class RTMovieListReceiver extends ApiReceiver<JSONObject, Movie[]> {
                 final JSONObject movieJ = movieList.getJSONObject(i);
                 final double rating = (double) movieJ.getJSONObject("ratings")
                     .getInt("audience_score") / MAXIMUM_SCORE;
-                final String thumbUrl = movieJ.getJSONObject("posters").getString
-                    ("thumbnail");
+                final String thumbUrl = movieJ.getJSONObject("posters")
+                    .getString("thumbnail");
                 final Movie movie = new Movie(movieJ.getInt("id"), movieJ
                     .getString("title"), movieJ.getInt("year"), rating,
                     thumbUrl);
                 parsedMovies.add(movie);
             }
         } catch (JSONException e) {
-            e.printStackTrace();
+            Log.e("RTMovieListReceiver Error", "Can't get JSONObject", e);
         }
         Movie[] movieArray = new Movie[parsedMovies.size()];
         movieArray = parsedMovies.toArray(movieArray);

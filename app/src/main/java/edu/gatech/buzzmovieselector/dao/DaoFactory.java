@@ -1,6 +1,7 @@
 package edu.gatech.buzzmovieselector.dao;
 
 import android.content.Context;
+import android.util.Log;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
 import java.sql.SQLException;
@@ -17,9 +18,10 @@ public final class DaoFactory {
     private static MovieDao movieDao;
     private static ReviewDao reviewDao;
 
-    private static final String ERROR_MSG = "Context must be set before " +
+    public static final String ERROR_MSG = "Context must be set before " +
         "calling getXxxDao";
 
+    public static final String DAO_ERROR = "DAO Error";
     /**
      * Empty constructor
      */
@@ -50,7 +52,7 @@ public final class DaoFactory {
                     DatabaseHelper.class)
                     .getUserDao();
             } catch (SQLException e) {
-                e.printStackTrace();
+                Log.e(DAO_ERROR, "Can't get User DAO", e);
             }
         }
         return userDao;
@@ -71,7 +73,7 @@ public final class DaoFactory {
                     DatabaseHelper.class)
                     .getProfileDao();
             } catch (SQLException e) {
-                e.printStackTrace();
+                Log.e(DAO_ERROR, "Can't get Profile DAO", e);
             }
         }
         return profileDao;
@@ -93,7 +95,7 @@ public final class DaoFactory {
                         .class)
                     .getMovieDao();
             } catch (SQLException e) {
-                e.printStackTrace();
+                Log.e(DAO_ERROR, "Can't get Movie DAO", e);
             }
         }
         return movieDao;
@@ -114,7 +116,7 @@ public final class DaoFactory {
                     DatabaseHelper.class)
                     .getReviewDao();
             } catch (SQLException e) {
-                e.printStackTrace();
+                Log.e(DAO_ERROR, "Can't get Review DAO", e);
             }
         }
         return reviewDao;

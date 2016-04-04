@@ -1,5 +1,6 @@
 package edu.gatech.buzzmovieselector.biz.impl;
 
+import android.util.Log;
 import edu.gatech.buzzmovieselector.biz.MovieManagementFacade;
 import edu.gatech.buzzmovieselector.dao.DaoFactory;
 import edu.gatech.buzzmovieselector.dao.MovieDao;
@@ -16,6 +17,9 @@ import java.util.List;
  */
 public class MovieManager implements MovieManagementFacade {
     public static final int FOUR_RATING = 4;
+
+    public static final String MOVIE_MANAGER_ERROR = "MovieManager Error";
+
     /**
      * Default constructor for a movie manager
      */
@@ -33,7 +37,7 @@ public class MovieManager implements MovieManagementFacade {
         try {
             movieDao.createOrUpdate(movie);
         } catch (SQLException e) {
-            e.printStackTrace();
+            Log.e(MOVIE_MANAGER_ERROR, "Can't create or update movie", e);
         }
     }
 
@@ -49,7 +53,7 @@ public class MovieManager implements MovieManagementFacade {
         try {
             movie = DaoFactory.getMovieDao().queryForId(id);
         } catch (SQLException e) {
-            e.printStackTrace();
+            Log.e(MOVIE_MANAGER_ERROR, "Can't create for movie id", e);
         }
         return movie;
     }
@@ -60,7 +64,7 @@ public class MovieManager implements MovieManagementFacade {
         try {
             movie = DaoFactory.getMovieDao().queryForId(id);
         } catch (SQLException e) {
-            e.printStackTrace();
+            Log.e(MOVIE_MANAGER_ERROR, "Can't query for movie id", e);
         }
         return movie != null;
     }
@@ -71,7 +75,7 @@ public class MovieManager implements MovieManagementFacade {
             final MovieDao movieDao = DaoFactory.getMovieDao();
             movieDao.createOrUpdate(movie);
         } catch (SQLException e) {
-            e.printStackTrace();
+            Log.e(MOVIE_MANAGER_ERROR, "Can't create or update movie", e);
         }
     }
 
@@ -82,7 +86,7 @@ public class MovieManager implements MovieManagementFacade {
             final MovieDao movieDao = DaoFactory.getMovieDao();
             movieList = movieDao.queryForAll();
         } catch (SQLException e) {
-            e.printStackTrace();
+            Log.e(MOVIE_MANAGER_ERROR, "Can't query for all movies", e);
         }
         return movieList;
     }
@@ -104,5 +108,15 @@ public class MovieManager implements MovieManagementFacade {
             }
         }
         return recommendedList;
+    }
+
+    @Override
+    public List<Review> getReviews(Movie m) {
+        return null;
+    }
+
+    @Override
+    public void addReview(Review r) {
+
     }
 }
