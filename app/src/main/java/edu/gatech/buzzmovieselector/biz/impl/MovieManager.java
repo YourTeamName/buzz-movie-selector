@@ -109,14 +109,4 @@ public class MovieManager implements MovieManagementFacade {
         }
         return recommendedList;
     }
-
-    @Override
-    public List<Review> getReviews(Movie m) {
-        return null;
-    }
-
-    @Override
-    public void addReview(Review r) {
-
-    }
 }

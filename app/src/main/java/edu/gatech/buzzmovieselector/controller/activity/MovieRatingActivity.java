@@ -52,16 +52,7 @@ public class MovieRatingActivity extends AppCompatActivity {
      * Loads the rating for a movie
      */
     private void loadRating() {
-        final Collection<Review> movieReviews = reviewMovie.getReviews();
-        if (movieReviews.size() == 0) {
-            return;
-        }
-        double totalRating = 0;
-        for (final Review r : movieReviews) {
-            totalRating += r.getRating();
-        }
-        final double avgRating = totalRating / movieReviews.size();
-        averageRating.setRating((float) avgRating);
+        averageRating.setRating((float) reviewMovie.loadRating());
     }
 
     /**

@@ -185,4 +185,19 @@ public class Movie implements Serializable {
             + rating;
     }
 
+    /**
+     * Loads the rating for a movie
+     * @return the movie's current rating
+     */
+    public double loadRating() {
+        if (reviews.size() == 0) {
+            return 0;
+        }
+        double totalRating = 0;
+        for (final Review r : reviews) {
+            totalRating += r.getRating();
+        }
+        final double avgRating = totalRating / reviews.size();
+        return avgRating;
+    }
 }
