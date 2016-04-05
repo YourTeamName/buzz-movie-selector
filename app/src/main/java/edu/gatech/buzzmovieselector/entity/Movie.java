@@ -129,6 +129,7 @@ public class Movie implements Serializable {
 
     /**
      * Gets the rating
+     *
      * @return the rating
      */
     public Double getRating() {
@@ -137,6 +138,7 @@ public class Movie implements Serializable {
 
     /**
      * Sets the rating
+     *
      * @param rating the rating to set
      */
     public void setRating(Double rating) {
@@ -145,6 +147,7 @@ public class Movie implements Serializable {
 
     /**
      * Gets the image url
+     *
      * @return the image url
      */
     public String getImageURL() {
@@ -153,6 +156,7 @@ public class Movie implements Serializable {
 
     /**
      * Adds a review to the list of reviews for the movie
+     *
      * @param r The review to add
      */
     public void addReview(Review r) {
@@ -168,11 +172,13 @@ public class Movie implements Serializable {
             return false;
         }
         final Movie m = (Movie) movie;
-        return title.equals(m.title);
+        return title.equals(m.title) && year.equals(m.year)
+            && rating.equals(m.rating);
     }
 
     /**
      * Creates a hashcode for a movie object
+     *
      * @return The hashcode
      */
     public int hashCode() {
@@ -187,6 +193,7 @@ public class Movie implements Serializable {
 
     /**
      * Loads the rating for a movie
+     *
      * @return the movie's current rating
      */
     public double loadRating() {
