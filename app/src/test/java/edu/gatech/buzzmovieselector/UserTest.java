@@ -80,4 +80,5 @@ public class UserTest {
         josh = new User("KingJulio", "youtube", User.UserStatus.BANNED);
         assertFalse(ryan.equals(josh));
     }
+
 }
