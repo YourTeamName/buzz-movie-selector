@@ -197,7 +197,6 @@ public class Movie implements Serializable {
         for (final Review r : reviews) {
             totalRating += r.getRating();
         }
-        final double avgRating = totalRating / reviews.size();
-        return avgRating;
+        return totalRating / reviews.size();
     }
 }
