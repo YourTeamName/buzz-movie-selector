@@ -1,5 +1,6 @@
 package edu.gatech.buzzmovieselector.controller.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -214,7 +215,7 @@ public class ProfileActivity extends AppCompatActivity {
      * Populates degreeSpinner with the values from the UserDegree enum
      */
     private void populateSpinner() {
-        final ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout
+        @SuppressLint("PrivateResource") final ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout
             .support_simple_spinner_dropdown_item, Profile.USER_DEGREES);
         degreeSpinner.setAdapter(degreeAdapter);
     }
@@ -225,7 +226,7 @@ public class ProfileActivity extends AppCompatActivity {
     private void depopulateSpinner() {
         final String[] fakeList = {profileUser.getProfile().getMajor() == null ? ""
                                  : profileUser.getProfile().getMajor()};
-        final ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout
+        @SuppressLint("PrivateResource") final ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout
             .support_simple_spinner_dropdown_item, fakeList);
         degreeSpinner.setAdapter(degreeAdapter);
     }
