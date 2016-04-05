@@ -53,19 +53,4 @@ public interface MovieManagementFacade {
      * @return The collection of movies that meet the rating threshold
      */
     Collection<Movie> getRecommendationsByMajor(String major);
-
-    /**
-     * Returns a total list of reviews for a movie
-     *
-     * @param m The movie for which to get the reviews
-     * @return The list of reviews for the movie
-     */
-    List<Review> getReviews(Movie m);
-
-    /**
-     * Adds a review to a movie
-     *
-     * @param r The review to add to a movie
-     */
-    void addReview(Review r);
 }
