@@ -2,24 +2,12 @@
     <string name="app_name">BuzzMovieSelector</string>
 
     <!-- Strings related to startSession -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
     <string name="prompt_username">Username</string>
-    <string name="action_login">Login</string>
     <string name="prompt_password_required">Password</string>
     <string name="action_cancel">Cancel</string>
     <string name="title_welcome">Welcome to Buzz Movie Selector</string>
     <string name="link_login">Login</string>
-    <string name="searchHint">Search for movie</string>
     <string name="link_register">Register</string>
     <string name="title_activity_bms">BuzzMovieSelector</string>
 
@@ -30,7 +18,6 @@
     <string name="title_register">Register an Account</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="importText">Import</string>
     <string name="newText">New Text</string>
     <string name="recommendedMovies">Recommended Movies</string>
@@ -65,4 +52,5 @@
     <string name="register">Register</string>
     <string name="edit">Edit</string>
     <string name="save">Save</string>
+    <string name="movieImage">Movie Image</string>
 </resources>

@@ -11,7 +11,8 @@
             android:layout_gravity="center"
             android:layout_width="@dimen/movie_item_height"
             android:layout_height="@dimen/movie_item_height"
-            android:src="@drawable/ic_menu_camera"/>
+            android:src="@drawable/ic_menu_camera"
+            android:contentDescription="@string/movieImage"/>
 
     <TextView
             android:id="@+id/movieTitleText"
