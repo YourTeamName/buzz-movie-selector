@@ -9,7 +9,7 @@
         <item
                 android:id="@+id/nav_recommended_movies"
                 android:icon="@drawable/ic_menu_slideshow"
-                android:title="Recommended Movies"/>
+                android:title="@string/recommendedMovies"/>
         <item
                 android:id="@+id/nav_manage"
                 android:icon="@drawable/ic_menu_manage"

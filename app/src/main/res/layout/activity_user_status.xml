@@ -8,7 +8,7 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
+            android:text="@string/newText"
             android:id="@+id/usernameLabel"
             android:textSize="30sp"
             android:layout_marginTop="65dp"

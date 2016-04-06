@@ -32,4 +32,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="importText">Import</string>
+    <string name="newText">New Text</string>
+    <string name="recommendedMovies">Recommended Movies</string>
+    <string name="textView">TextView</string>
+    <string name="movieTitle">Movie Title</string>
 </resources>

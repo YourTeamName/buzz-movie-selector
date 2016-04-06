@@ -13,7 +13,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Movie Title"
+            android:text="@string/movieTitle"
             android:id="@+id/movieTitle"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
