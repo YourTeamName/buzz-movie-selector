@@ -28,7 +28,7 @@
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BAN"
+            android:text="@string/ban"
             android:id="@+id/banButton"
             android:clickable="true"
             android:onClick="onBanButtonClicked"
@@ -39,7 +39,7 @@
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LOCK"
+            android:text="@string/lock"
             android:id="@+id/lockButton"
             android:clickable="true"
             android:onClick="onLockButtonClicked"
