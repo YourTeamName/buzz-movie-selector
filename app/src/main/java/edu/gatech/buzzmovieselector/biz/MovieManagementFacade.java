@@ -1,10 +1,8 @@
 package edu.gatech.buzzmovieselector.biz;
 
 import edu.gatech.buzzmovieselector.entity.Movie;
-import edu.gatech.buzzmovieselector.entity.Review;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Movie manager that retrieves info on movies
@@ -12,6 +10,7 @@ import java.util.List;
 public interface MovieManagementFacade {
     /**
      * Adds a movie to the manager
+     *
      * @param movie the movie to add
      */
     void addMovie(Movie movie);

@@ -131,8 +131,10 @@ public abstract class ApiReceiver<T, V> {
         public void run() {
             final AsyncFutureTask futureTask = new AsyncFutureTask();
             try {
+                //noinspection unchecked
                 responseData = (T) futureTask.execute(responseFuture).get();
                 if (responseCallback != null) {
+                    //noinspection unchecked
                     responseCallback.onReceive(ApiReceiver.this);
                 }
                 responseStatus = ApiResult.SUCCESS;

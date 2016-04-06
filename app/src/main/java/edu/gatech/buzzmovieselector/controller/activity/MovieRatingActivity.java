@@ -14,8 +14,6 @@ import edu.gatech.buzzmovieselector.entity.Movie;
 import edu.gatech.buzzmovieselector.entity.Review;
 import edu.gatech.buzzmovieselector.service.SessionState;
 
-import java.util.Collection;
-
 public class MovieRatingActivity extends AppCompatActivity {
 
     public static final String CURRENT_MOVIE = "currentMovie";
@@ -73,6 +71,7 @@ public class MovieRatingActivity extends AppCompatActivity {
 
     /**
      * Registers a submit review click
+     *
      * @param v the view
      */
     public void submitClick(View v) {
