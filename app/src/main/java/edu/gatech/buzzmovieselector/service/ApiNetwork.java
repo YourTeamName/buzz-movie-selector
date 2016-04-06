@@ -105,7 +105,7 @@ public final class ApiNetwork {
      */
     public RequestFuture<Bitmap> apiImage(String url) {
         final RequestFuture<Bitmap> bmpFuture = RequestFuture.newFuture();
-        final ImageRequest imageRequest = new ImageRequest(url, bmpFuture, 0, 0,
+        @SuppressWarnings("deprecation") final ImageRequest imageRequest = new ImageRequest(url, bmpFuture, 0, 0,
             null, bmpFuture);
         apiRequestQueue.add(imageRequest);
         return bmpFuture;
