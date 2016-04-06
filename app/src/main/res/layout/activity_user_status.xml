@@ -10,7 +10,7 @@
             android:layout_height="wrap_content"
             android:text="New Text"
             android:id="@+id/usernameLabel"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:layout_marginTop="65dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"/>
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:text="New Text"
             android:id="@+id/userStatusLabel"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:layout_marginTop="30dp"
             android:layout_below="@+id/usernameLabel"
             android:layout_alignStart="@+id/usernameLabel"/>
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:text="Username:"
             android:id="@+id/textView2"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:layout_alignBottom="@+id/usernameLabel"
             android:layout_toStartOf="@+id/usernameLabel"/>
 
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:text="Status:"
             android:id="@+id/textView3"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:layout_alignBottom="@+id/userStatusLabel"
             android:layout_toStartOf="@+id/userStatusLabel"/>
 </RelativeLayout>
