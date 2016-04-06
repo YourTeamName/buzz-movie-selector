@@ -34,7 +34,7 @@ public class JingtianZhangJUnitTest {
     }
 
     @Test
-    public void checkConstructorIgnoreCaseAdmin() {
+    public void checkConstructorIgnoreCaseLocked() {
         User g = new User("g", "1234", "LOCKED");
         assertEquals(g.userStatus, UserStatus.LOCKED);
 
