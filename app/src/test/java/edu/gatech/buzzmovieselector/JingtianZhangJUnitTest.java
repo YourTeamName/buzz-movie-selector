@@ -10,8 +10,11 @@ public class JingtianZhangJUnitTest {
     @Test
     public void checkConstructorIgnoreCase() {
         //User a = new User("a", "1234", "admin");
-        User b = new User("A", "1234", "ADMIN");
-        assertEquals(b.userStatus.equals(UserStatus.ADMIN));
+        User a = new User("a", "1234", "ADMIN");
+        assertEquals(a.userStatus, UserStatus.ADMIN);
+
+        User b = new User("b", "1234", "aDMIN");
+        assertEquals(b.userStatus, UserStatus.ADMIN);
     }
 
 }
