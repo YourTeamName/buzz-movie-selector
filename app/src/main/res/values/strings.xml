@@ -36,4 +36,12 @@
     <string name="recommendedMovies">Recommended Movies</string>
     <string name="textView">TextView</string>
     <string name="movieTitle">Movie Title</string>
+    <string name="tools">Tools</string>
+    <string name="firstName">First Name</string>
+    <string name="textView2">TextView</string>
+    <string name="profile">Profile</string>
+    <string name="newText2">New Text</string>
+    <string name="logout">Logout</string>
+    <string name="communicate">Communicate</string>
+    <string name="androidStudio">Android Studio</string>
 </resources>
