@@ -42,9 +42,4 @@ public class JingtianZhangJUnitTest {
         assertEquals(h.getUserStatus(), User.UserStatus.LOCKED);
     }
 
-    @Test
-    public void checkConstructorIgnoreCaseException() {
-        User j = new User("j", "1234", "jjjj");
-        thrown.expect(IllegalArgumentException.class);
-    }
 }
