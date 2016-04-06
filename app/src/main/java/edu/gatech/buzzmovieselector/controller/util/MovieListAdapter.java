@@ -1,5 +1,6 @@
 package edu.gatech.buzzmovieselector.controller.util;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -59,6 +60,7 @@ public class MovieListAdapter extends BaseAdapter {
         return i;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
         View newView;

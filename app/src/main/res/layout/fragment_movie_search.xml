@@ -1,30 +1,20 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="edu.gatech.buzzmovieselector.controller.fragment.MovieSearchFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:tools="http://schemas.android.com/tools"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-        <SearchView
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/searchView"
-                android:queryHint="Search for movie"/>
+                android:layout_height="match_parent">
 
-        <ListView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:paddingBottom="@dimen/movie_item_height"
-                android:id="@+id/movieSearchList"
-                android:layout_below="@+id/searchView"
-                android:layout_centerHorizontal="true"/>
+    <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/searchView"
+            android:queryHint="Search for movie"/>
 
-    </RelativeLayout>
-</FrameLayout>
+    <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/movie_item_height"
+            android:id="@+id/movieSearchList"
+            android:layout_below="@+id/searchView"
+            android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
