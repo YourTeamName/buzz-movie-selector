@@ -35,7 +35,7 @@ public class User implements Serializable {
     public User(String username, String password, UserStatus userStatus) {
         this.setUsername(username);
         this.setPassword(password);
-        this.setUserStatus(userStatus);
+        this.setUserStatus(UserStatus.USER);
     }
 
     /**
