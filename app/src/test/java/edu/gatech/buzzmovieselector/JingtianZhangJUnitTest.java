@@ -45,6 +45,6 @@ public class JingtianZhangJUnitTest {
     @Test
     public void checkConstructorIgnoreCaseException() {
         User j = new User("j", "1234", "jjjj");
-        thrown.expect(IllegalArgumentException.class());
+        thrown.expect(IllegalArgumentException.class);
     }
 }
