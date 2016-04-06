@@ -44,4 +44,13 @@
     <string name="logout">Logout</string>
     <string name="communicate">Communicate</string>
     <string name="androidStudio">Android Studio</string>
+    <string name="largeText">Large Text</string>
+    <string name="share">Share</string>
+    <string name="username">Username</string>
+    <string name="ban">BAN</string>
+    <string name="androidStudio2">android.studio@android.com</string>
+    <string name="send">Send</string>
+    <string name="lastName">Last Name</string>
+    <string name="logout2">Logout</string>
+    <string name="password">Password</string>
 </resources>

@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
+            android:text="@string/largeText"
             android:id="@+id/userNameText"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"/>
@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Last Name"
+            android:text="@string/lastName"
             android:id="@+id/lastNameLabel"
             android:layout_above="@+id/degreeLabel"
             android:layout_alignParentStart="true"
