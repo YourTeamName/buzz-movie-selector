@@ -1,5 +1,6 @@
 package edu.gatech.buzzmovieselector.controller.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -38,6 +39,7 @@ public class UserStatusActivity extends AppCompatActivity {
     /**
      * Retrieve user information and populate forms
      */
+    @SuppressLint("SetTextI18n")
     private void initializeForm() {
         usernameLabel.setText(currentUser.getUsername());
         userStatusLabel.setText(currentUser.getUserStatus().toString());

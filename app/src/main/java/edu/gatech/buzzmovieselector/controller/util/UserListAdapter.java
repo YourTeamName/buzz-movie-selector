@@ -1,5 +1,6 @@
 package edu.gatech.buzzmovieselector.controller.util;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -51,6 +52,7 @@ public class UserListAdapter extends BaseAdapter implements ListAdapter {
         return pos;
     }
 
+    @SuppressLint({"InflateParams", "SetTextI18n"})
     @Override
     public View getView(final int position, View view, ViewGroup parent) {
         View newView;

@@ -1,5 +1,6 @@
 package edu.gatech.buzzmovieselector.controller.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -25,6 +26,7 @@ public class MovieRatingActivity extends AppCompatActivity {
 
     private Movie reviewMovie;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

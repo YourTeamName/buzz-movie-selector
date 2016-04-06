@@ -38,7 +38,7 @@
             android:layout_marginTop="41dp"
             android:layout_alignEnd="@+id/userText"
             android:hint="@string/password"
-            android:password="true"
+            android:inputType="textPassword"
             android:singleLine="true"/>
 
     <EditText
@@ -50,7 +50,7 @@
             android:layout_alignStart="@+id/passwordText"
             android:imeOptions="actionDone"
             android:hint="@string/confirmPassword"
-            android:password="true"
+            android:inputType="textPassword"
             android:singleLine="true"/>
 
     <EditText
@@ -61,7 +61,8 @@
             android:layout_alignStart="@+id/userText"
             android:layout_alignEnd="@+id/passwordText"
             android:hint="@string/emailAddress"
-            android:singleLine="true"/>
+            android:singleLine="true"
+            tools:ignore="TextFields"/>
 
     <Button
             android:layout_width="wrap_content"

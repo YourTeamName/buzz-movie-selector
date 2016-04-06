@@ -53,7 +53,8 @@
             android:id="@+id/textView2"
             android:textSize="20sp"
             android:layout_alignBottom="@+id/usernameLabel"
-            android:layout_toStartOf="@+id/usernameLabel"/>
+            android:layout_toStartOf="@+id/usernameLabel"
+            tools:ignore="RelativeOverlap"/>
 
     <TextView
             android:layout_width="wrap_content"

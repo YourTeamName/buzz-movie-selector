@@ -92,6 +92,7 @@ public class ProfileActivity extends AppCompatActivity {
      * Retrieves user parameter from passed bundle and uses it to initialize
      * form
      */
+    @SuppressLint("SetTextI18n")
     private void initializeForm() {
         final String bundledUserName = getIntent().getExtras()
             .getString(KEY_PROFILE_USER, null);
