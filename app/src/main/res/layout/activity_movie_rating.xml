@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textReview"
-            android:hint="Enter your review here"
+            android:hint="@string/enterYourReviewHere"
             android:layout_below="@+id/userRating"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"/>

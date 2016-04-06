@@ -53,4 +53,6 @@
     <string name="lastName">Last Name</string>
     <string name="logout2">Logout</string>
     <string name="password">Password</string>
+    <string name="enterYourReviewHere">Enter your review here</string>
+    <string name="lock">LOCK</string>
 </resources>
