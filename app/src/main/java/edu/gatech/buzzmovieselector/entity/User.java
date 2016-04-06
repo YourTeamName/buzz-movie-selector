@@ -32,7 +32,8 @@ public class User implements Serializable {
      * @param password   The password needed to log in
      * @param userStatus The level of the account
      */
-    public User(String username, String password, UserStatus userStatus) {
+    public User(String username, String password, @SuppressWarnings
+        ("UnusedParameters") UserStatus userStatus) {
         this.setUsername(username);
         this.setPassword(password);
         this.setUserStatus(UserStatus.USER);

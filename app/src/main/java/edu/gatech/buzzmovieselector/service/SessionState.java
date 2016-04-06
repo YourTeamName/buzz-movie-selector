@@ -68,6 +68,7 @@ public final class SessionState {
      * @param context Context of shared preferences
      * @return a saved state exists
      */
+    @SuppressWarnings("UnusedReturnValue")
     public boolean restoreState(Context context) {
         final SharedPreferences saveSession = context
             .getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);

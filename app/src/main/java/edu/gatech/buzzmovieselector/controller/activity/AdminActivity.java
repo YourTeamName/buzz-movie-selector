@@ -55,7 +55,7 @@ public class AdminActivity extends AppCompatActivity {
      *
      * @param view The view of the activity
      */
-    public void onLogoutClicked(View view) {
+    public void onLogoutClicked(@SuppressWarnings("UnusedParameters") View view) {
         SessionState.getInstance().endSession(getApplicationContext());
         finish();
     }

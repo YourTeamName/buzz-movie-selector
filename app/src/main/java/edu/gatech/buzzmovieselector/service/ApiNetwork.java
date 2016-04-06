@@ -36,6 +36,7 @@ public final class ApiNetwork {
      * @param context Android context to use
      * @return the ApiNetwork object
      */
+    @SuppressWarnings("UnusedReturnValue")
     public static ApiNetwork getInstance(Context context) {
         if (ourInstance == null) {
             ourInstance = new ApiNetwork(context);

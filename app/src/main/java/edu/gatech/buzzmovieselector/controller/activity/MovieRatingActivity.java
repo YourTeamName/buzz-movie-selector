@@ -76,7 +76,7 @@ public class MovieRatingActivity extends AppCompatActivity {
      *
      * @param v the view
      */
-    public void submitClick(View v) {
+    public void submitClick(@SuppressWarnings("UnusedParameters") View v) {
         submitReview();
     }
 

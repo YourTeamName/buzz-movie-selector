@@ -39,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
      *
      * @param v Reference to widget firing event
      */
-    public void attemptRegister(View v) {
+    public void attemptRegister(@SuppressWarnings("UnusedParameters") View v) {
         if (!verifyRegister()) {
             return;
         }
