@@ -55,4 +55,14 @@
     <string name="password">Password</string>
     <string name="enterYourReviewHere">Enter your review here</string>
     <string name="lock">LOCK</string>
+    <string name="major">Major</string>
+    <string name="submitReview">Submit Review</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="userName">Username:</string>
+    <string name="email">Email</string>
+    <string name="status">Status:</string>
+    <string name="emailAddress">Email Address</string>
+    <string name="register">Register</string>
+    <string name="edit">Edit</string>
+    <string name="save">Save</string>
 </resources>

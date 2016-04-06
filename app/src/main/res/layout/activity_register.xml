@@ -49,7 +49,7 @@
             android:layout_alignEnd="@+id/passwordText"
             android:layout_alignStart="@+id/passwordText"
             android:imeOptions="actionDone"
-            android:hint="Confirm Password"
+            android:hint="@string/confirmPassword"
             android:password="true"
             android:singleLine="true"/>
 
@@ -60,13 +60,13 @@
             android:layout_below="@+id/userText"
             android:layout_alignStart="@+id/userText"
             android:layout_alignEnd="@+id/passwordText"
-            android:hint="Email Address"
+            android:hint="@string/emailAddress"
             android:singleLine="true"/>
 
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Register"
+            android:text="@string/register"
             android:id="@+id/button"
             android:layout_below="@+id/passwordConfirmText"
             android:layout_alignStart="@+id/passwordConfirmText"
