@@ -85,6 +85,19 @@ public class Profile implements Serializable {
         this.email = email;
     }
 
+    @Override
+    public boolean equals(Object profile) {
+        if (profile == null) {
+            return false;
+        }
+        if (!Profile.class.isAssignableFrom(profile.getClass())) {
+            return false;
+        }
+        final Profile m = (Profile) profile;
+        return id.equals(m.id) && firstName.equals(m.firstName)
+                && lastName.equals(m.lastName) && major.equals(m.major) && email.equals(m.email);
+    }
+
     /**
      * getter for id
      * @return id
