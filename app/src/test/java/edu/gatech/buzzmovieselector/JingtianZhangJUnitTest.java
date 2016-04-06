@@ -39,6 +39,6 @@ public class JingtianZhangJUnitTest {
         assertEquals(g.getUserStatus(), User.UserStatus.LOCKED);
 
         User h = new User("h", "1234", "Locked");
-        assertEquals(b.getUserStatus(), User.UserStatus.LOCKED);
+        assertEquals(h.getUserStatus(), User.UserStatus.LOCKED);
     }
 }
