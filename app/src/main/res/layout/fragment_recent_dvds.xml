@@ -11,5 +11,6 @@
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:paddingBottom="@dimen/movie_item_height"
-            android:id="@+id/recentDVDListView" android:layout_gravity="center"/>
+            android:id="@+id/recentDVDListView"
+            android:layout_gravity="center"/>
 </FrameLayout>

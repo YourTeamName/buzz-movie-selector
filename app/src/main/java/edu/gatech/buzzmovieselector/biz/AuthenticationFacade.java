@@ -8,8 +8,11 @@ import edu.gatech.buzzmovieselector.entity.User;
 public interface AuthenticationFacade {
 
     /**
-     * @return the user if the credentials are correct, null if the user does
-     * not exit or credentials are incorrect
+     * Logs in the user
+     *
+     * @param username The username of the user
+     * @param password The user's password
+     * @return the user that has that combination
      */
     User login(String username, String password);
 }

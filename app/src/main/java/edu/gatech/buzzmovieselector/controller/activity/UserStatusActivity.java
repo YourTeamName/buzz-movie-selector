@@ -1,5 +1,6 @@
 package edu.gatech.buzzmovieselector.controller.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -38,6 +39,7 @@ public class UserStatusActivity extends AppCompatActivity {
     /**
      * Retrieve user information and populate forms
      */
+    @SuppressLint("SetTextI18n")
     private void initializeForm() {
         usernameLabel.setText(currentUser.getUsername());
         userStatusLabel.setText(currentUser.getUserStatus().toString());
@@ -73,6 +75,7 @@ public class UserStatusActivity extends AppCompatActivity {
 
     /**
      * Handler for banButton
+     * @param view the view
      */
     public void onBanButtonClicked(View view) {
         if (currentUser.getUserStatus().equals(User.UserStatus.BANNED)) {
@@ -82,12 +85,13 @@ public class UserStatusActivity extends AppCompatActivity {
         }
         initializeForm();
         Log.v("USER STATUS", currentUser.getUserStatus().toString());
-        UserManagementFacade userManager = new UserManager();
+        final UserManagementFacade userManager = new UserManager();
         userManager.updateUser(currentUser);
     }
 
     /**
      * Handler for lockButton
+     * @param view the view
      */
     public void onLockButtonClicked(View view) {
         if (currentUser.getUserStatus().equals(User.UserStatus.LOCKED)) {
@@ -97,7 +101,7 @@ public class UserStatusActivity extends AppCompatActivity {
         }
         initializeForm();
         Log.v("USER STATUS", currentUser.getUserStatus().toString());
-        UserManagementFacade userManager = new UserManager();
+        final UserManagementFacade userManager = new UserManager();
         userManager.updateUser(currentUser);
     }
 }

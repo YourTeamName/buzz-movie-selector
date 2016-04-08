@@ -20,38 +20,35 @@ import edu.gatech.buzzmovieselector.controller.util.MovieListAdapter;
 import edu.gatech.buzzmovieselector.entity.Movie;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MovieSearchFragment extends Fragment {
 
     private ListView movieResults;
-    private SearchView searchBar;
     private Activity hostActivity;
 
     private String searchQuery = "";
 
-    private View fragView;
-
+    /**
+     * Empty constructor
+     */
     public MovieSearchFragment() {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        fragView = inflater.inflate(R.layout.fragment_movie_search,
-                container, false);
+        Bundle savedInstanceState) {
+        final View fragView = inflater.inflate(R.layout.fragment_movie_search,
+            container, false);
         movieResults = (ListView) fragView.findViewById(R.id.movieSearchList);
 
-        searchBar = (SearchView) fragView.findViewById(R.id.searchView);
+        final SearchView searchBar = (SearchView) fragView.findViewById(R.id
+            .searchView);
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
                 searchQuery = s;
-                refreshResults(fragView);
+                refreshResults();
                 return false;
             }
 
@@ -70,32 +67,29 @@ public class MovieSearchFragment extends Fragment {
     }
 
     /**
-     * Refreshes the search results that are contained in the listview
-     *
-     * @param v View associated with the fragment
+     * Refreshes the search results that are contained in the list view
      */
-    private void refreshResults(View v) {
+    private void refreshResults() {
         final ArrayList<Movie> mList = new ArrayList<>();
-        final MovieListAdapter movAdapter = new MovieListAdapter(hostActivity, mList);
+        final MovieListAdapter movAdapter = new MovieListAdapter(hostActivity,
+            mList);
         movieResults.setAdapter(movAdapter);
-        RTInvoker rti = new RTInvoker();
-        rti.executeCall(new ApiCall(RTCommandFactory.getMovieSearchCommand
-                (searchQuery)
-                , new ApiCallback<RTMovieListReceiver>() {
-            @Override
-            public void onReceive(RTMovieListReceiver receiver) {
-                for (Movie m : receiver.getEntity()) {
-                    mList.add(m);
-                }
-                if (hostActivity == null) {
-                    return;
-                }
-                hostActivity.runOnUiThread(new Runnable() {
-                    public void run() {
-                        movAdapter.notifyDataSetChanged();
+        final RTInvoker rti = new RTInvoker();
+        rti.executeCall(new ApiCall(RTCommandFactory
+            .getMovieSearchCommand(searchQuery),
+            new ApiCallback<RTMovieListReceiver>() {
+                @Override
+                public void onReceive(RTMovieListReceiver receiver) {
+                    Collections.addAll(mList, receiver.getEntity());
+                    if (hostActivity == null) {
+                        return;
                     }
-                });
-            }
-        }));
+                    hostActivity.runOnUiThread(new Runnable() {
+                        public void run() {
+                            movAdapter.notifyDataSetChanged();
+                        }
+                    });
+                }
+            }));
     }
 }

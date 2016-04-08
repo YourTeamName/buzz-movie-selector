@@ -18,6 +18,10 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     private final List<Fragment> fragmentList = new ArrayList<>();
     private final List<String> fragmentTitleList = new ArrayList<>();
 
+    /**
+     * Super constructor
+     * @param manager the fragment manager to create an adaptor for
+     */
     public ViewPagerAdapter(FragmentManager manager) {
         super(manager);
     }

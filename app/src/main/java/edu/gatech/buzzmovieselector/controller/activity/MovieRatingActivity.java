@@ -1,5 +1,6 @@
 package edu.gatech.buzzmovieselector.controller.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,39 +15,32 @@ import edu.gatech.buzzmovieselector.entity.Movie;
 import edu.gatech.buzzmovieselector.entity.Review;
 import edu.gatech.buzzmovieselector.service.SessionState;
 
-import java.util.Collection;
-
 public class MovieRatingActivity extends AppCompatActivity {
 
     public static final String CURRENT_MOVIE = "currentMovie";
-
-    private TextView titleText;
-    private TextView reviewText;
 
     private RatingBar averageRating;
     private RatingBar userRating;
 
     private EditText contentText;
 
-    private MovieManagementFacade mm;
-
     private Movie reviewMovie;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_rating); //title of movie.
-        titleText = (TextView) findViewById(R.id.movieTitle);
+        final TextView titleText = (TextView) findViewById(R.id.movieTitle);
         reviewMovie = (Movie) getIntent().getSerializableExtra(CURRENT_MOVIE);
-        mm = new MovieManager();
+        final MovieManagementFacade mm = new MovieManager();
         if (!mm.movieExists(reviewMovie.getId())) {
             Log.v("MovieRating", "Movie with that id doesn't exist");
             mm.addMovie(reviewMovie);
         }
         reviewMovie = mm.findMovieById(reviewMovie.getId());
-        titleText.setText(reviewMovie.getTitle() + " (" + reviewMovie.getYear
-                () + ")");
-        reviewText = (TextView) findViewById(R.id.textReview);
+        titleText.setText(reviewMovie.getTitle() + " (" + reviewMovie.
+            getYear() + ")");
         userRating = (RatingBar) findViewById(R.id.userRating);
         averageRating = (RatingBar) findViewById(R.id.averageRating);
         contentText = (EditText) findViewById(R.id.textReview);
@@ -54,31 +48,35 @@ public class MovieRatingActivity extends AppCompatActivity {
         loadRating();
     }
 
+    /**
+     * Loads the rating for a movie
+     */
     private void loadRating() {
-        Collection<Review> movieReviews = reviewMovie.getReviews();
-        if (movieReviews.size() == 0) {
-            return;
-        }
-        double totalRating = 0;
-        for (Review r : movieReviews) {
-            totalRating += r.getRating();
-        }
-        double avgRating = totalRating / movieReviews.size();
-        averageRating.setRating((float) avgRating);
+        averageRating.setRating((float) reviewMovie.loadRating());
     }
 
+    /**
+     * Submits a review for a movie
+     */
     private void submitReview() {
-        String reviewContent = contentText.getText().toString();
-        double usrRating = (double) userRating.getRating();
-        Review userReview = new Review(SessionState.getInstance()
-                .getSessionUser(), reviewContent, usrRating, reviewMovie);
+        final String reviewContent = contentText.getText().toString();
+        final double usrRating = (double) userRating.getRating();
+        final Review userReview = new Review(SessionState.getInstance()
+            .getSessionUser(),
+            reviewContent, usrRating,
+            reviewMovie);
         reviewMovie.addReview(userReview);
-        MovieManagementFacade mm = new MovieManager();
+        final MovieManagementFacade mm = new MovieManager();
         mm.updateMovie(reviewMovie);
         finish();
     }
 
-    public void submitClick(View v) {
+    /**
+     * Registers a submit review click
+     *
+     * @param v the view
+     */
+    public void submitClick(@SuppressWarnings("UnusedParameters") View v) {
         submitReview();
     }
 

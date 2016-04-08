@@ -9,14 +9,19 @@ import edu.gatech.buzzmovieselector.entity.User;
 /**
  * Global state that maintains the user logged into the application
  */
-public class SessionState {
+public final class SessionState {
 
+    private static final String SESSION_PREFS = "BMS_SESSION_PREFS";
+    private static final String USER_PREFIX = "sessionUser_";
     // Lazily instantiated Singleton
     private static SessionState ourInstance = null;
     private static User sessionUser = null;
 
-    private static final String SESSION_PREFS = "BMS_SESSION_PREFS";
-    private static final String USER_PREFIX = "sessionUser_";
+    /**
+     * private constructor for Singleton design pattern
+     */
+    private SessionState() {
+    }
 
     /**
      * Global Session State for the application
@@ -31,21 +36,21 @@ public class SessionState {
     }
 
     /**
-     * Sets a user to be currently logged into the session
-     *
-     * @param u sets the sessionUser variable of the SessionState
-     */
-    public void setSessionUser(User u) {
-        sessionUser = u;
-    }
-
-    /**
      * User currently logged into the session
      *
      * @return stored sessionUser variable
      */
     public User getSessionUser() {
         return sessionUser;
+    }
+
+    /**
+     * Sets a user to be currently logged into the session
+     *
+     * @param u sets the sessionUser variable of the SessionState
+     */
+    public void setSessionUser(User u) {
+        sessionUser = u;
     }
 
     /**
@@ -63,16 +68,17 @@ public class SessionState {
      * @param context Context of shared preferences
      * @return a saved state exists
      */
+    @SuppressWarnings("UnusedReturnValue")
     public boolean restoreState(Context context) {
-        SharedPreferences saveSession = context.getSharedPreferences
-                (SESSION_PREFS, Context.MODE_PRIVATE);
-        String username = saveSession.getString(USER_PREFIX + "username", null);
-        String password = saveSession.getString(USER_PREFIX + "password", null);
-        String userStatus = saveSession.getString(USER_PREFIX + "status", null);
+        final SharedPreferences saveSession = context
+            .getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
+        final String username = saveSession.getString(USER_PREFIX + "username", null);
+        final String password = saveSession.getString(USER_PREFIX + "password", null);
+        final String userStatus = saveSession.getString(USER_PREFIX + "status", null);
         if (username == null || password == null || userStatus == null) {
             return false;
         }
-        UserManagementFacade um = new UserManager();
+        final UserManagementFacade um = new UserManager();
         sessionUser = um.getUser(username, password);
         return true;
     }
@@ -84,16 +90,16 @@ public class SessionState {
      */
 
     public void saveState(Context context) {
-        SharedPreferences saveSession = context.getSharedPreferences
-                (SESSION_PREFS, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = saveSession.edit();
+        final SharedPreferences saveSession = context
+            .getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = saveSession.edit();
         if (sessionUser != null) {
             editor.putString(USER_PREFIX + "username", sessionUser
-                    .getUsername());
+                .getUsername());
             editor.putString(USER_PREFIX + "password", sessionUser
-                    .getPassword());
+                .getPassword());
             editor.putString(USER_PREFIX + "status", sessionUser.getUserStatus
-                    ().toString());
+                ().toString());
         }
         editor.clear();
         editor.apply();
@@ -105,9 +111,9 @@ public class SessionState {
      * @param context Context of shared preferences
      */
     public void clearSaveState(Context context) {
-        SharedPreferences saveSession = context.getSharedPreferences
-                (SESSION_PREFS, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = saveSession.edit();
+        final SharedPreferences saveSession = context
+            .getSharedPreferences(SESSION_PREFS, Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = saveSession.edit();
         editor.clear();
         editor.apply();
     }
@@ -131,11 +137,5 @@ public class SessionState {
     public void endSession(Context context) {
         sessionUser = null;
         clearSaveState(context);
-    }
-
-    /**
-     * private constructor for Singleton design pattern
-     */
-    private SessionState() {
     }
 }

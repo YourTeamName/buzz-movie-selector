@@ -35,6 +35,11 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private Dao<Review, Integer> reviewDao;
 
 
+    /**
+     * Constructor for database helper
+     *
+     * @param context Context of the helper
+     */
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -43,6 +48,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      * This is called when the database is first created. Usually you should
      * call createTable statements here to create
      * the tables that will store your data.
+     *
+     * @param db               The sql database
+     * @param connectionSource The connection source of the helper
      */
     @Override
     public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
@@ -54,7 +62,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(connectionSource, Review.class);
         } catch (SQLException e) {
             Log.e(DatabaseHelper.class.getName(), "Can't create database", e);
-            throw new RuntimeException(e);
         }
     }
 
@@ -62,10 +69,15 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      * This is called when your application is upgraded and it has a higher
      * version number. This allows you to adjust
      * the various data to match the new version number.
+     *
+     * @param db               sql db to upgrade
+     * @param connectionSource the connection source of the db
+     * @param oldVersion       the old version
+     * @param newVersion       the new version
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, ConnectionSource
-            connectionSource, int oldVersion, int newVersion) {
+        connectionSource, int oldVersion, int newVersion) {
         try {
             Log.i(DatabaseHelper.class.getName(), "onUpgrade");
             TableUtils.dropTable(connectionSource, User.class, true);
@@ -76,7 +88,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             onCreate(db, connectionSource);
         } catch (SQLException e) {
             Log.e(DatabaseHelper.class.getName(), "Can't drop databases", e);
-            throw new RuntimeException(e);
         }
     }
 
@@ -84,6 +95,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      * Returns the DAO for our User class. It
      * will create it or just give the cached
      * value.
+     *
+     * @return the database object for the user
+     * @throws SQLException a database exception
      */
     public Dao<User, String> getUserDao() throws SQLException {
         if (userDao == null) {
@@ -96,6 +110,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      * Returns the DAO for our Profile class. It
      * will create it or just give the cached
      * value.
+     * @return the profileDao object
+     * @throws SQLException a database exception
      */
     public Dao<Profile, Integer> getProfileDao() throws SQLException {
         if (profileDao == null) {
@@ -108,6 +124,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      * Returns the DAO for our Movie class. It
      * will create it or just give the cached
      * value.
+     * @return the movieDao
+     * @throws SQLException a database exception
      */
     public Dao<Movie, Integer> getMovieDao() throws SQLException {
         if (movieDao == null) {
@@ -120,6 +138,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      * Returns the DAO for our Movie class. It
      * will create it or just give the cached
      * value.
+     * @return reviewDao object
+     * @throws SQLException a database exception
      */
     public Dao<Review, Integer> getReviewDao() throws SQLException {
         if (reviewDao == null) {

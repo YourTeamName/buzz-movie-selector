@@ -26,7 +26,7 @@
             android:layout_alignStart="@+id/registerText"
             android:layout_marginTop="41dp"
             android:layout_alignEnd="@+id/registerText"
-            android:hint="Username"
+            android:hint="@string/username"
             android:singleLine="true"/>
 
     <EditText
@@ -37,8 +37,8 @@
             android:layout_alignStart="@+id/userText"
             android:layout_marginTop="41dp"
             android:layout_alignEnd="@+id/userText"
-            android:hint="Password"
-            android:password="true"
+            android:hint="@string/password"
+            android:inputType="textPassword"
             android:singleLine="true"/>
 
     <EditText
@@ -49,8 +49,8 @@
             android:layout_alignEnd="@+id/passwordText"
             android:layout_alignStart="@+id/passwordText"
             android:imeOptions="actionDone"
-            android:hint="Confirm Password"
-            android:password="true"
+            android:hint="@string/confirmPassword"
+            android:inputType="textPassword"
             android:singleLine="true"/>
 
     <EditText
@@ -60,13 +60,14 @@
             android:layout_below="@+id/userText"
             android:layout_alignStart="@+id/userText"
             android:layout_alignEnd="@+id/passwordText"
-            android:hint="Email Address"
-            android:singleLine="true"/>
+            android:hint="@string/emailAddress"
+            android:singleLine="true"
+            tools:ignore="TextFields"/>
 
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Register"
+            android:text="@string/register"
             android:id="@+id/button"
             android:layout_below="@+id/passwordConfirmText"
             android:layout_alignStart="@+id/passwordConfirmText"

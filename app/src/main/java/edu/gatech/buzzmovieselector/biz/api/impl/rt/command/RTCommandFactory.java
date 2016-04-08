@@ -5,11 +5,17 @@ import edu.gatech.buzzmovieselector.biz.api.ApiCommand;
 /**
  * Factory for commands for the Rotten tomatoes API
  */
-public class RTCommandFactory {
+public final class RTCommandFactory {
 
     // cache static commands
     private static ApiCommand recentDVDsCommand = new RTRecentDVDs();
     private static ApiCommand recentMoviesCommand = new RTRecentMovies();
+
+    /**
+     * Default no arg constructor
+     */
+    private RTCommandFactory() {
+    }
 
     /**
      * Produces the ApiCommand for recent DVDs
@@ -23,7 +29,7 @@ public class RTCommandFactory {
     /**
      * Produces the ApiCommand for searching movies
      *
-     * @param search
+     * @param search the search query
      * @return instance of RTMovieSearch
      */
     public static ApiCommand getMovieSearchCommand(String search) {

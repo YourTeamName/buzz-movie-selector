@@ -22,30 +22,31 @@ public class RecommendedMoviesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommended_movies);
-        ListView recommendations = (ListView) findViewById(R.id
-                .recommendedMovieList);
+        final ListView recommendations = (ListView) findViewById(R.id
+            .recommendedMovieList);
         final ArrayList<Movie> adapterList = new ArrayList<>();
-        final MovieListAdapter movAdapter = new MovieListAdapter(this, adapterList);
+        final MovieListAdapter movAdapter = new MovieListAdapter(this,
+            adapterList);
         recommendations.setAdapter(movAdapter);
-        MovieManagementFacade manager = new MovieManager();
+        final MovieManagementFacade manager = new MovieManager();
 
-        Profile currentUserProfile = SessionState.getInstance()
-                .getSessionUser().getProfile();
+        final Profile currentUserProfile = SessionState.getInstance()
+            .getSessionUser().getProfile();
         if (currentUserProfile != null && currentUserProfile.getMajor() !=
-                null) {
-            List<Movie> mList = (List<Movie>) manager.getRecommendationsByMajor(
-                    SessionState.getInstance().getSessionUser().getProfile()
-                            .getMajor());
-            for (Movie movie : mList) {
+            null) {
+            final List<Movie> mList = (List<Movie>) manager.getRecommendationsByMajor(
+                SessionState.getInstance().getSessionUser().getProfile()
+                    .getMajor());
+            for (final Movie movie : mList) {
                 adapterList.add(movie);
             }
             movAdapter.notifyDataSetChanged();
         } else {
-            Context context = getApplicationContext();
-            CharSequence text = "You haven't entered a major!";
-            int duration = Toast.LENGTH_LONG;
+            final Context context = getApplicationContext();
+            final CharSequence text = "You haven't entered a major!";
+            final int duration = Toast.LENGTH_LONG;
 
-            Toast toast = Toast.makeText(context, text, duration);
+            final Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
     }

@@ -12,6 +12,10 @@ public class ImageCommand implements ApiCommand {
 
     private String url;
 
+    /**
+     * Default constructor for an image command
+     * @param url The image url
+     */
     public ImageCommand(String url) {
         this.url = url;
     }
@@ -19,6 +23,6 @@ public class ImageCommand implements ApiCommand {
     @Override
     public ImageReceiver execute(ApiCallback callback) {
         return new ImageReceiver(ApiNetwork.getInstance().apiImage(url),
-                callback);
+            callback);
     }
 }
