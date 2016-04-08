@@ -25,7 +25,7 @@ public class ProfileTest {
     @Test
     public void testReflexiveProperty() {
         Profile test = new Profile("first", "last", "major", "email");
-        Profile test2 = new2 Profile("first", "last", "major", "email");
+        Profile test2 = new Profile("first", "last", "major", "email");
         assertTrue(test.equals(test2) && test.equals(test2));
     }
 
