@@ -7,7 +7,8 @@ public interface ApiCommand {
     /**
      * Executes the ApiCommand and returns the result
      *
+     * @param callback the callback for the command
      * @return result from calling the API
      */
-    public ApiReceiver execute(ApiCallback callback);
+    ApiReceiver execute(ApiCallback callback);
 }

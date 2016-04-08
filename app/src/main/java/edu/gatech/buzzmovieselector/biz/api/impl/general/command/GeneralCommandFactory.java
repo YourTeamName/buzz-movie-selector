@@ -5,7 +5,12 @@ import edu.gatech.buzzmovieselector.biz.api.ApiCommand;
 /**
  * Factory for general API commands
  */
-public class GeneralCommandFactory {
+public final class GeneralCommandFactory {
+    /**
+     * private constructor for GeneralCommandFactory
+     */
+    private GeneralCommandFactory() {
+    }
 
     /**
      * Gives the API command for a general image request

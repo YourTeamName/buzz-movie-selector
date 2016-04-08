@@ -12,6 +12,10 @@ public class TextCommand implements ApiCommand {
 
     private String url;
 
+    /**
+     * Text command constructor
+     * @param url the url of the api
+     */
     public TextCommand(String url) {
         this.url = url;
     }
@@ -19,6 +23,6 @@ public class TextCommand implements ApiCommand {
     @Override
     public TextReceiver execute(ApiCallback callback) {
         return new TextReceiver(ApiNetwork.getInstance().apiString(url),
-                callback);
+            callback);
     }
 }

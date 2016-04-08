@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="First Name"
+            android:text="@string/firstName"
             android:id="@+id/firstNameLabel"
             android:layout_above="@+id/lastNameLabel"
             android:layout_alignParentStart="true"
@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
+            android:text="@string/largeText"
             android:id="@+id/userNameText"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"/>
@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Last Name"
+            android:text="@string/lastName"
             android:id="@+id/lastNameLabel"
             android:layout_above="@+id/degreeLabel"
             android:layout_alignParentStart="true"
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Major"
+            android:text="@string/major"
             android:id="@+id/degreeLabel"
             android:layout_centerVertical="true"
             android:layout_alignParentStart="true"/>
@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Email"
+            android:text="@string/email"
             android:id="@+id/emailLabel"
             android:layout_marginTop="50dp"
             android:layout_below="@+id/degreeLabel"
@@ -66,7 +66,8 @@
             android:layout_alignBottom="@+id/lastNameLabel"
             android:layout_alignStart="@+id/firstNameText"
             android:layout_alignEnd="@+id/emailText"
-            android:singleLine="true"/>
+            android:singleLine="true"
+            tools:ignore="LabelFor,TextFields"/>
 
     <Spinner
             android:layout_width="wrap_content"
@@ -85,12 +86,13 @@
             android:id="@+id/emailText"
             android:layout_alignBottom="@+id/emailLabel"
             android:layout_alignParentEnd="true"
-            android:singleLine="true"/>
+            android:singleLine="true"
+            tools:ignore="LabelFor"/>
 
     <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit"
+            android:text="@string/edit"
             android:id="@+id/editCheckBox"
             android:layout_below="@+id/emailLabel"
             android:layout_alignParentStart="true"
@@ -99,7 +101,7 @@
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save"
+            android:text="@string/save"
             android:id="@+id/saveButton"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
@@ -113,5 +115,6 @@
             android:layout_alignBottom="@+id/firstNameLabel"
             android:layout_alignStart="@+id/userNameText"
             android:layout_alignEnd="@+id/emailText"
-            android:singleLine="true"/>
+            android:singleLine="true"
+            tools:ignore="LabelFor,TextFields"/>
 </RelativeLayout>

@@ -12,6 +12,10 @@ public class JSONCommand implements ApiCommand {
 
     private String url;
 
+    /**
+     * Default constructor for a json command
+     * @param url the url for the command
+     */
     public JSONCommand(String url) {
         this.url = url;
     }
@@ -19,6 +23,6 @@ public class JSONCommand implements ApiCommand {
     @Override
     public JSONReceiver execute(ApiCallback callback) {
         return new JSONReceiver(ApiNetwork.getInstance().apiJSON(url),
-                callback);
+            callback);
     }
 }

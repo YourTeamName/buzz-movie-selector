@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -24,36 +25,42 @@ import edu.gatech.buzzmovieselector.service.SessionState;
  */
 public class WelcomeActivity extends AppCompatActivity {
 
-    private final int REQUEST_CODE_ASK_PERMISSIONS = 2340;
+    private static final int REQUEST_CODE_ASK_PERMISSIONS = 2340;
 
+    /**
+     * Sets up the welcome activity
+     *
+     * @param savedInstanceState The instance state of the activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         initApp();
         if (verifyLogin()) {
-            User user = SessionState.getInstance().getSessionUser();
+            final User user = SessionState.getInstance().getSessionUser();
             switch (user.getUserStatus()) {
                 case USER:
-                    Intent bmsActivity = new Intent(this, BMSActivity.class);
+                    final Intent bmsActivity = new Intent(this, BMSActivity
+                        .class);
                     startActivity(bmsActivity);
                     return;
                 case ADMIN:
-                    Intent adminActivity = new Intent(this, AdminActivity
-                            .class);
+                    final Intent adminActivity = new Intent(this, AdminActivity
+                        .class);
                     startActivity(adminActivity);
                     return;
                 case BANNED:
                     Toast.makeText(WelcomeActivity.this, "Your account has " +
-                            "been banned since last time. Please try to login" +
-                            " again or contact an administrator.", Toast
-                            .LENGTH_SHORT).show();
+                        "been banned since last time. Please try to login" +
+                        " again or contact an administrator.", Toast
+                        .LENGTH_SHORT).show();
                     break;
                 case LOCKED:
                     Toast.makeText(WelcomeActivity.this, "Your account has " +
-                            "been locked since last time. Please try to login" +
-                            " again or contact an administrator.", Toast
-                            .LENGTH_SHORT).show();
+                        "been locked since last time. Please try to login" +
+                        " again or contact an administrator.", Toast
+                        .LENGTH_SHORT).show();
                     break;
             }
         }
@@ -65,6 +72,9 @@ public class WelcomeActivity extends AppCompatActivity {
      * Checks to see if there is a stored state and restores it
      */
 
+    /**
+     * Restores state of the activity
+     */
     private void restoreState() {
         SessionState.getInstance().restoreState(getApplicationContext());
     }
@@ -73,18 +83,25 @@ public class WelcomeActivity extends AppCompatActivity {
      * Checks to see if permissions need to be requested
      */
     private void checkPermissions() {
-        int permissionCheck = ContextCompat.checkSelfPermission
-                (getApplicationContext(), Manifest.permission.INTERNET);
+        final int permissionCheck = ContextCompat.checkSelfPermission(
+            getApplicationContext(), Manifest.permission.INTERNET);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest
-                    .permission.INTERNET}, REQUEST_CODE_ASK_PERMISSIONS);
-        } else {
+            ActivityCompat.requestPermissions(this,
+                new String[]{Manifest.permission.INTERNET},
+                REQUEST_CODE_ASK_PERMISSIONS);
         }
     }
 
+    /**
+     * Requests permissions
+     *
+     * @param requestCode  code number
+     * @param permissions  the permissions to request
+     * @param grantResults check whether to grant the results
+     */
     @Override
-    public void onRequestPermissionsResult(int requestCode, String
-            permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String
+        permissions[], @NonNull int[] grantResults) {
         switch (requestCode) {
             case REQUEST_CODE_ASK_PERMISSIONS:
                 if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
@@ -93,29 +110,30 @@ public class WelcomeActivity extends AppCompatActivity {
                 break;
             default:
                 super.onRequestPermissionsResult(requestCode, permissions,
-                        grantResults);
+                    grantResults);
         }
     }
 
     /**
      * Method for initializing hard coded values and restoring app state
      */
+
     private void initApp() {
 
         // Pass context to DaoFactory so that it can work properly later
         DaoFactory.setContext(this);
 
         // test user
-        User testUser = new User("user", "pass", "user");
+        final User testUser = new User("user", "pass", "user");
         testUser.setProfile(new Profile("George", "Burdell", "Computer " +
-                "Science", "gp@gatech.edu"));
-        UserManagementFacade um = new UserManager();
+            "Science", "gp@gatech.edu"));
+        final UserManagementFacade um = new UserManager();
         um.addUser(testUser);
 
         // test admin
-        User testAdmin = new User("admin", "admin", "admin");
+        final User testAdmin = new User("admin", "admin", "admin");
         testUser.setProfile(new Profile("Admin", "Burdell", "Computer " +
-                "Science", "gp@gatech.edu"));
+            "Science", "gp@gatech.edu"));
         um.addUser(testAdmin);
 
         checkPermissions();
@@ -130,7 +148,7 @@ public class WelcomeActivity extends AppCompatActivity {
      * @param v Reference to widget firing event
      */
     public void startLogin(View v) {
-        Intent loginActivity = new Intent(this, LoginActivity.class);
+        final Intent loginActivity = new Intent(this, LoginActivity.class);
         startActivity(loginActivity);
     }
 
@@ -141,7 +159,8 @@ public class WelcomeActivity extends AppCompatActivity {
      * @param v Reference to widget firing event
      */
     public void startRegister(View v) {
-        Intent registerActivity = new Intent(this, RegisterActivity.class);
+        final Intent registerActivity = new Intent(this, RegisterActivity
+            .class);
         startActivity(registerActivity);
     }
 

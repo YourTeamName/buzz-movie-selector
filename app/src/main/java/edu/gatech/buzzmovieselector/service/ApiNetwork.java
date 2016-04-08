@@ -14,11 +14,21 @@ import org.json.JSONObject;
 /**
  * Provides Api networking functionality
  */
-public class ApiNetwork {
+public final class ApiNetwork {
 
     private static ApiNetwork ourInstance = null;
-    private RequestQueue apiRequestQueue;
     private static Context apiContext;
+    private RequestQueue apiRequestQueue;
+
+    /**
+     * Private constructor for Singleton
+     *
+     * @param context Android application context
+     */
+    private ApiNetwork(Context context) {
+        apiContext = context;
+        apiRequestQueue = getApiRequestQueue();
+    }
 
     /**
      * Gets the ApiNetwork instance. This must be called before getInstance()
@@ -26,6 +36,7 @@ public class ApiNetwork {
      * @param context Android context to use
      * @return the ApiNetwork object
      */
+    @SuppressWarnings("UnusedReturnValue")
     public static ApiNetwork getInstance(Context context) {
         if (ourInstance == null) {
             ourInstance = new ApiNetwork(context);
@@ -47,22 +58,12 @@ public class ApiNetwork {
      *
      * @return the singleton's RequestQueue instance
      */
-    public RequestQueue getApiRequestQueue() {
+    private RequestQueue getApiRequestQueue() {
         if (apiRequestQueue == null) {
             apiRequestQueue = Volley.newRequestQueue(apiContext
-                    .getApplicationContext());
+                .getApplicationContext());
         }
         return apiRequestQueue;
-    }
-
-    /**
-     * Private constructor for Singleton
-     *
-     * @param context Android application context
-     */
-    private ApiNetwork(Context context) {
-        apiContext = context;
-        apiRequestQueue = getApiRequestQueue();
     }
 
     /**
@@ -72,9 +73,10 @@ public class ApiNetwork {
      * @return RequestFuture object with JSONObject response
      */
     public RequestFuture<JSONObject> apiJSON(String url) {
-        RequestFuture<JSONObject> jsonFuture = RequestFuture.newFuture();
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method
-                .GET, url, jsonFuture, jsonFuture);
+        final RequestFuture<JSONObject> jsonFuture = RequestFuture.newFuture();
+        final JsonObjectRequest jsonRequest = new JsonObjectRequest(Request
+            .Method
+            .GET, url, jsonFuture, jsonFuture);
         apiRequestQueue.add(jsonRequest);
         return jsonFuture;
     }
@@ -86,17 +88,26 @@ public class ApiNetwork {
      * @return RequestFuture object with String response
      */
     public RequestFuture<String> apiString(String url) {
-        RequestFuture<String> stringFuture = RequestFuture.newFuture();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET,
-                url, stringFuture, stringFuture);
+        final RequestFuture<String> stringFuture = RequestFuture.newFuture();
+        final StringRequest stringRequest = new StringRequest(Request.Method
+            .GET,
+            url,
+            stringFuture,
+            stringFuture);
         apiRequestQueue.add(stringRequest);
         return stringFuture;
     }
 
+    /**
+     * Hits an api expecting a bitmap
+     *
+     * @param url api endpoint
+     * @return object with bitmap response
+     */
     public RequestFuture<Bitmap> apiImage(String url) {
-        RequestFuture<Bitmap> bmpFuture = RequestFuture.newFuture();
-        ImageRequest imageRequest = new ImageRequest(url, bmpFuture, 0, 0,
-                null, bmpFuture);
+        final RequestFuture<Bitmap> bmpFuture = RequestFuture.newFuture();
+        @SuppressWarnings("deprecation") final ImageRequest imageRequest = new ImageRequest(url, bmpFuture, 0, 0,
+            null, bmpFuture);
         apiRequestQueue.add(imageRequest);
         return bmpFuture;
     }

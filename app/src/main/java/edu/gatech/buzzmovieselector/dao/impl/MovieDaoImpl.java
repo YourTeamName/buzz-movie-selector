@@ -8,11 +8,14 @@ import edu.gatech.buzzmovieselector.entity.Movie;
 import java.sql.SQLException;
 
 public class MovieDaoImpl extends BaseDaoImpl<Movie, Integer>
-        implements MovieDao {
+    implements MovieDao {
 
-    // this constructor must be defined
-    public MovieDaoImpl(ConnectionSource connectionSource)
-            throws SQLException {
+    /**
+     * Constructor for movie dao that must be defined
+     * @param connectionSource the connection source
+     * @throws SQLException a database exception
+     */
+    public MovieDaoImpl(ConnectionSource connectionSource) throws SQLException {
         super(connectionSource, Movie.class);
     }
 

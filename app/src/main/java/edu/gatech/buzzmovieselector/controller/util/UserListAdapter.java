@@ -1,6 +1,6 @@
 package edu.gatech.buzzmovieselector.controller.util;
 
-import android.app.Activity;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -21,16 +21,20 @@ import java.util.List;
  */
 public class UserListAdapter extends BaseAdapter implements ListAdapter {
 
+    private static LayoutInflater inflater = null;
     private List<User> users = new ArrayList<>();
     private Context context;
 
-    private static LayoutInflater inflater = null;
-
+    /**
+     * Constructor for user list adaptor
+     * @param users the users to display
+     * @param context the context of the activity
+     */
     public UserListAdapter(List<User> users, Context context) {
         this.users = users;
         this.context = context;
         inflater = (LayoutInflater) context.getSystemService(Context
-                .LAYOUT_INFLATER_SERVICE);
+            .LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -48,28 +52,32 @@ public class UserListAdapter extends BaseAdapter implements ListAdapter {
         return pos;
     }
 
+    @SuppressLint({"InflateParams", "SetTextI18n"})
     @Override
     public View getView(final int position, View view, ViewGroup parent) {
+        View newView;
         if (view == null) {
-            view = inflater.inflate(R.layout.user_list_item, null);
+            newView = inflater.inflate(R.layout.user_list_item, null);
+        } else {
+            newView = view;
         }
-
-        TextView listItemText = (TextView) view.findViewById(R.id
-                .usernameLabel);
+        final TextView listItemText = (TextView) newView.findViewById(R.id
+            .usernameLabel);
         final User user = users.get(position);
         listItemText.setText(user.getUsername() + " (" + user.getUserStatus()
-                + ")");
+            + ")");
 
-        view.setOnClickListener(new View.OnClickListener() {
+        newView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent starter = new Intent(context, UserStatusActivity.class);
+                final Intent starter = new Intent(context, UserStatusActivity
+                    .class);
                 starter.putExtra(UserStatusActivity.CURRENT_USER, user);
                 context.startActivity(starter);
             }
         });
 
-        return view;
+        return newView;
     }
 
 }

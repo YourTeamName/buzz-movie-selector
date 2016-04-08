@@ -1,9 +1,9 @@
 package edu.gatech.buzzmovieselector.controller.util;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +14,7 @@ import edu.gatech.buzzmovieselector.R;
 import edu.gatech.buzzmovieselector.biz.api.ApiCall;
 import edu.gatech.buzzmovieselector.biz.api.ApiCallback;
 import edu.gatech.buzzmovieselector.biz.api.impl.general.command
-        .GeneralCommandFactory;
+    .GeneralCommandFactory;
 import edu.gatech.buzzmovieselector.biz.api.impl.general.receiver.ImageReceiver;
 import edu.gatech.buzzmovieselector.biz.api.impl.rt.RTInvoker;
 import edu.gatech.buzzmovieselector.controller.activity.MovieRatingActivity;
@@ -27,22 +27,22 @@ import java.util.List;
  */
 public class MovieListAdapter extends BaseAdapter {
 
+    private static LayoutInflater inflater = null;
+    private final RTInvoker rti = new RTInvoker();
     private List<Movie> movies;
     private Activity hostActivity;
-    private final RTInvoker rti = new RTInvoker();
-
-    private static LayoutInflater inflater = null;
 
     /**
      * Constructs a new movie adapter to display movies in a list
+     *
      * @param hostActivity The activity to host the adapter
-     * @param movies The list of movies to go into the adapter
+     * @param movies       The list of movies to go into the adapter
      */
     public MovieListAdapter(Activity hostActivity, List<Movie> movies) {
         this.movies = movies;
         this.hostActivity = hostActivity;
         inflater = (LayoutInflater) hostActivity.getSystemService(Context
-                .LAYOUT_INFLATER_SERVICE);
+            .LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -60,40 +60,45 @@ public class MovieListAdapter extends BaseAdapter {
         return i;
     }
 
+    @SuppressLint({"SetTextI18n", "InflateParams"})
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
+        View newView;
         if (view == null) {
-            view = inflater.inflate(R.layout.movie_list_item, null);
+            newView = inflater.inflate(R.layout.movie_list_item, null);
+        } else {
+            newView = view;
         }
-        final ImageView movieThumbView = (ImageView) view.findViewById(R
-                .id.movieImage);
-        final TextView movieTitleView = (TextView) view.findViewById(R.id
-                .movieTitleText);
+        final ImageView movieThumbView = (ImageView) newView.findViewById(R
+            .id.movieImage);
+        final TextView movieTitleView = (TextView) newView.findViewById(R.id
+            .movieTitleText);
         final Movie movie = movies.get(i);
         movieTitleView.setText(movie.getTitle() + " (" + movie.getYear() + ")");
-        ApiCall imageCall = new ApiCall(GeneralCommandFactory.getImageCommand
-                (movie.getImageURL()), new ApiCallback<ImageReceiver>() {
-            @Override
-            public void onReceive(final ImageReceiver receiver) {
-                hostActivity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        movieThumbView.setImageBitmap(receiver.getEntity());
-                    }
-                });
-            }
-        });
+        final ApiCall imageCall = new ApiCall(GeneralCommandFactory
+            .getImageCommand(movie.getImageURL()),
+            new ApiCallback<ImageReceiver>() {
+                @Override
+                public void onReceive(final ImageReceiver receiver) {
+                    hostActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            movieThumbView.setImageBitmap(receiver
+                                .getEntity());
+                        }
+                    });
+                }
+            });
         rti.executeCall(imageCall);
-        view.setOnClickListener(new View.OnClickListener() {
+        newView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO make this open a movie viewer activity
-                Log.v("movieadapter", "position " + i);
-                Intent i = new Intent(hostActivity, MovieRatingActivity.class);
+                final Intent i = new Intent(hostActivity, MovieRatingActivity
+                    .class);
                 i.putExtra(MovieRatingActivity.CURRENT_MOVIE, movie);
                 hostActivity.startActivity(i);
             }
         });
-        return view;
+        return newView;
     }
 }

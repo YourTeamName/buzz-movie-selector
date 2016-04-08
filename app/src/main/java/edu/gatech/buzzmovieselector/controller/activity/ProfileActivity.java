@@ -1,5 +1,6 @@
 package edu.gatech.buzzmovieselector.controller.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -91,9 +92,10 @@ public class ProfileActivity extends AppCompatActivity {
      * Retrieves user parameter from passed bundle and uses it to initialize
      * form
      */
+    @SuppressLint("SetTextI18n")
     private void initializeForm() {
-        String bundledUserName = getIntent().getExtras().getString
-                (KEY_PROFILE_USER, null);
+        final String bundledUserName = getIntent().getExtras()
+            .getString(KEY_PROFILE_USER, null);
         if (bundledUserName == null) {
             if (SessionState.getInstance().isLoggedIn()) {
                 profileUser = SessionState.getInstance().getSessionUser();
@@ -102,18 +104,18 @@ public class ProfileActivity extends AppCompatActivity {
                 finish();
             }
         } else {
-            UserManagementFacade um = new UserManager();
+            final UserManagementFacade um = new UserManager();
             profileUser = um.findUserById(bundledUserName);
         }
         Log.v("ProfileActivity", "profileUser is " + profileUser);
         userNameLabel.setText(profileUser.getUsername() + " Profile");
         editCheckBox.setOnCheckedChangeListener(new CompoundButton
-                .OnCheckedChangeListener() {
+            .OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean
-                    isChecked) {
+                isChecked) {
                 Log.v("ProfileActivity", "Edit checked: " + (isChecked ?
-                        "True" : "False"));
+                    "True" : "False"));
                 if (isChecked) {
                     enableForm();
                 } else {
@@ -130,31 +132,32 @@ public class ProfileActivity extends AppCompatActivity {
      * Cancels focus from all form elements
      */
     private void cancelFocus() {
-        RelativeLayout formLayout = (RelativeLayout) findViewById(R.id
-                .profileLayout);
+        final RelativeLayout formLayout = (RelativeLayout) findViewById(R.id
+            .profileLayout);
         formLayout.requestFocus();
     }
 
     /**
      * Called when the Save button is clicked - verifies proper values are
      * entered
+     * @return true if the profile was validated
      */
     private boolean validateProfile() {
-        String firstName = firstNameText.getText().toString();
-        String lastName = lastNameText.getText().toString();
-        String userMajor = degreeSpinner.getSelectedItem().toString();
-        String email = emailText.getText().toString();
-        if (firstName.equals("")) {
+        final String firstName = firstNameText.getText().toString();
+        final String lastName = lastNameText.getText().toString();
+        final String userMajor = degreeSpinner.getSelectedItem().toString();
+        final String email = emailText.getText().toString();
+        if ("".equals(firstName)) {
             firstNameText.setError("Enter a first name");
             return false;
-        } else if (lastName.equals("")) {
+        } else if ("".equals(lastName)) {
             lastNameText.setError("Enter a last name");
             return false;
-        } else if (userMajor.equals("")) {
-            TextView spinnerText = (TextView) degreeSpinner.getSelectedView();
+        } else if ("".equals(userMajor)) {
+            final TextView spinnerText = (TextView) degreeSpinner.getSelectedView();
             spinnerText.setError("Enter a valid major");
             return false;
-        } else if (email.equals("") || !email.contains("@")) {
+        } else if ("".equals(email) || !email.contains("@")) {
             emailText.setError("Enter a valid email address");
             return false;
         } else {
@@ -167,7 +170,7 @@ public class ProfileActivity extends AppCompatActivity {
      */
     private void enableSpinner() {
         populateSpinner();
-        Profile userProfile = profileUser.getProfile();
+        final Profile userProfile = profileUser.getProfile();
         int degreeIndex = 0;
         if (userProfile.getMajor() != null) {
             for (int i = 0; i < Profile.USER_DEGREES.length; i++) {
@@ -202,7 +205,7 @@ public class ProfileActivity extends AppCompatActivity {
         lastNameText.setText(userProfile.getLastName());
         emailText.setText(userProfile.getEmail());
         if (profileUser.equals(SessionState.getInstance().getSessionUser())
-                || profileUser.getUserStatus() == User.UserStatus.ADMIN) {
+            || profileUser.getUserStatus() == User.UserStatus.ADMIN) {
             editCheckBox.setEnabled(true);
         } else {
             editCheckBox.setEnabled(false);
@@ -213,16 +216,19 @@ public class ProfileActivity extends AppCompatActivity {
      * Populates degreeSpinner with the values from the UserDegree enum
      */
     private void populateSpinner() {
-        ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout
-                .support_simple_spinner_dropdown_item, Profile.USER_DEGREES);
+        @SuppressLint("PrivateResource") final ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout
+            .support_simple_spinner_dropdown_item, Profile.USER_DEGREES);
         degreeSpinner.setAdapter(degreeAdapter);
     }
 
+    /**
+     * Takes away spinner choices
+     */
     private void depopulateSpinner() {
-        String[] fakeList = {profileUser.getProfile().getMajor() == null ? ""
-                : profileUser.getProfile().getMajor()};
-        ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout
-                .support_simple_spinner_dropdown_item, fakeList);
+        final String[] fakeList = {profileUser.getProfile().getMajor() == null ? ""
+                                 : profileUser.getProfile().getMajor()};
+        @SuppressLint("PrivateResource") final ArrayAdapter degreeAdapter = new ArrayAdapter<>(this, R.layout
+            .support_simple_spinner_dropdown_item, fakeList);
         degreeSpinner.setAdapter(degreeAdapter);
     }
 
@@ -230,24 +236,27 @@ public class ProfileActivity extends AppCompatActivity {
      * Updates the Profile object associated with the user
      */
     private void updateProfile() {
-        // TODO: add persistent save in addition to updating profileUser profile
         if (validateProfile()) {
-            String firstName = firstNameText.getText().toString();
-            String lastName = lastNameText.getText().toString();
-            String userMajor = degreeSpinner.getSelectedItem().toString();
-            String email = emailText.getText().toString();
-            Profile uProfile = profileUser.getProfile();
+            final String firstName = firstNameText.getText().toString();
+            final String lastName = lastNameText.getText().toString();
+            final String userMajor = degreeSpinner.getSelectedItem().toString();
+            final String email = emailText.getText().toString();
+            final Profile uProfile = profileUser.getProfile();
             uProfile.setFirstName(firstName);
             uProfile.setLastName(lastName);
             uProfile.setMajor(userMajor);
             uProfile.setEmail(email);
             profileUser.setProfile(uProfile);
-            UserManagementFacade um = new UserManager();
+            final UserManagementFacade um = new UserManager();
             um.updateUser(profileUser);
             finish();
         }
     }
 
+    /**
+     * Saves the profile entered
+     * @param v the current view
+     */
     public void saveProfile(View v) {
         updateProfile();
     }

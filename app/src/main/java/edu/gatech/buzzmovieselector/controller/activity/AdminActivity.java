@@ -2,8 +2,6 @@ package edu.gatech.buzzmovieselector.controller.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
@@ -23,13 +21,13 @@ public class AdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        UserManagementFacade um = new UserManager();
+        final UserManagementFacade um = new UserManager();
 
-        List<User> userList = um.findAll();
+        final List<User> userList = um.findAll();
 
-        UserListAdapter adapter = new UserListAdapter(userList, this);
+        final UserListAdapter adapter = new UserListAdapter(userList, this);
 
-        ListView listview = (ListView) findViewById(R.id.userListView);
+        final ListView listview = (ListView) findViewById(R.id.userListView);
         listview.setAdapter(adapter);
 
     }
@@ -37,13 +35,13 @@ public class AdminActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        UserManagementFacade um = new UserManager();
+        final UserManagementFacade um = new UserManager();
 
-        List<User> userList = um.findAll();
+        final List<User> userList = um.findAll();
 
-        UserListAdapter adapter = new UserListAdapter(userList, this);
+        final UserListAdapter adapter = new UserListAdapter(userList, this);
 
-        ListView listview = (ListView) findViewById(R.id.userListView);
+        final ListView listview = (ListView) findViewById(R.id.userListView);
         listview.setAdapter(adapter);
 
     }
@@ -52,7 +50,12 @@ public class AdminActivity extends AppCompatActivity {
     public void onBackPressed() {
     }
 
-    public void onLogoutClicked(View view) {
+    /**
+     * Handles logout
+     *
+     * @param view The view of the activity
+     */
+    public void onLogoutClicked(@SuppressWarnings("UnusedParameters") View view) {
         SessionState.getInstance().endSession(getApplicationContext());
         finish();
     }

@@ -8,9 +8,9 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
+            android:text="@string/newText"
             android:id="@+id/usernameLabel"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:layout_marginTop="65dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"/>
@@ -18,9 +18,9 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
+            android:text="@string/newText2"
             android:id="@+id/userStatusLabel"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:layout_marginTop="30dp"
             android:layout_below="@+id/usernameLabel"
             android:layout_alignStart="@+id/usernameLabel"/>
@@ -28,7 +28,7 @@
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BAN"
+            android:text="@string/ban"
             android:id="@+id/banButton"
             android:clickable="true"
             android:onClick="onBanButtonClicked"
@@ -39,7 +39,7 @@
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LOCK"
+            android:text="@string/lock"
             android:id="@+id/lockButton"
             android:clickable="true"
             android:onClick="onLockButtonClicked"
@@ -49,18 +49,19 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Username:"
+            android:text="@string/userName"
             android:id="@+id/textView2"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:layout_alignBottom="@+id/usernameLabel"
-            android:layout_toStartOf="@+id/usernameLabel"/>
+            android:layout_toStartOf="@+id/usernameLabel"
+            tools:ignore="RelativeOverlap"/>
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Status:"
+            android:text="@string/status"
             android:id="@+id/textView3"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:layout_alignBottom="@+id/userStatusLabel"
             android:layout_toStartOf="@+id/userStatusLabel"/>
 </RelativeLayout>

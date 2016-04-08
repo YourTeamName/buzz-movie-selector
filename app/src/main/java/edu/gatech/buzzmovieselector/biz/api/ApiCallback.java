@@ -9,5 +9,5 @@ public interface ApiCallback<T extends ApiReceiver> {
      *
      * @param receiver ApiReceiver object executing the callback
      */
-    public void onReceive(T receiver);
+    void onReceive(T receiver);
 }

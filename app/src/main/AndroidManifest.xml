@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="edu.gatech.buzzmovieselector">
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -9,7 +10,9 @@
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:fullBackupContent="true"
+            tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
                 android:name=".controller.activity.WelcomeActivity"
                 android:label="@string/app_name">
@@ -36,10 +39,12 @@
         <activity
                 android:name=".controller.activity.RecommendedMoviesActivity"
                 android:label="Recommended Movies"/>
-        <activity android:name=".controller.activity.AdminActivity"
-                  android:label="Admin"/>
-        <activity android:name=".controller.activity.UserStatusActivity"
-                  android:label="User Status"/>
+        <activity
+                android:name=".controller.activity.AdminActivity"
+                android:label="Admin"/>
+        <activity
+                android:name=".controller.activity.UserStatusActivity"
+                android:label="User Status"/>
 
     </application>
 

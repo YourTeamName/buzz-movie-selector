@@ -2,24 +2,12 @@
     <string name="app_name">BuzzMovieSelector</string>
 
     <!-- Strings related to startSession -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
     <string name="prompt_username">Username</string>
-    <string name="action_login">Login</string>
     <string name="prompt_password_required">Password</string>
     <string name="action_cancel">Cancel</string>
     <string name="title_welcome">Welcome to Buzz Movie Selector</string>
     <string name="link_login">Login</string>
-    <string name="searchHint">Search for movie</string>
     <string name="link_register">Register</string>
     <string name="title_activity_bms">BuzzMovieSelector</string>
 
@@ -30,5 +18,39 @@
     <string name="title_register">Register an Account</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="importText">Import</string>
+    <string name="newText">New Text</string>
+    <string name="recommendedMovies">Recommended Movies</string>
+    <string name="textView">TextView</string>
+    <string name="movieTitle">Movie Title</string>
+    <string name="tools">Tools</string>
+    <string name="firstName">First Name</string>
+    <string name="textView2">TextView</string>
+    <string name="profile">Profile</string>
+    <string name="newText2">New Text</string>
+    <string name="logout">Logout</string>
+    <string name="communicate">Communicate</string>
+    <string name="androidStudio">Android Studio</string>
+    <string name="largeText">Large Text</string>
+    <string name="share">Share</string>
+    <string name="username">Username</string>
+    <string name="ban">BAN</string>
+    <string name="androidStudio2">android.studio@android.com</string>
+    <string name="send">Send</string>
+    <string name="lastName">Last Name</string>
+    <string name="logout2">Logout</string>
+    <string name="password">Password</string>
+    <string name="enterYourReviewHere">Enter your review here</string>
+    <string name="lock">LOCK</string>
+    <string name="major">Major</string>
+    <string name="submitReview">Submit Review</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="userName">Username:</string>
+    <string name="email">Email</string>
+    <string name="status">Status:</string>
+    <string name="emailAddress">Email Address</string>
+    <string name="register">Register</string>
+    <string name="edit">Edit</string>
+    <string name="save">Save</string>
+    <string name="movieImage">Movie Image</string>
 </resources>
