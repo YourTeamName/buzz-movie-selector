@@ -94,7 +94,7 @@ public class Profile implements Serializable {
             return false;
         }
         final Profile m = (Profile) profile;
-        return id.equals(m.id) && firstName.equals(m.firstName)
+        return firstName.equals(m.firstName)
                 && lastName.equals(m.lastName) && major.equals(m.major) && email.equals(m.email);
     }
 
